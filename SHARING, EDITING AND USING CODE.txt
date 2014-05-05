@@ -1,0 +1,3 @@
+EDITING AND SHARING
+Feel free to edit my scripts. If you found any bugs, I'd like to know them. You can mention them in the script's Minecraft Forum post. If you want to use or edit my code for public use, or share a script, please mention my name and the link to my github:
+wilco375 - https://github.com/wilco375/Minecraft-PE-Mod-Scripts
