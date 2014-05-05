@@ -1,15 +1,24 @@
-// portable hole mod
-// made by wilco375
+// Thaumcraft Portable Hole Mod Script
+// Made by wilco375
 
+var pHoleId = 450
 var pHoleActive
-//var countdown = 100
+var initialized = false
+var PortalOpenedTimeInTicks = 60 //(1 tick is 1/20 second, 20 ticks is 1 second)
 
-ModPE.setItem(450,"ruby",0,"Portable Hole");
-Item.addCraftRecipe(450, 1, 0, [264, 4, 0, 266, 4, 0, 332,1,0]);
+function selectLevelHook(){
+	if(!initialized){
+ModPE.setItem(pHoleId,"ruby",0,"Portable Hole");
+Item.addCraftRecipe(pHoleId, 1, 0, [264, 4, 0, 266, 4, 0, 332,1,0]);
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/pl0trv0.png")
+initialized = true;
+}
+}
+
 
 function useItem(x,y,z,itemId,blockId, side) 
 {
-	if((itemId == 450) && (blockId != 7))
+	if((itemId == pHoleId) && (blockId != 7))
 	{
 		if(pHoleActive == 1) {
 		clientMessage("Portable Hole is already active!")
@@ -18,10 +27,10 @@ function useItem(x,y,z,itemId,blockId, side)
 		pHoleX = x
 		pHoleY = y
 		pHoleZ = z
-		countdown = 100
+		countdown = PortalOpenedTimeInTicks
 		pHoleActive = 1
 		BlockSide = side
-		clientMessage("You clicked at " + x + " " + y + " " + z + " " + side);
+		//clientMessage("You clicked at " + x + " " + y + " " + z + " " + side);
 		if(BlockSide == 2){
 		block1 = getTile(pHoleX,pHoleY, pHoleZ)
 		block2 = getTile(pHoleX+1,pHoleY,pHoleZ)
@@ -117,7 +126,7 @@ function useItem(x,y,z,itemId,blockId, side)
 		setTile(pHoleX-1,pHoleY,pHoleZ-1)
 		setTile(pHoleX+1,pHoleY,pHoleZ)
 		setTile(pHoleX-1,pHoleY,pHoleZ)	}
-		else if(BlockSide == 6){
+		else if(BlockSide == 0){
 		block1 = getTile(pHoleX,pHoleY, pHoleZ)
 		block2 = getTile(pHoleX,pHoleY,pHoleZ+1)
 		block3 = getTile(pHoleX+1,pHoleY,pHoleZ+1)
@@ -156,7 +165,7 @@ if((pHoleActive == 1))
 		if(countdown != 0) {
 			countdown--;
 			} if(countdown == 0) {
-				clientMessage("Done!");
+				//clientMessage("Done!");
 				pHoleActive = 0;
 				if(BlockSide == 2){
 				setTile(pHoleX,pHoleY, pHoleZ,block1)
@@ -208,7 +217,7 @@ if((pHoleActive == 1))
 				setTile(pHoleX-1,pHoleY,pHoleZ-1,block7)
 				setTile(pHoleX+1,pHoleY,pHoleZ,block8)
 				setTile(pHoleX-1,pHoleY,pHoleZ,block9)}
-				else if(BlockSide == 6){
+				else if(BlockSide == 0){
 				setTile(pHoleX,pHoleY, pHoleZ,block1)
 				setTile(pHoleX,pHoleY,pHoleZ+1,block2)
 				setTile(pHoleX+1,pHoleY,pHoleZ+1,block3)
