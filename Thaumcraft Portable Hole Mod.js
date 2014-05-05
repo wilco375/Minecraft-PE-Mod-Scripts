@@ -97,7 +97,45 @@ function useItem(x,y,z,itemId,blockId, side)
 		setTile(pHoleX,pHoleY+1,pHoleZ-1)
 		setTile(pHoleX,pHoleY-1,pHoleZ-1)
 		setTile(pHoleX,pHoleY+1,pHoleZ)
-		setTile(pHoleX,pHoleY-1,pHoleZ)	}	
+		setTile(pHoleX,pHoleY-1,pHoleZ)	}
+		else if(BlockSide == 1){
+		block1 = getTile(pHoleX,pHoleY, pHoleZ)
+		block2 = getTile(pHoleX,pHoleY,pHoleZ+1)
+		block3 = getTile(pHoleX+1,pHoleY,pHoleZ+1)
+		block4 = getTile(pHoleX-1,pHoleY,pHoleZ+1)
+		block5 = getTile(pHoleX,pHoleY,pHoleZ-1)
+		block6 = getTile(pHoleX+1,pHoleY,pHoleZ-1)
+		block7 = getTile(pHoleX-1,pHoleY,pHoleZ-1)
+		block8 = getTile(pHoleX+1,pHoleY,pHoleZ)
+		block9 = getTile(pHoleX-1,pHoleY,pHoleZ)
+		setTile(pHoleX,pHoleY, pHoleZ)
+		setTile(pHoleX,pHoleY,pHoleZ+1)
+		setTile(pHoleX+1,pHoleY,pHoleZ+1)
+		setTile(pHoleX-1,pHoleY,pHoleZ+1)
+		setTile(pHoleX,pHoleY,pHoleZ-1)
+		setTile(pHoleX+1,pHoleY,pHoleZ-1)
+		setTile(pHoleX-1,pHoleY,pHoleZ-1)
+		setTile(pHoleX+1,pHoleY,pHoleZ)
+		setTile(pHoleX-1,pHoleY,pHoleZ)	}
+		else if(BlockSide == 6){
+		block1 = getTile(pHoleX,pHoleY, pHoleZ)
+		block2 = getTile(pHoleX,pHoleY,pHoleZ+1)
+		block3 = getTile(pHoleX+1,pHoleY,pHoleZ+1)
+		block4 = getTile(pHoleX-1,pHoleY,pHoleZ+1)
+		block5 = getTile(pHoleX,pHoleY,pHoleZ-1)
+		block6 = getTile(pHoleX+1,pHoleY,pHoleZ-1)
+		block7 = getTile(pHoleX-1,pHoleY,pHoleZ-1)
+		block8 = getTile(pHoleX+1,pHoleY,pHoleZ)
+		block9 = getTile(pHoleX-1,pHoleY,pHoleZ)
+		setTile(pHoleX,pHoleY, pHoleZ)
+		setTile(pHoleX,pHoleY,pHoleZ+1)
+		setTile(pHoleX+1,pHoleY,pHoleZ+1)
+		setTile(pHoleX-1,pHoleY,pHoleZ+1)
+		setTile(pHoleX,pHoleY,pHoleZ-1)
+		setTile(pHoleX+1,pHoleY,pHoleZ-1)
+		setTile(pHoleX-1,pHoleY,pHoleZ-1)
+		setTile(pHoleX+1,pHoleY,pHoleZ)
+		setTile(pHoleX-1,pHoleY,pHoleZ)	}
 		}
 	}
 }
@@ -149,7 +187,7 @@ if((pHoleActive == 1))
 				setTile(pHoleX,pHoleY+1,pHoleZ-1,block6)
 				setTile(pHoleX,pHoleY-1,pHoleZ-1,block7)
 				setTile(pHoleX,pHoleY+1,pHoleZ,block8)
-				setTile(pHoleX,pHoleY-1,pHoleZ,block9)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9)}
 				else if(BlockSide == 5){
 				setTile(pHoleX,pHoleY, pHoleZ,block1)
 				setTile(pHoleX,pHoleY,pHoleZ+1,block2)
@@ -159,7 +197,27 @@ if((pHoleActive == 1))
 				setTile(pHoleX,pHoleY+1,pHoleZ-1,block6)
 				setTile(pHoleX,pHoleY-1,pHoleZ-1,block7)
 				setTile(pHoleX,pHoleY+1,pHoleZ,block8)
-				setTile(pHoleX,pHoleY-1,pHoleZ,block9)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9)}
+				else if(BlockSide == 1){
+				setTile(pHoleX,pHoleY, pHoleZ,block1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2)
+				setTile(pHoleX+1,pHoleY,pHoleZ+1,block3)
+				setTile(pHoleX-1,pHoleY,pHoleZ+1,block4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5)
+				setTile(pHoleX+1,pHoleY,pHoleZ-1,block6)
+				setTile(pHoleX-1,pHoleY,pHoleZ-1,block7)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block8)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block9)}
+				else if(BlockSide == 6){
+				setTile(pHoleX,pHoleY, pHoleZ,block1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2)
+				setTile(pHoleX+1,pHoleY,pHoleZ+1,block3)
+				setTile(pHoleX-1,pHoleY,pHoleZ+1,block4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5)
+				setTile(pHoleX+1,pHoleY,pHoleZ-1,block6)
+				setTile(pHoleX-1,pHoleY,pHoleZ-1,block7)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block8)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block9)}
 				}
 		}
 	
