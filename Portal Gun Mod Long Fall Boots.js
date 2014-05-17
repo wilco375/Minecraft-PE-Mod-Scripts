@@ -9,6 +9,7 @@ Item.addCraftRecipe(460,1,0, [265,6,0, 1,1,0, 264,2,0])
 Item.setCategory(460,4)
 Item.addCraftRecipe(305,1,0, [460,2,0])
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/OYznGRZ.png ")
+ModPE.overrideTexture("images/armor/chain_1.png", " http://i.imgur.com/M1tWIjs.png ")
 
 function modTick(){
 PY3 = getPlayerY() -1
