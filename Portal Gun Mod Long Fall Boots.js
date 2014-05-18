@@ -12,7 +12,7 @@ ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/OYznGRZ.png
 ModPE.overrideTexture("images/armor/chain_1.png", " http://i.imgur.com/M1tWIjs.png ")
 
 function modTick(){
-PY3 = getPlayerY() -1
+PY3 = getPlayerY() -2
 PY4 = getPlayerY() -4
 PY1 = getPlayerY() -3
 PY2 = getPlayerY() -5
