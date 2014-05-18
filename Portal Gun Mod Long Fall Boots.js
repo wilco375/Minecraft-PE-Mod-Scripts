@@ -21,7 +21,7 @@ Block1 = getTile(PX1, PY1, PZ1)
 Block2 = getTile(PX1, PY2, PZ1)
 boots = Player.getArmorSlot(3)
 
-if(boots == 305 && Block1 == 0 && Block2 != 0 && tickcount == 0){
+if(boots == 305 && Block1 == 0 && Block2 != 0 && tickcount == 0 && Level.getGameMode() == 0){
 setTile(PX1,PY3,PZ1,9,0)
 watertickcount = 1
 waterx = PX1
