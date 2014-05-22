@@ -1,5 +1,6 @@
 //Trash Can Mod v0.8
 //by wilco375
+//Texture from Extra Utilities by RWTema
 
 var TrashCanId = 122
 Block.defineBlock(TrashCanId,"Trash Can", [["endframe_eye",0],["endframe_side",0],["end_stone",0],["end_stone",0],["end_stone",0],["end_stone",0]] ,1,false,0)
