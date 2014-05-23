@@ -12,7 +12,6 @@ Item.setCategory(TrashCanId,8,0);
 
 function useItem(x,y,z,itemId,blockId,side){
 if(blockId == TrashCanId){
-Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "/games/com.mojang/Sounds/ignite.m4a ", 5000, 15)
 preventDefault()
 pi = Player.getCarriedItem()
 pic = Player.getCarriedItemCount() * -1
