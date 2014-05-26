@@ -1,3 +1,6 @@
+//Tape Measure Mod
+//by wilco375
+
 var TapeId = 432
 var TapePhase
 
