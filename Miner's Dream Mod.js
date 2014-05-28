@@ -3,9 +3,6 @@
 //Idea by Zipperink on the MC Forums (Thanks for the tip/idea)
 
 var MinDrId = 250
-var MinDrLength = 64
-var MinDrWidth = 11
-var MinDrHight = 5
 var givemindr
 
 Block.defineBlock(152,"Redstone Block",["redstone_block",0],20,1,0);
