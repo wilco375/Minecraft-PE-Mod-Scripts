@@ -1,7 +1,12 @@
-var blockMover = 267
+var blockMover = 166
 var moveBlock
 var moveBlockId
 var moveBlockData
+
+Block.defineBlock(blockMover,"Block Crate",["piston_top_normal",1],20,false,0);
+Item.addCraftRecipe(blockMover,1,0,[5,4,0,265,4,0,331,1,0])
+Item.setCategory(blockMover,2,0);
+
 
 function useItem(x,y,z,itemId,blockId,side){	
 
@@ -9,7 +14,7 @@ function useItem(x,y,z,itemId,blockId,side){
 		preventDefault()
 		if(moveBlock != 1){
 			moveBlock = 1
-			if(blockId != 54){
+			if(blockId != 54 && blockId != 7){
 				moveBlockId = blockId
 				moveBlockData = Level.getData(x,y,z)
 				setTile(x,y,z,0,0)
