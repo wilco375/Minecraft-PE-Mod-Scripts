@@ -1,9 +1,20 @@
 var blockMover = 267
+var blockRotator = 268
 var moveBlock
 var moveBlockId
 var moveBlockData
 
 function useItem(x,y,z,itemId,blockId,side){
+
+	if(itemId == blockRotator){
+		preventDefault()
+		if(blockId == 61 || blockId == 62 || blockId == 54){
+			if(side != 0 && side != 1){
+				setTile(x,y,z,blockId,side)
+			}
+		}
+	}
+
 	if(itemId == blockMover){
 		preventDefault()
 		if(moveBlock != 1){
@@ -14,7 +25,7 @@ function useItem(x,y,z,itemId,blockId,side){
 				setTile(x,y,z,0,0)
 			}
 			else if(blockId == 54){
-				moveBlockId = 54;
+				moveBlockId = blockId;
 				moveBlockData = Level.getData(x,y,z)
 				chestSlotId0 = Level.getChestSlot(x,y,z,0);
 				chestSlotCount0 = Level.getChestSlotCount(x,y,z,0);
@@ -128,11 +139,9 @@ function useItem(x,y,z,itemId,blockId,side){
 				Level.setChestSlot(x,y,z,26,0,0,0)
 
 				setTile(x,y,z,0,0)
-				//clientMessage(chestSlotId0 + " " + chestSlotData0 + " " + chestSlotCount0)
 			}
 		}
 		else if(moveBlock == 1){
-			//clientMessage("moveblock = 1")
 			moveBlock = 0
 			if(side == 0){ //bottom (-y)
 				setTile(x,y-1,z,moveBlockId,moveBlockData)
