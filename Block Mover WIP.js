@@ -335,7 +335,7 @@ function useItem(x,y,z,itemId,blockId,side){
 					Level.setChestSlot(x+1,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
 					Level.setChestSlot(x+1,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
 					Level.setChestSlot(x+1,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
-					Level.setChestSlot(x+1,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+					Level.setChestSlot(x+1,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26); 
 				}
 			}
 		}
