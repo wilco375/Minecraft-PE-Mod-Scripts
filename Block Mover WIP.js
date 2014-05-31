@@ -134,53 +134,209 @@ function useItem(x,y,z,itemId,blockId,side){
 		else if(moveBlock == 1){
 			//clientMessage("moveblock = 1")
 			moveBlock = 0
-			if(side == 0){
-				//clientMessage("side = 0")
-				setTile(x,y,z,moveBlockId,moveBlockData)
-				//clientMessage("placed " + moveBlockId + " " + moveBlockData + " at " + x + " " + y + " " + z)
+			if(side == 0){ //bottom (-y)
+				setTile(x,y-1,z,moveBlockId,moveBlockData)
 				if(moveBlockId == 54){
-						Level.setChestSlot(x,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
-						Level.setChestSlot(x,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
-						Level.setChestSlot(x,y,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
-						Level.setChestSlot(x,y,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
-						Level.setChestSlot(x,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
-						Level.setChestSlot(x,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
-						Level.setChestSlot(x,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-						Level.setChestSlot(x,y,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
-						Level.setChestSlot(x,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+					Level.setChestSlot(x,y-1,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x,y-1,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x,y-1,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x,y-1,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x,y-1,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x,y-1,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
+					Level.setChestSlot(x,y-1,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x,y-1,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
+					Level.setChestSlot(x,y-1,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
-						Level.setChestSlot(x,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
-						Level.setChestSlot(x,y,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
-						Level.setChestSlot(x,y,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
-						Level.setChestSlot(x,y,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
-						Level.setChestSlot(x,y,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
-						Level.setChestSlot(x,y,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
-						Level.setChestSlot(x,y,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
-						Level.setChestSlot(x,y,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
-						Level.setChestSlot(x,y,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+					Level.setChestSlot(x,y-1,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x,y-1,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x,y-1,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x,y-1,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x,y-1,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x,y-1,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x,y-1,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x,y-1,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x,y-1,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
 
-						Level.setChestSlot(x,y,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
-						Level.setChestSlot(x,y,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
-						Level.setChestSlot(x,y,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
-						Level.setChestSlot(x,y,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
-						Level.setChestSlot(x,y,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
-						Level.setChestSlot(x,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
-						Level.setChestSlot(x,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
-						Level.setChestSlot(x,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
-						Level.setChestSlot(x,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+					Level.setChestSlot(x,y-1,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x,y-1,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x,y-1,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x,y-1,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x,y-1,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x,y-1,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x,y-1,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x,y-1,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x,y-1,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
 				}
 			}
-			
+			if(side == 1){ // top (+y)
+				setTile(x,y+1,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 54){
+					Level.setChestSlot(x,y+1,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x,y+1,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x,y+1,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x,y+1,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x,y+1,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x,y+1,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
+					Level.setChestSlot(x,y+1,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x,y+1,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
+					Level.setChestSlot(x,y+1,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
-			if(side == 1){
+					Level.setChestSlot(x,y+1,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x,y+1,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x,y+1,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x,y+1,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x,y+1,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x,y+1,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x,y+1,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x,y+1,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x,y+1,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+					Level.setChestSlot(x,y+1,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x,y+1,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x,y+1,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x,y+1,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x,y+1,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x,y+1,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x,y+1,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x,y+1,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x,y+1,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				}
 			}
-			if(side == 2){
+			if(side == 2){ // -z
+				setTile(x,y,z-1,moveBlockId,moveBlockData)
+				if(moveBlockId == 54){
+					Level.setChestSlot(x,y,z-1,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x,y,z-1,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x,y,z-1,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x,y,z-1,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x,y,z-1,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x,y,z-1,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
+					Level.setChestSlot(x,y,z-1,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x,y,z-1,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x,y,z-1,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+
+					Level.setChestSlot(x,y,z-1,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x,y,z-1,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x,y,z-1,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x,y,z-1,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x,y,z-1,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x,y,z-1,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x,y,z-1,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x,y,z-1,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x,y,z-1,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+					Level.setChestSlot(x,y,z-1,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x,y,z-1,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x,y,z-1,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x,y,z-1,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x,y,z-1,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x,y,z-1,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x,y,z-1,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x,y,z-1,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x,y,z-1,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				}
 			}
-			if(side == 3){
+			if(side == 3){ // +z
+				setTile(x,y,z+1,moveBlockId,moveBlockData)
+				if(moveBlockId == 54){
+					Level.setChestSlot(x,y,z+1,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x,y,z+1,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x,y,z+1,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x,y,z+1,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x,y,z+1,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x,y,z+1,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
+					Level.setChestSlot(x,y,z+1,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x,y,z+1,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x,y,z+1,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+
+					Level.setChestSlot(x,y,z+1,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x,y,z+1,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x,y,z+1,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x,y,z+1,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x,y,z+1,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x,y,z+1,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x,y,z+1,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x,y,z+1,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x,y,z+1,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+					Level.setChestSlot(x,y,z+1,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x,y,z+1,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x,y,z+1,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x,y,z+1,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x,y,z+1,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x,y,z+1,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x,y,z+1,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x,y,z+1,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x,y,z+1,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				}
 			}
-			if(side == 4){
+			if(side == 4){ // -x
+				setTile(x-1,y,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 54){
+					Level.setChestSlot(x-1,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x-1,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x-1,y,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x-1,y,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x-1,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x-1,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
+					Level.setChestSlot(x-1,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x-1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x-1,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+
+					Level.setChestSlot(x-1,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x-1,y,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x-1,y,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x-1,y,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x-1,y,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x-1,y,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x-1,y,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x-1,y,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x-1,y,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+					Level.setChestSlot(x-1,y,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x-1,y,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x-1,y,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x-1,y,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x-1,y,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x-1,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x-1,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x-1,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x-1,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				}
 			}
-			if(side == 5){
+			if(side == 5){ // +x
+				setTile(x+1,y,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 54){
+					Level.setChestSlot(x+1,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+					Level.setChestSlot(x+1,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+					Level.setChestSlot(x+1,y,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+					Level.setChestSlot(x+1,y,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+					Level.setChestSlot(x+1,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+					Level.setChestSlot(x+1,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
+					Level.setChestSlot(x+1,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+					Level.setChestSlot(x+1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x+1,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+
+					Level.setChestSlot(x+1,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+					Level.setChestSlot(x+1,y,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+					Level.setChestSlot(x+1,y,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+					Level.setChestSlot(x+1,y,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+					Level.setChestSlot(x+1,y,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+					Level.setChestSlot(x+1,y,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+					Level.setChestSlot(x+1,y,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+					Level.setChestSlot(x+1,y,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+					Level.setChestSlot(x+1,y,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+					Level.setChestSlot(x+1,y,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+					Level.setChestSlot(x+1,y,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+					Level.setChestSlot(x+1,y,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+					Level.setChestSlot(x+1,y,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+					Level.setChestSlot(x+1,y,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+					Level.setChestSlot(x+1,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+					Level.setChestSlot(x+1,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+					Level.setChestSlot(x+1,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+					Level.setChestSlot(x+1,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				}
 			}
 		}
 	}
