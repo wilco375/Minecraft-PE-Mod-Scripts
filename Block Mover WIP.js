@@ -3,6 +3,46 @@ var blockRotator = 268
 var moveBlock
 var moveBlockId
 var moveBlockData
+var rotateChest
+
+function modTick(){
+if(rotateChest == 1){
+rotateChest == 0
+x = rotateChestx
+y = rotateChesty
+z = rotateChestz
+setTile(x,y,z,54,rotateChestData);
+Level.setChestSlot(x,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
+Level.setChestSlot(x,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
+Level.setChestSlot(x,y,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
+Level.setChestSlot(x,y,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
+Level.setChestSlot(x,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
+Level.setChestSlot(x,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
+Level.setChestSlot(x,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
+Level.setChestSlot(x,y,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
+Level.setChestSlot(x,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
+
+Level.setChestSlot(x,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
+Level.setChestSlot(x,y,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
+Level.setChestSlot(x,y,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
+Level.setChestSlot(x,y,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
+Level.setChestSlot(x,y,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
+Level.setChestSlot(x,y,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
+Level.setChestSlot(x,y,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
+Level.setChestSlot(x,y,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
+Level.setChestSlot(x,y,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
+
+Level.setChestSlot(x,y,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
+Level.setChestSlot(x,y,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
+Level.setChestSlot(x,y,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
+Level.setChestSlot(x,y,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
+Level.setChestSlot(x,y,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
+Level.setChestSlot(x,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
+Level.setChestSlot(x,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
+Level.setChestSlot(x,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
+Level.setChestSlot(x,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+}
+}
 
 function useItem(x,y,z,itemId,blockId,side){
 
@@ -119,38 +159,13 @@ function useItem(x,y,z,itemId,blockId,side){
 				chestSlotId26 = Level.getChestSlot(x,y,z,26);
 				chestSlotCount26 = Level.getChestSlotCount(x,y,z,26);
 				chestSlotData26 = Level.getChestSlotData(x,y,z,26);
-				Level.setChestSlot(x,y,z,26,0,0,0)
-				setTile(x,y,z,blockId,side)
-				
-				Level.setChestSlot(x,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
-				Level.setChestSlot(x,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
-				Level.setChestSlot(x,y,z,2,chestSlotId2,chestSlotData2,chestSlotCount2);
-				Level.setChestSlot(x,y,z,3,chestSlotId3,chestSlotData3,chestSlotCount3);
-				Level.setChestSlot(x,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
-				Level.setChestSlot(x,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
-				Level.setChestSlot(x,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-				Level.setChestSlot(x,y,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
-				Level.setChestSlot(x,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
-
-				Level.setChestSlot(x,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
-				Level.setChestSlot(x,y,z,10,chestSlotId10,chestSlotData10,chestSlotCount10);
-				Level.setChestSlot(x,y,z,11,chestSlotId11,chestSlotData11,chestSlotCount11);
-				Level.setChestSlot(x,y,z,12,chestSlotId12,chestSlotData12,chestSlotCount12);
-				Level.setChestSlot(x,y,z,13,chestSlotId13,chestSlotData13,chestSlotCount13);
-				Level.setChestSlot(x,y,z,14,chestSlotId14,chestSlotData14,chestSlotCount14);
-				Level.setChestSlot(x,y,z,15,chestSlotId15,chestSlotData15,chestSlotCount15);
-				Level.setChestSlot(x,y,z,16,chestSlotId16,chestSlotData16,chestSlotCount16);
-				Level.setChestSlot(x,y,z,17,chestSlotId17,chestSlotData17,chestSlotCount17);
-
-				Level.setChestSlot(x,y,z,18,chestSlotId18,chestSlotData18,chestSlotCount18);
-				Level.setChestSlot(x,y,z,19,chestSlotId19,chestSlotData19,chestSlotCount19);
-				Level.setChestSlot(x,y,z,20,chestSlotId20,chestSlotData20,chestSlotCount20);
-				Level.setChestSlot(x,y,z,21,chestSlotId21,chestSlotData21,chestSlotCount21);
-				Level.setChestSlot(x,y,z,22,chestSlotId22,chestSlotData22,chestSlotCount22);
-				Level.setChestSlot(x,y,z,23,chestSlotId23,chestSlotData23,chestSlotCount23);
-				Level.setChestSlot(x,y,z,24,chestSlotId24,chestSlotData24,chestSlotCount24);
-				Level.setChestSlot(x,y,z,25,chestSlotId25,chestSlotData25,chestSlotCount25);
-				Level.setChestSlot(x,y,z,26,chestSlotId26,chestSlotData26,chestSlotCount26);
+				Level.setChestSlot(x,y,z,26,0,0,0);
+				setTile(x,y,x,0,0)
+				rotateChest = 1
+				rotateChestx = x
+				rotateChesty = y
+				rotateChestz = z
+				rotateChestData = side
 			}
 		}
 	}
