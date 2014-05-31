@@ -1,3 +1,6 @@
+//Block Crate Mod
+//by wilco375
+
 var blockMover = 166
 var moveBlock
 var moveBlockId
