@@ -212,7 +212,7 @@ function useItem(x,y,z,itemId,blockId,side){
 					Level.setChestSlot(x,y,z-1,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x,y,z-1,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
 					Level.setChestSlot(x,y,z-1,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-					Level.setChestSlot(x,y,z-1,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x,y,z-1,7,chestSlotId7,chestSlotData7,chestSlotCount7);
 					Level.setChestSlot(x,y,z-1,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
 					Level.setChestSlot(x,y,z-1,9,chestSlotId9,chestSlotData9,chestSlotCount9);
@@ -246,7 +246,7 @@ function useItem(x,y,z,itemId,blockId,side){
 					Level.setChestSlot(x,y,z+1,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x,y,z+1,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
 					Level.setChestSlot(x,y,z+1,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-					Level.setChestSlot(x,y,z+1,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x,y,z+1,7,chestSlotId7,chestSlotData7,chestSlotCount7);
 					Level.setChestSlot(x,y,z+1,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
 					Level.setChestSlot(x,y,z+1,9,chestSlotId9,chestSlotData9,chestSlotCount9);
@@ -280,7 +280,7 @@ function useItem(x,y,z,itemId,blockId,side){
 					Level.setChestSlot(x-1,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x-1,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
 					Level.setChestSlot(x-1,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-					Level.setChestSlot(x-1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x-1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
 					Level.setChestSlot(x-1,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
 					Level.setChestSlot(x-1,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
@@ -314,7 +314,7 @@ function useItem(x,y,z,itemId,blockId,side){
 					Level.setChestSlot(x+1,y,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x+1,y,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);	
 					Level.setChestSlot(x+1,y,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
-					Level.setChestSlot(x+1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCout7);
+					Level.setChestSlot(x+1,y,z,7,chestSlotId7,chestSlotData7,chestSlotCount7);
 					Level.setChestSlot(x+1,y,z,8,chestSlotId8,chestSlotData8,chestSlotCount8);
 
 					Level.setChestSlot(x+1,y,z,9,chestSlotId9,chestSlotData9,chestSlotCount9);
