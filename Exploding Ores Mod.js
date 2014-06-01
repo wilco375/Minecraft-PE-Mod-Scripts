@@ -1,3 +1,6 @@
+//Exploding Ores Mod
+//by wilco375
+
 var explodingChancePercentageIron = 20
 var explodingChancePercentageGold = 20
 var explodingChancePercentageDiamond = 20
