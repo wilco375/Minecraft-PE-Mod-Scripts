@@ -1,4 +1,4 @@
-//Elebator Block Mod
+//Elevator Block Mod
 //by wilco375
 //Button code thanks to Byteandahalf on the Minecraft Forums
 
@@ -35,7 +35,7 @@ tp = 0
 py = getPlayerY()
 for(var y = py-4; y >= py-19; y--){
 //clientMessage(y)
-if(getTile(getPlayerX(),y,getPlayerZ()) == elevatorId && tp == 0){
+if(getTile(getPlayerX(),y,getPlayerZ()) == elevatorId && getTile(getPlayerX(),y+1,getPlayerZ()) == 0 && getTile(getPlayerX(),y+2,getPlayerZ()) == 0 && tp == 0){
 Entity.setPosition(getPlayerEnt(),getPlayerX(),y+2,getPlayerZ())
 tp = 1
 break;
@@ -85,7 +85,7 @@ if(elevatorUp == 1){
 tp = 0
 //clientMessage("up!");
 for(var y=py+1; y <= py+14; y++){ 
-if(getTile(px,y,pz) == elevatorId && tp == 0){
+if(getTile(px,y,pz) == elevatorId && getTile(getPlayerX(),y+1,getPlayerZ()) == 0 && getTile(getPlayerX(),y+2,getPlayerZ()) == 0 && tp == 0){
 Entity.setPosition(getPlayerEnt(),getPlayerX(),y+2,getPlayerZ())
 elevatorUp = 0
 tp = 1
