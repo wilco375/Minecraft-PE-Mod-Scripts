@@ -1,3 +1,7 @@
+//Elebator Block Mod
+//by wilco375
+//Button code thanks to Byteandahalf on the Minecraft Forums
+
 var elevatorId = 222
 var onElevator
 var onElevatorCounter
