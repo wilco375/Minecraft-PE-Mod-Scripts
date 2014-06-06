@@ -9,7 +9,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		clientMessage("2")
 		clientMessage(Player.checkForInventoryItem(AutoSmeltUpgradeId))
-		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) => 1){
+		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){
 			gt = getTile(x,y,z)
 			clientMessage("3")
 			if(gt == 15){
