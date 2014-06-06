@@ -1,5 +1,6 @@
 //Block Crate Mod
 //by wilco375
+//Now also supports furnaces (BETA)
 
 var blockMover = 166 
 var moveBlock
