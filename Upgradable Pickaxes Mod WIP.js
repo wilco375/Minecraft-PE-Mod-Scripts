@@ -7,7 +7,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 	ci = getCarriedItem()
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		gt = getTile(x,y,z)
-		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){
+		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
 			//clientMessage("3")
 			if(gt == 15 && ci != 270){
 				preventDefault()
@@ -19,21 +19,9 @@ function destroyBlock(x,y,z,shouldDropItem){
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,265,Player.checkForInventoryItem(PulveriseUpgradeId)+1,0)
 			}
-			if(gt == 73 || gt == 74){
-				if(ci != 270 && ci != 274 && Player.checkForInventoryItem(PulveriseUpgradeId) == 1){
-				preventDefault()
-				setTile(x,y,z,0,0)
-				Level.dropItem(x,y,z,0.25,331,8,0)
-				}
-			}
-			if(gt == 21 && ci != 270 && Player.checkForInventoryItem(PulveriseUpgradeId) == 1){
-				preventDefault()
-				setTile(x,y,z,0)
-				Level.dropItem(x,y,z,0.25,351,8,4)
-			}	
 		}
 		
-		if(Player.checkForInventoryItem(PulveriseUpgradeId) == 1 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){
+		if(Player.checkForInventoryItem(PulveriseUpgradeId) == 1 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
 				setTile(x,y,z,0)
@@ -43,17 +31,20 @@ function destroyBlock(x,y,z,shouldDropItem){
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,goldDustId,2,0)
 			}	
+		}
+		
+		if(Player.checkForInventoryItem(PulveriseUpgradeId) == 1){ //Pulveriser upgrade and optinally autosmelt (lapis and redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
 				preventDefault()
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,331,8,0)
 				}
+			}
 			if(gt == 21 && ci != 270){
 				preventDefault()
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,351,8,4)
-			}	
 			}
 		}
 	}
