@@ -166,6 +166,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			moveBlock = 0
 			if(side == 0){ //bottom (-y)
 				setTile(x,y-1,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 61 || moveBlockId == 62){
+					Level.setFurnaceSlot(x,y-1,z,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x,y-1,z,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x,y-1,z,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+				}
 				if(moveBlockId == 54){
 					Level.setChestSlot(x,y-1,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
 					Level.setChestSlot(x,y-1,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
@@ -201,13 +206,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			if(side == 1){ // top (+y)
 				setTile(x,y+1,z,moveBlockId,moveBlockData)
 				if(moveBlockId == 61 || moveBlockId == 62){
-					
-				}
-				if(moveBlockId == 54){
 					Level.setFurnaceSlot(x,y+1,z,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
 					Level.setFurnaceSlot(x,y+1,z,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
 					Level.setFurnaceSlot(x,y+1,z,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
-					Level.setFurnaceSlot(x,y+1,z,3,FurnaceSlotId3,FurnaceSlotData3,FurnaceSlotCount3);
+				}
+				if(moveBlockId == 54){
 					Level.setChestSlot(x,y+1,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x,y+1,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
 					Level.setChestSlot(x,y+1,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
@@ -237,6 +240,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			}
 			if(side == 2){ // -z
 				setTile(x,y,z-1,moveBlockId,moveBlockData)
+				if(moveBlockId == 61 || moveBlockId == 62){
+					Level.setFurnaceSlot(x,y,z-1,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x,y,z-1,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x,y,z-1,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+				}
 				if(moveBlockId == 54){
 					Level.setChestSlot(x,y,z-1,0,chestSlotId0,chestSlotData0,chestSlotCount0);
 					Level.setChestSlot(x,y,z-1,1,chestSlotId1,chestSlotData1,chestSlotCount1);
@@ -271,6 +279,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			}
 			if(side == 3){ // +z
 				setTile(x,y,z+1,moveBlockId,moveBlockData)
+				if(moveBlockId == 61 || moveBlockId == 62){
+					Level.setFurnaceSlot(x,y,z+1,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x,y,z+1,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x,y,z+1,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+				}
 				if(moveBlockId == 54){
 					Level.setChestSlot(x,y,z+1,0,chestSlotId0,chestSlotData0,chestSlotCount0);
 					Level.setChestSlot(x,y,z+1,1,chestSlotId1,chestSlotData1,chestSlotCount1);
@@ -305,6 +318,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			}
 			if(side == 4){ // -x
 				setTile(x-1,y,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 61 || moveBlockId == 62){
+					Level.setFurnaceSlot(x-1,y,z,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x-1,y,z,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x-1,y,z,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+				}
 				if(moveBlockId == 54){
 					Level.setChestSlot(x-1,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
 					Level.setChestSlot(x-1,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
@@ -339,6 +357,11 @@ function useItem(x,y,z,itemId,blockId,side){
 			}
 			if(side == 5){ // +x
 				setTile(x+1,y,z,moveBlockId,moveBlockData)
+				if(moveBlockId == 61 || moveBlockId == 62){
+					Level.setFurnaceSlot(x+1,y,z,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x+1,y,z,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x+1,y,z,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+				}
 				if(moveBlockId == 54){
 					Level.setChestSlot(x+1,y,z,0,chestSlotId0,chestSlotData0,chestSlotCount0);
 					Level.setChestSlot(x+1,y,z,1,chestSlotId1,chestSlotData1,chestSlotCount1);
