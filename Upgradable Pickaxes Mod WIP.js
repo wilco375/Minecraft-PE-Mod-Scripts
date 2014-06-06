@@ -1,7 +1,17 @@
-var AutoSmeltUpgradeId = 277 //(dia shovel, temp)
-var PulveriseUpgradeId = 279 //(dia axe, temp)
-var ironDustId = 263 //(coal, temp)
-var goldDustId = 260 //(apples, temp)
+var AutoSmeltUpgradeId = 410
+var PulveriseUpgradeId = 411 
+var ironDustId = 400
+var goldDustId = 401 
+
+ModPE.setItem(AutoSmeltUpgradeId,"apple",0,"Auto-Smelt Upgrade")
+ModPE.setItem(PulveriseUpgradeId,"apple",0,"Pulveriser Upgrade")
+ModPE.setItem(ironDustId,"apple",0,"Iron Dust")
+ModPE.setItem(goldDustId,"apple",0,"Gold Dust")
+Item.addFurnaceRecipe(265,0,ironDustId)
+Item.addFurnaceRecipe(266,0,goldDustId)
+
+
+
 
 function destroyBlock(x,y,z,shouldDropItem){
 	ci = getCarriedItem()
