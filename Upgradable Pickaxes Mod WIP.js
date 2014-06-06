@@ -1,7 +1,7 @@
 var AutoSmeltUpgradeId = 277 //(dia shovel, temp)
 var DoubletUpgradeId = 401
 
-function destroyBlock(x,y,z){
+function destroyBlock(x,y,z,shouldDropItem){
 	clientMessage("1")
 	if(Player.getCarriedItem == 257 || Player.getCarriedItem == 270 || Player.getCarriedItem == 274 || Player.getCarriedItem == 278 || Player.getCarriedItem == 285){
 		clientMessage("2")	
