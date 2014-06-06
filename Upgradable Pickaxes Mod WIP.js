@@ -22,12 +22,13 @@ function destroyBlock(x,y,z,shouldDropItem){
 }
 
 
-Player.itemInInv = function(id, amount, damage) {
-	if(!amount) amount = 1;
-	if(!damage) damage = 0;
-	if(!id) id = 0;
-	var count = 0;
-	for(var i = 0; i < 255; i++) if(Player.getInventorySlot(i) == id && Player.getInventorySlotData(i) == damage) && count == Player.getInventorySlotCount(i);
-	return count >= amount;
-};
+checkInventory=function checkInventory(itemId,data){
+	var count=0;
+	if(data==null){
+		data=0}
+	for(var i=0;i<27;i++){
+		if(Player.getInventorySlot(i)==itemId&&Player.getInventoryData(i)==data)
+		{count+=Player.getSlotCount(i)}}return count}}
+
+
 
