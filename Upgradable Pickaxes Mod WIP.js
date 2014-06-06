@@ -27,8 +27,11 @@ checkInventory=function checkInventory(itemId,data){
 	if(data==null){
 		data=0}
 	for(var i=0;i<27;i++){
-		if(Player.getInventorySlot(i)==itemId&&Player.getInventoryData(i)==data)
-		{count+=Player.getSlotCount(i)}}return count}}
+		if(Player.getInventorySlot(i)==itemId&&Player.getInventoryData(i)==data){
+			count+=Player.getSlotCount(i)
+		}
+	}return count}
+	
 
 
 
