@@ -1,3 +1,7 @@
+//Upgradable Pickaxes Mod (STILL WIP)
+//by wilco375
+//Textures are from the Thermal Expantion Mod
+
 var AutoSmeltUpgradeId = 410
 var PulveriseUpgradeId = 411 
 var ironDustId = 400
