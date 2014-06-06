@@ -1,17 +1,19 @@
-var AutoSmeltUpgradeId = 400
+var AutoSmeltUpgradeId = 277 //(dia shovel, temp)
+var DoubletUpgradeId = 401
 
-function destroyBlock(){
-if(Player.getCarriedItem == 257 || Player.getCarriedItem == 270 || Player.getCarriedItem == 274 || Player.getCarriedItem == 278 || Player.getCarriedItem == 285){
-	if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
-		preventDefault()
-		
-		clientMessage(Entity.getEntityTypeId(entity))
+function destroyBlock(x,y,z){
+	if(Player.getCarriedItem == 257 || Player.getCarriedItem == 270 || Player.getCarriedItem == 274 || Player.getCarriedItem == 278 || Player.getCarriedItem == 285){
+		if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
+			gt = getTile(x,y,z)
+			if(gt == 15){
+				preventDefault()
+				setTile(x,y,z,0,0)
+				Level.dropItem(x,y,z,1,265,Player.itemInInv(DoubleUpgradeId)+1,0)
+			}
+		}
 	}
 }
-}
 
-function entityAddedHook(entity){
-clientMessage(entity)}
 
 Player.itemInInv = function(id, amount, damage) {
 	if(!amount) amount = 1;
