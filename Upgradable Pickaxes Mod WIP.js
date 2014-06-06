@@ -7,7 +7,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 	clientMessage(ci)
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		clientMessage("2")	
-		if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
+		if(checkInventory(AutoSmeltUpgradeId) => 1){
 			gt = getTile(x,y,z)
 			clientMessage("3")
 			if(gt == 15){
@@ -15,6 +15,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 				preventDefault()
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,1,265,Player.itemInInv(DoubleUpgradeId)+1,0)
+				
 			
 			}
 		}
