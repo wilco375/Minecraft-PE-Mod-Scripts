@@ -26,21 +26,21 @@ function useItem(x,y,z,itemId,blockId,side){
 			else if(blockId == 61 || blockId == 62){
 				moveBlockId = blockId;
 				moveBlockData = Level.getData(x,y,z)
-				furnaceSlotId0 = Level.getfurnaceSlot(x,y,z,0);
-				furnaceSlotCount0 = Level.getfurnaceSlotCount(x,y,z,0);
-				furnaceSlotData0 = Level.getfurnaceSlotData(x,y,z,0);
-				Level.setfurnaceSlot(x,y,z,0,0,0,0)
-				furnaceSlotId1 = Level.getfurnaceSlot(x,y,z,1);
-				furnaceSlotCount1 = Level.getfurnaceSlotCount(x,y,z,1);
-				furnaceSlotData1 = Level.getfurnaceSlotData(x,y,z,1);
-				Level.setfurnaceSlot(x,y,z,1,0,0,0)
-				furnaceSlotId2 = Level.getfurnaceSlot(x,y,z,2);
-				furnaceSlotCount2 = Level.getfurnaceSlotCount(x,y,z,2);
-				furnaceSlotData2 = Level.getfurnaceSlotData(x,y,z,2);
-				Level.setfurnaceSlot(x,y,z,2,0,0,0)
-				furnaceSlotId3 = Level.getfurnaceSlot(x,y,z,3);
-				furnaceSlotCount3 = Level.getfurnaceSlotCount(x,y,z,3);
-				furnaceSlotData3 = Level.getfurnaceSlotData(x,y,z,3);
+				FurnaceSlotId0 = Level.getFurnaceSlot(x,y,z,0);
+				FurnaceSlotCount0 = Level.getFurnaceSlotCount(x,y,z,0);
+				FurnaceSlotData0 = Level.getFurnaceSlotData(x,y,z,0);
+				Level.setFurnaceSlot(x,y,z,0,0,0,0)
+				FurnaceSlotId1 = Level.getFurnaceSlot(x,y,z,1);
+				FurnaceSlotCount1 = Level.getFurnaceSlotCount(x,y,z,1);
+				FurnaceSlotData1 = Level.getFurnaceSlotData(x,y,z,1);
+				Level.setFurnaceSlot(x,y,z,1,0,0,0)
+				FurnaceSlotId2 = Level.getFurnaceSlot(x,y,z,2);
+				FurnaceSlotCount2 = Level.getFurnaceSlotCount(x,y,z,2);
+				FurnaceSlotData2 = Level.getFurnaceSlotData(x,y,z,2);
+				Level.setFurnaceSlot(x,y,z,2,0,0,0)
+				FurnaceSlotId3 = Level.getFurnaceSlot(x,y,z,3);
+				FurnaceSlotCount3 = Level.getFurnaceSlotCount(x,y,z,3);
+				FurnaceSlotData3 = Level.getFurnaceSlotData(x,y,z,3);
 				setTile(x,y,z,0,0)
 			}
 			
@@ -203,10 +203,10 @@ function useItem(x,y,z,itemId,blockId,side){
 					
 				}
 				if(moveBlockId == 54){
-					Level.setfurnaceSlot(x,y+1,z,0,furnaceSlotId0,furnaceSlotData0,furnaceSlotCount0);
-					Level.setfurnaceSlot(x,y+1,z,1,furnaceSlotId1,furnaceSlotData1,furnaceSlotCount1);
-					Level.setfurnaceSlot(x,y+1,z,2,furnaceSlotId2,furnaceSlotData2,furnaceSlotCount2);
-					Level.setfurnaceSlot(x,y+1,z,3,furnaceSlotId3,furnaceSlotData3,furnaceSlotCount3);
+					Level.setFurnaceSlot(x,y+1,z,0,FurnaceSlotId0,FurnaceSlotData0,FurnaceSlotCount0);
+					Level.setFurnaceSlot(x,y+1,z,1,FurnaceSlotId1,FurnaceSlotData1,FurnaceSlotCount1);
+					Level.setFurnaceSlot(x,y+1,z,2,FurnaceSlotId2,FurnaceSlotData2,FurnaceSlotCount2);
+					Level.setFurnaceSlot(x,y+1,z,3,FurnaceSlotId3,FurnaceSlotData3,FurnaceSlotCount3);
 					Level.setChestSlot(x,y+1,z,4,chestSlotId4,chestSlotData4,chestSlotCount4);
 					Level.setChestSlot(x,y+1,z,5,chestSlotId5,chestSlotData5,chestSlotCount5);
 					Level.setChestSlot(x,y+1,z,6,chestSlotId6,chestSlotData6,chestSlotCount6);
