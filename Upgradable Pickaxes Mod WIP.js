@@ -5,7 +5,7 @@ var DoubletUpgradeId = 401
 function destroyBlock(x,y,z,shouldDropItem){
 	clientMessage("1")
 	ci = getCarriedItem()
-	clientMessage(ci)
+	clientMessage(ci) 
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		clientMessage("2")
 		clientMessage(Player.checkForInventoryItem(AutoSmeltUpgradeId))
