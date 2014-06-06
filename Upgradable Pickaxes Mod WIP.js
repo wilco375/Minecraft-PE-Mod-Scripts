@@ -3,7 +3,9 @@ var DoubletUpgradeId = 401
 
 function destroyBlock(x,y,z,shouldDropItem){
 	clientMessage("1")
-	if(Player.getCarriedItem == 257 || Player.getCarriedItem == 270 || Player.getCarriedItem == 274 || Player.getCarriedItem == 278 || Player.getCarriedItem == 285){
+	ci = getCarriedItem()
+	clientMessage(ci)
+	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		clientMessage("2")	
 		if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
 			gt = getTile(x,y,z)
