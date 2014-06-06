@@ -26,6 +26,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 				preventDefault()
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,ironDustId,2,0)
+			}
 			if(gt == 15 && ci != 270 && ci != 274){
 				preventDefault()
 				setTile(x,y,z,0)
