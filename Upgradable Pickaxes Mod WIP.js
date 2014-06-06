@@ -2,9 +2,13 @@ var AutoSmeltUpgradeId = 400
 
 function destroyBlock(){
 if(Player.getCarriedItem == 257 || Player.getCarriedItem == 270 || Player.getCarriedItem == 274 || Player.getCarriedItem == 278 || Player.getCarriedItem == 285){
-if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
+	if(Player.itemInInv(AutoSmeltUpgradeId) == 1){
+		preventDefault()
+		
+		clientMessage(Entity.getEntityTypeId(entity))
+	}
 }
-}}
+}
 
 function entityAddedHook(entity){
 clientMessage(entity)}
