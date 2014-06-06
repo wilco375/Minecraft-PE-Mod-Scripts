@@ -3,14 +3,14 @@ var PulveriseUpgradeId = 411
 var ironDustId = 400
 var goldDustId = 401 
 
-ModPE.setItem(AutoSmeltUpgradeId,"apple",0,"Auto-Smelt Upgrade")
-ModPE.setItem(PulveriseUpgradeId,"apple",0,"Pulveriser Upgrade")
-ModPE.setItem(ironDustId,"apple",0,"Iron Dust")
-ModPE.setItem(goldDustId,"apple",0,"Gold Dust")
+ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
+ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
+ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
+ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(265,0,ironDustId)
 Item.addFurnaceRecipe(266,0,goldDustId)
-
-
+Item.addCraftRecipe(AutoSmeltUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
+Item.addCraftRecipe(PulveriseUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
 
 
 function destroyBlock(x,y,z,shouldDropItem){
@@ -63,7 +63,8 @@ function destroyBlock(x,y,z,shouldDropItem){
 
 	
 
-
+//The following custom function is created by Kyurem838 on the minecraft forums:
+//(Check out this topic: http://goo.gl/xT7mFB)
 Player.checkForInventoryItem = function(id, amount, damage) {
 	if(!amount) amount = 1;
 	if(!damage) damage = 0;
