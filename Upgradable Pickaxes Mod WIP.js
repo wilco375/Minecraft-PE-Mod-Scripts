@@ -15,6 +15,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 				preventDefault()
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,1,265,Player.itemInInv(DoubleUpgradeId)+1,0)
+			
 			}
 		}
 	}
