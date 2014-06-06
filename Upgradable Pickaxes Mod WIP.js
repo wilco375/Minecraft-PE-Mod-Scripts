@@ -17,7 +17,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			if(gt == 14 && ci != 270 && ci != 274){
 				preventDefault()
 				setTile(x,y,z,0,0)
-				Level.dropItem(x,y,z,0.25,265,Player.checkForInventoryItem(PulveriseUpgradeId)+1,0)
+				Level.dropItem(x,y,z,0.25,266,Player.checkForInventoryItem(PulveriseUpgradeId)+1,0)
 			}
 		}
 		
