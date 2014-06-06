@@ -39,9 +39,6 @@ function useItem(x,y,z,itemId,blockId,side){
 				FurnaceSlotCount2 = Level.getFurnaceSlotCount(x,y,z,2);
 				FurnaceSlotData2 = Level.getFurnaceSlotData(x,y,z,2);
 				Level.setFurnaceSlot(x,y,z,2,0,0,0)
-				FurnaceSlotId3 = Level.getFurnaceSlot(x,y,z,3);
-				FurnaceSlotCount3 = Level.getFurnaceSlotCount(x,y,z,3);
-				FurnaceSlotData3 = Level.getFurnaceSlotData(x,y,z,3);
 				setTile(x,y,z,0,0)
 			}
 			
