@@ -17,7 +17,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 				clientMessage("4")
 				preventDefault()
 				setTile(x,y,z,0,0)
-				Level.dropItem(x,y,z,1,265,NPlayer.checkInventory(DoubleUpgradeId)+1,0)
+				Level.dropItem(x,y,z,1,265,NPlayer.checkInventory(DoubleUpgradeId)+1,0) 
 			}
 		}
 	}
