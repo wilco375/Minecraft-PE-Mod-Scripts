@@ -5,10 +5,10 @@
 //Item ID's:
 var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
-var FortuneUpgradeId = 412 //done
+var FortuneUpgradeId = 412 //WORKING?
 var RepairUpgradeId = 413 //possible?
 var UnbreakingUpgradeId = 414 //possible?
-var ExplosiveUpgrade = 415 //todo
+var ExplosiveUpgrade = 415 //WIP/WORKING?
 var ironDustId = 400
 var goldDustId = 401 
 
