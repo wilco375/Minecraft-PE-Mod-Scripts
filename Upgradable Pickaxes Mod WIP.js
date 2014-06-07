@@ -1,6 +1,6 @@
 //Upgradable Pickaxes Mod (STILL WIP)
 //by wilco375
-//Textures are from the Thermal Expantion Mod
+//Textures are from the Thermal Expantion Mod 
 
 //Item ID's:
 var AutoSmeltUpgradeId = 410 //done
@@ -22,7 +22,7 @@ ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
 ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Upgrade")
 ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Upgrade")
 ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Upgrade")
-ModPE.setItem(ExplosiveUpgrade,"record_wait",0,"Explosive Upgrade")
+ModPE.setItem(ExplosiveUpgradeId,"record_wait",0,"Explosive Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(ironDustId,265,0)
