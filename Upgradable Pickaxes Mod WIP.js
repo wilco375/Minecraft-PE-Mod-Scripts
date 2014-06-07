@@ -3,12 +3,12 @@
 //Textures are from the Thermal Expantion Mod
 
 //Item ID's:
-var AutoSmeltUpgradeId = 410
-var PulveriseUpgradeId = 411 
-var FortuneUpgradeId = 412
-var RepairUpgradeId = 413
-var UnbreakingUpgradeId = 414
-var ExplosiveUpgrade = 415
+var AutoSmeltUpgradeId = 410 //done
+var PulveriseUpgradeId = 411 //done
+var FortuneUpgradeId = 412 //done
+var RepairUpgradeId = 413 //possible?
+var UnbreakingUpgradeId = 414 //possible?
+var ExplosiveUpgrade = 415 //todo
 var ironDustId = 400
 var goldDustId = 401 
 
@@ -60,6 +60,7 @@ ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/URVKFJB.png
 
 
 function destroyBlock(x,y,z,shouldDropItem){
+	if(Player.checkForInventoryItem(ExplosiveUpgradeId) == 0){
 	ci = getCarriedItem()
 	if(Player.checkForInventoryItem(FortuneUpgradeId) == 1){
 		Random = Math.floor((Math.random() * 3) + 1);
@@ -149,6 +150,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 				Level.dropItem(x,y,z,0.25,351,8+(extraItem*8),4)
 			}
 		}
+	}
 	}
 }
 
