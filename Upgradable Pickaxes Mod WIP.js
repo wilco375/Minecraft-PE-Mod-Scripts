@@ -6,9 +6,9 @@
 var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
 var FortuneUpgradeId = 412 //WORKING?
-var RepairUpgradeId = 413 //possible?
-var UnbreakingUpgradeId = 414 //possible?
-var ExplosiveUpgradeId = 415 //WIP/WORKING?
+var RepairUpgradeId = 413 //WIP
+var UnbreakingUpgradeId = 414 //WIP
+var ExplosiveUpgradeId = 415 //WIP/causing lag spike
 var ironDustId = 400
 var goldDustId = 401 
 
@@ -60,6 +60,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){	
+					clientMessage("Prevented your item taking damage")
 					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -71,6 +72,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){	
+					clientMessage("Prevented your item taking damage")
 					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -81,7 +83,8 @@ function destroyBlock(x,y,z,shouldDropItem){
 		if(ExtraDurRandom != 4){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){	
+				if(Player.getCarriedItemData() != 0){
+					clientMessage("Prevented your item taking damage")
 					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -114,9 +117,11 @@ function modTick(){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0 && Repair == 1){	
+					clientMessage("Repaired your item")
 					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
-				if(Player.getCarriedItemData() >= 2 && Repair == 2){	
+				if(Player.getCarriedItemData() >= 2 && Repair == 2){
+					clientMessage("Repaired your item")
 					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 			}
