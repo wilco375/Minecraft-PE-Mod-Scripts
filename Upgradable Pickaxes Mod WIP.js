@@ -34,7 +34,7 @@ Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
 Item.addCraftRecipe(AutoSmeltUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulveriseUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/URVKFJB.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/nNNnkm3.png")
 
 function destroyBlock(x,y,z,shouldDropItem){
 	xdes = x
