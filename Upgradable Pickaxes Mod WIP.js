@@ -91,11 +91,10 @@ function destroyBlock(x,y,z,shouldDropItem){
 
 function modTick(){
 	if(RepairCounter = null){
-		RepairICounter = 0
-		RepairIICounter = 0
+		RepairCounter = 0
 	}
 	if(RepairCounter != 200){
-		RepairICounter++
+		RepairCounter++
 	}
 	if(RepairCounter == 200){
 		RepairCounter = 0
