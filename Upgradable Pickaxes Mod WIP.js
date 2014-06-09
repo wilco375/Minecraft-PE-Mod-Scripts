@@ -61,7 +61,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){	
 					clientMessage("Prevented your item taking damage")
-					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
 		}
@@ -73,7 +73,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){	
 					clientMessage("Prevented your item taking damage")
-					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
 		}
@@ -85,7 +85,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){
 					clientMessage("Prevented your item taking damage")
-					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
 		}
@@ -118,11 +118,11 @@ function modTick(){
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0 && Repair == 1){	
 					clientMessage("Repaired your item")
-					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 				if(Player.getCarriedItemData() >= 2 && Repair == 2){
 					clientMessage("Repaired your item")
-					Entity.setCarriedItem(getPlayerEnt, ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 			}
 		}
