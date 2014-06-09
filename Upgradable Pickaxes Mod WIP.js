@@ -9,6 +9,7 @@ var FortuneUpgradeId = 412 //WORKING?
 var RepairUpgradeId = 413 //WIP
 var UnbreakingUpgradeId = 414 //WIP
 var ExplosiveUpgradeId = 415 //WIP/causing lag spike
+var SilkTouchUpgradeId = 416
 var ironDustId = 400
 var goldDustId = 401 
 
