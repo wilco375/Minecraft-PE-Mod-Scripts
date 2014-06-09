@@ -5,11 +5,11 @@
 //Item ID's:
 var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
-var FortuneUpgradeId = 412 //WORKING?
+var FortuneUpgradeId = 412 //done
 var RepairUpgradeId = 413 //WIP
-var UnbreakingUpgradeId = 414 //working
+var UnbreakingUpgradeId = 414 //done
 var ExplosiveUpgradeId = 415 //WIP/causing lag spike
-var SilkTouchUpgradeId = 416 //done
+var SilkTouchUpgradeId = 416 //done/working?
 var ironDustId = 400
 var goldDustId = 401 
 
