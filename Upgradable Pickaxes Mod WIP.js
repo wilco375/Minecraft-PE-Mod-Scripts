@@ -6,14 +6,14 @@
 var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
 var FortuneUpgradeId = 412 //done
-var RepairUpgradeId = 413 //WIP
+var RepairUpgradeId = 413 //done
 var UnbreakingUpgradeId = 414 //done
 var ExplosiveUpgradeId = 415 //WIP/causing lag spike
-var SilkTouchUpgradeId = 416 //done/working?
+var SilkTouchUpgradeId = 416 //done
 var ironDustId = 400
 var goldDustId = 401 
 
-var RepairCounter
+var Counter
 var Repair
 var Random
 var extraItem
@@ -27,6 +27,7 @@ ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Upgrade")
 ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Upgrade")
 ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Upgrade")
 ModPE.setItem(ExplosiveUpgradeId,"record_wait",0,"Explosive Upgrade")
+ModPE.setItem(SilkTouchUpgradeId,"string",0,"Silk-Touch Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(ironDustId,265,0)
@@ -62,7 +63,6 @@ function destroyBlock(x,y,z,shouldDropItem){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){	
-					clientMessage("Prevented your item taking damage")
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -73,8 +73,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 		if(ExtraDurRandom != 3){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){	
-					clientMessage("Prevented your item taking damage")
+				if(Player.getCarriedItemData() != 0){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -86,7 +85,6 @@ function destroyBlock(x,y,z,shouldDropItem){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0){
-					clientMessage("Prevented your item taking damage")
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
 				}
 			}
@@ -101,14 +99,14 @@ function destroyBlock(x,y,z,shouldDropItem){
 //Pickaxe repair upgrade (Only works on selected item)
 
 function modTick(){
-	if(RepairCounter = null){
-		RepairCounter = 1
+	if(Counter == null){
+		Counter = 1
 	}
-	if(RepairCounter != 200){
-		RepairCounter++
+	if(Counter != 200){
+		Counter++
 	}
-	if(RepairCounter == 200){
-		RepairCounter = 1
+	if(Counter == 200){
+		Counter = 1
 		if(Player.checkForInventoryItem(RepairUpgradeId) == 1){
 			Repair = 1
 		}
@@ -119,11 +117,9 @@ function modTick(){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0 && Repair == 1){	
-					clientMessage("Repaired your item")
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 				if(Player.getCarriedItemData() >= 2 && Repair == 2){
-					clientMessage("Repaired your item")
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 			}
