@@ -15,6 +15,9 @@ var goldDustId = 401
 var RepairCounter
 var Random
 var extraItem
+var dBx
+var dBy
+var dBz
 
 ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
 ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
@@ -34,6 +37,9 @@ function destroyBlock(x,y,z,shouldDropItem){
 	xdes = x
 	ydes = y
 	zdes = z
+	dBx = x
+	dBy = y
+	dBz = z
 	if(Player.checkForInventoryItem(ExplosiveUpgradeId) == 0){
 	runUpgrades()
 	}
@@ -131,6 +137,9 @@ Player.checkForInventoryItem = function(id, amount, damage) {
 
 //function that runs all the upgrades
 function runUpgrades(){
+	x = dBx
+	y = dBy
+	z = dBz
 	ci = getCarriedItem()
 	if(Player.checkForInventoryItem(FortuneUpgradeId) == 1){
 		Random = Math.floor((Math.random() * 3) + 1);
