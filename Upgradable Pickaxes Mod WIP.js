@@ -102,13 +102,13 @@ function destroyBlock(x,y,z,shouldDropItem){
 
 function modTick(){
 	if(RepairCounter = null){
-		RepairCounter = 0
+		RepairCounter = 1
 	}
 	if(RepairCounter != 200){
 		RepairCounter++
 	}
 	if(RepairCounter == 200){
-		RepairCounter = 0
+		RepairCounter = 1
 		if(Player.checkForInventoryItem(RepairUpgradeId) == 1){
 			Repair = 1
 		}
@@ -132,7 +132,7 @@ function modTick(){
 }
 
 //The following custom function is created by Kyurem838 on the minecraft forums:
-//(Check out this topic: http://goo.gl/xT7mFB)
+//(Check out this topic for all the custom functions: http://goo.gl/xT7mFB)
 Player.checkForInventoryItem = function(id, amount, damage) {
 	if(!amount) amount = 1;
 	if(!damage) damage = 0;
