@@ -7,9 +7,9 @@ var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
 var FortuneUpgradeId = 412 //WORKING?
 var RepairUpgradeId = 413 //WIP
-var UnbreakingUpgradeId = 414 //WIP
+var UnbreakingUpgradeId = 414 //working
 var ExplosiveUpgradeId = 415 //WIP/causing lag spike
-var SilkTouchUpgradeId = 416
+var SilkTouchUpgradeId = 416 //done
 var ironDustId = 400
 var goldDustId = 401 
 
@@ -178,6 +178,25 @@ function runUpgrades(){
 	else if(Player.checkForInventoryItem(FortuneUpgradeId) == 0){
 		extraItem = 0
 	}
+	
+	if(Player.checkForInventoryItem(SilkTouchUpgradeId) >= 1 && Player.checkForInventoryItem(FortuneUpgradeId) == 0 && Player.checkForInventoryItem(PulveriseUpgradeId) == 0 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){
+		gt = getTile(x,y,z)
+		if(gt == 16 || gt == 21 || gt == 73 || gt == 74 || gt == 56 || gt == 2 || gt == 79 || gt == 1 || gt == 80 || gt == 13 || gt == 82 || gt == 47 || gt == 20){
+			if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
+			if(gt != 74){
+				preventDefault()
+				setTile(x,y,z,0,0)
+				Level.dropItem(x,y,z,0.25,gt,1,0)
+			}
+			else if(gt == 74){
+				preventDefault()
+				setTile(x,y,z,0,0)
+				Level.dropItem(x,y,z,0.25,73,1,0)
+			}
+			}
+		}
+	}
+	
 	if(Player.checkForInventoryItem(PulveriseUpgradeId) == 0 && Player.checkForInventoryItem(FortuneUpgradeId) >= 1){ //fortune, no pulverise (lapis, redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
