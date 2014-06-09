@@ -14,6 +14,7 @@ var ironDustId = 400
 var goldDustId = 401 
 
 var RepairCounter
+var Repair
 var Random
 var extraItem
 var dBx
