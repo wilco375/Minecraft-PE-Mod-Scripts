@@ -1,4 +1,4 @@
-//Upgradable Pickaxes Mod WIP version
+//Upgradable ToolsMod WIP version
 //by wilco375 
 //Textures are from the Thermal Expantion Mod or created by myself
 
