@@ -176,7 +176,7 @@ if(EfficiencyUpgradeOn == 1){
 	
 	blockStartDestroying = 0
 	blockDestroyed = 0
-]
+}
 //Repair upgrade (Only works on selected item)
 	if(Counter == null){
 		Counter = 1
