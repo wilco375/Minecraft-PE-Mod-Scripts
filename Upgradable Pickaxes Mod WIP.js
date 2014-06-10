@@ -156,7 +156,7 @@ if(EfficiencyUpgradeOn == 1){
 			ModPE.setGameSpeed(20)
 			EfficiencyOn = 0
 		}
-	
+	}
 	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
 		ci = Player.getCarriedItem()
 		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
