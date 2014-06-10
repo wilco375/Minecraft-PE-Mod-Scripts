@@ -102,8 +102,13 @@ function modTick(){
 	lastY=Player.getY()
 	velZ=(Player.getZ()-lastZ)/(1/20)
 	lastZ=Player.getZ()
-
+	damage=(Player.getCarriedItemData()-lastDamage)
+	lastDamage=Player.getCarriedItemData()
+	
 	if(blockStartDestroying == 1){
+		destroyingBlock = 1
+	}
+	if(damage != 0){
 		destroyingBlock = 1
 	}
 	if(destroyingBlock == 1 && velX != 0){
@@ -127,23 +132,25 @@ function modTick(){
 			EfficiencyOn = 0
 		}
 	}
-	if(blockDestroyed == 1 && destroyingBlock == 1){
-		destroyingBlock = 0
-		if(EfficiencyOn == 1){
-			ModPE.setGameSpeed(20)
-			EfficiencyOn = 0
-		}
-	}
+	//if(blockDestroyed == 1 && destroyingBlock == 1){
+//		destroyingBlock = 0
+//		if(EfficiencyOn == 1){
+//			ModPE.setGameSpeed(20)
+//			EfficiencyOn = 0
+//		}
+//	}
 	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
+		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 		EfficiencyOn = 1
 		if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
-			tickSpeed = 20+(Player.checkForInventoryItem(EfficiencyUpgradeId)*6)
+			tickSpeed = Player.checkForInventoryItem(EfficiencyUpgradeId)*6+20
 		}
 		else{
 			tickSpeed = 50
 		}
 		ModPE.setGameSpeed(tickSpeed)
 		tickSpeed = 20
+		}
 	}
 	
 	blockStartDestroying = 0
@@ -185,7 +192,7 @@ Player.checkForInventoryItem = function(id, amount, damage) {
 	if(!id) id = 0;
 	var count = 0;
 	for(var i = 0; i < 255; i++) if(Player.getInventorySlot(i) == id && Player.getInventorySlotData(i) == damage) count += Player.getInventorySlotCount(i);
-	return count >= amount;
+	return count 
 };
 
 //function that runs all the upgrades
