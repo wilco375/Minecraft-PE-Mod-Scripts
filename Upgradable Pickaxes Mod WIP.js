@@ -23,6 +23,10 @@ var dBz
 var lastX
 var lastY
 var lastZ
+var destroyingBlock
+var blockStartDestroying
+var blockDestroyed
+var EfficiencyOn
 
 ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
 ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
