@@ -3,6 +3,8 @@
 //Textures are from the Thermal Expantion Mod 
 
 //Item ID's:
+var ironDustId = 408
+var goldDustId = 409
 var AutoSmeltUpgradeId = 410 //done
 var PulveriseUpgradeId = 411 //done
 var FortuneUpgradeId = 412 //done
@@ -10,8 +12,7 @@ var RepairUpgradeId = 413 //done
 var UnbreakingUpgradeId = 414 //done
 var EfficiencyUpgradeId = 415 //WIP
 var SilkTouchUpgradeId = 416 //done
-var ironDustId = 400
-var goldDustId = 401 
+
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -38,7 +39,7 @@ ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Upgrade")
 ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Upgrade")
 ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Upgrade")
 ModPE.setItem(EfficiencyUpgradeId,"record_wait",0,"Efficiency Upgrade")
-ModPE.setItem(SilkTouchUpgradeId,"string",0,"Silk-Touch Upgrade")
+ModPE.setItem(SilkTouchUpgradeId,"record_ward",0,"Silk-Touch Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(ironDustId,265,0)
@@ -52,6 +53,9 @@ Item.addCraftRecipe(SilkTouchUpgradeId, 1, 0, [287,4,0,266,4,0,264,1,0])
 if(EfficiencyUpgradeOn == 1){
 	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
 }
+Item.setCategory(AutoSmeltUpgradeId,2)
+Item.setCategory(AutoSmeltUpgradeId,2)
+Item.setCategory(AutoSmeltUpgradeId,2)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
 
