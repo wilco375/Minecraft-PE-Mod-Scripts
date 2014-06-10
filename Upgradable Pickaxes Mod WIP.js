@@ -54,6 +54,9 @@ if(EfficiencyUpgradeOn == 1){
 	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
 	Item.setCategory(EfficiencyUpgradeId,2)
 }
+else{
+	Item.setCategory(EfficiencyUpgradeId,-1)
+}
 Item.setCategory(AutoSmeltUpgradeId,2)
 Item.setCategory(PulveriseUpgradeId,2)
 Item.setCategory(FortuneUpgradeId,2)
