@@ -5,13 +5,13 @@
 //Item ID's:
 var ironDustId = 408
 var goldDustId = 409
-var AutoSmeltUpgradeId = 410 //done
-var PulveriseUpgradeId = 411 //done
-var FortuneUpgradeId = 412 //done
-var RepairUpgradeId = 413 //done
-var UnbreakingUpgradeId = 414 //done
-var EfficiencyUpgradeId = 415 //WIP
-var SilkTouchUpgradeId = 416 //done
+var AutoSmeltUpgradeId = 410 
+var PulveriseUpgradeId = 411 
+var FortuneUpgradeId = 412 
+var RepairUpgradeId = 413
+var UnbreakingUpgradeId = 414 
+var EfficiencyUpgradeId = 415 
+var SilkTouchUpgradeId = 416 
 
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
@@ -156,15 +156,7 @@ if(EfficiencyUpgradeOn == 1){
 			ModPE.setGameSpeed(20)
 			EfficiencyOn = 0
 		}
-	}
-
-	//if(blockDestroyed == 1 && destroyingBlock == 1){
-//		destroyingBlock = 0
-//		if(EfficiencyOn == 1){
-//			ModPE.setGameSpeed(20)
-//			EfficiencyOn = 0
-//		}
-//	}
+	
 	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
 		ci = Player.getCarriedItem()
 		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
@@ -298,7 +290,6 @@ function runUpgrades(){
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		gt = getTile(x,y,z)
 		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
-			//clientMessage("3")
 			if(gt == 15 && ci != 270){
 				preventDefault()
 				setTile(x,y,z,0,0)
