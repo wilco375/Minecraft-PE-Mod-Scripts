@@ -45,6 +45,14 @@ Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
 Item.addCraftRecipe(AutoSmeltUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulveriseUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
+Item.addCraftRecipe(FortuneUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
+Item.addCraftRecipe(RepairUpgradeId, 1, 0, [42,4,0,265,4,0,264,1,0])
+Item.addCraftRecipe(UnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,4,0,264,1,0])
+Item.addCraftRecipe(SilkTouchUpgradeId, 1, 0, [287,4,0,266,4,0,264,1,0])
+if(EfficiencyUpgradeOn == 1){
+	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
+}
+
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/nNNnkm3.png")
 
 function startDestroyBlock(){
