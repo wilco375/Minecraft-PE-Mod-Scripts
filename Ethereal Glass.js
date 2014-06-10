@@ -1,6 +1,6 @@
-//Upgradable Pickaxes Mod (STILL WIP)
+//Upgradable Pickaxes Mod v0.2 BETA
 //by wilco375 
-//Textures are from the Thermal Expantion Mod 
+//Textures are from the Thermal Expantion Mod or created by myself
 
 //Item ID's:
 var ironDustId = 408
