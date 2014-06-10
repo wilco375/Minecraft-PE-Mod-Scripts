@@ -53,7 +53,7 @@ if(EfficiencyUpgradeOn == 1){
 	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
 }
 
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/nNNnkm3.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
 
 function startDestroyBlock(){
 	blockStartDestroying = 1
