@@ -52,10 +52,14 @@ Item.addCraftRecipe(UnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,4,0,264,1,0])
 Item.addCraftRecipe(SilkTouchUpgradeId, 1, 0, [287,4,0,266,4,0,264,1,0])
 if(EfficiencyUpgradeOn == 1){
 	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
+	Item.setCategory(EfficiencyUpgradeId,2)
 }
 Item.setCategory(AutoSmeltUpgradeId,2)
-Item.setCategory(AutoSmeltUpgradeId,2)
-Item.setCategory(AutoSmeltUpgradeId,2)
+Item.setCategory(PulveriseUpgradeId,2)
+Item.setCategory(FortuneUpgradeId,2)
+Item.setCategory(RepairUpgradeId,2)
+Item.setCategory(UnbreakingUpgradeId,2)
+Item.setCategory(SilkTouchUpgradeId,2)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
 
