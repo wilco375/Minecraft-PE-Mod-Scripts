@@ -8,7 +8,7 @@ var PulveriseUpgradeId = 411 //done
 var FortuneUpgradeId = 412 //done
 var RepairUpgradeId = 413 //done
 var UnbreakingUpgradeId = 414 //done
-var ExplosiveUpgradeId = 415 //WIP/causing lag spike
+var EfficiencyUpgradeId = 415 //WIP
 var SilkTouchUpgradeId = 416 //done
 var ironDustId = 400
 var goldDustId = 401 
@@ -26,7 +26,7 @@ ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
 ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Upgrade")
 ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Upgrade")
 ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Upgrade")
-ModPE.setItem(ExplosiveUpgradeId,"record_wait",0,"Explosive Upgrade")
+ModPE.setItem(EfficiencyUpgradeId,"record_wait",0,"Efficiency Upgrade")
 ModPE.setItem(SilkTouchUpgradeId,"string",0,"Silk-Touch Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
@@ -36,26 +36,19 @@ Item.addCraftRecipe(AutoSmeltUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulveriseUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/nNNnkm3.png")
 
+function startDestroyBlock(){
+	blockStartDestroying = 1
+}
+
 function destroyBlock(x,y,z,shouldDropItem){
+	blockDestroyed = 1
 	xdes = x
 	ydes = y
 	zdes = z
 	dBx = x
 	dBy = y
 	dBz = z
-	if(Player.checkForInventoryItem(ExplosiveUpgradeId) == 0){
 	runUpgrades()
-	}
-	if(Player.checkForInventoryItem(ExplosiveUpgradeId) >= 1){
-		for(x-1;x<=1;x++){
-			for(y-1;y<=1;y++){
-				for(z-1;z<=1;z++){
-					runUpgrades()
-				}	
-			}
-		}
-		explode(xdes,ydes,zdes,1)
-	}
 	//Unbreaking upgrade:
 	if(Player.checkForInventoryItem(UnbreakingUpgradeId) == 1){
 		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
@@ -96,9 +89,63 @@ function destroyBlock(x,y,z,shouldDropItem){
 
 
 
-//Pickaxe repair upgrade (Only works on selected item)
 
 function modTick(){
+
+//Efficiency upgrade
+	velX=(Player.getX()-lastX)/(1/20)
+	lastX=Player.getX()
+	velY=(Player.getY()-lastY)/(1/20)
+	lastY=Player.getY()
+	velZ=(Player.getZ()-lastZ)/(1/20)
+	lastZ=Player.getZ()
+
+	if(blockStartDestroying == 1){
+		destroyingBlock = 1
+	}
+	if(destroyingBlock == 1 && velX != 0){
+		destroyingBlock = 0
+		if(EfficiencyOn == 1){
+			ModPE.setGameSpeed(20)
+			EfficiencyOn = 0
+		}
+	}
+	if(destroyingBlock == 1 && velY != 0){
+		destroyingBlock = 0
+		if(EfficiencyOn == 1){
+			ModPE.setGameSpeed(20)
+			EfficiencyOn = 0
+		}
+	}	
+	if(destroyingBlock == 1 && velZ != 0){
+		destroyingBlock = 0
+		if(EfficiencyOn == 1){
+			ModPE.setGameSpeed(20)
+			EfficiencyOn = 0
+		}
+	}
+	if(blockDestroyed == 1 && destroyingBlock == 1){
+		destroyingBlock = 0
+		if(EfficiencyOn == 1){
+			ModPE.setGameSpeed(20)
+			EfficiencyOn = 0
+		}
+	}
+	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
+		EfficiencyOn = 1
+		if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
+			tickSpeed = 20+(Player.checkForInventoryItem(EfficiencyUpgradeId)*6)
+		}
+		else{
+			tickSpeed = 50
+		}
+		ModPE.setGameSpeed(tickSpeed)
+		tickSpeed = 20
+	}
+	
+	blockStartDestroying = 0
+	blockDestroyed = 0
+//Repair upgrade (Only works on selected item)
 	if(Counter == null){
 		Counter = 1
 	}
