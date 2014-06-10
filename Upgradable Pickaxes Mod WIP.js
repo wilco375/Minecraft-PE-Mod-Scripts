@@ -1,6 +1,6 @@
-//Upgradable Pickaxes Mod (STILL WIP)
-//by wilco375
-//Textures are from the Thermal Expantion Mod 
+//Upgradable Pickaxes Mod v0.2 BETA
+//by wilco375 
+//Textures are from the Thermal Expantion Mod or created by myself
 
 //Item ID's:
 var ironDustId = 408
@@ -260,13 +260,13 @@ function runUpgrades(){
 			if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 			if(gt != 74){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,gt,1,0)
 			}
 			else if(gt == 74){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,73,1,0)
 			}
@@ -278,14 +278,14 @@ function runUpgrades(){
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,331,6+(extraItem*8),0)
 				}
 			}
 			if(gt == 21 && ci != 270){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,351,6+(extraItem*8),4)
 			}
@@ -296,7 +296,7 @@ function runUpgrades(){
 		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1){
 					extraPulverise = 1
@@ -312,7 +312,7 @@ function runUpgrades(){
 			}
 			if(gt == 14 && ci != 270 && ci != 274){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1){
 					extraPulverise = 1
@@ -331,13 +331,13 @@ function runUpgrades(){
 		if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,ironDustId,2+extraItem,0)
 			}
 			if(gt == 14 && ci != 270 && ci != 274){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,goldDustId,2+extraItem,0)
 			}	
@@ -347,14 +347,14 @@ function runUpgrades(){
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,331,8+(extraItem*8),0)
 				}
 			}
 			if(gt == 21 && ci != 270){
 				preventDefault()
-				Level.playSound(x, y, z, random.break, 1, 1);
+				Level.playSound(x, y, z, "random.break", 1, 1);
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,351,8+(extraItem*8),4)
 			}
