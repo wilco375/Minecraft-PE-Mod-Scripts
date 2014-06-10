@@ -13,6 +13,9 @@ var SilkTouchUpgradeId = 416 //done
 var ironDustId = 400
 var goldDustId = 401 
 
+//Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
+var EfficiencyUpgradeOn = 0
+
 var Counter
 var Repair
 var Random
@@ -23,6 +26,7 @@ var dBz
 var lastX
 var lastY
 var lastZ
+var lastDamage
 var destroyingBlock
 var blockStartDestroying
 var blockDestroyed
@@ -100,6 +104,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 function modTick(){
 
 //Efficiency upgrade
+if(EfficiencyUpgradeOn == 1){
 	velX=(Player.getX()-lastX)/(1/20)
 	lastX=Player.getX()
 	velY=(Player.getY()-lastY)/(1/20)
@@ -136,6 +141,7 @@ function modTick(){
 			EfficiencyOn = 0
 		}
 	}
+
 	//if(blockDestroyed == 1 && destroyingBlock == 1){
 //		destroyingBlock = 0
 //		if(EfficiencyOn == 1){
@@ -144,8 +150,9 @@ function modTick(){
 //		}
 //	}
 	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
+		ci = Player.getCarriedItem()
 		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-		EfficiencyOn = 1
+		if(EfficiencyOn != 1){
 		if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
 			tickSpeed = Player.checkForInventoryItem(EfficiencyUpgradeId)*6+20
 		}
@@ -153,12 +160,15 @@ function modTick(){
 			tickSpeed = 50
 		}
 		ModPE.setGameSpeed(tickSpeed)
+		EfficiencyOn = 1
 		tickSpeed = 20
+		}
 		}
 	}
 	
 	blockStartDestroying = 0
 	blockDestroyed = 0
+]
 //Repair upgrade (Only works on selected item)
 	if(Counter == null){
 		Counter = 1
