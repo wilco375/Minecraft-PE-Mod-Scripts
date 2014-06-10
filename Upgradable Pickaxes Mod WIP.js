@@ -20,6 +20,9 @@ var extraItem
 var dBx
 var dBy
 var dBz
+var lastX
+var lastY
+var lastZ
 
 ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
 ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
