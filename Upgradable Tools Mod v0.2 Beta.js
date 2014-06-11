@@ -153,7 +153,7 @@ function modTick(){
 	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 		if(EfficiencyOn = 0){ 
 			if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
-				eu =  (Player.checkForInventoryItem(EfficiencyUpgradeId)*0.3 +1
+				eu =  Player.checkForInventoryItem(EfficiencyUpgradeId)*0.3 +1
 				EfficiencyOn = 1
 				Block.setDestroyTime(1,h1/eu)
 				Block.setDestroyTime(2,h2/eu)
