@@ -253,7 +253,7 @@ function runUpgrades(){
 			extraItem = 3
 		}
 	}
-	else if(Player.checkForInventoryItem(FortuneUpgradeId) == 0){
+	if(extraItem != 1 && extraItem != 2 && extraItem != 3){
 		extraItem = 0
 	}
 	
