@@ -226,7 +226,7 @@ Player.checkForInventoryItem = function(id, amount, damage) {
 	if(!id) id = 0;
 	var count = 0;
 	for(var i = 0; i < 255; i++) if(Player.getInventorySlot(i) == id && Player.getInventorySlotData(i) == damage) count += Player.getInventorySlotCount(i);
-	return count 
+	return count/2
 };
 
 
