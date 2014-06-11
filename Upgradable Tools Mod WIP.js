@@ -33,13 +33,13 @@ var blockStartDestroying
 var blockDestroyed
 var EfficiencyOn
 
-ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
-ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
-ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Upgrade")
-ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Upgrade")
-ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Upgrade")
-ModPE.setItem(EfficiencyUpgradeId,"record_wait",0,"Efficiency Upgrade")
-ModPE.setItem(SilkTouchUpgradeId,"record_ward",0,"Silk-Touch Upgrade")
+ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Pickaxe Upgrade")
+ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Pickaxe Upgrade")
+ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Pickaxe Upgrade")
+ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
+ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
+ModPE.setItem(EfficiencyUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
+ModPE.setItem(SilkTouchUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(ironDustId,265,0)
@@ -217,7 +217,7 @@ Player.checkForInventoryItem = function(id, amount, damage) {
 	if(!id) id = 0;
 	var count = 0;
 	for(var i = 0; i < 255; i++) if(Player.getInventorySlot(i) == id && Player.getInventorySlotData(i) == damage) count += Player.getInventorySlotCount(i);
-	return count 
+	return count/2
 };
 
 //function that runs all the upgrades
