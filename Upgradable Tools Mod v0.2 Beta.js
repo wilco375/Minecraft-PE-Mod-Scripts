@@ -37,6 +37,20 @@ var blockStartDestroying
 var blockDestroyed
 var EfficiencyOn
 
+//Block hardness lib
+var h1 = 1.5
+var h2 = 0.6
+var h3 = 0.5
+var h12 = 0.5
+var h13 = 0.6
+var h14 = 3
+var h15 = 3 
+var h16 = 3
+var h21 = 3
+var h56 = 3
+var h73 = 3
+var h74 = 3
+
 
 ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Upgrade")
 ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Upgrade")
@@ -135,68 +149,45 @@ function destroyBlock(x,y,z,shouldDropItem){
 
 
 function modTick(){
-
-
-//Efficiency upgrade
-if(EfficiencyUpgradeOn == 1){
-	velX=(Player.getX()-lastX)/(1/20)
-	lastX=Player.getX()
-	velY=(Player.getY()-lastY)/(1/20)
-	lastY=Player.getY()
-	velZ=(Player.getZ()-lastZ)/(1/20)
-	lastZ=Player.getZ()
-	damage=(Player.getCarriedItemData()-lastDamage)
-	lastDamage=Player.getCarriedItemData()
-
-
-	if(blockStartDestroying == 1){
-		destroyingBlock = 1
+	ci = Player.getCarriedItem()
+	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+		if(EfficiencyOn = 0){ 
+			if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
+				eu =  (Player.checkForInventoryItem(EfficiencyUpgradeId)*0.3 +1
+				EfficiencyOn = 1
+				Block.setDestroyTime(1,h1/eu)
+				Block.setDestroyTime(2,h2/eu)
+				Block.setDestroyTime(3,h3/eu)
+				Block.setDestroyTime(12,h12/eu)
+				Block.setDestroyTime(13,h13/eu)
+				Block.setDestroyTime(14,h14/eu)
+				Block.setDestroyTime(15,h15/eu)
+				Block.setDestroyTime(16,h16/eu)
+				Block.setDestroyTime(21,h21/eu)
+				Block.setDestroyTime(56,h56/eu)
+				Block.setDestroyTime(73,h73/eu)
+				Block.setDestroyTime(74,h74/eu)
+			}
+		}
 	}
-	if(damage != 0){
-		destroyingBlock = 1
-	}
-	if(destroyingBlock == 1 && velX != 0){
-		destroyingBlock = 0
-		if(EfficiencyOn == 1){
-			ModPE.setGameSpeed(20)
+	if(EfficiencyOn = 1){
+		if(ci != 257 || ci != 274 || ci != 270 || ci != 278 || ci != 285 || Player.checkForInventoryItem(EfficiencyUpgradeId) == 0){
 			EfficiencyOn = 0
-		}
-	}
-	if(destroyingBlock == 1 && velY != 0){
-		destroyingBlock = 0
-		if(EfficiencyOn == 1){
-			ModPE.setGameSpeed(20)
-			EfficiencyOn = 0
-		}
-	}	
-	if(destroyingBlock == 1 && velZ != 0){
-		destroyingBlock = 0
-		if(EfficiencyOn == 1){
-			ModPE.setGameSpeed(20)
-			EfficiencyOn = 0
-		}
-	}
-	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
-		ci = Player.getCarriedItem()
-		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-		if(EfficiencyOn != 1){
-		if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
-			tickSpeed = Player.checkForInventoryItem(EfficiencyUpgradeId)*6+20
-		}
-		else{
-			tickSpeed = 50
-		}
-		ModPE.setGameSpeed(tickSpeed)
-		EfficiencyOn = 1
-		tickSpeed = 20
-		}
+			Block.setDestroyTime(1,h1)
+			Block.setDestroyTime(2,h2)
+			Block.setDestroyTime(3,h3)
+			Block.setDestroyTime(12,h12)
+			Block.setDestroyTime(13,h13)
+			Block.setDestroyTime(14,h14)
+			Block.setDestroyTime(15,h15)
+			Block.setDestroyTime(16,h16)
+			Block.setDestroyTime(21,h21)
+			Block.setDestroyTime(56,h56)
+			Block.setDestroyTime(73,h73)
+			Block.setDestroyTime(74,h74)
 		}
 	}
 
-
-	blockStartDestroying = 0
-	blockDestroyed = 0
-}
 //Repair upgrade (Only works on selected item)
 	if(Counter == null){
 		Counter = 1
@@ -388,3 +379,9 @@ function runUpgrades(){
 		}
 	}
 }
+
+
+
+
+
+
