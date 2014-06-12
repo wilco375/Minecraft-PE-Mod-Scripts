@@ -5,13 +5,17 @@
 //Item ID's:
 var ironDustId = 408
 var goldDustId = 409
-var AutoSmeltUpgradeId = 410 
-var PulveriseUpgradeId = 411 
-var FortuneUpgradeId = 412 
-var RepairUpgradeId = 413
-var UnbreakingUpgradeId = 414 
-var EfficiencyUpgradeId = 415 
-var SilkTouchUpgradeId = 416 
+//Pickaxe upgrades
+var AutoSmeltPickaxeUpgradeId = 410 
+var PulverisePickaxeUpgradeId = 411 
+var FortunePickaxeUpgradeId = 412 
+var RepairPickaxeUpgradeId = 413
+var UnbreakingPickaxeUpgradeId = 414 
+var EfficiencyPickaxeUpgradeId = 415 
+var SilkTouchPickaxeUpgradeId = 416 
+//Axe upgrades
+var ChainSawAxeUpgradeId = 417
+var UnbreakingAxeUpgradeId = 418
 
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
@@ -33,36 +37,36 @@ var blockStartDestroying
 var blockDestroyed
 var EfficiencyOn
 
-ModPE.setItem(AutoSmeltUpgradeId,"record_cat",0,"Auto-Smelt Pickaxe Upgrade")
-ModPE.setItem(PulveriseUpgradeId,"record_chirp",0,"Pulveriser Pickaxe Upgrade")
-ModPE.setItem(FortuneUpgradeId,"record_mellohi",0,"Fortune Pickaxe Upgrade")
-ModPE.setItem(RepairUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
-ModPE.setItem(UnbreakingUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
-ModPE.setItem(EfficiencyUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
-ModPE.setItem(SilkTouchUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
+ModPE.setItem(AutoSmeltPickaxeUpgradeId,"record_cat",0,"Auto-Smelt Pickaxe Upgrade")
+ModPE.setItem(PulverisePickaxeUpgradeId,"record_chirp",0,"Pulveriser Pickaxe Upgrade")
+ModPE.setItem(FortunePickaxeUpgradeId,"record_mellohi",0,"Fortune Pickaxe Upgrade")
+ModPE.setItem(RepairPickaxeUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
+ModPE.setItem(UnbreakingPickaxeUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
+ModPE.setItem(EfficiencyPickaxeUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
+ModPE.setItem(SilkTouchPickaxeUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
-Item.addCraftRecipe(AutoSmeltUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
-Item.addCraftRecipe(PulveriseUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
-Item.addCraftRecipe(FortuneUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
-Item.addCraftRecipe(RepairUpgradeId, 1, 0, [42,4,0,265,4,0,264,1,0])
-Item.addCraftRecipe(UnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,4,0,264,1,0])
-Item.addCraftRecipe(SilkTouchUpgradeId, 1, 0, [287,4,0,266,4,0,264,1,0])
+Item.addCraftRecipe(AutoSmeltPickaxeUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
+Item.addCraftRecipe(PulverisePickaxeUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
+Item.addCraftRecipe(FortunePickaxeUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
+Item.addCraftRecipe(RepairPickaxeUpgradeId, 1, 0, [42,4,0,265,4,0,264,1,0])
+Item.addCraftRecipe(UnbreakingPickaxeUpgradeId, 1, 0, [49,1,0,42,3,0,1,4,0,264,1,0])
+Item.addCraftRecipe(SilkTouchPickaxeUpgradeId, 1, 0, [287,4,0,266,4,0,264,1,0])
 if(EfficiencyUpgradeOn == 1){
-	Item.addCraftRecipe(EfficiencyUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
-	Item.setCategory(EfficiencyUpgradeId,2)
+	Item.addCraftRecipe(EfficiencyPickaxeUpgradeId, 1, 0, [331,4,0,266,4,0,264,1,0])
+	Item.setCategory(EfficiencyPickaxeUpgradeId,2)
 }
 else{
-	Item.setCategory(EfficiencyUpgradeId,-1)
+	Item.setCategory(EfficiencyPickaxeUpgradeId,-1)
 }
-Item.setCategory(AutoSmeltUpgradeId,2)
-Item.setCategory(PulveriseUpgradeId,2)
-Item.setCategory(FortuneUpgradeId,2)
-Item.setCategory(RepairUpgradeId,2)
-Item.setCategory(UnbreakingUpgradeId,2)
-Item.setCategory(SilkTouchUpgradeId,2)
+Item.setCategory(AutoSmeltPickaxeUpgradeId,2)
+Item.setCategory(PulverisePickaxeUpgradeId,2)
+Item.setCategory(FortunePickaxeUpgradeId,2)
+Item.setCategory(RepairPickaxeUpgradeId,2)
+Item.setCategory(UnbreakingPickaxeUpgradeId,2)
+Item.setCategory(SilkTouchPickaxeUpgradeId,2)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
 
@@ -79,41 +83,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 	dBy = y
 	dBz = z
 	runUpgrades()
-	//Unbreaking upgrade:
-	if(Player.checkForInventoryItem(UnbreakingUpgradeId) == 1){
-		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
-		if(ExtraDurRandom == 1){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingUpgradeId) == 2){
-		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
-		if(ExtraDurRandom != 3){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingUpgradeId) >= 2){
-		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
-		if(ExtraDurRandom != 4){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	
+	//Unbreaking Pickaxe upgrade:
 }
 
 
@@ -160,12 +130,12 @@ if(EfficiencyUpgradeOn == 1){
 			EfficiencyOn = 0
 		}
 	}
-	if(Player.checkForInventoryItem(EfficiencyUpgradeId) >= 1 && destroyingBlock == 1){
+	if(Player.checkForInventoryItem(EfficiencyPickaxeUpgradeId) >= 1 && destroyingBlock == 1){
 		ci = Player.getCarriedItem()
 		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 		if(EfficiencyOn != 1){
-		if(Player.checkForInventoryItem(EfficiencyUpgradeId) <= 5){
-			tickSpeed = Player.checkForInventoryItem(EfficiencyUpgradeId)*6+20
+		if(Player.checkForInventoryItem(EfficiencyPickaxeUpgradeId) <= 5){
+			tickSpeed = Player.checkForInventoryItem(EfficiencyPickaxeUpgradeId)*6+20
 		}
 		else{
 			tickSpeed = 50
@@ -189,13 +159,13 @@ if(EfficiencyUpgradeOn == 1){
 	}
 	if(Counter == 200){
 		Counter = 1
-		if(Player.checkForInventoryItem(RepairUpgradeId) == 1){
+		if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) == 1){
 			Repair = 1
 		}
-		else if(Player.checkForInventoryItem(RepairUpgradeId) >= 2){
+		else if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 2){
 			Repair = 2
 		}
-		if(Player.checkForInventoryItem(RepairUpgradeId) >= 1){
+		if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 1){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 				if(Player.getCarriedItemData() != 0 && Repair == 1){	
@@ -226,13 +196,110 @@ function runUpgrades(){
 	y = dBy
 	z = dBz
 	ci = getCarriedItem()
-	if(Player.checkForInventoryItem(FortuneUpgradeId) == 1){
+
+//Axe upgrades
+	if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
+	if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) == 1){
+		if(getTile(x,y,z) == 17){
+			treeblocksdestroyed = 0
+			endoftree = 0
+			for(treey = y+1; treey <= 16; treey++){
+				if(getTile(x,treey,z) == 17 && endoftree == 0){
+					setTile(x,treey,z,0)
+					Level.playSound(x, y, z, "step.wood", 1, 3)
+					treeblocksdestroyed++
+				}
+				else{
+					endoftree = 1
+				}
+			}
+		}
+	Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+	}
+	
+	//Unbreaking Axe Upgrade
+	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) == 1){
+		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
+		if(ExtraDurRandom == 1){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) == 2){
+		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
+		if(ExtraDurRandom != 3){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) >= 2){
+		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
+		if(ExtraDurRandom != 4){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	
+		
+	}
+		
+//Pickaxe upgrades
+	//unbreaking
+	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) == 1){
+		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
+		if(ExtraDurRandom == 1){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) == 2){
+		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
+		if(ExtraDurRandom != 3){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) >= 2){
+		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
+		if(ExtraDurRandom != 4){
+			ci = Player.getCarriedItem()
+			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+	}
+	}
+//fortune
+	if(Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 1){
 		Random = Math.floor((Math.random() * 3) + 1);
 		if(Random == 1){
 			extraItem = 1 
 		}
 	}
-	else if(Player.checkForInventoryItem(FortuneUpgradeId) == 2){
+	else if(Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 2){
 		Random = Math.floor((Math.random() * 6) + 1);
 		if(Random == 1 || Random == 2){
 			extraItem = 1
@@ -241,7 +308,7 @@ function runUpgrades(){
 			extraItem = 2
 		}
 	}
-	else if(Player.checkForInventoryItem(FortuneUpgradeId) >= 3){
+	else if(Player.checkForInventoryItem(FortunePickaxeUpgradeId) >= 3){
 		Random = Math.floor((Math.random() * 15) + 1);
 		if(Random >= 1 && Random <= 6){
 			extraItem = 1
@@ -257,7 +324,7 @@ function runUpgrades(){
 		extraItem = 0
 	}
 	
-	if(Player.checkForInventoryItem(SilkTouchUpgradeId) >= 1 && Player.checkForInventoryItem(FortuneUpgradeId) == 0 && Player.checkForInventoryItem(PulveriseUpgradeId) == 0 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){
+	if(Player.checkForInventoryItem(SilkTouchPickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(PulverisePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){
 		gt = getTile(x,y,z)
 		if(gt == 16 || gt == 21 || gt == 73 || gt == 74 || gt == 56 || gt == 2 || gt == 79 || gt == 1 || gt == 80 || gt == 13 || gt == 82 || gt == 47 || gt == 20){
 			if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
@@ -277,7 +344,7 @@ function runUpgrades(){
 		}
 	}
 	
-	if(Player.checkForInventoryItem(PulveriseUpgradeId) == 0 && Player.checkForInventoryItem(FortuneUpgradeId) >= 1){ //fortune, no pulverise (lapis, redstone)
+	if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(FortunePickaxeUpgradeId) >= 1){ //fortune, no pulverise (lapis, redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
 				preventDefault()
@@ -296,12 +363,12 @@ function runUpgrades(){
 	
 	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 		gt = getTile(x,y,z)
-		if(Player.checkForInventoryItem(AutoSmeltUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
+		if(Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
 				Level.playSound(x, y, z, "step.stone", 1, 3);
 				setTile(x,y,z,0,0)
-				if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1){
+				if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1){
 					extraPulverise = 1
 					extraItem = extraItem*2
 				}
@@ -317,7 +384,7 @@ function runUpgrades(){
 				preventDefault()
 				Level.playSound(x, y, z, "step.stone", 1, 3);
 				setTile(x,y,z,0,0)
-				if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1){
+				if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1){
 					extraPulverise = 1
 					extraItem = extraItem*2
 				}
@@ -327,11 +394,11 @@ function runUpgrades(){
 				if(extraItem == null){
 					extraItem = 0
 				}
-				Level.dropItem(x,y,z,0.25,266,Player.checkForInventoryItem(PulveriseUpgradeId)+1+extraItem,0)
+				Level.dropItem(x,y,z,0.25,266,Player.checkForInventoryItem(PulverisePickaxeUpgradeId)+1+extraItem,0)
 			}
 		}
 		
-		if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
+		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
 				Level.playSound(x, y, z, "step.stone", 1, 3);
@@ -346,7 +413,7 @@ function runUpgrades(){
 			}	
 		}
 		
-		if(Player.checkForInventoryItem(PulveriseUpgradeId) >= 1){ //Pulveriser upgrade and optinally autosmelt (lapis and redstone)
+		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1){ //Pulveriser upgrade and optinally autosmelt (lapis and redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
 				preventDefault()
