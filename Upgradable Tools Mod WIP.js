@@ -18,7 +18,8 @@ var SilkTouchPickaxeUpgradeId = 416
 //Axe upgrades
 var ChainSawAxeUpgradeId = 417
 var UnbreakingAxeUpgradeId = 418
-
+//Shovel upgrades
+var ExcavatorShovelUpgradeId = 419
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -55,7 +56,7 @@ ModPE.setItem(CompressedSawdust,"texture",0,"Compressed Sawdust")
 //funace
 Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
-Item.addFurnaceRecipe(CompressedSawdust,263,0)
+Item.addFurnaceRecipe(CompressedSawdust,263,1)
 //craft pickaxe upgrades
 Item.addCraftRecipe(AutoSmeltPickaxeUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulverisePickaxeUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
@@ -86,7 +87,7 @@ function startDestroyBlock(){
 	blockStartDestroying = 1
 }
 
-function destroyBlock(x,y,z,shouldDropItem){
+function destroyBlock(x,y,z,side){
 	blockDestroyed = 1
 	xdes = x
 	ydes = y
@@ -96,6 +97,7 @@ function destroyBlock(x,y,z,shouldDropItem){
 	dBz = z
 	runUpgrades()
 	//Unbreaking Pickaxe upgrade:
+	blockSide = side
 }
 
 
@@ -208,6 +210,139 @@ function runUpgrades(){
 	y = dBy
 	z = dBz
 	ci = getCarriedItem()
+	side = blockSide
+//Shovel upgrades
+	if(ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284){
+		if(Player.checkForInventoryItem(ExcavatorUpgradeId) >= 1){
+			if(side == 4 || side == 5){
+				blocksMined = 0
+				for(zdes = z-1;zdes<=z+1;zdes++){
+					for(ydes = y-1;ydes <= y+1;ydes++){
+						t = getTile(x,ydes,zdes){
+						d = getData(x,ydes,zdes)
+							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
+								setTile(x,ydes,zdes,0,0)
+								if(t == 2 || t == 3){
+									Level.playSound(x, ydes, zdes, "step.grass", 1, 3)
+								}
+								if(t == 12){
+									Level.playSound(x, ydes, zdes, "step.sand", 1, 3)
+								}
+								if(t == 13 || t == 82){
+									Level.playSound(x, ydes, zdes, "step.gravel", 1, 3)
+								}
+								if(t == 80){
+									Level.playSound(x, ydes, zdes, "step.cloth", 1, 3)
+								}
+								blocksMined++
+								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+									if(t == 80){
+										Level.dropItem(x,ydes,zdes,0.25,332,4,d)	
+									}
+									if(t == 2){
+										Level.dropItem(x,ydes,zdes,0.25,3,4,d)	
+									}
+								}
+								else{
+								Level.dropItem(x,ydes,zdes,0.25,t,1,d)									
+								}
+
+							}
+						}
+					}
+				}
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+			}
+			else if(side == 2 || side == 3){
+				blocksMined = 0
+				for(xdes = x-1;xdes<=x+1;xdes++){
+					for(ydes = y-1;ydes <= y+1;ydes++){
+						t = getTile(xdes,ydes,z){
+						d = getData(xdes,ydes,z)
+							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
+								setTile(xdes,ydes,z,0,0)
+								if(t == 2 || t == 3){
+									Level.playSound(xdes, ydes, z, "step.grass", 1, 3)
+								}
+								if(t == 12){
+									Level.playSound(xdes, ydes, z, "step.sand", 1, 3)
+								}
+								if(t == 13 || t == 82){
+									Level.playSound(xdes, ydes, z, "step.gravel", 1, 3)
+								}
+								if(t == 80){
+									Level.playSound(xdes, ydes, z, "step.cloth", 1, 3)
+								}
+								blocksMined++
+								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+									if(t == 80){
+										Level.dropItem(xdes,ydes,z,0.25,332,4,d)	
+									}
+									if(t == 2){
+										Level.dropItem(xdes,ydes,z,0.25,3,4,d)	
+									}
+								}
+								else{
+								Level.dropItem(xdes,ydes,z,0.25,t,1,d)									
+								}
+							}
+						}
+					}
+				}
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+			}
+			else if(side == 0 || side == 1){
+				blocksMined = 0
+				for(xdes = x-1;xdes<=x+1;xdes++){
+					for(zdes = z-1;zdes <= z+1;zdes++){
+						t = getTile(xdes,y,zdes){
+						d = getData(xdes,y,zdes)
+							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
+								setTile(xdes,y,zdes,0,0)
+								if(t == 2 || t == 3){
+									Level.playSound(xdes, y, zdes, "step.grass", 1, 3)
+								}
+								if(t == 12){
+									Level.playSound(xdes, y, zdes, "step.sand", 1, 3)
+								}
+								if(t == 13 || t == 82){
+									Level.playSound(xdes, y, zdes, "step.gravel", 1, 3)
+								}
+								if(t == 80){
+									Level.playSound(xdes, y, zdes, "step.cloth", 1, 3)
+								}
+								blocksMined++
+								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+									if(t == 80){
+										Level.dropItem(xdes,y,zdes,0.25,332,4,d)	
+									}
+									if(t == 2){
+										Level.dropItem(xdes,y,zdes,0.25,3,4,d)	
+									}
+								}
+								else{
+								Level.dropItem(xdes,y,zdes,0.25,t,1,d)									
+								}
+							}
+						}
+					}
+				}
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+			}
+		}
+		if(Player.checkForInventoryItem(ExcavatorUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
+			if(t == 2 || t == 80){
+				preventDefault()
+				if(t == 2){
+					Level.playSound(x, y, z, "step.grass", 1, 3)
+				}
+				if(t == 80){
+					Level.playSound(x, y, z, "step.cloth", 1, 3)
+				}
+				if(t == )
+			}	
+		}
+	}
 
 //Axe upgrades
 	if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
