@@ -5,6 +5,8 @@
 //Item ID's:
 var ironDustId = 408
 var goldDustId = 409
+var SawDustId = 407
+var CompressedSawdust = 406
 //Pickaxe upgrades
 var AutoSmeltPickaxeUpgradeId = 410 
 var PulverisePickaxeUpgradeId = 411 
@@ -37,6 +39,7 @@ var blockStartDestroying
 var blockDestroyed
 var EfficiencyOn
 
+//pickaxe upgrades
 ModPE.setItem(AutoSmeltPickaxeUpgradeId,"record_cat",0,"Auto-Smelt Pickaxe Upgrade")
 ModPE.setItem(PulverisePickaxeUpgradeId,"record_chirp",0,"Pulveriser Pickaxe Upgrade")
 ModPE.setItem(FortunePickaxeUpgradeId,"record_mellohi",0,"Fortune Pickaxe Upgrade")
@@ -44,10 +47,16 @@ ModPE.setItem(RepairPickaxeUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
 ModPE.setItem(UnbreakingPickaxeUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
 ModPE.setItem(EfficiencyPickaxeUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
 ModPE.setItem(SilkTouchPickaxeUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
+//other items
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
+ModPE.setItem(SawDustId,"texture",0,"Sawdust")
+ModPE.setItem(CompressedSawdust,"texture",0,"Compressed Sawdust")
+//funace
 Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
+Item.addFurnaceRecipe(CompressedSawdust,263,0)
+//craft pickaxe upgrades
 Item.addCraftRecipe(AutoSmeltPickaxeUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulverisePickaxeUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
 Item.addCraftRecipe(FortunePickaxeUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
@@ -67,6 +76,9 @@ Item.setCategory(FortunePickaxeUpgradeId,2)
 Item.setCategory(RepairPickaxeUpgradeId,2)
 Item.setCategory(UnbreakingPickaxeUpgradeId,2)
 Item.setCategory(SilkTouchPickaxeUpgradeId,2)
+//craft other items
+Item.addCraftRecipe(CompressedSawdust, 1, 0, [SawDustId,8,0])
+Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
 
@@ -199,12 +211,13 @@ function runUpgrades(){
 
 //Axe upgrades
 	if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
-	if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) == 1){
+	if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1 Player.checkForInventoryItem(SawMillAxeUpgradeId) == 0){
 		if(getTile(x,y,z) == 17){
 			treeblocksdestroyed = 0
 			endoftree = 0
+			log = getData(x,y,z)
 			for(treey = y+1; treey <= 16; treey++){
-				if(getTile(x,treey,z) == 17 && endoftree == 0){
+				if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log endoftree == 0){
 					setTile(x,treey,z,0)
 					Level.playSound(x, y, z, "step.wood", 1, 3)
 					treeblocksdestroyed++
@@ -213,8 +226,38 @@ function runUpgrades(){
 					endoftree = 1
 				}
 			}
+		Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+		Level.dropItem(x,y,z,0.25,17,treeblocksdestroyed,log)
 		}
-	Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+	}
+	
+	//Sawmill Upgrade
+	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
+		if(getTile == 17){
+			preventDefault()
+			log = getData(x,y,z)
+			setTile(x,y,z,0)
+			Level.playSound(x, y, z, "step.wood", 1, 3)
+			Level.dropItem(x,y,z,0.25,SawDustId,1,0)
+			Level.dropItem(x,y,z,0.25,5,6,log)
+			if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1){
+				treeblocksdestroyed = 0
+				endoftree = 0
+					for(treey = y+1; treey <= 16; treey++){
+						if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log endoftree == 0){
+							setTile(x,treey,z,0)
+							Level.playSound(x, y, z, "step.wood", 1, 3)
+							treeblocksdestroyed++
+						}
+						else{
+							endoftree = 1
+						}	
+					}
+			Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+			Level.dropItem(x,y,z,0.25,5,treeblocksdestroyed*6,log)
+			Level.dropItem(x,y,z,0.25,SawDustId,treeblocksdestroyed,0)
+			}
+		}
 	}
 	
 	//Unbreaking Axe Upgrade
