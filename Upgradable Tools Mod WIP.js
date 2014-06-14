@@ -402,7 +402,7 @@ function runUpgrades(){
 			treeblocksdestroyed = 0
 			endoftree = 0
 			log = Level.getData(x,y,z)
-			for(treey = y+1; treey <= 16; treey++){
+			for(treey = y+1; treey <= treey+16; treey++){
 				if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 					setTile(x,treey,z,0)
 					Level.playSound(x, y, z, "step.wood", 1, 3)
@@ -412,8 +412,10 @@ function runUpgrades(){
 					endoftree = 1
 				}
 			}
-		Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
-		Level.dropItem(x,y,z,0.25,17,treeblocksdestroyed,log)
+			if(treeblocksdestroyed >= 1){
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+				Level.dropItem(x,y,z,0.25,17,treeblocksdestroyed,log)
+			}
 		}
 	}
 	
@@ -429,7 +431,7 @@ function runUpgrades(){
 			if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1){
 				treeblocksdestroyed = 0
 				endoftree = 0
-					for(treey = y+1; treey <= 16; treey++){
+					for(treey = y+1; treey <= treey+16; treey++){
 						if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 							setTile(x,treey,z,0)
 							Level.playSound(x, y, z, "step.wood", 1, 3)
@@ -439,9 +441,10 @@ function runUpgrades(){
 							endoftree = 1
 						}	
 					}
-			Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
-			Level.dropItem(x,y,z,0.25,5,treeblocksdestroyed*6,log)
-			Level.dropItem(x,y,z,0.25,SawDustId,treeblocksdestroyed,0)
+			if(treeblocksdestroyed >= 1){
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+				Level.dropItem(x,y,z,0.25,5,treeblocksdestroyed*6,log)
+				Level.dropItem(x,y,z,0.25,SawDustId,treeblocksdestroyed,0)
 			}
 		}
 	}
