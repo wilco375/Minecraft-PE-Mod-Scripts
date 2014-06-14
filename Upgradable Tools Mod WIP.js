@@ -1,4 +1,4 @@
-//Upgradable ToolsMod WIP version
+//Upgradable Tools Mod WIP version
 //by wilco375 
 //Textures are from the Thermal Expantion Mod or created by myself
 
@@ -18,8 +18,11 @@ var SilkTouchPickaxeUpgradeId = 416
 //Axe upgrades
 var ChainSawAxeUpgradeId = 417
 var UnbreakingAxeUpgradeId = 418
+var SawMillAxeUpgradeId = 419
 //Shovel upgrades
-var ExcavatorShovelUpgradeId = 419
+var ExcavatorShovelUpgradeId = 420
+var SilkTouchShovelUpgradeId = 421
+var UnbreakingShovelUpgradeId = 422
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -48,11 +51,19 @@ ModPE.setItem(RepairPickaxeUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
 ModPE.setItem(UnbreakingPickaxeUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
 ModPE.setItem(EfficiencyPickaxeUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
 ModPE.setItem(SilkTouchPickaxeUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
+//axe upgrades
+ModPE.setItem(ChainSawAxeUpgradeId,"quiver",0,"Chainsaw Axe Upgrade")
+ModPE.setItem(UnbreakingAxeUpgradeId,"map_empty",0,"Unbreaking Axe Upgrade")
+ModPE.setItem(SawMillAxeUpgradeId,"melon_speckled",0,"Sawmill Axe Upgrade")
+//shovel upgrades
+ModPE.setItem(ExcavatorShovelUpgradeId,"record_11",0,"Excavator Shovel Upgrade")
+ModPE.setItem(SilkTouchShovelUpgradeId,"record_ward",0,"Silk-Touch Shovel Upgrade")
+ModPE.setItem(UnbreakingShovelUpgradeId,"map_filled",0,"Unbreaking Shovel Upgrade")
 //other items
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
-ModPE.setItem(SawDustId,"texture",0,"Sawdust")
-ModPE.setItem(CompressedSawdust,"texture",0,"Compressed Sawdust")
+ModPE.setItem(SawDustId,"record_blocks",0,"Sawdust")
+ModPE.setItem(CompressedSawdust,"record_13",0,"Compressed Sawdust")
 //funace
 Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
@@ -330,6 +341,35 @@ function runUpgrades(){
 				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
 			}
 		}
+//Unbreaking Shovel Upgrade
+		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) == 1){
+		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
+		if(ExtraDurRandom == 1){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) == 2){
+		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
+		if(ExtraDurRandom != 3){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) >= 3){
+		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
+		if(ExtraDurRandom != 4){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+//Silk Touch Shovel upgrade
 		if(Player.checkForInventoryItem(ExcavatorUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
 			t = getTile(x,y,z)
 			d = getData(x,y,z)
@@ -377,7 +417,7 @@ function runUpgrades(){
 		}
 	}
 	
-	//Sawmill Upgrade
+//Sawmill Upgrade
 	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 		if(getTile == 17){
 			preventDefault()
@@ -429,7 +469,7 @@ function runUpgrades(){
 			}
 		}
 	}
-	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) >= 2){
+	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) >= 3){
 		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
 		if(ExtraDurRandom != 4){
 			ci = Player.getCarriedItem()
@@ -469,7 +509,7 @@ function runUpgrades(){
 			}
 		}
 	}
-	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) >= 2){
+	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) >= 3){
 		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
 		if(ExtraDurRandom != 4){
 			ci = Player.getCarriedItem()
