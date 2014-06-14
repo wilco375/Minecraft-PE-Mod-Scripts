@@ -230,7 +230,7 @@ function runUpgrades(){
 				for(zdes = z-1;zdes<=z+1;zdes++){
 					for(ydes = y-1;ydes <= y+1;ydes++){
 						t = getTile(x,ydes,zdes)
-						d = getData(x,ydes,zdes)
+						d = Level.getData(x,ydes,zdes)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(x,ydes,zdes,0,0)
 								if(t == 2 || t == 3){
@@ -269,7 +269,7 @@ function runUpgrades(){
 				for(xdes = x-1;xdes<=x+1;xdes++){
 					for(ydes = y-1;ydes <= y+1;ydes++){
 						t = getTile(xdes,ydes,z)
-						d = getData(xdes,ydes,z)
+						d = Level.getData(xdes,ydes,z)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(xdes,ydes,z,0,0)
 								if(t == 2 || t == 3){
@@ -307,7 +307,7 @@ function runUpgrades(){
 				for(xdes = x-1;xdes<=x+1;xdes++){
 					for(zdes = z-1;zdes <= z+1;zdes++){
 						t = getTile(xdes,y,zdes)
-						d = getData(xdes,y,zdes)
+						d = Level.getData(xdes,y,zdes)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(xdes,y,zdes,0,0)
 								if(t == 2 || t == 3){
@@ -372,7 +372,7 @@ function runUpgrades(){
 //Silk Touch Shovel upgrade
 		if(Player.checkForInventoryItem(ExcavatorUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
 			t = getTile(x,y,z)
-			d = getData(x,y,z)
+			d = Level.getData(x,y,z)
 			if(t == 2 || t == 80){
 				preventDefault()
 				if(t == 2){
@@ -401,9 +401,9 @@ function runUpgrades(){
 		if(getTile(x,y,z) == 17){
 			treeblocksdestroyed = 0
 			endoftree = 0
-			log = getData(x,y,z)
+			log = Level.getData(x,y,z)
 			for(treey = y+1; treey <= 16; treey++){
-				if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log && endoftree == 0){
+				if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 					setTile(x,treey,z,0)
 					Level.playSound(x, y, z, "step.wood", 1, 3)
 					treeblocksdestroyed++
@@ -421,7 +421,7 @@ function runUpgrades(){
 	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 		if(getTile == 17){
 			preventDefault()
-			log = getData(x,y,z)
+			log = Level.getData(x,y,z)
 			setTile(x,y,z,0)
 			Level.playSound(x, y, z, "step.wood", 1, 3)
 			Level.dropItem(x,y,z,0.25,SawDustId,1,0)
@@ -430,7 +430,7 @@ function runUpgrades(){
 				treeblocksdestroyed = 0
 				endoftree = 0
 					for(treey = y+1; treey <= 16; treey++){
-						if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log && endoftree == 0){
+						if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 							setTile(x,treey,z,0)
 							Level.playSound(x, y, z, "step.wood", 1, 3)
 							treeblocksdestroyed++
