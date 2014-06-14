@@ -486,7 +486,7 @@ function runUpgrades(){
 	
 		
 	}
-		
+	}	
 //Pickaxe upgrades
 	//unbreaking
 	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
