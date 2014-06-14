@@ -402,7 +402,7 @@ function runUpgrades(){
 			treeblocksdestroyed = 0
 			endoftree = 0
 			log = Level.getData(x,y,z)
-			for(treey = y+1; treey <= treey+16; treey++){
+			for(treey = y+1; treey <= y+16; treey++){
 				if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 					setTile(x,treey,z,0)
 					Level.playSound(x, y, z, "step.wood", 1, 3)
@@ -431,7 +431,7 @@ function runUpgrades(){
 			if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1){
 				treeblocksdestroyed = 0
 				endoftree = 0
-					for(treey = y+1; treey <= treey+16; treey++){
+					for(treey = y+1; treey <= y+16; treey++){
 						if(getTile(x,treey,z) == 17 && Level.getData(x,treey,z) == log && endoftree == 0){
 							setTile(x,treey,z,0)
 							Level.playSound(x, y, z, "step.wood", 1, 3)
