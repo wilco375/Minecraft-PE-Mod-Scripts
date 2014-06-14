@@ -397,7 +397,7 @@ function runUpgrades(){
 
 //Axe upgrades
 	if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
-	if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1 Player.checkForInventoryItem(SawMillAxeUpgradeId) == 0){
+	if(Player.checkForInventoryItem(ChainSawAxeUpgradeId) >= 1 && Player.checkForInventoryItem(SawMillAxeUpgradeId) == 0){
 		if(getTile(x,y,z) == 17){
 			treeblocksdestroyed = 0
 			endoftree = 0
