@@ -229,7 +229,7 @@ function runUpgrades(){
 				blocksMined = 0
 				for(zdes = z-1;zdes<=z+1;zdes++){
 					for(ydes = y-1;ydes <= y+1;ydes++){
-						t = getTile(x,ydes,zdes){
+						t = getTile(x,ydes,zdes)
 						d = getData(x,ydes,zdes)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(x,ydes,zdes,0,0)
@@ -261,14 +261,14 @@ function runUpgrades(){
 							}
 						}
 					}
-				}
+				
 				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
 			}
 			else if(side == 2 || side == 3){
 				blocksMined = 0
 				for(xdes = x-1;xdes<=x+1;xdes++){
 					for(ydes = y-1;ydes <= y+1;ydes++){
-						t = getTile(xdes,ydes,z){
+						t = getTile(xdes,ydes,z)
 						d = getData(xdes,ydes,z)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(xdes,ydes,z,0,0)
@@ -299,14 +299,14 @@ function runUpgrades(){
 							}
 						}
 					}
-				}
+				
 				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
 			}
 			else if(side == 0 || side == 1){
 				blocksMined = 0
 				for(xdes = x-1;xdes<=x+1;xdes++){
 					for(zdes = z-1;zdes <= z+1;zdes++){
-						t = getTile(xdes,y,zdes){
+						t = getTile(xdes,y,zdes)
 						d = getData(xdes,y,zdes)
 							if(t == 2 || t == 3 || t == 12 || t == 13 || t == 82 || t == 80){
 								setTile(xdes,y,zdes,0,0)
@@ -337,7 +337,7 @@ function runUpgrades(){
 							}
 						}
 					}
-				}
+				
 				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
 			}
 		}
