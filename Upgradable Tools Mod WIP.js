@@ -331,6 +331,8 @@ function runUpgrades(){
 			}
 		}
 		if(Player.checkForInventoryItem(ExcavatorUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
+			t = getTile(x,y,z)
+			d = getData(x,y,z)
 			if(t == 2 || t == 80){
 				preventDefault()
 				if(t == 2){
@@ -339,7 +341,16 @@ function runUpgrades(){
 				if(t == 80){
 					Level.playSound(x, y, z, "step.cloth", 1, 3)
 				}
-				if(t == )
+				if(t == 79){
+					Level.playSound(x, y, z, "random.glass", 1, 3)
+				}
+				if(t == 89 || t == 20){
+					Level.playSound(x, y, z, "random.glass", 1, 3)
+				}
+				if(t == 13 || t == 82){
+					Level.playSound(x, y, z, "step.gravel", 1, 3)
+				}
+				Level.dropItem(x,y,z,0.25,t,1,d)
 			}	
 		}
 	}
@@ -508,9 +519,23 @@ function runUpgrades(){
 			if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 			if(gt != 74){
 				preventDefault()
-				Level.playSound(x, y, z, "step.stone", 1, 3);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,gt,1,0)
+				if(t == 2){
+					Level.playSound(x, y, z, "step.grass", 1, 3)
+				}
+				if(t == 80){
+					Level.playSound(x, y, z, "step.cloth", 1, 3)
+				}
+				if(t == 89 || t == 20 || t == 79){
+					Level.playSound(x, y, z, "random.glass", 1, 3)
+				}
+				if(t == 13 || t == 82){
+					Level.playSound(x, y, z, "step.gravel", 1, 3)
+				}
+				else{
+					Level.playSound(x, y, z, "step.stone", 1, 3)	
+				}
 			}
 			else if(gt == 74){
 				preventDefault()
