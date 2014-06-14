@@ -421,7 +421,7 @@ function runUpgrades(){
 	
 //Sawmill Upgrade
 	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
-		if(getTile == 17){
+		if(getTile(x,y,z) == 17){
 			preventDefault()
 			log = Level.getData(x,y,z)
 			setTile(x,y,z,0)
