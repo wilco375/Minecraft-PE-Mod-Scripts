@@ -106,9 +106,9 @@ function destroyBlock(x,y,z,side){
 	dBx = x
 	dBy = y
 	dBz = z
-	runUpgrades()
-	//Unbreaking Pickaxe upgrade:
 	blockSide = side
+	runUpgrades()
+	//Unbreaking Pickaxe upgrade
 }
 
 
@@ -403,7 +403,7 @@ function runUpgrades(){
 			endoftree = 0
 			log = getData(x,y,z)
 			for(treey = y+1; treey <= 16; treey++){
-				if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log endoftree == 0){
+				if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log && endoftree == 0){
 					setTile(x,treey,z,0)
 					Level.playSound(x, y, z, "step.wood", 1, 3)
 					treeblocksdestroyed++
@@ -430,7 +430,7 @@ function runUpgrades(){
 				treeblocksdestroyed = 0
 				endoftree = 0
 					for(treey = y+1; treey <= 16; treey++){
-						if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log endoftree == 0){
+						if(getTile(x,treey,z) == 17 && getData(x,treey,z) == log && endoftree == 0){
 							setTile(x,treey,z,0)
 							Level.playSound(x, y, z, "step.wood", 1, 3)
 							treeblocksdestroyed++
