@@ -224,7 +224,7 @@ function runUpgrades(){
 	side = blockSide
 //Shovel upgrades
 	if(ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284){
-		if(Player.checkForInventoryItem(ExcavatorUpgradeId) >= 1){
+		if(Player.checkForInventoryItem(ExcavatorShovelUpgradeId) >= 1){
 			if(side == 4 || side == 5){
 				blocksMined = 0
 				for(zdes = z-1;zdes<=z+1;zdes++){
@@ -246,7 +246,7 @@ function runUpgrades(){
 									Level.playSound(x, ydes, zdes, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
 									if(t == 80){
 										Level.dropItem(x,ydes,zdes,0.25,332,4,d)	
 									}
@@ -285,7 +285,7 @@ function runUpgrades(){
 									Level.playSound(xdes, ydes, z, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
 									if(t == 80){
 										Level.dropItem(xdes,ydes,z,0.25,332,4,d)	
 									}
@@ -323,7 +323,7 @@ function runUpgrades(){
 									Level.playSound(xdes, y, zdes, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem(SilkTouchShovelId == 0)){
+								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
 									if(t == 80){
 										Level.dropItem(xdes,y,zdes,0.25,332,4,d)	
 									}
@@ -370,7 +370,7 @@ function runUpgrades(){
 			}
 		}
 //Silk Touch Shovel upgrade
-		if(Player.checkForInventoryItem(ExcavatorUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
+		if(Player.checkForInventoryItem(ExcavatorShovelUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
 			t = getTile(x,y,z)
 			d = Level.getData(x,y,z)
 			if(t == 2 || t == 80){
@@ -420,9 +420,12 @@ function runUpgrades(){
 	}
 	
 //Sawmill Upgrade
-	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
+clientMessage("test1");
+clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
+clientMessage("test")
 		if(getTile(x,y,z) == 17){
 			preventDefault()
+clientMessage("test")
 			log = Level.getData(x,y,z)
 			setTile(x,y,z,0)
 			Level.playSound(x, y, z, "step.wood", 1, 3)
@@ -486,7 +489,8 @@ function runUpgrades(){
 	
 		
 	}
-	}	
+}
+		
 //Pickaxe upgrades
 	//unbreaking
 	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
