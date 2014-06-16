@@ -76,7 +76,7 @@ Item.addFurnaceRecipe(CompressedSawdust,263,1)
 Item.addCraftRecipe(AutoSmeltPickaxeUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulverisePickaxeUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
 Item.addCraftRecipe(FortunePickaxeUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
-Item.addCraftRecipe(RepairPickaxeUpgradeId, 1, 0, [42,2,0,257,2,0265,4,0,264,1,0])
+Item.addCraftRecipe(RepairPickaxeUpgradeId, 1, 0, [42,2,0,257,2,0,265,4,0,264,1,0])
 Item.addCraftRecipe(UnbreakingPickaxeUpgradeId, 1, 0, [49,1,0,42,3,0,1,3,0,257,1,0,264,1,0])
 Item.addCraftRecipe(SilkTouchPickaxeUpgradeId, 1, 0, [287,4,0,266,3,0,257,1,0,264,1,0])
 if(EfficiencyUpgradeOn == 1){
