@@ -289,6 +289,9 @@ function runUpgrades(){
 									if(t == 2){
 										Level.dropItem(x,ydes,zdes,0.25,3,4,d)	
 									}
+									else{
+										Level.dropItem(x,ydes,zdes,0.25,t,1,d)
+									}
 								}
 								else{
 								Level.dropItem(x,ydes,zdes,0.25,t,1,d)									
@@ -327,6 +330,9 @@ function runUpgrades(){
 									if(t == 2){
 										Level.dropItem(xdes,ydes,z,0.25,3,4,d)	
 									}
+									else{
+										Level.dropItem(x,ydes,zdes,0.25,t,1,d)
+									}
 								}
 								else{
 								Level.dropItem(xdes,ydes,z,0.25,t,1,d)									
@@ -364,6 +370,9 @@ function runUpgrades(){
 									}
 									if(t == 2){
 										Level.dropItem(xdes,y,zdes,0.25,3,4,d)	
+									}
+									else{
+										Level.dropItem(x,ydes,zdes,0.25,t,1,d)
 									}
 								}
 								else{
