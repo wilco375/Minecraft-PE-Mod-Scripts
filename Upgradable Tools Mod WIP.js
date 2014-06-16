@@ -19,10 +19,12 @@ var SilkTouchPickaxeUpgradeId = 416
 var ChainSawAxeUpgradeId = 417
 var UnbreakingAxeUpgradeId = 418
 var SawMillAxeUpgradeId = 419
+var RepairAxeUpgradeId = 420
 //Shovel upgrades
-var ExcavatorShovelUpgradeId = 420
-var SilkTouchShovelUpgradeId = 421
-var UnbreakingShovelUpgradeId = 422
+var ExcavatorShovelUpgradeId = 421
+var SilkTouchShovelUpgradeId = 422
+var UnbreakingShovelUpgradeId = 423
+var RepairShovelUpgradeId = 424
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -111,14 +113,10 @@ function destroyBlock(x,y,z,side){
 	//Unbreaking Pickaxe upgrade
 }
 
-
-
-
-
 function modTick(){
 
 //Efficiency upgrade
-if(EfficiencyUpgradeOn == 1){
+	if(EfficiencyUpgradeOn == 1){
 	velX=(Player.getX()-lastX)/(1/20)
 	lastX=Player.getX()
 	velY=(Player.getY()-lastY)/(1/20)
@@ -175,7 +173,7 @@ if(EfficiencyUpgradeOn == 1){
 	blockStartDestroying = 0
 	blockDestroyed = 0
 }
-//Repair upgrade (Only works on selected item)
+//Pick Repair upgrade (Only works on selected item)
 	if(Counter == null){
 		Counter = 1
 	}
@@ -190,6 +188,8 @@ if(EfficiencyUpgradeOn == 1){
 		else if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 2){
 			Repair = 2
 		}
+		
+		
 		if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 1){
 			ci = Player.getCarriedItem()
 			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
@@ -197,6 +197,42 @@ if(EfficiencyUpgradeOn == 1){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 				if(Player.getCarriedItemData() >= 2 && Repair == 2){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+			}
+		}
+//Axe repair
+		if(Player.checkForInventoryItem(RepairAxeUpgradeId) == 1){
+			RepairS = 1
+		}
+		else if(Player.checkForInventoryItem(RepairAxeUpgradeId) >= 2){
+			RepairS = 2
+		}
+		if(Player.checkForInventoryItem(RepairAxeUpgradeId) >= 1){
+			ci = Player.getCarriedItem()
+			if(ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284){
+				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+			}
+		}
+//Shovel repair
+		if(Player.checkForInventoryItem(RepairShovelUpgradeId) == 1){
+			RepairS = 1
+		}
+		else if(Player.checkForInventoryItem(RepairShovelUpgradeId) >= 2){
+			RepairS = 2
+		}
+		if(Player.checkForInventoryItem(RepairShovelUpgradeId) >= 1){
+			ci = Player.getCarriedItem()
+			if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
+				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
 				}
 			}
@@ -246,7 +282,7 @@ function runUpgrades(){
 									Level.playSound(x, ydes, zdes, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
+								if(Player.checkForInventoryItem(SilkTouchShovelUpgradeId) == 0){
 									if(t == 80){
 										Level.dropItem(x,ydes,zdes,0.25,332,4,d)	
 									}
@@ -257,7 +293,6 @@ function runUpgrades(){
 								else{
 								Level.dropItem(x,ydes,zdes,0.25,t,1,d)									
 								}
-
 							}
 						}
 					}
@@ -285,7 +320,7 @@ function runUpgrades(){
 									Level.playSound(xdes, ydes, z, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
+								if(Player.checkForInventoryItem(SilkTouchShovelUpgradeId) == 0){
 									if(t == 80){
 										Level.dropItem(xdes,ydes,z,0.25,332,4,d)	
 									}
@@ -323,7 +358,7 @@ function runUpgrades(){
 									Level.playSound(xdes, y, zdes, "step.cloth", 1, 3)
 								}
 								blocksMined++
-								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId == 0)){
+								if(Player.checkForInventoryItem( SilkTouchShovelUpgradeId) == 0){
 									if(t == 80){
 										Level.dropItem(xdes,y,zdes,0.25,332,4,d)	
 									}
