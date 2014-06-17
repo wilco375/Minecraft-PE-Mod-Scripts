@@ -1,4 +1,4 @@
-//Upgradable Tools Mod WIP version
+//Upgradable Tools Mod v0.6 beta
 //by wilco375 
 //Textures are from the Thermal Expantion Mod or created by myself
 
