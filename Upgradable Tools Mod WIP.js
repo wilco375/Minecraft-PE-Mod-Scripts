@@ -114,7 +114,7 @@ Item.setCategory(ExcavatorShovelUpgradeId,2)
 Item.addCraftRecipe(CompressedSawdust, 1, 0, [SawDustId,8,0])
 Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PymUpLQ.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/waF0tGR.png")
 
 function startDestroyBlock(){
 	blockStartDestroying = 1
