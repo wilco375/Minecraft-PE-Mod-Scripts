@@ -484,12 +484,9 @@ function runUpgrades(){
 	}
 	
 //Sawmill Upgrade
-clientMessage("test1");
 clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
-clientMessage("test")
 		if(getTile(x,y,z) == 17){
 			preventDefault()
-clientMessage("test")
 			log = Level.getData(x,y,z)
 			setTile(x,y,z,0)
 			Level.playSound(x, y, z, "step.wood", 1, 3)
