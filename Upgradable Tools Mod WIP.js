@@ -25,6 +25,9 @@ var ExcavatorShovelUpgradeId = 421
 var SilkTouchShovelUpgradeId = 422
 var UnbreakingShovelUpgradeId = 423
 var RepairShovelUpgradeId = 424
+//Sword upgrades
+var SharpnessUpgradeId = 425
+var 
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -131,6 +134,53 @@ function destroyBlock(x,y,z,side){
 	blockSide = side
 	runUpgrades()
 	//Unbreaking Pickaxe upgrade
+}
+
+function deathHook(murderer, victim){
+	if(murderer == getPlayerEnt(){
+	ci = getCurrentItem()
+	if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
+		if(SharpnessUpgradeId == 1){
+			if(Entity.getHealth(victim) >= 0.5){
+				Entity.setHealth(victim, Entity.getHealth(victim)-0.5)
+			}
+			else{
+				Entity.setHealth(victim, 0)
+			}
+		}
+		if(SharpnessUpgradeId == 2){
+			if(Entity.getHealth(victim) >= 1){
+				Entity.setHealth(victim, Entity.getHealth(victim)-1)
+			}
+			else{
+				Entity.setHealth(victim, 0)
+			}
+		}
+		if(SharpnessUpgradeId == 3){
+			if(Entity.getHealth(victim) >= 1.5){
+				Entity.setHealth(victim, Entity.getHealth(victim)-1.5)
+			}
+			else{
+				Entity.setHealth(victim, 0)
+			}
+		}
+		if(SharpnessUpgradeId == 4){
+			if(Entity.getHealth(victim) >= 2){
+				Entity.setHealth(victim, Entity.getHealth(victim)-2)
+			}
+			else{
+				Entity.setHealth(victim, 0)
+			}
+		}
+		if(SharpnessUpgradeId >= 5){
+			if(Entity.getHealth(victim) >= 2.5){
+				Entity.setHealth(victim, Entity.getHealth(victim)-2.5)
+			}
+			else{
+				Entity.setHealth(victim, 0)
+			}
+		}
+	}}
 }
 
 function modTick(){
