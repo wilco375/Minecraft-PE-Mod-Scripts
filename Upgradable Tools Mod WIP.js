@@ -27,7 +27,17 @@ var UnbreakingShovelUpgradeId = 423
 var RepairShovelUpgradeId = 424
 //Sword upgrades
 var SharpnessUpgradeId = 425
-var 
+var FireAspectUpgradeId = 426
+var KnockbackUpgradeId = 427
+var RepairUpgradeId = 428
+var UnbreakingUpgradeId = 429
+//Universal upgrades
+var UniversalRepairUpgradeId = 430
+var UniversalUnbreakingUpgradeId = 431
+//Hoe upgrades
+var RadiusUpgrade
+var RepairUpgradeId
+var UnbreakingUpgradeId
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
