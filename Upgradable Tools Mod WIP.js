@@ -147,9 +147,111 @@ function destroyBlock(x,y,z,side){
 }
 
 function deathHook(murderer, victim){
-	if(murderer == getPlayerEnt(){
+	if(murderer == getPlayerEnt()){
 	ci = getCurrentItem()
 	if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
+//Knockback upgrade
+//code by and used with permission of Metamorposis_2 
+//Check out his enchantment mod here: http://www.minecraftforum.net/topic/2721107-enchantment-mod-enchant-swordshovelpickaxeaxehoenow-enchant-any-tools/
+		if(KnockbackUpgradeId == 1){
+			if(getYaw() < 0){
+				var hit = getYaw()+90;
+        			for(go=0; hit<0; go++){
+        				hit+= 360;
+        			}
+        			x = Math.cos(hit*(Math.PI/180));
+        			z = Math.sin(hit*(Math.PI/180));
+        			setVelX(v, x*2);
+        			setVelY(v, 1);
+        			setVelZ(v, z*2);
+        		}
+			else if(getYaw() > 0 && getYaw() < 360){
+        			var hit = getYaw()+90;
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel= Math.sin(hit*(Math.PI/180));
+            			setVelX(v, XVel*2);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*2);
+        		}
+        		else if( getYaw() >= 360){
+            			var hit= getYaw()+90;
+            			for(go=0; hit>=360; go++){
+        				hit -= 360;
+        			}
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel = Math.sin(hit*(Math.PI/180));
+			        setVelX(v, XVel*2);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*2);
+          
+    			}
+		}
+		else if(KnockbackUpgradeId == 2){
+			if(getYaw() < 0){
+				var hit = getYaw()+90;
+        			for(go=0; hit<0; go++){
+        				hit+= 360;
+        			}
+        			x = Math.cos(hit*(Math.PI/180));
+        			z = Math.sin(hit*(Math.PI/180));
+        			setVelX(v, x*3);
+        			setVelY(v, 1);
+        			setVelZ(v, z*3);
+        		}
+			else if(getYaw() > 0 && getYaw() < 360){
+        			var hit = getYaw()+90;
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel= Math.sin(hit*(Math.PI/180));
+            			setVelX(v, XVel*3);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*3);
+        		}
+        		else if( getYaw() >= 360){
+            			var hit= getYaw()+90;
+            			for(go=0; hit>=360; go++){
+        				hit -= 360;
+        			}
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel = Math.sin(hit*(Math.PI/180));
+			        setVelX(v, XVel*3);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*3);
+          
+    			}
+		}
+		else if(KnockbackUpgradeId >= 3){
+			if(getYaw() < 0){
+				var hit = getYaw()+90;
+        			for(go=0; hit<0; go++){
+        				hit+= 360;
+        			}
+        			x = Math.cos(hit*(Math.PI/180));
+        			z = Math.sin(hit*(Math.PI/180));
+        			setVelX(v, x*4);
+        			setVelY(v, 1);
+        			setVelZ(v, z*4);
+        		}
+			else if(getYaw() > 0 && getYaw() < 360){
+        			var hit = getYaw()+90;
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel= Math.sin(hit*(Math.PI/180));
+            			setVelX(v, XVel*4);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*4);
+        		}
+        		else if( getYaw() >= 360){
+            			var hit= getYaw()+90;
+            			for(go=0; hit>=360; go++){
+        				hit -= 360;
+        			}
+            			XVel = Math.cos(hit*(Math.PI/180));
+            			ZVel = Math.sin(hit*(Math.PI/180));
+			        setVelX(v, XVel*4);
+            			setVelY(v, 1);
+            			setVelZ(v, ZVel*4);
+          
+    			}
+		}
 		if(SharpnessUpgradeId == 1){
 			if(Entity.getHealth(victim) >= 0.5){
 				Entity.setHealth(victim, Entity.getHealth(victim)-0.5)
@@ -189,6 +291,9 @@ function deathHook(murderer, victim){
 			else{
 				Entity.setHealth(victim, 0)
 			}
+		}
+		if(FireAspectUpgradeId == 1){
+			Entity.setFireTicks(victim, seconds)
 		}
 	}}
 }
