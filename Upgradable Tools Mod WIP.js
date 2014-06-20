@@ -26,18 +26,18 @@ var SilkTouchShovelUpgradeId = 422
 var UnbreakingShovelUpgradeId = 423
 var RepairShovelUpgradeId = 424
 //Sword upgrades
-var SharpnessUpgradeId = 425
-var FireAspectUpgradeId = 426
-var KnockbackUpgradeId = 427
-var RepairUpgradeId = 428
-var UnbreakingUpgradeId = 429
+var SharpnessUpgradeId = 425 //done
+var FireAspectUpgradeId = 426 //working on it
+var KnockbackUpgradeId = 427 //done
+var SwordRepairUpgradeId = 428 //done
+var SwordUnbreakingUpgradeId = 429
 //Universal upgrades
 var UniversalRepairUpgradeId = 430
 var UniversalUnbreakingUpgradeId = 431
 //Hoe upgrades
-var RadiusUpgrade
-var RepairUpgradeId
-var UnbreakingUpgradeId
+var RadiusUpgradeId //done
+var HoeRepairUpgradeId
+var HoeUnbreakingUpgradeId
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -129,6 +129,24 @@ Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/waF0tGR.png")
 
+function useItem(x,y,z,itemId,blockId,side){
+	if(blockId == 2 || blockId == 3){
+		if(RadiusUpgradeId >= 1){
+		ci = getCarriedItem()
+		if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
+			for(xf = x-1; xf <= x+1; xf++){
+				for(zf = z-1; zf <= z+1; zf++){
+					if(getTile(xf,y,zf) == 2 || getTile(xf,y,zf) == 3){
+						if(getTile(xf,y+1,zf) == 0){
+							setTile(xf,y,zf,60,0)
+						}
+					}
+				}
+			}
+		}
+	}}
+}
+
 function startDestroyBlock(){
 	blockStartDestroying = 1
 }
@@ -146,13 +164,40 @@ function destroyBlock(x,y,z,side){
 	//Unbreaking Pickaxe upgrade
 }
 
-function deathHook(murderer, victim){
-	if(murderer == getPlayerEnt()){
+function attackHook(attacker, victim){
+	if(attacker == getPlayerEnt()){
 	ci = getCurrentItem()
 	if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
 //Knockback upgrade
 //code by and used with permission of Metamorposis_2 
 //Check out his enchantment mod here: http://www.minecraftforum.net/topic/2721107-enchantment-mod-enchant-swordshovelpickaxeaxehoenow-enchant-any-tools/
+		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) == 1){
+		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
+		if(ExtraDurRandom == 1){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) == 2){
+		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
+		if(ExtraDurRandom != 3){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
+		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) >= 3){
+		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
+		if(ExtraDurRandom != 4){
+			ci = Player.getCarriedItem()
+				if(Player.getCarriedItemData() != 0){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+				}
+			}
+		}
 		if(KnockbackUpgradeId == 1){
 			if(getYaw() < 0){
 				var hit = getYaw()+90;
@@ -260,7 +305,7 @@ function deathHook(murderer, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		if(SharpnessUpgradeId == 2){
+		else if(SharpnessUpgradeId == 2){
 			if(Entity.getHealth(victim) >= 1){
 				Entity.setHealth(victim, Entity.getHealth(victim)-1)
 			}
@@ -268,7 +313,7 @@ function deathHook(murderer, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		if(SharpnessUpgradeId == 3){
+		else if(SharpnessUpgradeId == 3){
 			if(Entity.getHealth(victim) >= 1.5){
 				Entity.setHealth(victim, Entity.getHealth(victim)-1.5)
 			}
@@ -276,7 +321,7 @@ function deathHook(murderer, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		if(SharpnessUpgradeId == 4){
+		else if(SharpnessUpgradeId == 4){
 			if(Entity.getHealth(victim) >= 2){
 				Entity.setHealth(victim, Entity.getHealth(victim)-2)
 			}
@@ -284,7 +329,7 @@ function deathHook(murderer, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		if(SharpnessUpgradeId >= 5){
+		else if(SharpnessUpgradeId >= 5){
 			if(Entity.getHealth(victim) >= 2.5){
 				Entity.setHealth(victim, Entity.getHealth(victim)-2.5)
 			}
@@ -292,7 +337,7 @@ function deathHook(murderer, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		if(FireAspectUpgradeId == 1){
+		else if(FireAspectUpgradeId == 1){
 			Entity.setFireTicks(victim, seconds)
 		}
 	}}
@@ -404,6 +449,25 @@ function modTick(){
 				}
 			}
 		}
+//Sword repair
+		if(Player.checkForInventoryItem(SwordRepairUpgradeId) == 1){
+			RepairS = 1
+		}
+		else if(Player.checkForInventoryItem(SwordRepairUpgradeId) >= 2){
+			RepairS = 2
+		}
+		if(Player.checkForInventoryItem(SwordRepairUpgradeId) >= 1){
+			ci = Player.getCarriedItem()
+			if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
+				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+				}
+			}
+		}
+		
 //Shovel repair
 		if(Player.checkForInventoryItem(RepairShovelUpgradeId) == 1){
 			RepairS = 1
@@ -907,3 +971,4 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 		}
 	}
 }
+
