@@ -26,18 +26,18 @@ var SilkTouchShovelUpgradeId = 422
 var UnbreakingShovelUpgradeId = 423
 var RepairShovelUpgradeId = 424
 //Sword upgrades
-var SharpnessUpgradeId = 425 //done
-var FireAspectUpgradeId = 426 //working on it
-var KnockbackUpgradeId = 427 //done
-var SwordRepairUpgradeId = 428 //done
-var SwordUnbreakingUpgradeId = 429
+var SharpnessUpgradeId = 425 
+var FireAspectUpgradeId = 426 
+var KnockbackUpgradeId = 427 
+var SwordRepairUpgradeId = 428 
+var SwordUnbreakingUpgradeId = 429 
 //Universal upgrades
 var UniversalRepairUpgradeId = 430
 var UniversalUnbreakingUpgradeId = 431
 //Hoe upgrades
-var RadiusUpgradeId //done
-var HoeRepairUpgradeId
-var HoeUnbreakingUpgradeId
+var RadiusUpgradeId = 432 
+var HoeRepairUpgradeId = 433 
+var HoeUnbreakingUpgradeId = 434 
 
 //Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
 var EfficiencyUpgradeOn = 0
@@ -130,21 +130,28 @@ Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/waF0tGR.png")
 
 function useItem(x,y,z,itemId,blockId,side){
-	if(blockId == 2 || blockId == 3){
-		if(RadiusUpgradeId >= 1){
-		ci = getCarriedItem()
-		if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
-			for(xf = x-1; xf <= x+1; xf++){
-				for(zf = z-1; zf <= z+1; zf++){
-					if(getTile(xf,y,zf) == 2 || getTile(xf,y,zf) == 3){
-						if(getTile(xf,y+1,zf) == 0){
+	if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
+		if(blockId == 2 || blockId == 3){
+//radius upgrade
+			if(Player.checkForInventoryItem(RadiusUpgradeId) >= 1){
+			ci = getCarriedItem()
+				for(xf = x-1; xf <= x+1; xf++){
+					for(zf = z-1; zf <= z+1; zf++){
+						if(getTile(xf,y,zf) == 2 || getTile(xf,y,zf) == 3){
+							if(getTile(xf,y+1,zf) == 0){
 							setTile(xf,y,zf,60,0)
+							}
 						}
 					}
 				}
 			}
 		}
-	}}
+//hoe unbreaking upgrade
+		unbreakId = HoeUnbreakingUpgradeId
+		unbreak()
+		unbreakId = UniversalUnbreakingUpgradeId
+		unbreak()
+	}
 }
 
 function startDestroyBlock(){
@@ -168,37 +175,15 @@ function attackHook(attacker, victim){
 	if(attacker == getPlayerEnt()){
 	ci = getCurrentItem()
 	if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
+//Sword unbreaking upgrade
+		unbreakId = SwordUnbreakingUpgradeId
+		unbreak()
+		unbreakId = UniversalUnbreakingUpgradeId
+		unbreak()
 //Knockback upgrade
 //code by and used with permission of Metamorposis_2 
 //Check out his enchantment mod here: http://www.minecraftforum.net/topic/2721107-enchantment-mod-enchant-swordshovelpickaxeaxehoenow-enchant-any-tools/
-		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) == 1){
-		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
-		if(ExtraDurRandom == 1){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) == 2){
-		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
-		if(ExtraDurRandom != 3){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-		if(Player.checkForInventoryItem(HoeUnbreakingUpgradeId) >= 3){
-		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
-		if(ExtraDurRandom != 4){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-		if(KnockbackUpgradeId == 1){
+		if(Player.checkForInventoryItem(KnockbackUpgradeId) == 1){
 			if(getYaw() < 0){
 				var hit = getYaw()+90;
         			for(go=0; hit<0; go++){
@@ -231,7 +216,7 @@ function attackHook(attacker, victim){
           
     			}
 		}
-		else if(KnockbackUpgradeId == 2){
+		else if(Player.checkForInventoryItem(KnockbackUpgradeId) == 2){
 			if(getYaw() < 0){
 				var hit = getYaw()+90;
         			for(go=0; hit<0; go++){
@@ -264,7 +249,7 @@ function attackHook(attacker, victim){
           
     			}
 		}
-		else if(KnockbackUpgradeId >= 3){
+		else if(Player.checkForInventoryItem(KnockbackUpgradeId) >= 3){
 			if(getYaw() < 0){
 				var hit = getYaw()+90;
         			for(go=0; hit<0; go++){
@@ -297,39 +282,17 @@ function attackHook(attacker, victim){
           
     			}
 		}
-		if(SharpnessUpgradeId == 1){
-			if(Entity.getHealth(victim) >= 0.5){
-				Entity.setHealth(victim, Entity.getHealth(victim)-0.5)
+//Sword sharpness upgrade
+		if(Player.checkForInventoryItem(SharpnessUpgradeId) >= 1 && Player.checkForInventoryItem(SharpnessUpgradeId) <= 4){
+			sa = Player.checkForInventoryItem(SharpnessUpgradeId)/2
+			if(Entity.getHealth(victim) >= sa){
+				Entity.setHealth(victim, Entity.getHealth(victim)-sa)
 			}
 			else{
 				Entity.setHealth(victim, 0)
 			}
 		}
-		else if(SharpnessUpgradeId == 2){
-			if(Entity.getHealth(victim) >= 1){
-				Entity.setHealth(victim, Entity.getHealth(victim)-1)
-			}
-			else{
-				Entity.setHealth(victim, 0)
-			}
-		}
-		else if(SharpnessUpgradeId == 3){
-			if(Entity.getHealth(victim) >= 1.5){
-				Entity.setHealth(victim, Entity.getHealth(victim)-1.5)
-			}
-			else{
-				Entity.setHealth(victim, 0)
-			}
-		}
-		else if(SharpnessUpgradeId == 4){
-			if(Entity.getHealth(victim) >= 2){
-				Entity.setHealth(victim, Entity.getHealth(victim)-2)
-			}
-			else{
-				Entity.setHealth(victim, 0)
-			}
-		}
-		else if(SharpnessUpgradeId >= 5){
+		else if(Player.checkForInventoryItem(SharpnessUpgradeId) >= 5){
 			if(Entity.getHealth(victim) >= 2.5){
 				Entity.setHealth(victim, Entity.getHealth(victim)-2.5)
 			}
@@ -337,8 +300,11 @@ function attackHook(attacker, victim){
 				Entity.setHealth(victim, 0)
 			}
 		}
-		else if(FireAspectUpgradeId == 1){
-			Entity.setFireTicks(victim, seconds)
+		if(Player.checkForInventoryItem(FireAspectUpgradeId) == 1){
+			Entity.setFireTicks(victim, 4)
+		}
+		if(Player.checkForInventoryItem(FireAspectUpgradeId) >= 2){
+			Entity.setFireTicks(victim, 8)
 		}
 	}}
 }
@@ -403,7 +369,7 @@ function modTick(){
 	blockStartDestroying = 0
 	blockDestroyed = 0
 }
-//Pick Repair upgrade (Only works on selected item)
+
 	if(Counter == null){
 		Counter = 1
 	}
@@ -412,81 +378,38 @@ function modTick(){
 	}
 	if(Counter == 200){
 		Counter = 1
-		if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) == 1){
-			Repair = 1
+//universal repair	
+		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285 || ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284 || ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283 || ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286 || ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
+			RepairId = UniversalRepairUpgradeId
+			repair()
 		}
-		else if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 2){
-			Repair = 2
-		}
-		
-		
-		if(Player.checkForInventoryItem(RepairPickaxeUpgradeId) >= 1){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0 && Repair == 1){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-				if(Player.getCarriedItemData() >= 2 && Repair == 2){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-			}
+//Pick Repair upgrade (Only works on selected item)
+	if(UniversalRepairUpgradeId == 0){
+		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
+			RepairId = RepairPickaxeUpgradeId
+			repair()
 		}
 //Axe repair
-		if(Player.checkForInventoryItem(RepairAxeUpgradeId) == 1){
-			RepairS = 1
-		}
-		else if(Player.checkForInventoryItem(RepairAxeUpgradeId) >= 2){
-			RepairS = 2
-		}
-		if(Player.checkForInventoryItem(RepairAxeUpgradeId) >= 1){
-			ci = Player.getCarriedItem()
-			if(ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284){
-				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-			}
+		if(ci == 256 || ci == 269 || ci == 273 || ci == 277 || ci == 284){
+			RepairId = RepairAxeUpgradeId
+			repair()
 		}
 //Sword repair
-		if(Player.checkForInventoryItem(SwordRepairUpgradeId) == 1){
-			RepairS = 1
-		}
-		else if(Player.checkForInventoryItem(SwordRepairUpgradeId) >= 2){
-			RepairS = 2
-		}
-		if(Player.checkForInventoryItem(SwordRepairUpgradeId) >= 1){
-			ci = Player.getCarriedItem()
-			if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
-				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-			}
-		}
-		
+		if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
+			RepairId = SwordRepairUpgradeId
+			repair()
+		}		
 //Shovel repair
-		if(Player.checkForInventoryItem(RepairShovelUpgradeId) == 1){
-			RepairS = 1
-		}
-		else if(Player.checkForInventoryItem(RepairShovelUpgradeId) >= 2){
-			RepairS = 2
-		}
-		if(Player.checkForInventoryItem(RepairShovelUpgradeId) >= 1){
-			ci = Player.getCarriedItem()
-			if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
-				if(Player.getCarriedItemData() != 0 && RepairS == 1){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-				if(Player.getCarriedItemData() >= 2 && RepairS == 2){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
-				}
-			}
-		}
-	}	
+		if(ci == 258 || ci == 271 || ci == 275 || ci == 279 || ci == 286){
+			RepairId = RepairShovelUpgradeId
+			repair()
+		}		
+//Hoe repair
+		if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
+			RepairId = RepairShovelUpgradeId
+			repair()
+		}				
+	}}
 }
 
 //The following custom function is created by Kyurem838 on the minecraft forums:
@@ -635,33 +558,10 @@ function runUpgrades(){
 			}
 		}
 //Unbreaking Shovel Upgrade
-		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) == 1){
-		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
-		if(ExtraDurRandom == 1){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) == 2){
-		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
-		if(ExtraDurRandom != 3){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-		if(Player.checkForInventoryItem(UnbreakingShovelUpgradeId) >= 3){
-		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
-		if(ExtraDurRandom != 4){
-			ci = Player.getCarriedItem()
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
+		unbreakId = UnbreakingShovelUpgradeId
+		unbreak()
+		unbreakId = UniversalUnbreakingUpgradeId
+		unbreak()
 //Silk Touch Shovel upgrade
 		if(Player.checkForInventoryItem(ExcavatorShovelUpgradeId) == 0 && Player.checkForInventoryItem(SilkTouchShovelUpgradeId) >= 1){
 			t = getTile(x,y,z)
@@ -712,8 +612,8 @@ function runUpgrades(){
 		}
 	}
 	
-//Sawmill Upgrade
-clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
+//Sawmill Upgrade	
+if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 		if(getTile(x,y,z) == 17){
 			preventDefault()
 			log = Level.getData(x,y,z)
@@ -743,81 +643,21 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 	}
 	
 	//Unbreaking Axe Upgrade
-	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) == 1){
-		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
-		if(ExtraDurRandom == 1){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) == 2){
-		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
-		if(ExtraDurRandom != 3){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingAxeUpgradeId) >= 3){
-		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
-		if(ExtraDurRandom != 4){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	
-		
+	unbreakId = UnbreakingAxeUpgradeId
+	unbreak()
+	unbreakId = UniversalUnbreakingUpgradeId
+	unbreak()
 	}
 }
 		
 //Pickaxe upgrades
 	//unbreaking
 	if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) == 1){
-		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
-		if(ExtraDurRandom == 1){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){	
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) == 2){
-		ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
-		if(ExtraDurRandom != 3){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	if(Player.checkForInventoryItem(UnbreakingPickaxeUpgradeId) >= 3){
-		ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
-		if(ExtraDurRandom != 4){
-			ci = Player.getCarriedItem()
-			if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
-				if(Player.getCarriedItemData() != 0){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
-				}
-			}
-		}
-	}
-	}
+		unbreakId = UnbreakingPickaxeUpgradeId
+		unbreak()
+		unbreakId = UniversalUnbreakingUpgradeId
+		unbreak()
+		gt = getTile(x,y,z)
 //fortune
 	if(Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 1){
 		Random = Math.floor((Math.random() * 3) + 1);
@@ -849,7 +689,6 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 	if(extraItem != 1 && extraItem != 2 && extraItem != 3){
 		extraItem = 0
 	}
-	
 	if(Player.checkForInventoryItem(SilkTouchPickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(PulverisePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){
 		gt = getTile(x,y,z)
 		if(gt == 16 || gt == 21 || gt == 73 || gt == 74 || gt == 56 || gt == 2 || gt == 79 || gt == 1 || gt == 80 || gt == 13 || gt == 82 || gt == 47 || gt == 20){
@@ -883,7 +722,6 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 			}
 		}
 	}
-	
 	if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(FortunePickaxeUpgradeId) >= 1){ //fortune, no pulverise (lapis, redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
@@ -900,9 +738,6 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 				Level.dropItem(x,y,z,0.25,351,6+(extraItem*8),4)
 			}
 		}
-	
-	if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
-		gt = getTile(x,y,z)
 		if(Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) >= 1){ //autosmelt and changes if also pulverise (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
@@ -936,8 +771,7 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 				}
 				Level.dropItem(x,y,z,0.25,266,Player.checkForInventoryItem(PulverisePickaxeUpgradeId)+1+extraItem,0)
 			}
-		}
-		
+		}	
 		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
 				preventDefault()
@@ -951,8 +785,7 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,goldDustId,2+extraItem,0)
 			}	
-		}
-		
+		}		
 		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1){ //Pulveriser upgrade and optinally autosmelt (lapis and redstone)
 			if(gt == 73 || gt == 74){
 				if(ci != 270 && ci != 274){
@@ -972,3 +805,59 @@ clientMessage(Player.checkForInventoryItem(SawMillAxeUpgradeId));	if(Player.chec
 	}
 }
 
+function repair(){
+	if(Player.checkForInventoryItem(RepairId) == 1){
+		Repair = 1
+	}
+	else if(Player.checkForInventoryItem(RepairId) >= 2){
+		Repair = 2
+	}
+	if(Player.checkForInventoryItem(RepairId) >= 1){
+		ci = Player.getCarriedItem()
+			if(Player.getCarriedItemData() != 0 && Repair == 1){	
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+			}
+			if(Player.getCarriedItemData() >= 2 && Repair == 2){
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-Repair)
+			}
+	}
+}
+
+function unbreak(){
+	if(unbreakId != UniversalUnbreakingUpgradeId && Player.checkForInventoryItem(UniversalUnbreakingUpgradeId) == 0){
+		unbreak2()
+	}
+	else if(unbreakId == UniversalUnbreakingUpgradeId){
+		unbreak2()
+	}
+}
+	
+function unbreak2(){
+	if(Player.checkForInventoryItem(unbreakId) == 1){
+		ExtraDurRandom = Math.floor((Math.random() * 2) + 1)
+		if(ExtraDurRandom == 1){
+			ci = Player.getCarriedItem()
+			if(Player.getCarriedItemData() != 0){	
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(unbreakId) == 2){
+	ExtraDurRandom = Math.floor((Math.random() * 3) + 1)
+		if(ExtraDurRandom != 3){
+		ci = Player.getCarriedItem()
+			if(Player.getCarriedItemData() != 0){
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+			}
+		}
+	}
+	if(Player.checkForInventoryItem(unbreakId) >= 3){
+	ExtraDurRandom = Math.floor((Math.random() * 4) + 1)
+		if(ExtraDurRandom != 4){
+			ci = Player.getCarriedItem()
+			if(Player.getCarriedItemData() != 0){
+				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()-1)
+			}
+		}
+	}
+}
