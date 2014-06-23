@@ -39,7 +39,7 @@ var RadiusUpgradeId = 432
 var HoeRepairUpgradeId = 433 
 var HoeUnbreakingUpgradeId = 434 
 
-//Only enable the efficiency upgrade if you have a good device, it causes a lot of lag because it has to track all kinds of things every tick to work
+//Only enable the efficiency upgrade if you have a high-end device, it can cause a lot of lag.
 var EfficiencyUpgradeOn = 0
 
 var Counter
@@ -58,7 +58,37 @@ var blockStartDestroying
 var blockDestroyed
 var EfficiencyOn
 
-//pickaxe upgrades
+//Hoe upgrades
+ModPE.setItem(RadiusUpgradeId,"emerald",0,"Universal Repair Upgrade")
+Item.addCraftRecipe(RadiusUpgradeId, 1, 0, [292,4,0,265,4,0,264,1,0])
+Item.setCategory(RadiusUpgradeId,2)
+ModPE.setItem(HoeRepairUpgradeId,"emerald",0,"Universal Repair Upgrade")
+Item.addCraftRecipe(HoeRepairUpgradeId, 1, 0, [42,2,0,292,2,0,265,4,0,264,1,0])
+Item.setCategory(HoeRepairUpgradeId,2)
+//Sword upgrades
+ModPE.setItem(SharpnessUpgradeId,"minecart_chest",0,"Sharpness Sword Upgrade")
+Item.addCraftRecipe(SharpnessUpgradeId, 1, 0, [42,1,0,265,4,0,267,4,0,264,1,0])
+Item.setCategory(SharpnessUpgradeId,2)
+ModPE.setItem(FireAspectUpgradeId,"minecart_furnace",0,"Fire Aspect Sword Upgrade")
+Item.addCraftRecipe(FireAspectUpgradeId, 1, 0, [259,4,0,87,4,0,264,1,0])
+Item.setCategory(FireAspectUpgradeId,2)
+ModPE.setItem(KnockbackUpgradeId,"minecart_hopper",0,"Knockback Sword Upgrade")
+Item.addCraftRecipe(KnockbackUpgradeId, 1, 0, [64,4,0,42,2,0,265,2,0,264,1,0])
+Item.setCategory(KnockbackUpgradeId,2)
+ModPE.setItem(SwordRepairUpgradeId,"record_stal",0,"Repair Sword Upgrade")
+Item.addCraftRecipe(SwordRepairUpgradeId, 1, 0, [42,2,0,267,2,0,265,4,0,264,1,0])
+Item.setCategory(SwordRepairUpgradeId,2)
+ModPE.setItem(SwordUnbreakingUpgradeId,"minecart_normal",0,"Unbreaking Sword Upgrade")
+Item.addCraftRecipe(SwordUnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,3,0,267,1,0,264,1,0])
+Item.setCategory(SwordUnbreakingUpgradeId,2)
+//Universal upgrades
+ModPE.setItem(UniversalRepairUpgradeId,"emerald",0,"Universal Repair Upgrade")
+Item.addCraftRecipe(UniversalRepairUpgradeId, 1, 0, [42,4,0,265,4,0,57,1,0])
+Item.setCategory(UniversalRepairUpgradeId,2)
+ModPE.setItem(UniversalUnbreakingUpgradeId,"minecart_tnt",0,"Universal Unbreaking Upgrade")
+Item.addCraftRecipe(UniversalUnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,265,4,0,57,1,0])
+Item.setCategory(UniversalUnbreakingUpgradeId,2)
+//Pickaxe upgrades
 ModPE.setItem(AutoSmeltPickaxeUpgradeId,"record_cat",0,"Auto-Smelt Pickaxe Upgrade")
 ModPE.setItem(PulverisePickaxeUpgradeId,"record_chirp",0,"Pulveriser Pickaxe Upgrade")
 ModPE.setItem(FortunePickaxeUpgradeId,"record_mellohi",0,"Fortune Pickaxe Upgrade")
@@ -66,26 +96,26 @@ ModPE.setItem(RepairPickaxeUpgradeId,"record_stal",0,"Repair Pickaxe Upgrade")
 ModPE.setItem(UnbreakingPickaxeUpgradeId,"record_strad",0,"Unbreaking Pickaxe Upgrade")
 ModPE.setItem(EfficiencyPickaxeUpgradeId,"record_wait",0,"Efficiency Pickaxe Upgrade")
 ModPE.setItem(SilkTouchPickaxeUpgradeId,"record_ward",0,"Silk-Touch Pickaxe Upgrade")
-//axe upgrades
+//Axe upgrades
 ModPE.setItem(ChainSawAxeUpgradeId,"quiver",0,"Chainsaw Axe Upgrade")
 ModPE.setItem(UnbreakingAxeUpgradeId,"map_empty",0,"Unbreaking Axe Upgrade")
 ModPE.setItem(SawMillAxeUpgradeId,"melon_speckled",0,"Sawmill Axe Upgrade")
 ModPE.setItem(RepairAxeUpgradeId,"record_stal",0,"Repair Axe Upgrade")
-//shovel upgrades
+//Shovel upgrades
 ModPE.setItem(ExcavatorShovelUpgradeId,"record_11",0,"Excavator Shovel Upgrade")
 ModPE.setItem(SilkTouchShovelUpgradeId,"record_ward",0,"Silk-Touch Shovel Upgrade")
 ModPE.setItem(UnbreakingShovelUpgradeId,"map_filled",0,"Unbreaking Shovel Upgrade")
 ModPE.setItem(RepairShovelUpgradeId,"record_stal",0,"Repair Shovel Upgrade")
-//other items
+//Other items
 ModPE.setItem(ironDustId,"record_far",0,"Iron Dust")
 ModPE.setItem(goldDustId,"record_mall",0,"Gold Dust")
 ModPE.setItem(SawDustId,"record_blocks",0,"Sawdust")
 ModPE.setItem(CompressedSawdust,"record_13",0,"Compressed Sawdust")
-//funace
+//Funace
 Item.addFurnaceRecipe(ironDustId,265,0)
 Item.addFurnaceRecipe(goldDustId,266,0)
 Item.addFurnaceRecipe(CompressedSawdust,263,1)
-//craft pickaxe upgrades
+//Craft pickaxe upgrades
 Item.addCraftRecipe(AutoSmeltPickaxeUpgradeId, 1, 0, [61,4,0,263,4,0,264,1,0])
 Item.addCraftRecipe(PulverisePickaxeUpgradeId, 1, 0, [257,4,0,42,2,0,1,2,0,264,1,0])
 Item.addCraftRecipe(FortunePickaxeUpgradeId, 1, 0, [22,4,0,41,1,0,266,3,0,264,1,0])
@@ -132,7 +162,7 @@ ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/waF0tGR.png
 function useItem(x,y,z,itemId,blockId,side){
 	if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
 		if(blockId == 2 || blockId == 3){
-//radius upgrade
+//Radius upgrade
 			if(Player.checkForInventoryItem(RadiusUpgradeId) >= 1){
 			ci = getCarriedItem()
 				for(xf = x-1; xf <= x+1; xf++){
@@ -146,7 +176,7 @@ function useItem(x,y,z,itemId,blockId,side){
 				}
 			}
 		}
-//hoe unbreaking upgrade
+//Hoe unbreaking upgrade
 		unbreakId = HoeUnbreakingUpgradeId
 		unbreak()
 		unbreakId = UniversalUnbreakingUpgradeId
@@ -168,7 +198,7 @@ function destroyBlock(x,y,z,side){
 	dBz = z
 	blockSide = side
 	runUpgrades()
-	//Unbreaking Pickaxe upgrade
+//Unbreaking Pickaxe upgrade
 }
 
 function attackHook(attacker, victim){
