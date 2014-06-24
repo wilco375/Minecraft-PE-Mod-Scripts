@@ -231,6 +231,7 @@ function destroyBlock(x,y,z,side){
 }
 
 function attackHook(attacker, victim){
+	v = victim
 	if(attacker == getPlayerEnt()){
 	ci = getCarriedItem()
 	if(ci ==  267 || ci == 268 || ci == 272 || ci == 276 || ci == 283){
