@@ -201,7 +201,7 @@ function useItem(x,y,z,itemId,blockId,side){
 				}
 				else{
 					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
-					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), random.break, 0, 1);
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
 				}
 			}
 		}
@@ -553,7 +553,7 @@ function runUpgrades(){
 				}
 				else{
 					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
-					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), random.break, 0, 1);
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
 				}
 			}
 			else if(side == 2 || side == 3){
@@ -617,7 +617,7 @@ function runUpgrades(){
 				}
 				else{
 					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
-					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), random.break, 0, 1);
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
 				}
 			}
 			else if(side == 0 || side == 1){
@@ -680,7 +680,7 @@ function runUpgrades(){
 				}
 				else{
 					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
-					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), random.break, 0, 1);
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
 				}
 			}
 		}
@@ -755,7 +755,7 @@ function runUpgrades(){
 				}
 				else{
 					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
-					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), random.break, 0, 1);
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
 				}
 				Level.dropItem(x,y,z,0.25,17,treeblocksdestroyed,log)
 			}
@@ -1011,3 +1011,4 @@ function unbreak2(){
 		}
 	}
 }
+
