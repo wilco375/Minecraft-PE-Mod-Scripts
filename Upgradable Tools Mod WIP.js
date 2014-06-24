@@ -179,8 +179,18 @@ function useItem(x,y,z,itemId,blockId,side){
 						}
 					}
 				}
-			Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
-			damage = 0
+				if(Player.getCarriedItemData()+damage < 60 && ci == 290){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+					damage = 0
+				}
+				if(Player.getCarriedItemData()+damage < 60 && ci == 290){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+					damage = 0
+				}
+				if(Player.getCarriedItemData()+damage < 60 && ci == 290){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+					damage = 0
+				}
 			}
 		}
 //Hoe unbreaking upgrade
