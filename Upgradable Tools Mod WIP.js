@@ -62,9 +62,12 @@ var EfficiencyOn
 ModPE.setItem(RadiusUpgradeId,"emerald",0,"Radius Hoe Upgrade")
 Item.addCraftRecipe(RadiusUpgradeId, 1, 0, [292,4,0,265,4,0,264,1,0])
 Item.setCategory(RadiusUpgradeId,2)
-ModPE.setItem(HoeRepairUpgradeId,"record_stal",0,"Hoe Repair Upgrade")
+ModPE.setItem(HoeRepairUpgradeId,"record_stal",0,"Repair Hoe Upgrade")
 Item.addCraftRecipe(HoeRepairUpgradeId, 1, 0, [42,2,0,292,2,0,265,4,0,264,1,0])
 Item.setCategory(HoeRepairUpgradeId,2)
+ModPE.setItem(HoeUnbreakingUpgradeId,"iron_horse_armor",0,"Unbreaking Hoe Upgrade")
+Item.addCraftRecipe(HoeUnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,3,0,267,1,0,264,1,0])
+Item.setCategory(HoeUnbreakingUpgradeId,2)
 //Sword upgrades
 ModPE.setItem(SharpnessUpgradeId,"minecart_chest",0,"Sharpness Sword Upgrade")
 Item.addCraftRecipe(SharpnessUpgradeId, 1, 0, [42,1,0,265,4,0,267,4,0,264,1,0])
@@ -165,15 +168,19 @@ function useItem(x,y,z,itemId,blockId,side){
 //Radius upgrade
 			if(Player.checkForInventoryItem(RadiusUpgradeId) >= 1){
 			ci = getCarriedItem()
+			damage = 0
 				for(xf = x-1; xf <= x+1; xf++){
 					for(zf = z-1; zf <= z+1; zf++){
 						if(getTile(xf,y,zf) == 2 || getTile(xf,y,zf) == 3){
 							if(getTile(xf,y+1,zf) == 0){
-							setTile(xf,y,zf,60,0)
+								setTile(xf,y,zf,60,0)
+								damage++
 							}
 						}
 					}
 				}
+			Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+			damage = 0
 			}
 		}
 //Hoe unbreaking upgrade
