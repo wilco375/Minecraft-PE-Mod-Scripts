@@ -59,10 +59,10 @@ var blockDestroyed
 var EfficiencyOn
 
 //Hoe upgrades
-ModPE.setItem(RadiusUpgradeId,"emerald",0,"Universal Repair Upgrade")
+ModPE.setItem(RadiusUpgradeId,"emerald",0,"Radius Hoe Upgrade")
 Item.addCraftRecipe(RadiusUpgradeId, 1, 0, [292,4,0,265,4,0,264,1,0])
 Item.setCategory(RadiusUpgradeId,2)
-ModPE.setItem(HoeRepairUpgradeId,"emerald",0,"Universal Repair Upgrade")
+ModPE.setItem(HoeRepairUpgradeId,"record_stal",0,"Hoe Repair Upgrade")
 Item.addCraftRecipe(HoeRepairUpgradeId, 1, 0, [42,2,0,292,2,0,265,4,0,264,1,0])
 Item.setCategory(HoeRepairUpgradeId,2)
 //Sword upgrades
