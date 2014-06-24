@@ -183,13 +183,25 @@ function useItem(x,y,z,itemId,blockId,side){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				if(Player.getCarriedItemData()+damage < 60 && ci == 290){
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 291){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				if(Player.getCarriedItemData()+damage < 60 && ci == 290){
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 292){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 294){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 293){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), GetPlayerY(), getPlayerZ(), random.break, 0, 1);
 				}
 			}
 		}
@@ -519,7 +531,30 @@ function runUpgrades(){
 						}
 					}
 				
-				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), GetPlayerY(), getPlayerZ(), random.break, 0, 1);
+				}
 			}
 			else if(side == 2 || side == 3){
 				blocksMined = 0
@@ -560,7 +595,30 @@ function runUpgrades(){
 						}
 					}
 				
-				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), GetPlayerY(), getPlayerZ(), random.break, 0, 1);
+				}
 			}
 			else if(side == 0 || side == 1){
 				blocksMined = 0
@@ -600,8 +658,30 @@ function runUpgrades(){
 							}
 						}
 					}
-				
-				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), GetPlayerY(), getPlayerZ(), random.break, 0, 1);
+				}
 			}
 		}
 //Unbreaking Shovel Upgrade
@@ -653,7 +733,30 @@ function runUpgrades(){
 				}
 			}
 			if(treeblocksdestroyed >= 1){
-				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+				if(Player.getCarriedItemData()+damage < 60 && ci == 271){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 275){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 258){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 286){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 279){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), GetPlayerY(), getPlayerZ(), random.break, 0, 1);
+				}
 				Level.dropItem(x,y,z,0.25,17,treeblocksdestroyed,log)
 			}
 		}
