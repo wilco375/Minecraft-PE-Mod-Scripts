@@ -443,7 +443,7 @@ ci = getCarriedItem()
 		}		
 //Hoe repair
 		if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
-			RepairId = RepairShovelUpgradeId
+			RepairId = HoeRepairUpgradeId
 			repair()
 		}				
 	}}
