@@ -340,7 +340,7 @@ function attackHook(attacker, victim){
 }
 
 function modTick(){
-
+ci = getCarriedItem()
 //Efficiency upgrade
 	if(EfficiencyUpgradeOn == 1){
 	velX=(Player.getX()-lastX)/(1/20)
