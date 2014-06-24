@@ -443,7 +443,7 @@ ci = getCarriedItem()
 			repair()
 		}
 //Pick Repair upgrade (Only works on selected item)
-	if(UniversalRepairUpgradeId == 0){
+	if(Player.checkForInventoryItem(UniversalRepairUpgradeId) == 0){
 		if(ci == 257 || ci == 274 || ci == 270 || ci == 278 || ci == 285){
 			RepairId = RepairPickaxeUpgradeId
 			repair()
