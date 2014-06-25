@@ -162,6 +162,17 @@ Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/waF0tGR.png")
 
+function procCmd(command){
+	var cmd = command.split(" ");
+	if(cmd[0] == "upgrades"){
+		for(var i = 410; i <= 434; i++){
+			Player.addInventoryItem(i,5,0)
+		}
+	}
+}	
+
+
+
 function useItem(x,y,z,itemId,blockId,side){
 	if(ci == 290 || ci == 291 || ci == 292 || ci == 293 || ci == 294){
 		if(blockId == 2 || blockId == 3){
