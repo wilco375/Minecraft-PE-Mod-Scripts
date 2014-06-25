@@ -744,6 +744,7 @@ function runUpgrades(){
 					endoftree = 1
 				}
 			}
+			damage = treeblocksdestroyed
 			if(treeblocksdestroyed >= 1){
 				if(Player.getCarriedItemData()+damage < 60 && ci == 271){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
@@ -945,6 +946,7 @@ if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 				Level.playSound(x, y, z, "step.sand", 1, 4);
 				setTile(x,y,z,0,0)
 				Level.dropItem(x,y,z,0.25,20,1,0)
+			}
 		}	
 		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
