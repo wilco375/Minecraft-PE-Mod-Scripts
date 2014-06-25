@@ -166,7 +166,7 @@ function procCmd(command){
 	var cmd = command.split(" ");
 	if(cmd[0] == "upgrades"){
 		for(var i = 410; i <= 434; i++){
-			Player.addInventoryItem(i,5,0)
+			Player.addItemInventory(i,5,0)
 		}
 	}
 }	
