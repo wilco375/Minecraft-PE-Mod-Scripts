@@ -933,6 +933,17 @@ if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 				}
 				Level.dropItem(x,y,z,0.25,266,Player.checkForInventoryItem(PulverisePickaxeUpgradeId)+1+extraItem,0)
 			}
+			if(gt == 1){
+				preventDefault()
+				Level.playSound(x, y, z, "step.stone", 1, 3);
+				setTile(x,y,z,0,0)
+				Level.dropItem(x,y,z,0.25,1,1,0)
+			}
+			if(gt == 12){
+				preventDefault()
+				Level.playSound(x, y, z, "step.sand", 1, 4);
+				setTile(x,y,z,0,0)
+				Level.dropItem(x,y,z,0.25,20,1,0)
 		}	
 		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){ //Pulverise and no autosmelt (gold and iron)
 			if(gt == 15 && ci != 270){
@@ -947,6 +958,30 @@ if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 				setTile(x,y,z,0)
 				Level.dropItem(x,y,z,0.25,goldDustId,2+extraItem,0)
 			}	
+			if(gt == 1){
+				preventDefault()
+				Level.playSound(x, y, z, "step.stone", 1, 3);
+				setTile(x,y,z,0)
+				Level.dropItem(x,y,z,0.25,4,1,0)
+			}		
+			if(gt == 13){
+				preventDefault()
+				Level.playSound(x, y, z, "step.gravel", 1, 3);
+				setTile(x,y,z,0)
+				Level.dropItem(x,y,z,0.25,318,1,0)
+			}	
+			if(gt == 24){
+				preventDefault()
+				Level.playSound(x, y, z, "step.stone", 1, 3);
+				setTile(x,y,z,0)
+				Level.dropItem(x,y,z,0.25,12,2,0)
+			}		
+			if(gt == 20){
+				preventDefault()
+				Level.playSound(x, y, z, "random.glass", 1, 3);
+				setTile(x,y,z,0)
+				Level.dropItem(x,y,z,0.25,12,1,0)
+			}			
 		}		
 		if(Player.checkForInventoryItem(PulverisePickaxeUpgradeId) >= 1){ //Pulveriser upgrade and optinally autosmelt (lapis and redstone)
 			if(gt == 73 || gt == 74){
