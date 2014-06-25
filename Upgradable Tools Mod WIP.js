@@ -853,6 +853,7 @@ if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 	}
 	if(Player.checkForInventoryItem(SilkTouchPickaxeUpgradeId) >= 1 && Player.checkForInventoryItem(FortunePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(PulverisePickaxeUpgradeId) == 0 && Player.checkForInventoryItem(AutoSmeltPickaxeUpgradeId) == 0){
 		gt = getTile(x,y,z)
+		t = gt
 		if(gt == 16 || gt == 21 || gt == 73 || gt == 74 || gt == 56 || gt == 2 || gt == 79 || gt == 1 || gt == 80 || gt == 13 || gt == 82 || gt == 47 || gt == 20){
 			if(ci == 257 || ci == 270 || ci == 274 || ci == 278 || ci == 285){
 			if(gt != 74){
