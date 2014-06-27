@@ -543,23 +543,23 @@ function runUpgrades(){
 						}
 					}
 				clientMessage(Player.getCarriedItemData()+damage + " " + ci)
-				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+				if(Player.getCarriedItemData()+damage < 60 && ci == 269){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 273){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 256){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 284){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 277){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
@@ -607,23 +607,23 @@ function runUpgrades(){
 						}
 					}
 				
-				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+				if(Player.getCarriedItemData()+damage < 60 && ci == 269){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 273){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 256){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 284){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 277){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
@@ -670,23 +670,23 @@ function runUpgrades(){
 							}
 						}
 					}
-				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
+				if(Player.getCarriedItemData()+damage < 60 && ci == 269){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 132 && ci == 274){
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 273){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 251 && ci == 257){
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 256){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 33 && ci == 285){
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 284){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
-				else if(Player.getCarriedItemData()+damage < 1562 && ci == 278){
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 277){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+damage)
 					damage = 0
 				}
