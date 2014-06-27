@@ -542,7 +542,7 @@ function runUpgrades(){
 							}
 						}
 					}
-				
+				clientMessage(Player.getCarriedItemData()+damage + " " + ci)
 				if(Player.getCarriedItemData()+damage < 60 && ci == 270){
 					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
 					damage = 0
