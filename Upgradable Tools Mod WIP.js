@@ -500,6 +500,7 @@ Player.checkForInventoryItem = function(id){
 		}
 	}
 	return count/2
+	clientMessage(count/2)
 };
 
 //function that runs all the upgrades
