@@ -747,23 +747,23 @@ function runUpgrades(){
 			damage = treeblocksdestroyed
 			if(treeblocksdestroyed >= 1){
 				if(Player.getCarriedItemData()+damage < 60 && ci == 271){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
 					damage = 0
 				}
 				else if(Player.getCarriedItemData()+damage < 132 && ci == 275){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
 					damage = 0
 				}
 				else if(Player.getCarriedItemData()+damage < 251 && ci == 258){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
 					damage = 0
 				}
 				else if(Player.getCarriedItemData()+damage < 33 && ci == 286){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
 					damage = 0
 				}
 				else if(Player.getCarriedItemData()+damage < 1562 && ci == 279){
-					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+blocksMined)
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
 					damage = 0
 				}
 				else{
@@ -798,7 +798,30 @@ if(Player.checkForInventoryItem(SawMillAxeUpgradeId) >= 1){
 						}	
 					}
 			if(treeblocksdestroyed >= 1){
-				Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+				if(Player.getCarriedItemData()+damage < 60 && ci == 271){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 132 && ci == 275){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 251 && ci == 258){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 33 && ci == 286){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+					damage = 0
+				}
+				else if(Player.getCarriedItemData()+damage < 1562 && ci == 279){
+					Entity.setCarriedItem(getPlayerEnt(), ci, Player.getCarriedItemCount(), Player.getCarriedItemData()+treeblocksdestroyed)
+					damage = 0
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(), 0, 0)
+					Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 0, 1);
+				}
 				Level.dropItem(x,y,z,0.25,5,treeblocksdestroyed*6,log)
 				Level.dropItem(x,y,z,0.25,SawDustId,treeblocksdestroyed,0)
 			}
