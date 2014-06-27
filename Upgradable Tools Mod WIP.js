@@ -59,7 +59,7 @@ var blockDestroyed
 var EfficiencyOn
 
 //Hoe upgrades
-ModPE.setItem(RadiusUpgradeId,"emerald",0,"Radius Hoe Upgrade")
+ModPE.setItem(RadiusUpgradeId,"gold_horse_armor",0,"Radius Hoe Upgrade")
 Item.addCraftRecipe(RadiusUpgradeId, 1, 0, [292,4,0,265,4,0,264,1,0])
 Item.setCategory(RadiusUpgradeId,2)
 ModPE.setItem(HoeRepairUpgradeId,"record_stal",0,"Repair Hoe Upgrade")
@@ -81,7 +81,7 @@ Item.setCategory(KnockbackUpgradeId,2)
 ModPE.setItem(SwordRepairUpgradeId,"record_stal",0,"Repair Sword Upgrade")
 Item.addCraftRecipe(SwordRepairUpgradeId, 1, 0, [42,2,0,267,2,0,265,4,0,264,1,0])
 Item.setCategory(SwordRepairUpgradeId,2)
-ModPE.setItem(SwordUnbreakingUpgradeId,"minecart_normal",0,"Unbreaking Sword Upgrade")
+ModPE.setItem(SwordUnbreakingUpgradeId,"diamond_horse_armor",0,"Unbreaking Sword Upgrade")
 Item.addCraftRecipe(SwordUnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,3,0,267,1,0,264,1,0])
 Item.setCategory(SwordUnbreakingUpgradeId,2)
 //Universal upgrades
