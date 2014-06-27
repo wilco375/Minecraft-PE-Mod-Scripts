@@ -488,7 +488,7 @@ ci = getCarriedItem()
 
 //The following custom function is created by Kyurem838 on the minecraft forums:
 //(Check out this topic for all the custom functions: http://goo.gl/xT7mFB)
-Player.checkForInventoryItem = function(id) {
+Player.checkForInventoryItem = function(id){
 	if(!id) id = 0;
 	var count = 0;
 	for(var i = 0; i < 255; i++){
@@ -496,7 +496,7 @@ Player.checkForInventoryItem = function(id) {
 			count += Player.getInventorySlotCount(i)
 		}
 	}
-	return count
+	return count/2
 };
 
 //function that runs all the upgrades
