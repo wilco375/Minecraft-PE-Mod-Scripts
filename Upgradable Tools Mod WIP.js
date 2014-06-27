@@ -497,11 +497,12 @@ Player.checkForInventoryItem = function(id){
 		if(Player.getInventorySlot(i) == id){
 			clientMessage(i + " " + Player.getInventorySlot(i))
 			count += Player.getInventorySlotCount(i)
+			clientMessage(count/2)
 		}
 	}
 	return count/2
 	clientMessage(count/2)
-};
+}
 
 //function that runs all the upgrades
 function runUpgrades(){
