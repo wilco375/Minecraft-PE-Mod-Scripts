@@ -169,9 +169,6 @@ function procCmd(command){
 			Player.addItemInventory(i,5,0)
 		}
 	}
-	if(cmd[0] == "stone"){
-		clientMessage(Player.checkForInventoryItem(1))
-	}
 }	
 
 
@@ -486,8 +483,6 @@ ci = getCarriedItem()
 	}}
 }
 
-//The following custom function is created by Kyurem838 on the minecraft forums:
-//(Check out this topic for all the custom functions: http://goo.gl/xT7mFB)
 Player.checkForInventoryItem = function(id){
 	if(!id){	
 		id = 0;
@@ -495,13 +490,10 @@ Player.checkForInventoryItem = function(id){
 	var count = 0;
 	for(var i = 0; i < 255; i++){
 		if(Player.getInventorySlot(i) == id){
-			clientMessage(i + " " + Player.getInventorySlot(i))
 			count += Player.getInventorySlotCount(i)
-			clientMessage(count/2)
 		}
 	}
 	return Math.round(count/2)
-	clientMessage(count/2)
 }
 
 //function that runs all the upgrades
