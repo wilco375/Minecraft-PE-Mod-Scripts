@@ -500,7 +500,7 @@ Player.checkForInventoryItem = function(id){
 			clientMessage(count/2)
 		}
 	}
-	return count/2
+	return Math.round(count/2)
 	clientMessage(count/2)
 }
 
