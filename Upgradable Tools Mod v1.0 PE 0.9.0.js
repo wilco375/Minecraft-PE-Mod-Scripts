@@ -1,4 +1,4 @@
-//Upgradable Tools Mod v1.0 
+//Upgradable Tools Mod v1.0 PE 0.9.0
 //by wilco375 
 //Textures are from the Thermal Expantion Mod or created by myself
 
@@ -160,7 +160,7 @@ Item.setCategory(ExcavatorShovelUpgradeId,2)
 Item.addCraftRecipe(CompressedSawdust, 1, 0, [SawDustId,8,0])
 Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/i5dswgj.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/XMnvRhq.png")
 
 function procCmd(command){
 	var cmd = command.split(" ");
