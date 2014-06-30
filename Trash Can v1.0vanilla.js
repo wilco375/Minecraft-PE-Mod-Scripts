@@ -1,4 +1,4 @@
-//Trash Can Mod v0.8.5
+//Trash Can Mod v1.0
 //by wilco375
 
 var TrashCanId = 122
