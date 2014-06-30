@@ -3,7 +3,7 @@
 
 var TrashCanId = 122
 
-ModPE.overrideTexture("images/terrain-atlas.tga", "http://i.imgur.com/siiGzEm.png")
+ModPE.overrideTexture("images/terrain-atlas.tga", "http://i.imgur.com/Y0CTrh5.png")
 Block.defineBlock(TrashCanId,"Trash Can", [["endframe_eye",0],["endframe_side",0],["end_stone",0],["end_stone",0],["end_stone",0],["end_stone",0]] ,20,false,143)
 Block.setDestroyTime(TrashCanId, 6)
 Item.addCraftRecipe(TrashCanId,1,0,[54,1,0,4,5,0,1,3,0])
