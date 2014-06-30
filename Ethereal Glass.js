@@ -1,8 +1,5 @@
 //Ethereal Glass Mod
 //By wilco375
-//Download Texture Pack Here:
-//http://goo.gl/9fnZiy
-
 
 var EtherealGlassId = 168
 var unstableIngotId = 456
