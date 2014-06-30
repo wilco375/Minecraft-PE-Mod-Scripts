@@ -32,7 +32,7 @@ for(var x = xstart; x <= xstart+64; x++)
 			for(var z = zstart-5; z <= zstart+5; z++)
 			{
 					tile = getTile(x,y,z)
-				 if(tile == 0 || tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
+				 if(tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
 				setTile(x, y, z, 1,0);
 }
 }}
@@ -73,7 +73,7 @@ for(var x = xstart; x >= xstart-64; x--)
 			for(var z = zstart-5; z <= zstart+5; z++)
 			{
 					tile = getTile(x,y,z)
-				 if(tile == 0 || tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
+				 if(tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
 				setTile(x, y, z, 1,0);
 //clientMessage(x + " " + y + " " + z) 
 }
@@ -116,7 +116,7 @@ for(var z = zstart; z <= zstart+64; z++)
 			for(var x = xstart-5; x <= xstart+5; x++)
 			{
 					tile = getTile(x,y,z)
-				 if(tile == 0 || tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
+				 if(tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
 				setTile(x, y, z, 1,0);
 }
 }}
@@ -154,7 +154,7 @@ for(var z = zstart; z >= zstart-64; z--)
 			for(var x = xstart-5; x <= xstart+5; x++)
 			{
 					tile = getTile(x,y,z)
-				 if(tile == 0 || tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
+				 if(tile == 13 || tile == 8 || tile == 9 || tile == 10 || tile == 11 || tile == 12){
 				setTile(x, y, z, 1,0);
 //clientMessage(x + " " + y + " " + z) 
 }
