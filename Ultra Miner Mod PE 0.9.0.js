@@ -6,7 +6,7 @@ var UltraMinerId = 250
 var giveUltraMiner
 
 ModPE.setItem(UltraMinerId,"fireworks_charge_overlay",0,"Ultra Miner")
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/XMnvRhq.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/fn8wcit.png")
 Item.addCraftRecipe(250,1,0,[278,2,0, 289,7,0]);
 
 function modTick(){
