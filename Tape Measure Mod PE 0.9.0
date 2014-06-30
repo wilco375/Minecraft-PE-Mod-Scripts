@@ -1,7 +1,7 @@
 //Tape Measure Mod PE 0.9.0
 //by wilco375
 
-var TapeId = 432
+var TapeId = 440
 var TapePhase
 
 ModPE.setItem(TapeId,"fireworks_charge",0,"Tape Measure");
