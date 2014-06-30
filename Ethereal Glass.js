@@ -9,7 +9,7 @@ var unstableIngotId = 456
 var lastX
 var lastZ
 
-
+ModPE.overrideTexture("images/terrain-atlas.tga", "https://github.com/wilco375/TGA-Images/blob/master/terrain-atlas%200.8.0%20modded.tga")
 Block.defineBlock(EtherealGlassId,"Ethereal Glass ",["mushroom_block_inside",1],20,false,0);
 Block.setRenderLayer(EtherealGlassId, 1); 
 Item.addCraftRecipe(EtherealGlassId,1,0,[20,8,0,unstableIngotId,1,0])
