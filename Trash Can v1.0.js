@@ -3,6 +3,7 @@
 
 var TrashCanId = 122
 
+ModPE.overrideTexture("images/terrain-atlas.tga", "https://github.com/wilco375/TGA-Images/blob/master/terrain-atlas%200.8.0%20modded.tga")
 Block.defineBlock(TrashCanId,"Trash Can", [["endframe_eye",0],["endframe_side",0],["end_stone",0],["end_stone",0],["end_stone",0],["end_stone",0]] ,20,false,0)
 
 Block.setShape(TrashCanId,0.125,0,0.125,0.875,0.875,0.875)
