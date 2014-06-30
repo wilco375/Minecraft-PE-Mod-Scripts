@@ -4,7 +4,7 @@
 var TapeId = 440
 var TapePhase
 
-ModPE.setItem(TapeId,"fireworks_charge",0,"Tape Measure");
+ModPE.setItem(TapeId,"fireworks_charge",0,"Tape Measure",1);
 Item.addCraftRecipe(TapeId, 1, 0, [265, 1, 0, 351, 8, 11]);
 ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PZokq45.png")
 
