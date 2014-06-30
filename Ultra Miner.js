@@ -15,10 +15,15 @@ Player.addItemInventory(UltraMinerId,amount,0)
 giveUltraMiner = 0}}
 function useItem(x,y,z,itemId,blockId,side){
 if(itemId == UltraMinerId){
-if(side != 0 && side != 1){
-amount = Player.getCarriedItemCount() - 1
-Player.clearInventorySlot(Player.getSelectedSlotId())
-giveUltraMiner = 1}
+	if(side != 0 && side != 1){
+	amount = Player.getCarriedItemCount() - 1
+		if(amount >= 1){
+			Entity.setCarriedItem(getPlayerEnt(),UltraMinerId,amount,0)
+		}
+		else{
+			Player.clearInventorySlot(Player.getSelectedSlotId())
+		}
+	}
 xstart = x
 ystart = getPlayerY()
 zstart = z
