@@ -160,7 +160,7 @@ Item.setCategory(ExcavatorShovelUpgradeId,2)
 Item.addCraftRecipe(CompressedSawdust, 1, 0, [SawDustId,8,0])
 Item.setCategory(CompressedSawdust,ItemCategory.DECORATION)
 
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/fn8wcit.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/PZokq45.png")
 
 function procCmd(command){
 	var cmd = command.split(" ");
