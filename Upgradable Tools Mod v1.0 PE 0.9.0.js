@@ -85,7 +85,7 @@ ModPE.setItem(SwordUnbreakingUpgradeId,"diamond_horse_armor",0,"Unbreaking Sword
 Item.addCraftRecipe(SwordUnbreakingUpgradeId, 1, 0, [49,1,0,42,3,0,1,3,0,267,1,0,264,1,0])
 Item.setCategory(SwordUnbreakingUpgradeId,2)
 //Universal upgrades
-ModPE.setItem(UniversalRepairUpgradeId,"emerald",0,"Universal Repair Upgrade")
+ModPE.setItem(UniversalRepairUpgradeId,"apple_golden",0,"Universal Repair Upgrade")
 Item.addCraftRecipe(UniversalRepairUpgradeId, 1, 0, [42,4,0,265,4,0,57,1,0])
 Item.setCategory(UniversalRepairUpgradeId,2)
 ModPE.setItem(UniversalUnbreakingUpgradeId,"minecart_tnt",0,"Universal Unbreaking Upgrade")
