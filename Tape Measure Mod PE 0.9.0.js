@@ -6,7 +6,7 @@ var TapePhase
 
 ModPE.setItem(TapeId,"fireworks_charge",0,"Tape Measure");
 Item.addCraftRecipe(TapeId, 1, 0, [265, 1, 0, 351, 8, 11]);
-ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/XMnvRhq.png")
+ModPE.overrideTexture("images/items-opaque.png", "http://i.imgur.com/fn8wcit.png")
 
 function useItem(x,y,z,itemId,blockId,side){
 if(itemId == TapeId){
