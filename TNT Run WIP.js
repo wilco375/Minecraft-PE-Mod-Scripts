@@ -1,0 +1,102 @@
+var MaxPlayers = 10
+var    = 30//whats the variable for when the game starts in seconds again?
+
+var playersJoined
+
+function Player(){
+return Server.getPlayers
+}
+
+function useItem(x,y,z,itemId,blockId){
+if(blockId == && /*id of a sign*/ Block.readSignLine(x,y,z,3) == "Join"){//or whatever that command might be
+p = Level.getNearestPlayer(x,y,z)
+Entity.setPos(p,arenax,arenay,arenaz)
+if(playersJoined == null || playersJoined == 0){
+playersJoined == 1
+var PlayerEntsJoined = []
+PlayerEntsjoined[0]=p
+var joinSignX = x
+var joinSignY = y
+var joinSignZ = z
+} 
+else{
+playersJoined++
+PlayerEntsJoined[PlayerEntsJoined.length]=p
+}
+Block.setSignLign(x,y,z,2,playersjoined+"/"+MaxPlayers)
+}}
+ 
+function Level.getNearestPlayer(x,y,z){ 
+var XPlayerDistance = []
+var YPlayerDistance = []
+var ZPlayerDistance = []
+var PlayerDistance = []
+var NearestPlayer = null
+var NearestDistance = null 
+for(i = 0;i<=Players.length;i++){
+XPlayerDistance[i] = x- Entity.getX(Player()[i])
+if(XPlayerDistance[i] < 0){
+XPlayerDistance[i] *= -1
+}
+YPlayerDistance[i] = y-Entity.getY(Player    ()[i])
+if(YPlayerDistance[i] < 0){
+YPlayerDistance *= -1
+}
+ZPlayerDistance[i] = z-Entity.getZ(Player()[i])
+if(ZPlayerDistance[i] < ){ //a zero plz ?!
+ ZPlayerDistance *= -1
+}
+PlayerDistance[i] = //and then that great math formula from my tape measurement mod to calculate the absolute distance from the coords  
+if(NearestDistance == null){
+NearestDistance == PlayerDistance[i] 
+NearestPlayer = i
+}
+else if(PlayerDistance[i] < NearestDistance){
+NearestDistance = PlayerDistance[i]
+NearestPlayer = i
+}
+return NearestPlayer
+}
+
+function procCmd(command){
+var cmdstage 
+if(command == arena){
+if(cmdstage = null){
+clientMessage("Make sure you're standing in the middle of a circle with a diameter of ... blocks. If you are, type /arena again")
+cmdstage = 1}
+else if(cmdstage == 1){
+saveArena(getPlayerX(),getPlayerY(),getPlayerZ())
+cmdstage = null}
+}
+}
+ 
+function saveArena(x,y,z){
+//save the x, y and z coordinates of the arena in a file in the world map
+}
+
+function loadWorld(){ //or whatever the wold loading command is, I always forget)
+if(java.weetikveel.exists()){
+arenax = java.io.weetikveelleesxcoord
+arenay =
+arenaz =
+}
+else{
+clientMessage("This world does not have an arena set. Type /arena to register one")}
+}
+
+var counter
+function modTick(){
+if(joinedPlayers >= 1){
+if(counter == null) counter = 1
+else counter++
+}
+if(counter >= SecondsBeforeStarting*20) startGame()
+counter = null
+}
+if(joinedPlayers >= MaxPlayers) startGame()
+} 
+
+function startGame(){
+setSignLine(JoinSignX,JoinSignY,JoinSignZ,3,"Started") //or whatever the command is
+gameStarted = 1
+}
