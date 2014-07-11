@@ -1,5 +1,5 @@
 var MaxPlayers = 10
-var SecondsBeforeStarting = 30//whats the variable for when the game starts in seconds again?
+var SecondsBeforeStarting = 30
 
 var playersJoined
 var counter
@@ -112,12 +112,65 @@ function setArena(x1,y1,z1,x2,y2,z2){
 		}
 	}
 	//x1
-		Level.setChestSlot(0,0,0,i,0,0);
-		Level.setChestSlot(1,0,0,i,0,0);
-		Level.setChestSlot(0,0,0,i,0,0);
-			Level.setChestSlot(1,0,0,i,0,0);
-			Level.setChestSlot(0,0,0,i,0,0);
-			Level.setChestSlot(1,0,0,i,0,0);
+	x1 = x1.toString()
+	if(parseInt(x1.charAt(0) >= 0) Level.setChestSlot(0,0,0,0,parseInt(x1.charAt(0)),1);
+	if(parseInt(x1.charAt(1) >= 0) Level.setChestSlot(0,0,0,1,parseInt(x1.charAt(1)),1);
+	if(parseInt(x1.charAt(2) >= 0) Level.setChestSlot(0,0,0,2,parseInt(x1.charAt(2)),1);
+	if(parseInt(x1.charAt(3) >= 0) Level.setChestSlot(0,0,0,3,parseInt(x1.charAt(3)),1);
+	if(parseInt(x1.charAt(4) >= 0) Level.setChestSlot(0,0,0,4,parseInt(x1.charAt(4)),1);
+	if(parseInt(x1.charAt(5) >= 0) Level.setChestSlot(0,0,0,5,parseInt(x1.charAt(5)),1);
+	if(parseInt(x1.charAt(6) >= 0) Level.setChestSlot(0,0,0,6,parseInt(x1.charAt(6)),1);
+	if(parseInt(x1.charAt(7) >= 0) Level.setChestSlot(0,0,0,7,parseInt(x1.charAt(7)),1);
+	//y1
+	y1 = y1.toString()
+	if(parseInt(y1.charAt(9) >= 0) Level.setChestSlot(0,0,0,0,parseInt(y1.charAt(9)),1);
+	if(parseInt(y1.charAt(10) >= 0) Level.setChestSlot(0,0,0,1,parseInt(y1.charAt(10)),1);
+	if(parseInt(y1.charAt(11) >= 0) Level.setChestSlot(0,0,0,2,parseInt(y1.charAt(11)),1);
+	if(parseInt(y1.charAt(12) >= 0) Level.setChestSlot(0,0,0,3,parseInt(y1.charAt(12)),1);
+	if(parseInt(y1.charAt(13) >= 0) Level.setChestSlot(0,0,0,4,parseInt(y1.charAt(13)),1);
+	if(parseInt(y1.charAt(14) >= 0) Level.setChestSlot(0,0,0,5,parseInt(y1.charAt(14)),1);
+	if(parseInt(y1.charAt(15) >= 0) Level.setChestSlot(0,0,0,6,parseInt(y1.charAt(15)),1);
+	if(parseInt(y1.charAt(16) >= 0) Level.setChestSlot(0,0,0,7,parseInt(y1.charAt(16)),1);
+	//z1
+	z1 = z1.toString()
+	if(parseInt(z1.charAt(18) >= 0) Level.setChestSlot(0,0,0,0,parseInt(z1.charAt(18)),1);
+	if(parseInt(z1.charAt(19) >= 0) Level.setChestSlot(0,0,0,1,parseInt(z1.charAt(19)),1);
+	if(parseInt(z1.charAt(20) >= 0) Level.setChestSlot(0,0,0,2,parseInt(z1.charAt(20)),1);
+	if(parseInt(z1.charAt(21) >= 0) Level.setChestSlot(0,0,0,3,parseInt(z1.charAt(21)),1);
+	if(parseInt(z1.charAt(22) >= 0) Level.setChestSlot(0,0,0,4,parseInt(z1.charAt(22)),1);
+	if(parseInt(z1.charAt(23) >= 0) Level.setChestSlot(0,0,0,5,parseInt(z1.charAt(23)),1);
+	if(parseInt(z1.charAt(24) >= 0) Level.setChestSlot(0,0,0,6,parseInt(z1.charAt(24)),1);
+	if(parseInt(z1.charAt(25) >= 0) Level.setChestSlot(0,0,0,7,parseInt(z1.charAt(25)),1);
+	//x2
+	x2 = x2.toString()
+	if(parseInt(x2.charAt(0) >= 0) Level.setChestSlot(1,0,0,0,parseInt(x2.charAt(0)),1);
+	if(parseInt(x2.charAt(1) >= 0) Level.setChestSlot(1,0,0,1,parseInt(x2.charAt(1)),1);
+	if(parseInt(x2.charAt(2) >= 0) Level.setChestSlot(1,0,0,2,parseInt(x2.charAt(2)),1);
+	if(parseInt(x2.charAt(3) >= 0) Level.setChestSlot(1,0,0,3,parseInt(x2.charAt(3)),1);
+	if(parseInt(x2.charAt(4) >= 0) Level.setChestSlot(1,0,0,4,parseInt(x2.charAt(4)),1);
+	if(parseInt(x2.charAt(5) >= 0) Level.setChestSlot(1,0,0,5,parseInt(x2.charAt(5)),1);
+	if(parseInt(x2.charAt(6) >= 0) Level.setChestSlot(1,0,0,6,parseInt(x2.charAt(6)),1);
+	if(parseInt(x2.charAt(7) >= 0) Level.setChestSlot(1,0,0,7,parseInt(x2.charAt(7)),1);
+	//y2
+	y2 = y2.toString()
+	if(parseInt(y2.charAt(9) >= 0) Level.setChestSlot(1,0,0,0,parseInt(y2.charAt(9)),1);
+	if(parseInt(y2.charAt(10) >= 0) Level.setChestSlot(1,0,0,1,parseInt(y2.charAt(10)),1);
+	if(parseInt(y2.charAt(11) >= 0) Level.setChestSlot(1,0,0,2,parseInt(y2.charAt(11)),1);
+	if(parseInt(y2.charAt(12) >= 0) Level.setChestSlot(1,0,0,3,parseInt(y2.charAt(12)),1);
+	if(parseInt(y2.charAt(13) >= 0) Level.setChestSlot(1,0,0,4,parseInt(y2.charAt(13)),1);
+	if(parseInt(y2.charAt(14) >= 0) Level.setChestSlot(1,0,0,5,parseInt(y2.charAt(14)),1);
+	if(parseInt(y2.charAt(15) >= 0) Level.setChestSlot(1,0,0,6,parseInt(y2.charAt(15)),1);
+	if(parseInt(y2.charAt(16) >= 0) Level.setChestSlot(1,0,0,7,parseInt(y2.charAt(16)),1);
+	//z2
+	z2 = z2.toString()
+	if(parseInt(z2.charAt(18) >= 0) Level.setChestSlot(1,0,0,0,parseInt(z2.charAt(18)),1);
+	if(parseInt(z2.charAt(19) >= 0) Level.setChestSlot(1,0,0,1,parseInt(z2.charAt(19)),1);
+	if(parseInt(z2.charAt(20) >= 0) Level.setChestSlot(1,0,0,2,parseInt(z2.charAt(20)),1);
+	if(parseInt(z2.charAt(21) >= 0) Level.setChestSlot(1,0,0,3,parseInt(z2.charAt(21)),1);
+	if(parseInt(z2.charAt(22) >= 0) Level.setChestSlot(1,0,0,4,parseInt(z2.charAt(22)),1);
+	if(parseInt(z2.charAt(23) >= 0) Level.setChestSlot(1,0,0,5,parseInt(z2.charAt(23)),1);
+	if(parseInt(z2.charAt(24) >= 0) Level.setChestSlot(1,0,0,6,parseInt(z2.charAt(24)),1);
+	if(parseInt(z2.charAt(25) >= 0) Level.setChestSlot(1,0,0,7,parseInt(z2.charAt(25)),1);
 }
 
 function newLevel(){
