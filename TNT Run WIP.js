@@ -28,6 +28,19 @@ function useItem(x,y,z,itemId,blockId){
 			Block.setSignLign(x,y,z,2,playersjoined+"/"+MaxPlayers)
 		}
 	}
+	else if(cmdstage == 1){
+		var arenax = x
+		var arenay = y
+		var arenaz = z
+		cmdstage = 2
+	}
+	else if(cmdstage == 2){
+		if(y == arenay){
+			setArena(arenax,arenay,arenaz,x,y,z)
+			cmdstage = null			
+		}
+		else clientMessage("ERROR: The y coordinates of the two selected points are different!")
+	}
 }
  
 function Level.getNearestPlayer(x,y,z){ 
@@ -67,19 +80,44 @@ function procCmd(command){
 	var cmdstage 
 	if(command == arena){
 		if(cmdstage = null){
-			clientMessage("Make sure you're standing in the middle of a circle with a diameter of ... blocks. If you are, type /arena again")
+			clientMessage("First select one corner of the arena, then the opposite corner")
 			cmdstage = 1
-		}
-		else if(cmdstage == 1){
-			saveArena(getPlayerX(),getPlayerY(),getPlayerZ())
-			cmdstage = null
 		}
 	}
 }
  
-function saveArena(x,y,z){
-
-
+function setArena(x1,y1,z1,x2,y2,z2){
+	if(x1 >= x2){
+		var t
+		x1 = t
+		x1 = x2
+		x2 = t
+		z1 = t
+		z1 = z2
+		z2 = t
+	}
+	if(getTile(0,0,0) != 54){
+		setTile(0,0,0,54)
+		setTile(1,0,0,54)
+		if(getTile(0,1,0) != 7) setTile(0,1,0,7)
+		if(getTile(1,1,0) != 7) setTile(0,1,0,7)
+		if(getTile(0,0,1) != 7) setTile(0,1,0,7)
+		if(getTile(1,0,1) != 7) setTile(0,1,0,7)
+		if(getTile(2,0,0) != 7) setTile(0,1,0,7)
+	}
+	else{
+		for(i = 0; i <= 27; i++){
+			Level.setChestSlot(0,0,0,i,0,0);
+			Level.setChestSlot(1,0,0,i,0,0);
+		}
+	}
+	//x1
+		Level.setChestSlot(0,0,0,i,0,0);
+		Level.setChestSlot(1,0,0,i,0,0);
+		Level.setChestSlot(0,0,0,i,0,0);
+			Level.setChestSlot(1,0,0,i,0,0);
+			Level.setChestSlot(0,0,0,i,0,0);
+			Level.setChestSlot(1,0,0,i,0,0);
 }
 
 function newLevel(){
@@ -104,4 +142,12 @@ function modTick(){
 function startGame(){
 	Level.setSignText(JoinSignX,JoinSignY,JoinSignZ,3,"Started") 
 	gameStarted = 1
+}
+
+var toBinary = function(decNum){
+    return parseInt(decNum,10).toString(2);
+}
+
+var toDecimal = function(binary) {
+    return parseInt(binary,2).toString(10);
 }
