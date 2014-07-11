@@ -1,5 +1,11 @@
 var MaxPlayers = 10
 var SecondsBeforeStarting = 30
+var arenax1
+var arenay1
+var arenaz1
+var arenax2
+var arenay2
+var arenaz2
 
 var playersJoined
 var counter
@@ -29,14 +35,14 @@ function useItem(x,y,z,itemId,blockId){
 		}
 	}
 	else if(cmdstage == 1){
-		var arenax = x
-		var arenay = y
-		var arenaz = z
+		var firstx = x
+		var firsty = y
+		var firstz = z
 		cmdstage = 2
 	}
 	else if(cmdstage == 2){
-		if(y == arenay){
-			setArena(arenax,arenay,arenaz,x,y,z)
+		if(y == firsty){
+			setArena(firstx,firsty,firstz,x,y,z)
 			cmdstage = null			
 		}
 		else clientMessage("ERROR: The y coordinates of the two selected points are different!")
@@ -111,6 +117,12 @@ function setArena(x1,y1,z1,x2,y2,z2){
 			Level.setChestSlot(1,0,0,i,0,0);
 		}
 	}
+	arenax1 = toBinary(x1) 
+	arenay1 = toBinary(y1)
+	arenaz1 = toBinary(z1)
+	arenax2 = toBinary(x2)
+	arenay2 = toBinary(y2)
+	arenaz2 = toBinary(z2)
 	//x1
 	x1 = x1.toString()
 	if(parseInt(x1.charAt(0) >= 0) Level.setChestSlot(0,0,0,0,parseInt(x1.charAt(0)),1);
@@ -174,7 +186,14 @@ function setArena(x1,y1,z1,x2,y2,z2){
 }
 
 function newLevel(){
-	
+	if(getTile(0,0,0)==54){
+		arenax1 = toDecimal(parseFloat(Level.getChestSlot(0,0,0,0).toString()+Level.getChestSlot(0,0,0,1).toString()+Level.getChestSlot(0,0,0,2).toString()+Level.getChestSlot(0,0,0,3).toString()+Level.getChestSlot(0,0,0,4).toString()+Level.getChestSlot(0,0,0,5).toString()+Level.getChestSlot(0,0,0,6).toString()+Level.getChestSlot(0,0,0,7).toString()))
+		arenay1 = toDecimal(parseFloat(Level.getChestSlot(0,0,0,9).toString()+Level.getChestSlot(0,0,0,10).toString()+Level.getChestSlot(0,0,0,11).toString()+Level.getChestSlot(0,0,0,12).toString()+Level.getChestSlot(0,0,0,13).toString()+Level.getChestSlot(0,0,0,14).toString()+Level.getChestSlot(0,0,0,15).toString()+Level.getChestSlot(0,0,0,16).toString()))
+		arenaz1 = toDecimal(parseFloat(Level.getChestSlot(0,0,0,18).toString()+Level.getChestSlot(0,0,0,19).toString()+Level.getChestSlot(0,0,0,20).toString()+Level.getChestSlot(0,0,0,21).toString()+Level.getChestSlot(0,0,0,22).toString()+Level.getChestSlot(0,0,0,23).toString()+Level.getChestSlot(0,0,0,24).toString()+Level.getChestSlot(0,0,0,25).toString()))
+		arenax2 = toDecimal(parseFloat(Level.getChestSlot(1,0,0,0).toString()+Level.getChestSlot(1,0,0,1).toString()+Level.getChestSlot(1,0,0,2).toString()+Level.getChestSlot(1,0,0,3).toString()+Level.getChestSlot(1,0,0,4).toString()+Level.getChestSlot(1,0,0,5).toString()+Level.getChestSlot(1,0,0,6).toString()+Level.getChestSlot(1,0,0,7).toString()))
+		arenay2 = toDecimal(parseFloat(Level.getChestSlot(1,0,0,9).toString()+Level.getChestSlot(1,0,0,10).toString()+Level.getChestSlot(1,0,0,11).toString()+Level.getChestSlot(1,0,0,12).toString()+Level.getChestSlot(1,0,0,13).toString()+Level.getChestSlot(1,0,0,14).toString()+Level.getChestSlot(1,0,0,15).toString()+Level.getChestSlot(1,0,0,16).toString()))
+		arenaz2 = toDecimal(parseFloat(Level.getChestSlot(1,0,0,18).toString()+Level.getChestSlot(1,0,0,19).toString()+Level.getChestSlot(1,0,0,20).toString()+Level.getChestSlot(1,0,0,21).toString()+Level.getChestSlot(1,0,0,22).toString()+Level.getChestSlot(1,0,0,23).toString()+Level.getChestSlot(1,0,0,24).toString()+Level.getChestSlot(1,0,0,25).toString()))
+	}
 	else{
 		clientMessage("This world does not have an arena set. Type /arena to register one")	
 	}
