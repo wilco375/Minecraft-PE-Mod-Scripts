@@ -31,8 +31,8 @@ Player.addItemInventory(50,amount)}
 Player.checkForInventoryItem = function(id){
 	if(!id){	
 		id = 0;
-   slot = null
 	}
+slot = null
 	var count = 0;
 	for(var i = 0; i < 255; i++){
 		if(Player.getInventorySlot(i) == id){
