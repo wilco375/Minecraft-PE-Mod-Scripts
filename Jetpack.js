@@ -1,4 +1,4 @@
-//Long Fall Boots Mod
+//Jetpack Mod
 //by wilco375
 
 var lastPY
