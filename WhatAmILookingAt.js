@@ -1,3 +1,8 @@
+//WAILA mod
+//by wilco375
+//PC mod created by ProfMobius: http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1289765-waila-1-5-2
+
+
 var textview;
 var ctx;
 var simpleGUI;
