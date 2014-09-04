@@ -1,25 +1,24 @@
 //Colored Leaves Mod
 //by wilco375
 
-var color = [0xffffff, 0xff8000, 0xff80ff, 0x4040ff, 0xffff00, 0x00ff00, 0xff0080, 0x404040, 0xc4c4c4, 0x0080c8, 0x800080, 0x000080, 0x804000, 0x008000, 0x800000, 0x000000];
 var coloredleavesFirstId = 220
 
-Block.defineBlock(coloredleavesFirstId,"White colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+1,"Orange colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+2,"Magenta colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+3,"Light Blue colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+4,"Yellow colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+5,"Light Green colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+6,"Pink colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+7,"Gray colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+8,"Light Gray colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+9,"Cyan colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+10,"Purple colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+11,"Blue colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+12,"Brown colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+13,"Dark Green colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+14,"Red colored leaves",["leaves_opaque",0],18,0,0)
-Block.defineBlock(coloredleavesFirstId+15,"Black colored leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId,"White Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+1,"Orange Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+2,"Magenta Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+3,"Light Blue Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+4,"Yellow Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+5,"Light Green Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+6,"Pink Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+7,"Gray Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+8,"Light Gray Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+9,"Cyan Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+10,"Purple Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+11,"Blue Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+12,"Brown Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+13,"Dark Green Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+14,"Red Colored Leaves",["leaves_opaque",0],18,0,0)
+Block.defineBlock(coloredleavesFirstId+15,"Black Colored Leaves",["leaves_opaque",0],18,0,0)
 
 Block.setColor(coloredleavesFirstId,[0xffffff])
 Block.setColor(coloredleavesFirstId+1,[0xff8000])
@@ -36,7 +35,7 @@ Block.setColor(coloredleavesFirstId+11,[0x000080])
 Block.setColor(coloredleavesFirstId+12,[0x804000])
 Block.setColor(coloredleavesFirstId+13,[0x008000])
 Block.setColor(coloredleavesFirstId+14,[0x800000])
-Block.setColor(coloredleavesFirstId+15,[0x000000])
+Block.setColor(coloredleavesFirstId+15,[0x202020])
 
 function useItem(x,y,z,itemId,blockId){
 	if(itemId == 351 && blockId == 18){
