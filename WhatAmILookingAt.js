@@ -50,9 +50,9 @@ enabled = 1
 			simpleGUI.setWidth(1000);
 //was 400
 			simpleGUI.setHeight(60);
-		if(Level.getGameMode()==1){	simpleGUI.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.BOTTOM, 10, 10);
+		if(Level.getGameMode()==1){	simpleGUI.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.LEFT | android.view.Gravity.TOP, 10, 10);
 }
-else{	simpleGUI.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.BOTTOM, 10, 10);
+else{	simpleGUI.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.LEFT | android.view.Gravity.TOP, 10, 50);
 }
 		}catch(err){
 			print("Error: "+err);
