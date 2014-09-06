@@ -10,7 +10,7 @@ var elevatorDown
 var buttonShowed
 var buttonWindow = null;
 
-Block.defineBlock(222,"Elevator Block","texture",20,1,0);
+Block.defineBlock(222,"Elevator Block","wool",20,1,0);
 Block.setColor(222,[0xCCCCCC])
 Block.setDestroyTime(222,0.2)
 Item.addCraftRecipe(222,1,0,[265,1,0,35,8,0])
