@@ -1,6 +1,7 @@
 //UltraMiner Mod PE 0.9.0 
 //by wilco375
 //Idea by Zipperink on the MC Forums (Thanks for the tip/idea)
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/qICws
 
 var UltraMinerId = 250
 var giveUltraMiner
