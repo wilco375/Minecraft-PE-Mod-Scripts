@@ -1,6 +1,6 @@
 //Magic Mirror Mod
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/o52Pj
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/ly4CP
 
 var MirrorId = 455
 
