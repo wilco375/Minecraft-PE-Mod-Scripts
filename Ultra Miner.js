@@ -1,6 +1,7 @@
 //UltraMiner Mod
 //by wilco375
 //Idea by Zipperink on the MC Forums (Thanks for the tip/idea)
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/ohCoA
 
 var UltraMinerId = 250
 var giveUltraMiner
