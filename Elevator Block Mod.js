@@ -1,6 +1,7 @@
 //Elevator Block Mod
 //by wilco375
 //Button code thanks to Byteandahalf on the Minecraft Forums
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/pIxld
 
 var elevatorId = 222
 var onElevator
