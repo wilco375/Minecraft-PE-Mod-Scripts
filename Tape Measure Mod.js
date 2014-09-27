@@ -1,5 +1,6 @@
 //Tape Measure Mod
 //by wilco375
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/oIxeS
 
 var TapeId = 432
 var TapePhase
