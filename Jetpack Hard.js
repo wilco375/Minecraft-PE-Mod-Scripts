@@ -1,5 +1,6 @@
 //Jetpack Mod
 //by wilco375
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/4885042/jetpack-hardjs
 
 var lastPY
 var watertickcount = 0
