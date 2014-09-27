@@ -1,5 +1,6 @@
 //Long Fall Boots Mod
 //by wilco375
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/nBuX7
 
 tickcount = 0
 watertickcount = 0
