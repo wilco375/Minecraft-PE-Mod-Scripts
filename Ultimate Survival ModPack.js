@@ -1,6 +1,6 @@
 //Ultimate Survival ModPack
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link: 
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/sPOI1
 
 var underground, undergroundTime
 
