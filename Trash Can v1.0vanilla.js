@@ -1,5 +1,6 @@
 //Trash Can Mod v1.0
 //by wilco375
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/nyKsz
 
 var TrashCanId = 122
 
