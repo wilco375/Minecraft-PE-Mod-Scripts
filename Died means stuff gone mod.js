@@ -1,6 +1,6 @@
 //Died means stuff gone mod 
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link: 
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/sR3jP
 
 function deathHook(murderer, victim){
  if(victim == getPlayerEnt()){
