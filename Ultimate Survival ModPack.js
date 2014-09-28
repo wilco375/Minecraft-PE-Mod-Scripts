@@ -48,6 +48,9 @@ function modTick(){
  }
  if(undergroundTime == 12200){
   Player.setHealth(0)
+  for(i=0;i<=37;i++){
+   Player.clearInventorySlot(i)
+  }
  }
 
  currentHealth = Entity.getHealth(getPlayerEnt())
