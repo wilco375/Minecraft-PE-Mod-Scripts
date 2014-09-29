@@ -1,6 +1,6 @@
 //Larger creeper explosion mod
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link:
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/sSqyZ
 
 function entityRemovedHook(v){
  if(Entity.getEntityTypeId(v) == 33){
