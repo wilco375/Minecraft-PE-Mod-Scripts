@@ -1,6 +1,6 @@
-//Ultimate Survival ModPack
+//Ultimate Survival ModPack BETA
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/sPOI1
+//Don't share or redistribute this mod using the Github link, instead, use this link: 
 
 var underground, undergroundTime
 var lastHealth, lastCarriedItemId
@@ -63,6 +63,9 @@ function modTick(){
   if(lastCarriedItemId == 297) Player.setHealth(lastHealth+3)
   if(Entity.getHealth(getPlayerEnt()) > 20) Player. setHealth(20)
  }
+ if(lastHealth > currentHealth){
+  Player.setHealth(Math.floor(lastHealth-((lastHealth-currentHealth)*1.25)))
+ }
  lastHealth = Entity.getHealth(getPlayerEnt())
  lastCarriedItemId = Player.getCarriedItem()
 }
@@ -87,18 +90,22 @@ function attackHook(a,v){
   px = Player.getX()
   py = Player.getY()
   pz = Player.getZ() 
-  if(mx < px-1.5 || mx > px+1.5){
+  if(mx < px-1.5 || mx > px+2){
    preventDefault()
    //clientMessage("This mob is too far away to hit")
   }
-  else if(my < py-2.5 || my > py+2.5) {
+  else if(my < py-2.5 || my > py+3) {
    preventDefault()
    //clientMessage("This mob is too far away to hit")
   }
-  else if(mz < pz-1.5 || mz > pz+1.5) {
+  else if(mz < pz-1.5 || mz > pz+2) {
    preventDefault()
    //clientMessage("This mob is too far away to hit")
   }
+ }
+ itemId = Player.getCarriedItem()
+ if(itemId == 284 || itemId == 285 || itemId == 286 || itemId == 269 || itemId == 270 || itemId == 271 || itemId == 273 || itemId == 274 || itemId == 275 || itemId == 256 || itemId == 257 || itemId == 258 || itemId == 277 || itemId == 278 || itemId == 279 || itemId == 283 || itemId == 268 || itemId == 272 || itemId == 267 || itemId == 276 || itemId == 294 || itemId == 290 || itemId == 291 || itemId == 292 || itemId == 293){
+  addRandomDamage()
  }
 }
 
@@ -124,42 +131,56 @@ var cR = Math.pow(explodingChancePercentageRedstone/100, -1)
 var cC = Math.pow(explodingChancePercentageCoal/100, -1)
 
 function destroyBlock(x,y,z,shouldDrop){
-b = getTile(x,y,z)
-if(b == 15){
-e = Math.floor((Math.random() * cI) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusIron)
-}}
+ b = getTile(x,y,z)
+ if(b == 15){
+  e = Math.floor((Math.random() * cI) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusIron)
+ }}
 
-if(b == 16){
-e = Math.floor((Math.random() * cC) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusCoal)
-}}
+ if(b == 16){
+  e = Math.floor((Math.random() * cC) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusCoal)
+ }}
 
-if(b == 21){
-e = Math.floor((Math.random() * cL) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusLapis)
-}}
+ if(b == 21){
+  e = Math.floor((Math.random() * cL) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusLapis)
+ }}
 
-if(b == 56){
-e = Math.floor((Math.random() * cD) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusDiamond)
-}}
+ if(b == 56){
+  e = Math.floor((Math.random() * cD) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusDiamond)
+ }}
 
-if(b == 73 || b == 74){
-e = Math.floor((Math.random() * cR) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusRedstone)
-}}
+ if(b == 73 || b == 74){
+  e = Math.floor((Math.random() * cR) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusRedstone)
+  }}
 
-if(b == 14){
-e = Math.floor((Math.random() * cG) + 1)
-if(e == 1){
-Level.explode(x,y,z,explodingRadiusGold)
-}}
+ if(b == 14){
+  e = Math.floor((Math.random() * cG) + 1)
+  if(e == 1){
+   Level.explode(x,y,z,explodingRadiusGold)
+ }}
+
+ rnd = Math.floor((Math.random() * 50) + 1)
+ if(rnd == 1 || rnd == 2){
+  preventDefault()
+  setTile(x,y,z,0)
+ }
+ itemId = Player.getCarriedItem()
+ if(itemId == 284 || itemId == 285 || itemId == 286 || itemId == 269 || itemId == 270 || itemId == 271 || itemId == 273 || itemId == 274 || itemId == 275 || itemId == 256 || itemId == 257 || itemId == 258 || itemId == 277 || itemId == 278 || itemId == 279 ){
+  addRandomDamage()
+ }
+ if(itemId == 283 || itemId == 268 || itemId == 272 || itemId == 267 || itemId == 276){
+  addRandomDamage()
+  addRandomDamage()
+ }
 }
 
 function deathHook(murderer, victim){
@@ -169,3 +190,40 @@ function deathHook(murderer, victim){
   for(i=0;i<=37;i++){
    Player.clearInventorySlot(i)
 }}}
+
+function entityRemovedHook(v){
+ if(Entity.getEntityTypeId(v) == 33){
+  mx = Entity.getX(v)
+  my = Entity.getY(v)
+  mz = Entity.getZ(v)
+  px = Player.getX()
+  py = Player.getY()
+  pz = Player.getZ() 
+  if(mx > px-10 || mx < px+10){
+   preventDefault()
+   Level.explode(mx,my,mz,5)
+  }
+  else if(my > py-10 || my < py+10) {
+   preventDefault()
+   Level.explode(mx,my,mz,5)
+  }
+  else if(mz > pz-10 || mz < pz+10) {
+   preventDefault()
+   Level.explode(mx,my,mz,5)
+  }
+ }
+}
+
+function useItem(){
+ itemId = Player.getCarriedItem()
+ if(itemId == 294 || itemId == 290 || itemId == 291 || itemId == 292 || itemId == 293){
+  addRandomDamage()
+ }
+}
+
+function addRandomDamage(){
+ rnd = Math.floor((Math.random() * 10) + 1);
+ if(rnd == 1){
+  Entity.setCarriedItem(getPlayerEnt(),Player.getCarriedItem(),Player.getCarriedItemCount(),Player.getCarriedItemData()+1)
+ }
+}
