@@ -72,7 +72,7 @@ function procCmd(command){
   clientMessage("You can be underground for " + Math.round((12000-undergroundTime)/1200) + " more minute(s)")
  }
  if(command == "air" && undergroundTime >= 10800){
-  clientMessage("[WARNING] You can only be underground for " + Math.round((12000-undergroundTime)/20) + " more seconds!")
+  clientMessage("§c[WARNING] §fYou can only be underground for " + Math.round((12000-undergroundTime)/20) + " more seconds!")
  }
  if(command == "air" && underground != 1){
   clientMessage("You can breath just fine right here!")
