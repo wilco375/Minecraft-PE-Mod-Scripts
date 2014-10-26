@@ -1,6 +1,6 @@
 //Building & Mining Wand Mod
 //by wilco375
-//Don't share or redistribute this mod using the Github link, instead, use this link: 
+//Don't share or redistribute this mod using the Github link, instead, use this link: http://adf.ly/tQJ7A
 
 var buildingWand = 420
 var miningWand = 421
