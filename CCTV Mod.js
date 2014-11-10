@@ -1,6 +1,6 @@
 //CCTV Mod
 //by wilco375
-//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
+//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/tvNt3 
 
 var Camera = 180
 var camX, camY, camZ, goToCam, currentX, currentY, currentZ, camera, cameraX, cameraY, cameraZ, air, removed, nameCam
