@@ -277,7 +277,7 @@ function ShowCameraMenu(){
 	   }
       }
      })
-     leave.setText(cameras[0])
+     leave.setText("Leave this camera")
      leave.setTextSize(textsize)
      menu.addView(leave); 
     }
