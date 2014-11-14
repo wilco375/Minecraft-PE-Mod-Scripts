@@ -4,6 +4,8 @@
 
 var Camera = 180
 var Monitor = 1
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+var textsize = 15
 var camX, camY, camZ, goToCam, currentX, currentY, currentZ, camera, cameraX, cameraY, cameraZ, air, removed, nameCam
 var cameras = []
 var camerasX = []
