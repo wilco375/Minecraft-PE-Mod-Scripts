@@ -311,6 +311,9 @@ function ShowCameraMenu(){
         }
         Entity.setPosition(getPlayerEnt(),currentX,currentY,currentZ)
        }
+	   catch(e){
+	    clientMessage(e)
+	   }
       }
      })
      camera0.setText(cameras[0])
