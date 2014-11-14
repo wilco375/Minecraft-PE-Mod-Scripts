@@ -240,245 +240,6 @@ function destroyBlock(){
  }
 }
 
-//Show GUI
-function ShowCameraMenu(){
-	ctx.runOnUiThread(new java.lang.Runnable(){
-		run: function(){
-			try{
-				var menu = new android.widget.LinearLayout(ctx);
-				var scroll = new android.widget.ScrollView(ctx);
-				
-				menu.setOrientation(android.widget.LinearLayout.VERTICAL);
-				scroll.addView(menu);
-		
-				var dialog = new android.app.Dialog(ctx); 
-				dialog.setContentView(scroll);
-		
-				dialog.setTitle("Cameras");
-				
-				//Add buttons
-				if(cameras[0] != null){
-					var  camera0 = new android.widget.Button(ctx); 
-					camera0.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							try{
-								dialog.dismiss()
-								var goToCam = 0
-								ShowCameraFromList()
-							}
-							catch(e){
-								clientMessage(e)
-							}
-						}
-					})
-					camera0.setText(cameras[0])
-					camera0.setTextSize(textsize)
-					menu.addView(camera0); 
-				}
-				if(cameras[1] != null){
-					var  camera1 = new android.widget.Button(ctx); 
-					camera1.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss()
-							var goToCam = 1
-							ShowCameraFromList()
-						}
-					})
-					camera1.setText(cameras[1])
-					camera1.setTextSize(textsize)
-					menu.addView(camera1); 
-				}
-				if(cameras[2] != null){
-					var  camera2 = new android.widget.Button(ctx); 
-					camera2.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 2
-							ShowCameraFromList()
-						}
-					})
-					camera2.setText(cameras[2])
-					camera2.setTextSize(textsize)
-					menu.addView(camera2); 
-				}
-				if(cameras[3] != null){
-					var  camera3 = new android.widget.Button(ctx); 
-					camera3.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss()
-							var goToCam = 3
-							ShowCameraFromList()
-						}
-					})
-					camera3.setText(cameras[3])
-					camera3.setTextSize(textsize)
-					menu.addView(camera3); 
-				}	
-				if(cameras[4] != null){
-					var  camera4 = new android.widget.Button(ctx); 
-					camera4.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 4
-							ShowCameraFromList()
-						}
-					})
-					camera4.setText(cameras[4])
-					camera4.setTextSize(textsize)
-					menu.addView(camera4); 
-				}
-				if(cameras[5] != null){
-					var  camera5 = new android.widget.Button(ctx); 
-					camera5.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 5
-							ShowCameraFromList()
-						}
-					})
-					camera5.setText(cameras[5])
-					camera5.setTextSize(textsize)
-					menu.addView(camera5); 
-				}
-				if(cameras[6] != null){
-					var  camera6 = new android.widget.Button(ctx); 
-					camera6.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 6
-							ShowCameraFromList()
-						}
-					})
-					camera6.setText(cameras[6])
-					camera6.setTextSize(textsize)
-					menu.addView(camera6); 
-				}
-				if(cameras[7] != null){
-					var  camera7 = new android.widget.Button(ctx); 
-					camera7.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 7
-							ShowCameraFromList()
-						}
-					})
-					camera7.setText(cameras[7])
-					camera7.setTextSize(textsize)
-					menu.addView(camera7); 
-				}
-				if(cameras[8] != null){
-					var  camera8 = new android.widget.Button(ctx); 
-					camera8.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 8
-							ShowCameraFromList()
-						}
-					})
-					camera8.setText(cameras[8])
-					camera8.setTextSize(textsize)
-					menu.addView(camera8); 
-				}
-				if(cameras[9] != null){
-					var  camera9 = new android.widget.Button(ctx); 
-					camera9.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 9
-							ShowCameraFromList()
-						}
-					})
-					camera9.setText(cameras[9])
-					camera9.setTextSize(textsize)
-					menu.addView(camera9); 
-				}
-				if(cameras[10] != null){
-					var  camera10 = new android.widget.Button(ctx); 
-					camera10.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 10
-							ShowCameraFromList()
-						}
-					})
-					camera10.setText(cameras[10])
-					camera10.setTextSize(textsize)
-					menu.addView(camera10); 
-				}
-				if(cameras[11] != null){
-					var  camera11 = new android.widget.Button(ctx); 
-					camera11.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 11
-							ShowCameraFromList()
-						}
-					})
-					camera11.setText(cameras[11])
-					camera11.setTextSize(textsize)
-					menu.addView(camera11); 
-				}
-				if(cameras[12] != null){
-					var  camera12 = new android.widget.Button(ctx); 
-					camera12.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 12
-							ShowCameraFromList()
-						}
-					})
-					camera12.setText(cameras[12])
-					camera12.setTextSize(textsize)
-					menu.addView(camera12); 
-				}
-				if(cameras[13] != null){
-					var  camera13 = new android.widget.Button(ctx); 
-					camera13.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 13
-							ShowCameraFromList()
-						}
-					})
-					camera13.setText(cameras[13])
-					camera13.setTextSize(textsize)
-					menu.addView(camera13); 
-				}				
-				if(cameras[14] != null){
-					var  camera14 = new android.widget.Button(ctx); 
-					camera14.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 14
-							ShowCameraFromList()
-						}
-					})
-					camera14.setText(cameras[14])
-					camera14.setTextSize(textsize)
-					menu.addView(camera14); 
-				}
-				if(cameras[15] != null){
-					var  camera15 = new android.widget.Button(ctx); 
-					camera15.setOnClickListener(new android.view.View.OnClickListener(){
-						onClick: function(){ 
-							dialog.dismiss() 
-							var goToCam = 15
-							ShowCameraFromList()
-						}
-					})
-					camera15.setText(cameras[15])
-					camera15.setTextSize(textsize)
-					menu.addView(camera15); 
-				}
-				dialog.show()
-			} 
-			catch (e){
-				print ("Error: "+e)
-			}
-		}
-	});
-}
-
 //Show the camera that's selected from the list
 function showCameraFromList(){
 	if(camera != 1){
@@ -518,3 +279,243 @@ function showCameraFromList(){
 	}
 }
 	
+//Show GUI
+function ShowCameraMenu(){
+	ctx.runOnUiThread(new java.lang.Runnable(){
+		run: function(){
+			try{
+				var menu = new android.widget.LinearLayout(ctx);
+				var scroll = new android.widget.ScrollView(ctx);
+				
+				menu.setOrientation(android.widget.LinearLayout.VERTICAL);
+				scroll.addView(menu);
+		
+				var dialog = new android.app.Dialog(ctx); 
+				dialog.setContentView(scroll);
+		
+				dialog.setTitle("Cameras");
+				
+				//Add buttons
+				if(cameras[0] != null){
+					var  camera0 = new android.widget.Button(ctx); 
+					camera0.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							try{
+								dialog.dismiss();
+								var goToCam = 0;
+								ShowCameraFromList();
+							}
+							catch(e){
+								clientMessage(e)
+							}
+						}
+					})
+					camera0.setText(cameras[0])
+					camera0.setTextSize(textsize)
+					menu.addView(camera0); 
+				}
+				if(cameras[1] != null){
+					var  camera1 = new android.widget.Button(ctx); 
+					camera1.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 1;
+							ShowCameraFromList();
+						}
+					})
+					camera1.setText(cameras[1])
+					camera1.setTextSize(textsize)
+					menu.addView(camera1); 
+				}
+				if(cameras[2] != null){
+					var  camera2 = new android.widget.Button(ctx); 
+					camera2.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 2;
+							ShowCameraFromList();
+						}
+					})
+					camera2.setText(cameras[2])
+					camera2.setTextSize(textsize)
+					menu.addView(camera2); 
+				}
+				if(cameras[3] != null){
+					var  camera3 = new android.widget.Button(ctx); 
+					camera3.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 3;
+							ShowCameraFromList();
+						}
+					})
+					camera3.setText(cameras[3])
+					camera3.setTextSize(textsize)
+					menu.addView(camera3); 
+				}	
+				if(cameras[4] != null){
+					var  camera4 = new android.widget.Button(ctx); 
+					camera4.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 4;
+							ShowCameraFromList();
+						}
+					})
+					camera4.setText(cameras[4])
+					camera4.setTextSize(textsize)
+					menu.addView(camera4); 
+				}
+				if(cameras[5] != null){
+					var  camera5 = new android.widget.Button(ctx); 
+					camera5.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 5;
+							ShowCameraFromList();
+						}
+					})
+					camera5.setText(cameras[5])
+					camera5.setTextSize(textsize)
+					menu.addView(camera5); 
+				}
+				if(cameras[6] != null){
+					var  camera6 = new android.widget.Button(ctx); 
+					camera6.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 6;
+							ShowCameraFromList();
+						}
+					})
+					camera6.setText(cameras[6])
+					camera6.setTextSize(textsize)
+					menu.addView(camera6); 
+				}
+				if(cameras[7] != null){
+					var  camera7 = new android.widget.Button(ctx); 
+					camera7.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 7;
+							ShowCameraFromList();
+						}
+					})
+					camera7.setText(cameras[7])
+					camera7.setTextSize(textsize)
+					menu.addView(camera7); 
+				}
+				if(cameras[8] != null){
+					var  camera8 = new android.widget.Button(ctx); 
+					camera8.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 8;
+							ShowCameraFromList();
+						}
+					})
+					camera8.setText(cameras[8])
+					camera8.setTextSize(textsize)
+					menu.addView(camera8); 
+				}
+				if(cameras[9] != null){
+					var  camera9 = new android.widget.Button(ctx); 
+					camera9.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 9;
+							ShowCameraFromList();
+						}
+					})
+					camera9.setText(cameras[9])
+					camera9.setTextSize(textsize)
+					menu.addView(camera9); 
+				}
+				if(cameras[10] != null){
+					var  camera10 = new android.widget.Button(ctx); 
+					camera10.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 10;
+							ShowCameraFromList();
+						}
+					})
+					camera10.setText(cameras[10])
+					camera10.setTextSize(textsize)
+					menu.addView(camera10); 
+				}
+				if(cameras[11] != null){
+					var  camera11 = new android.widget.Button(ctx); 
+					camera11.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 11;
+							ShowCameraFromList();
+						}
+					})
+					camera11.setText(cameras[11])
+					camera11.setTextSize(textsize)
+					menu.addView(camera11); 
+				}
+				if(cameras[12] != null){
+					var  camera12 = new android.widget.Button(ctx); 
+					camera12.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 12;
+							ShowCameraFromList();
+						}
+					})
+					camera12.setText(cameras[12])
+					camera12.setTextSize(textsize)
+					menu.addView(camera12); 
+				}
+				if(cameras[13] != null){
+					var  camera13 = new android.widget.Button(ctx); 
+					camera13.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 13;
+							ShowCameraFromList();
+						}
+					})
+					camera13.setText(cameras[13])
+					camera13.setTextSize(textsize)
+					menu.addView(camera13); 
+				}				
+				if(cameras[14] != null){
+					var  camera14 = new android.widget.Button(ctx); 
+					camera14.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 14;
+							ShowCameraFromList();
+						}
+					})
+					camera14.setText(cameras[14])
+					camera14.setTextSize(textsize)
+					menu.addView(camera14); 
+				}
+				if(cameras[15] != null){
+					var  camera15 = new android.widget.Button(ctx); 
+					camera15.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss();
+							var goToCam = 15;
+							ShowCameraFromList();
+						}
+					})
+					camera15.setText(cameras[15])
+					camera15.setTextSize(textsize)
+					menu.addView(camera15); 
+				}
+				dialog.show()
+			} 
+			catch (e){
+				print ("Error: "+e)
+			}
+		}
+	});
+}
+
+
