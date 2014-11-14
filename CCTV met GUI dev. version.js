@@ -262,7 +262,7 @@ function ShowCameraFromList(){
   }
   else{
 	clientMessage("The block at the location of this camera isn't a camera any more!")
-	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + "is " + getTile(cameraX,cameraY,cameraZ))
+	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + " is " + getTile(cameraX,cameraY,cameraZ) + ", goToCam = " + goToCam + ", camerasX[goToCam] is " + camerasX[goToCam])
   }
  }
  else{
