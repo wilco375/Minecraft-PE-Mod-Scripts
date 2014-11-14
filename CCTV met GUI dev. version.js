@@ -69,46 +69,48 @@ function leaveGame(){
 
 //Ask to name camera and save it if placed down and prevent the player from placing blocks if in  camera and show GUI if using Monitor
 function useItem(x,y,z,itemId,blockId,side){
- if(itemId == Monitor){
-	ShowCameraMenu()
- }
- else if(camera == 1){
-  preventDefault()
- }
- else if(itemId == Camera){
-  clientMessage("Please type »/cctv name <camera name>« to give this camera a name")
-  nameCam = 1
-  if(side == 0){
-   camX = x
-   camY = y-1
-   camZ = z
-  }
-  else if(side == 1){
-   camX = x
-   camY = y+1
-   camZ = z
-  }
-  else if(side == 2){
-   camX = x
-   camY = y
-   camZ = z-1
-  }
-  else if(side == 3){
-   camX = x
-   camY = y
-   camZ = z+1
-  }
-  else if(side == 4){
-   camX = x-1
-   camY = y
-   camZ = z
-  }
-  else if(side == 5){
-   camX = x+1
-   camY = y
-   camZ = z
-  }
- }
+	if(itemId == Monitor){
+		ShowCameraMenu()
+	}
+	else if(camera == 1){
+		preventDefault()
+	}
+	else if(itemId == Camera){
+		if(cameras.length >= 32){
+			clientMessage("Warning: You cannot see more than 32 cameras in the GUI list. You can still access it by »/cctv show <camera name>« though")}
+		clientMessage("Please type »/cctv name <camera name>« to give this camera a name")
+		nameCam = 1
+		if(side == 0){
+			camX = x
+			camY = y-1
+			camZ = z
+		}
+		else if(side == 1){
+			camX = x
+			camY = y+1
+			camZ = z
+		}
+		else if(side == 2){
+			camX = x
+			camY = y
+			camZ = z-1
+		}
+		else if(side == 3){
+			camX = x
+			camY = y
+			camZ = z+1
+		}
+		else if(side == 4){
+			camX = x-1
+			camY = y
+			camZ = z
+		}
+		else if(side == 5){
+			camX = x+1
+			camY = y
+			camZ = z
+		}
+	}
 }
 
 //All the commands:
@@ -296,6 +298,25 @@ function ShowCameraMenu(){
 				dialog.setTitle("Cameras");
 				
 				//Add buttons
+				if(camera == 1){
+					var  leave = new android.widget.Button(ctx); 
+					leave.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							try{
+								dialog.dismiss();
+								camera = 0
+								if(air == 1){
+									setTile(cameraX,cameraY-2,cameraZ,0)
+									air = 0
+								}
+								Entity.setPosition(getPlayerEnt(),currentX,currentY,currentZ)
+							}
+						}
+					})
+					camera0.setText(cameras[0])
+					camera0.setTextSize(textsize)
+					menu.addView(camera0); 
+				}
 				if(cameras[0] != null){
 					var  camera0 = new android.widget.Button(ctx); 
 					camera0.setOnClickListener(new android.view.View.OnClickListener(){
@@ -508,6 +529,210 @@ function ShowCameraMenu(){
 					camera15.setText(cameras[15])
 					camera15.setTextSize(textsize)
 					menu.addView(camera15); 
+				}
+				if(cameras[16] != null){
+					var  camera16 = new android.widget.Button(ctx); 
+					camera16.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 16
+						}
+					})
+					camera16.setText(cameras[16])
+					camera16.setTextSize(textsize)
+					menu.addView(camera16); 
+				}
+				if(cameras[17] != null){
+					var  camera17 = new android.widget.Button(ctx); 
+					camera17.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 17
+						}
+					})
+					camera17.setText(cameras[17])
+					camera17.setTextSize(textsize)
+					menu.addView(camera17); 
+				}
+				if(cameras[18] != null){
+					var  camera18 = new android.widget.Button(ctx); 
+					camera18.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 18
+						}
+					})
+					camera18.setText(cameras[18])
+					camera18.setTextSize(textsize)
+					menu.addView(camera18); 
+				}
+				if(cameras[19] != null){
+					var  camera19 = new android.widget.Button(ctx); 
+					camera19.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 19
+						}
+					})
+					camera19.setText(cameras[19])
+					camera19.setTextSize(textsize)
+					menu.addView(camera19); 
+				}
+				if(cameras[20] != null){
+					var  camera20 = new android.widget.Button(ctx); 
+					camera20.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 20
+						}
+					})
+					camera20.setText(cameras[20])
+					camera20.setTextSize(textsize)
+					menu.addView(camera20); 
+				}
+				if(cameras[21] != null){
+					var  camera21 = new android.widget.Button(ctx); 
+					camera21.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 21
+						}
+					})
+					camera21.setText(cameras[21])
+					camera21.setTextSize(textsize)
+					menu.addView(camera21); 
+				}
+				if(cameras[22] != null){
+					var  camera22 = new android.widget.Button(ctx); 
+					camera22.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 22
+						}
+					})
+					camera22.setText(cameras[22])
+					camera22.setTextSize(textsize)
+					menu.addView(camera22); 
+				}
+				if(cameras[23] != null){
+					var  camera23 = new android.widget.Button(ctx); 
+					camera23.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 23
+						}
+					})
+					camera23.setText(cameras[23])
+					camera23.setTextSize(textsize)
+					menu.addView(camera23); 
+				}
+				if(cameras[24] != null){
+					var  camera24 = new android.widget.Button(ctx); 
+					camera24.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 24
+						}
+					})
+					camera24.setText(cameras[24])
+					camera24.setTextSize(textsize)
+					menu.addView(camera24); 
+				}
+				if(cameras[25] != null){
+					var  camera25 = new android.widget.Button(ctx); 
+					camera25.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 25
+						}
+					})
+					camera25.setText(cameras[25])
+					camera25.setTextSize(textsize)
+					menu.addView(camera25); 
+				}
+				if(cameras[26] != null){
+					var  camera26 = new android.widget.Button(ctx); 
+					camera26.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 26
+						}
+					})
+					camera26.setText(cameras[26])
+					camera26.setTextSize(textsize)
+					menu.addView(camera26); 
+				}
+				if(cameras[27] != null){
+					var  camera27 = new android.widget.Button(ctx); 
+					camera27.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 27
+						}
+					})
+					camera27.setText(cameras[27])
+					camera27.setTextSize(textsize)
+					menu.addView(camera27); 
+				}
+				if(cameras[28] != null){
+					var  camera28 = new android.widget.Button(ctx); 
+					camera28.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 28
+						}
+					})
+					camera28.setText(cameras[28])
+					camera28.setTextSize(textsize)
+					menu.addView(camera28); 
+				}
+				if(cameras[29] != null){
+					var  camera29 = new android.widget.Button(ctx); 
+					camera29.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 29
+						}
+					})
+					camera29.setText(cameras[29])
+					camera29.setTextSize(textsize)
+					menu.addView(camera29); 
+				}
+				if(cameras[30] != null){
+					var  camera30 = new android.widget.Button(ctx); 
+					camera30.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 30
+						}
+					})
+					camera30.setText(cameras[30])
+					camera30.setTextSize(textsize)
+					menu.addView(camera30); 
+				}
+				if(cameras[31] != null){
+					var  camera31 = new android.widget.Button(ctx); 
+					camera31.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 31
+						}
+					})
+					camera31.setText(cameras[31])
+					camera31.setTextSize(textsize)
+					menu.addView(camera31); 
+				}
+				if(cameras[32] != null){
+					var  camera32 = new android.widget.Button(ctx); 
+					camera32.setOnClickListener(new android.view.View.OnClickListener(){
+						onClick: function(){ 
+							dialog.dismiss() 
+							goToCam = 32
+						}
+					})
+					camera32.setText(cameras[32])
+					camera32.setTextSize(textsize)
+					menu.addView(camera32); 
 				}
 				dialog.show()
 			} 
