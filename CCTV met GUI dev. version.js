@@ -248,9 +248,9 @@ function ShowCameraFromList(){
   currentX = Player.getX()
   currentY = Player.getY()
   currentZ = Player.getZ()
-  cameraX = parseInt(camerasX[goToCam])
-  cameraY = parseInt(camerasY[goToCam])
-  cameraZ = parseInt(camerasZ[goToCam])
+  cameraX = parseInt(camerasX[parseInt(goToCam)])
+  cameraY = parseInt(camerasY[parseInt(goToCam)])
+  cameraZ = parseInt(camerasZ[parseInt(goToCam)])
   if(getTile(cameraX,cameraY,cameraZ) == Camera){
    if(getTile(cameraX,cameraY-2,cameraZ) == 0){
     air = 1
@@ -260,7 +260,10 @@ function ShowCameraFromList(){
    clientMessage("Type »/cctv leave« to leave the camera")
    camera = 1
   }
-  else{clientMessage("The block at the location of this camera isn't a camera anymore!")}
+  else{
+	clientMessage("The block at the location of this camera isn't a camera any more!")
+	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + "is " + getTile(cameraX,cameraY,cameraZ))
+  }
  }
  else{
   cameraX = parseInt(camerasX[goToCam])
@@ -316,9 +319,9 @@ function ShowCameraMenu(){
 	   }
       }
      })
-     camera0.setText(cameras[0])
-     camera0.setTextSize(textsize)
-     menu.addView(camera0); 
+     leave.setText(cameras[0])
+     leave.setTextSize(textsize)
+     menu.addView(leave); 
     }
     if(cameras[0] != null){
      var  camera0 = new android.widget.Button(ctx); 
