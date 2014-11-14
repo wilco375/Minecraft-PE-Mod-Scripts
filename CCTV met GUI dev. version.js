@@ -261,9 +261,14 @@ function ShowCameraMenu(){
 					var  camera0 = new android.widget.Button(ctx); 
 					camera0.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
-							dialog.dismiss()
-							goToCam = 0
-							ShowCameraFromList()
+							try{
+								dialog.dismiss()
+								var goToCam = 0
+								ShowCameraFromList()
+							}
+							catch(e){
+								clientMessage(e)
+							}
 						}
 					})
 					camera0.setText(cameras[0])
@@ -275,7 +280,7 @@ function ShowCameraMenu(){
 					camera1.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss()
-							goToCam = 1
+							var goToCam = 1
 							ShowCameraFromList()
 						}
 					})
@@ -288,7 +293,7 @@ function ShowCameraMenu(){
 					camera2.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 2
+							var goToCam = 2
 							ShowCameraFromList()
 						}
 					})
@@ -301,7 +306,7 @@ function ShowCameraMenu(){
 					camera3.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss()
-							goToCam = 3
+							var goToCam = 3
 							ShowCameraFromList()
 						}
 					})
@@ -314,7 +319,7 @@ function ShowCameraMenu(){
 					camera4.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 4
+							var goToCam = 4
 							ShowCameraFromList()
 						}
 					})
@@ -327,7 +332,7 @@ function ShowCameraMenu(){
 					camera5.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 5
+							var goToCam = 5
 							ShowCameraFromList()
 						}
 					})
@@ -340,7 +345,7 @@ function ShowCameraMenu(){
 					camera6.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 6
+							var goToCam = 6
 							ShowCameraFromList()
 						}
 					})
@@ -353,7 +358,7 @@ function ShowCameraMenu(){
 					camera7.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 7
+							var goToCam = 7
 							ShowCameraFromList()
 						}
 					})
@@ -366,7 +371,7 @@ function ShowCameraMenu(){
 					camera8.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 8
+							var goToCam = 8
 							ShowCameraFromList()
 						}
 					})
@@ -379,7 +384,7 @@ function ShowCameraMenu(){
 					camera9.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 9
+							var goToCam = 9
 							ShowCameraFromList()
 						}
 					})
@@ -392,7 +397,7 @@ function ShowCameraMenu(){
 					camera10.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 10
+							var goToCam = 10
 							ShowCameraFromList()
 						}
 					})
@@ -405,7 +410,7 @@ function ShowCameraMenu(){
 					camera11.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 11
+							var goToCam = 11
 							ShowCameraFromList()
 						}
 					})
@@ -418,7 +423,7 @@ function ShowCameraMenu(){
 					camera12.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 12
+							var goToCam = 12
 							ShowCameraFromList()
 						}
 					})
@@ -431,7 +436,7 @@ function ShowCameraMenu(){
 					camera13.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 13
+							var goToCam = 13
 							ShowCameraFromList()
 						}
 					})
@@ -444,7 +449,7 @@ function ShowCameraMenu(){
 					camera14.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 14
+							var goToCam = 14
 							ShowCameraFromList()
 						}
 					})
@@ -457,7 +462,7 @@ function ShowCameraMenu(){
 					camera15.setOnClickListener(new android.view.View.OnClickListener(){
 						onClick: function(){ 
 							dialog.dismiss() 
-							goToCam = 15
+							var goToCam = 15
 							ShowCameraFromList()
 						}
 					})
