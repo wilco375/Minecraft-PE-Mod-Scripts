@@ -6,7 +6,7 @@ var Camera = 180
 var Monitor = 510
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
-var camX, camY, camZ, goToCam, currentX, currentY, currentZ, camera, cameraX, cameraY, cameraZ, air, removed, nameCam
+var camX, camY, camZ, goToCam, currentX, currentY, currentZ, camera, cameraX, cameraY, cameraZ, air, removed, nameCam, prevCameraX, prevCameraY, prevCameraZ
 var cameras = []
 var camerasX = []
 var camerasY = []
@@ -174,12 +174,15 @@ function procCmd(command){
      else{clientMessage("The block at the location of this camera isn't a camera anymore!")}
     }
     else{
+	 prevCameraX = cameraX
+	 prevCameraY = cameraY
+	 prevCameraZ = cameraZ
      cameraX = parseInt(camerasX[goToCam])
      cameraY = parseInt(camerasY[goToCam])
      cameraZ = parseInt(camerasZ[goToCam])
      if(getTile(cameraX,cameraY,cameraZ) == Camera){
       if(air == 1){
-       setTile(cameraX,cameraY-2,cameraZ,0)
+       setTile(prevCameraX,prevCameraY-2,prevCameraZ,0)
        air = 0
       }
       if(getTile(cameraX,cameraY-2,cameraZ) == 0){
@@ -731,16 +734,19 @@ function ShowCameraFromList(){
   }
   else{
 	clientMessage("The block at the location of this camera isn't a camera any more!")
-	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + " is " + getTile(cameraX,cameraY,cameraZ) + ", goToCam = " + goToCam + ", camerasX[goToCam] is " + camerasX[goToCam])
+	//clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + " is " + getTile(cameraX,cameraY,cameraZ) + ", goToCam = " + goToCam + ", camerasX[goToCam] is " + camerasX[goToCam])
   }
  }
  else{
+  prevCameraX = cameraX
+  prevCameraY = cameraY
+  prevCameraZ = cameraZ
   cameraX = parseInt(camerasX[goToCam])
   cameraY = parseInt(camerasY[goToCam])
   cameraZ = parseInt(camerasZ[goToCam])
   if(getTile(cameraX,cameraY,cameraZ) == Camera){
    if(air == 1){
-    setTile(cameraX,cameraY-2,cameraZ,0)
+    setTile(prevCameraX,prevCameraY-2,prevCameraZ,0)
     air = 0
    }
    if(getTile(cameraX,cameraY-2,cameraZ) == 0){
