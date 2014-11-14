@@ -3,7 +3,7 @@
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/tvNt3 
 
 var Camera = 180
-var Monitor = 1
+var Monitor = 510
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
 var camX, camY, camZ, goToCam, currentX, currentY, currentZ, camera, cameraX, cameraY, cameraZ, air, removed, nameCam
@@ -12,11 +12,15 @@ var camerasX = []
 var camerasY = []
 var camerasZ = []
 
-//Define Camera
+//Define Camera & Monitor
 Block.defineBlock(Camera,"CCTV Camera",["piston_inner",0],18,false,0)
 Block.setDestroyTime(Camera, 1)
 Item.addCraftRecipe(Camera,1,0,[1,3,0,20,1,0,331,2,0,1,3,0])
 Item.setCategory(Camera,8,0);
+
+ModPE.setItem(Monitor,"item_frame",0,"CCTV Monitor")
+Item.addCraftRecipe(Monitor,1,0,[1,4,0,20,1,0,1,2,0,331,1,0,1,1,0])
+Item.setCategory(Monitor,8,0);
 
 //Get all cameras when starting world
 function selectLevelHook(){
