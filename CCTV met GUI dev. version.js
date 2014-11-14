@@ -241,7 +241,7 @@ function destroyBlock(){
 }
 
 //Show the camera that's selected from the list
-function showCameraFromList(){
+function ShowCameraFromList(){
 	if(camera != 1){
 		currentX = Player.getX()
 		currentY = Player.getY()
