@@ -241,48 +241,6 @@ function destroyBlock(){
   preventDefault()
  }
 }
-
-//Show the camera that's selected from the list
-function ShowCameraFromList(){
- if(camera != 1){
-  currentX = Player.getX()
-  currentY = Player.getY()
-  currentZ = Player.getZ()
-  cameraX = parseInt(camerasX[parseInt(goToCam)])
-  cameraY = parseInt(camerasY[parseInt(goToCam)])
-  cameraZ = parseInt(camerasZ[parseInt(goToCam)])
-  if(getTile(cameraX,cameraY,cameraZ) == Camera){
-   if(getTile(cameraX,cameraY-2,cameraZ) == 0){
-    air = 1
-    setTile(cameraX,cameraY-2,cameraZ,20)
-   }
-   Entity.setPosition(getPlayerEnt(), cameraX,cameraY,cameraZ)
-   clientMessage("Type »/cctv leave« to leave the camera")
-   camera = 1
-  }
-  else{
-	clientMessage("The block at the location of this camera isn't a camera any more!")
-	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + " is " + getTile(cameraX,cameraY,cameraZ) + ", goToCam = " + goToCam + ", camerasX[goToCam] is " + camerasX[goToCam])
-  }
- }
- else{
-  cameraX = parseInt(camerasX[goToCam])
-  cameraY = parseInt(camerasY[goToCam])
-  cameraZ = parseInt(camerasZ[goToCam])
-  if(getTile(cameraX,cameraY,cameraZ) == Camera){
-   if(air == 1){
-    setTile(cameraX,cameraY-2,cameraZ,0)
-    air = 0
-   }
-   if(getTile(cameraX,cameraY-2,cameraZ) == 0){
-    air = 1
-    setTile(cameraX,cameraY-2,cameraZ,20)
-   }
-   Entity.setPosition(getPlayerEnt(), cameraX,cameraY,cameraZ)
-  }
-  else{clientMessage("The block at the location of this camera isn't a camera anymore!")}
- }
-}
  
 //Show GUI
 function ShowCameraMenu(){
@@ -329,7 +287,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        try{
         dialog.dismiss();
-        var goToCam = 0;
+        goToCam = 0;
         ShowCameraFromList();
        }
        catch(e){
@@ -346,7 +304,7 @@ function ShowCameraMenu(){
      camera1.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 1;
+       goToCam = 1;
        ShowCameraFromList();
       }
      })
@@ -359,7 +317,7 @@ function ShowCameraMenu(){
      camera2.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 2;
+       goToCam = 2;
        ShowCameraFromList();
       }
      })
@@ -372,7 +330,7 @@ function ShowCameraMenu(){
      camera3.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 3;
+       goToCam = 3;
        ShowCameraFromList();
       }
      })
@@ -385,7 +343,7 @@ function ShowCameraMenu(){
      camera4.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 4;
+       goToCam = 4;
        ShowCameraFromList();
       }
      })
@@ -398,7 +356,7 @@ function ShowCameraMenu(){
      camera5.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 5;
+       goToCam = 5;
        ShowCameraFromList();
       }
      })
@@ -411,7 +369,7 @@ function ShowCameraMenu(){
      camera6.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 6;
+       goToCam = 6;
        ShowCameraFromList();
       }
      })
@@ -424,7 +382,7 @@ function ShowCameraMenu(){
      camera7.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 7;
+       goToCam = 7;
        ShowCameraFromList();
       }
      })
@@ -437,7 +395,7 @@ function ShowCameraMenu(){
      camera8.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 8;
+       goToCam = 8;
        ShowCameraFromList();
       }
      })
@@ -450,7 +408,7 @@ function ShowCameraMenu(){
      camera9.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 9;
+       goToCam = 9;
        ShowCameraFromList();
       }
      })
@@ -463,7 +421,7 @@ function ShowCameraMenu(){
      camera10.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 10;
+       goToCam = 10;
        ShowCameraFromList();
       }
      })
@@ -476,7 +434,7 @@ function ShowCameraMenu(){
      camera11.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 11;
+       goToCam = 11;
        ShowCameraFromList();
       }
      })
@@ -489,7 +447,7 @@ function ShowCameraMenu(){
      camera12.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 12;
+       goToCam = 12;
        ShowCameraFromList();
       }
      })
@@ -502,7 +460,7 @@ function ShowCameraMenu(){
      camera13.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 13;
+       goToCam = 13;
        ShowCameraFromList();
       }
      })
@@ -515,7 +473,7 @@ function ShowCameraMenu(){
      camera14.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 14;
+       goToCam = 14;
        ShowCameraFromList();
       }
      })
@@ -528,7 +486,7 @@ function ShowCameraMenu(){
      camera15.setOnClickListener(new android.view.View.OnClickListener(){
       onClick: function(){ 
        dialog.dismiss();
-       var goToCam = 15;
+       goToCam = 15;
        ShowCameraFromList();
       }
      })
@@ -749,5 +707,45 @@ function ShowCameraMenu(){
  });
 }
 
-
+//Show the camera that's selected from the list
+function ShowCameraFromList(){
+ if(camera != 1){
+  currentX = Player.getX()
+  currentY = Player.getY()
+  currentZ = Player.getZ()
+  cameraX = parseInt(camerasX[parseInt(goToCam)])
+  cameraY = parseInt(camerasY[parseInt(goToCam)])
+  cameraZ = parseInt(camerasZ[parseInt(goToCam)])
+  if(getTile(cameraX,cameraY,cameraZ) == Camera){
+   if(getTile(cameraX,cameraY-2,cameraZ) == 0){
+    air = 1
+    setTile(cameraX,cameraY-2,cameraZ,20)
+   }
+   Entity.setPosition(getPlayerEnt(), cameraX,cameraY,cameraZ)
+   clientMessage("Type »/cctv leave« to leave the camera")
+   camera = 1
+  }
+  else{
+	clientMessage("The block at the location of this camera isn't a camera any more!")
+	clientMessage("The block at " + cameraX + " " + cameraY + " " + cameraZ + " is " + getTile(cameraX,cameraY,cameraZ) + ", goToCam = " + goToCam + ", camerasX[goToCam] is " + camerasX[goToCam])
+  }
+ }
+ else{
+  cameraX = parseInt(camerasX[goToCam])
+  cameraY = parseInt(camerasY[goToCam])
+  cameraZ = parseInt(camerasZ[goToCam])
+  if(getTile(cameraX,cameraY,cameraZ) == Camera){
+   if(air == 1){
+    setTile(cameraX,cameraY-2,cameraZ,0)
+    air = 0
+   }
+   if(getTile(cameraX,cameraY-2,cameraZ) == 0){
+    air = 1
+    setTile(cameraX,cameraY-2,cameraZ,20)
+   }
+   Entity.setPosition(getPlayerEnt(), cameraX,cameraY,cameraZ)
+  }
+  else{clientMessage("The block at the location of this camera isn't a camera anymore!")}
+ }
+}
 
