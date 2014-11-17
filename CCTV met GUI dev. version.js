@@ -1,4 +1,4 @@
-//CCTV Mod V2 (GUI Added)
+//CCTV Mod V2.5 (Cameras are now saved in the world folder)
 //by wilco375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/tvNt3 
 
@@ -30,6 +30,43 @@ function selectLevelHook(){
   camerasY = ModPE.readData("camerasY"+Level.getWorldDir()).split(",")
   camerasZ = ModPE.readData("camerasZ"+Level.getWorldDir()).split(",")
   print("Loaded "+cameras.length+" cameras")
+  ModPE.removeData("cameras"+Level.getWorldDir())
+  ModPE.removeData("camerasX"+Level.getWorldDir())
+  ModPE.removeData("camerasY"+Level.getWorldDir())
+  ModPE.removeData("camerasZ"+Level.getWorldDir())
+ }
+ else if(readFromDocInWorld("cctv.cams") != null && readFromDocInWorld("cctv.cams") != ""){
+  cameras = readFromDocInWorld("cctv.cams").split(",")
+  camerasX = readFromDocInWorld("cctv.x").split(",")
+  camerasY = readFromDocInWorld("cctv.y").split(",")
+  camerasZ = readFromDocInWorld("cctv.z").split(",")
+  print("Loaded "+cameras.length+" cameras")
+ }
+ else{
+  print("Loaded 0 cameras")
+ }
+}
+
+//Save cameras if leaving level
+function leaveGame(){
+ if(camera == 1){
+  camera = 0
+  if(air == 1){
+   setTile(cameraX,cameraY-2,cameraZ,0)
+   air = 0
+  }
+  Entity.setPosition(getPlayerEnt(), currentX,currentY,currentZ)
+ }
+ if(cameras != null && cameras != [] && cameras != ""){
+ saveToDocInWorld("cctv.cams",cameras.toString())
+ saveToDocInWorld("cctv.x",camerasX.toString())
+ saveToDocInWorld("cctv.y",camerasY.toString())
+ saveToDocInWorld("cctv.z",camerasZ.toString())
+ print("Saved " + cameras.length + " cameras")
+ cameras = null
+ camerasX = null
+ camerasY = null
+ camerasZ = null
  }
 }
 
@@ -45,29 +82,6 @@ function destroyBlock(x,y,z,side){
     camerasZ.splice(i,1)
    }
   }
- }
-}
-
-//Save cameras if leaving level
-function leaveGame(){
- if(camera == 1){
-  camera = 0
-  if(air == 1){
-   setTile(cameraX,cameraY-2,cameraZ,0)
-   air = 0
-  }
-  Entity.setPosition(getPlayerEnt(), currentX,currentY,currentZ)
- }
- if(cameras != null && cameras != [] && cameras != ""){
- ModPE.saveData("cameras"+Level.getWorldDir(),cameras.toString())
- ModPE.saveData("camerasX"+Level.getWorldDir(),camerasX.toString())
- ModPE.saveData("camerasY"+Level.getWorldDir(),camerasY.toString())
- ModPE.saveData("camerasZ"+Level.getWorldDir(),camerasZ.toString())
- print("Saved " + cameras.length + " cameras")
- cameras = null
- camerasX = null
- camerasY = null
- camerasZ = null
  }
 }
 
@@ -246,6 +260,34 @@ function modTick(){
 function destroyBlock(){
  if(camera == 1){
   preventDefault()
+ }
+}
+ 
+//Save to file in the world folder
+function saveToDocInWorld(filename,string){
+ var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+filename
+ var file = new java.io.File(pathToCctvFile)
+ if(string != null && string != []){
+  if(file.exists()){
+   file.delete()
+  }
+  file.createNewFile()
+  var outputStream = new java.io.BufferedWriter(new java.io.FileWriter(pathToCctvFile))
+  outputStream.write(string)
+  outputStream.flush()
+ }
+}
+
+//Read from file in the world folder
+function readFromDocInWorld(filename){
+ var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+filename
+ var file = new java.io.File(pathToCctvFile)
+ if(file.exists()){
+  var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
+  return inputStream.readLine()
+ }
+ else{
+  return null
  }
 }
  
@@ -758,4 +800,5 @@ function ShowCameraFromList(){
   else{clientMessage("The block at the location of this camera isn't a camera anymore!")}
  }
 }
+
 
