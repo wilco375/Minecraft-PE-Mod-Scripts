@@ -289,7 +289,8 @@ function readFromDocInWorld(filename){
  try{
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
   print("readLine = "+inputStream.readLine())
-  var readMessage = inputStream.readLine().toString().split(",")
+  var readLineMessage = inputStream.readLine()
+  var readMessage = readLineMessage.split(",")
   print("readMessage = "+ readMessage)
  }
  catch(e){
