@@ -282,13 +282,14 @@ function saveToDocInWorld(filename,string){
 function readFromDocInWorld(filename){
  var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename
  var file = new java.io.File(pathToCctvFile)
- if(file.exists()){
+ print("reading...")
+ try{
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
   return inputStream.readLine()
   print("readLine = "+inputStream.readLine())
  }
- else{
-  print("file.exists = " + file.exists())
+ catch(e){
+  print(e)
   return null
  }
 }
