@@ -29,7 +29,7 @@ function selectLevelHook(){
   camerasX = ModPE.readData("camerasX"+Level.getWorldDir()).split(",")
   camerasY = ModPE.readData("camerasY"+Level.getWorldDir()).split(",")
   camerasZ = ModPE.readData("camerasZ"+Level.getWorldDir()).split(",")
-  print("Loaded "+cameras.length+" cameras")
+  //print("Loaded "+cameras.length+" cameras")
   ModPE.removeData("cameras"+Level.getWorldDir())
   ModPE.removeData("camerasX"+Level.getWorldDir())
   ModPE.removeData("camerasY"+Level.getWorldDir())
@@ -40,10 +40,10 @@ function selectLevelHook(){
   camerasX = readFromDocInWorld("cctv.x").split(",")
   camerasY = readFromDocInWorld("cctv.y").split(",")
   camerasZ = readFromDocInWorld("cctv.z").split(",")
-  print("Loaded "+cameras.length+" cameras")
+  //print("Loaded "+cameras.length+" cameras")
  }
  else{
-  print("Loaded 0 cameras")
+  //print("Loaded 0 cameras")
  }
 }
 
@@ -285,7 +285,7 @@ function readFromDocInWorld(filename){
  if(file.exists()){
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
   return inputStream.readLine()
-  clientMessage("readLine = "+inputStream.readLine())
+  print("readLine = "+inputStream.readLine())
  }
  else{
   return null
