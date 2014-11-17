@@ -265,7 +265,7 @@ function destroyBlock(){
  
 //Save to file in the world folder
 function saveToDocInWorld(filename,string){
- var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+filename
+ var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename
  var file = new java.io.File(pathToCctvFile)
  if(string != null && string != []){
   if(file.exists()){
@@ -280,11 +280,12 @@ function saveToDocInWorld(filename,string){
 
 //Read from file in the world folder
 function readFromDocInWorld(filename){
- var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+filename
+ var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename
  var file = new java.io.File(pathToCctvFile)
  if(file.exists()){
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
   return inputStream.readLine()
+  clientMessage("readLine = "+inputStream.readLine())
  }
  else{
   return null
