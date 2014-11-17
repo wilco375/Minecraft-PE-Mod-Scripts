@@ -288,6 +288,7 @@ function readFromDocInWorld(filename){
   print("readLine = "+inputStream.readLine())
  }
  else{
+  print("file.exists = " + file.exists())
   return null
  }
 }
