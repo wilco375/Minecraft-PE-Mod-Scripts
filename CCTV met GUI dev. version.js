@@ -37,13 +37,14 @@ function selectLevelHook(){
  }
  else if(readFromDocInWorld("cctv.cams") != null && readFromDocInWorld("cctv.cams") != ""){
   readFromDocInWorld("cctv.cams")
-  cameras = readMessage
+  cameras = readLineMessage.split(",")
+  clientMessage(readLineMessage.split(","))
   readFromDocInWorld("cctv.x")
-  camerasX = readMessage
+  camerasX = readLineMessage.split(",")
   readFromDocInWorld("cctv.y")
-  camerasY = readMessage
+  camerasY = readLineMessage.split(",")
   readFromDocInWorld("cctv.z")
-  camerasZ = readMessage
+  camerasZ = readLineMessage.split(",")
   //print("Loaded "+cameras.length+" cameras")
  }
  else{
@@ -290,8 +291,6 @@ function readFromDocInWorld(filename){
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
   print("readLine = "+inputStream.readLine())
   var readLineMessage = inputStream.readLine()
-  var readMessage = readLineMessage.split(",")
-  print("readMessage = "+ readMessage)
  }
  catch(e){
   print(e)
