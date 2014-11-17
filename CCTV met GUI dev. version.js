@@ -36,10 +36,14 @@ function selectLevelHook(){
   ModPE.removeData("camerasZ"+Level.getWorldDir())
  }
  else if(readFromDocInWorld("cctv.cams") != null && readFromDocInWorld("cctv.cams") != ""){
-  cameras = readFromDocInWorld("cctv.cams").split(",")
-  camerasX = readFromDocInWorld("cctv.x").split(",")
-  camerasY = readFromDocInWorld("cctv.y").split(",")
-  camerasZ = readFromDocInWorld("cctv.z").split(",")
+  readFromDocInWorld("cctv.cams")
+  cameras = readMessage
+  readFromDocInWorld("cctv.x")
+  camerasX = readMessage
+  readFromDocInWorld("cctv.y")
+  camerasY = readMessage
+  readFromDocInWorld("cctv.z")
+  camerasZ = readMessage
   //print("Loaded "+cameras.length+" cameras")
  }
  else{
@@ -282,15 +286,14 @@ function saveToDocInWorld(filename,string){
 function readFromDocInWorld(filename){
  var pathToCctvFile = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename
  var file = new java.io.File(pathToCctvFile)
- print("reading...")
  try{
   var inputStream = new java.io.BufferedReader(new java.io.FileReader(pathToCctvFile))
-  return inputStream.readLine()
   print("readLine = "+inputStream.readLine())
+  var readMessage = inputStream.readLine().toString().split(",")
+  print("readMessage = "+ readMessage)
  }
  catch(e){
   print(e)
-  return null
  }
 }
  
