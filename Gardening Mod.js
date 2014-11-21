@@ -7,7 +7,7 @@ function useItem(x,y,z,itemId,blockId){
 	for(i = x-1;i <= x+1;i++){
 		for(j = z-1;j <= z+1;j++){
 			if(blockId == 2 || blockId == 3){
-				setTile(x,y,z,60)
+				setTile(i,y,j,60)
 			}
 		}
 	}
@@ -17,14 +17,14 @@ function startDestroyBlock(x,y,z,side){
 	i = Player.getCarriedItem()
 	if(i == leafBlower){
 		blockX = Player.getPointedBlockX()
-		blockY = Player.getPointedBlockX()
-		blockZ = Player.getPointedBlockX()
+		blockY = Player.getPointedBlockY()
+		blockZ = Player.getPointedBlockZ()
 		leafBlowerOn = 1
 	}
 	if(i == wateringCan){
 		blockX = Player.getPointedBlockX()
-		blockY = Player.getPointedBlockX()
-		blockZ = Player.getPointedBlockX()
+		blockY = Player.getPointedBlockY()
+		blockZ = Player.getPointedBlockZ()
 		wateringCanOn = 1
 	}
 }
