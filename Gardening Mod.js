@@ -4,10 +4,12 @@ var superHoe
 var leafBlowerOn, wateringCanOn
 
 function useItem(x,y,z,itemId,blockId){
-	for(i = x-1;i <= x+1;i++){
-		for(j = z-1;j <= z+1;j++){
-			if(blockId == 2 || blockId == 3){
-				setTile(i,y,j,60)
+	if(itemId == superHoe){
+		for(i = x-1;i <= x+1;i++){
+			for(j = z-1;j <= z+1;j++){
+				if(blockId == 2 || blockId == 3){
+					setTile(i,y,j,60)
+				}
 			}
 		}
 	}
@@ -39,7 +41,7 @@ function destroyBlock(){
 }
 
 function modTick(){
-	if(Player.getCarriedItem != leafBlower){
+	if(Player.getCarriedItem() != leafBlower){
 		leafBlowerOn = 0
 	}
 	if(leafBlowerOn == 1){
