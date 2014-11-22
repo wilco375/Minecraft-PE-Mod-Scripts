@@ -120,7 +120,9 @@ function procCmd(command){
 			cmd[2] = 0
 		}
 		try{
-			Block.defineBlock(222,"Elevator Block",[[cmd[1],cmd[2]],20,1,0)
+			a = cmd[1]
+			b = cmd[2]
+			Block.defineBlock(222,"Elevator Block",[a,b],20,1,0)
 		}
 		catch(e){
 			clientMessage("Texture doesn't exist")
