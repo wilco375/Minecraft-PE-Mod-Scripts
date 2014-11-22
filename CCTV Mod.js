@@ -1,4 +1,4 @@
-//CCTV Mod V2 (GUI Added)
+//CCTV Mod V2.1 (Compatible with both 0.9 and 0.10)
 //by wilco375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/tvNt3 
 
