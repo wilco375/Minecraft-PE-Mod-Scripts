@@ -11,9 +11,10 @@ var elevatorDown
 var buttonShowed
 var buttonWindow = null;
 
-if(ModPE.readData(texture) != null){
-	texture = ModPE.readData(texture).split[","]
-	Block.defineBlock(222,"Elevator Block",[texture[0],texture[1]],20,1,0);
+if(ModPE.readData(texture1) != null){
+	texture1 = ModPE.readData("texture1")
+	texture2 = ModPE.readData("texture2")
+	Block.defineBlock(222,"Elevator Block",[texture1,texture2],20,1,0);
 }
 else{
 	Block.defineBlock(222,"Elevator Block","wool",20,1,0);
@@ -113,7 +114,7 @@ if(buttonShowed == 1){
 
 function procCmd(command){
 	cmd = command.split(" ")
-	if(cmd[0] elevatorTexture){
+	if(cmd[0] == elevatorTexture){
 		clientMessage("Please restart the level to apply the change. If this gave an error, you used a non-existing texture. You can find a list here: http://zhuoweizhang.net/mcpetexturenames/")
 		if(cmd[2] == null){
 			cmd[2] = 0
@@ -125,7 +126,8 @@ function procCmd(command){
 			clientMessage("Texture doesn't exist")
 		}
 		if(e == null){
-			ModPE.saveData("texture",cmd[1]+","+cmd[2])
+			ModPE.saveData("texture1",cmd[1])
+			ModPE.saveData("texture2",cmd[2])
 		}
 	}
 }
