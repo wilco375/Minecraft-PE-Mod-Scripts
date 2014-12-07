@@ -507,6 +507,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 16
+       ShowCameraFromList();
       }
      })
      camera16.setText(cameras[16])
@@ -519,6 +520,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 17
+       ShowCameraFromList();
       }
      })
      camera17.setText(cameras[17])
@@ -531,6 +533,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 18
+       ShowCameraFromList();
       }
      })
      camera18.setText(cameras[18])
@@ -543,6 +546,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 19
+       ShowCameraFromList();
       }
      })
      camera19.setText(cameras[19])
@@ -555,6 +559,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 20
+       ShowCameraFromList();
       }
      })
      camera20.setText(cameras[20])
@@ -567,6 +572,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 21
+       ShowCameraFromList();
       }
      })
      camera21.setText(cameras[21])
@@ -579,6 +585,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 22
+       ShowCameraFromList();
       }
      })
      camera22.setText(cameras[22])
@@ -591,6 +598,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 23
+       ShowCameraFromList();
       }
      })
      camera23.setText(cameras[23])
@@ -603,6 +611,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 24
+       ShowCameraFromList();
       }
      })
      camera24.setText(cameras[24])
@@ -615,6 +624,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 25
+       ShowCameraFromList();
       }
      })
      camera25.setText(cameras[25])
@@ -627,6 +637,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 26
+       ShowCameraFromList();
       }
      })
      camera26.setText(cameras[26])
@@ -639,6 +650,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 27
+       ShowCameraFromList();
       }
      })
      camera27.setText(cameras[27])
@@ -651,6 +663,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 28
+       ShowCameraFromList();
       }
      })
      camera28.setText(cameras[28])
@@ -663,6 +676,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 29
+       ShowCameraFromList();
       }
      })
      camera29.setText(cameras[29])
@@ -675,6 +689,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 30
+       ShowCameraFromList();
       }
      })
      camera30.setText(cameras[30])
@@ -687,6 +702,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 31
+       ShowCameraFromList();
       }
      })
      camera31.setText(cameras[31])
@@ -699,6 +715,7 @@ function ShowCameraMenu(){
       onClick: function(){ 
        dialog.dismiss() 
        goToCam = 32
+       ShowCameraFromList();
       }
      })
      camera32.setText(cameras[32])
