@@ -62,7 +62,7 @@ function destroyBlock(x,y,z,side){
 
 //Ask to name teleporter and save it if placed down
 function useItem(x,y,z,itemId,blockId,side){
- else if(itemId == teleporterId){
+ if(itemId == teleporterId){
   if(teleporters.length >= maxTeleporterAmount){
 	clientMessage("Error: You have reached the maximum amount of teleporters: " + maxTeleporterAmount)
 	preventDefault()
