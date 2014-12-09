@@ -156,7 +156,7 @@ function goToSelectedTeleporter(){
  teleporterY = parseInt(teleportersY[parseInt(goToTeleporter)])
  teleporterZ = parseInt(teleportersZ[parseInt(goToTeleporter)])
  if(getTile(teleporterX,teleporterY,teleporterZ) == teleporterId){
-  Entity.setPosition(getPlayerEnt(),teleporterX,teleporterY,teleporterZ)
+  Entity.setPosition(getPlayerEnt(),teleporterX+0.5,teleporterY+2.75,teleporterZ+0.5)
   teleported = 1
  }
  else{
