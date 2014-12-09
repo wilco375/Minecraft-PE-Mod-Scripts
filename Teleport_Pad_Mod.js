@@ -1112,6 +1112,7 @@ function ShowTeleportersMenu(){
 	dialog.setOnDismissListener(new android.content.DialogInterface.OnDismissListener(){
 	 onDismiss: function(){
 	  GUI = 0
+	  teleported = 1
 	 }
 	})
     dialog.show()
