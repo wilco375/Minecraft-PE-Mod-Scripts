@@ -1,6 +1,6 @@
 //Teleport Pad Mod
 //by wilco375
-//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
+//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/v7qTc
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
@@ -174,6 +174,7 @@ function modTick(){
  }
  if(getTile(Player.getX(),Player.getY()-2,Player.getZ()) != teleporterId && teleported == 1){
   teleported = 0
+  GUI = 0
  }
 }
 
@@ -1112,7 +1113,6 @@ function ShowTeleportersMenu(){
 	dialog.setOnDismissListener(new android.content.DialogInterface.OnDismissListener(){
 	 onDismiss: function(){
 	  GUI = 0
-	  teleported = 1
 	 }
 	})
     dialog.show()
