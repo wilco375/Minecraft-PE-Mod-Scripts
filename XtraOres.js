@@ -3,17 +3,17 @@
 
 var oreGenCheckerId = 200
 var boneOreId = 201
-var enderOreId = 202
+//var enderOreId = 202
 var rainbowOre = 203
 var gunPowderOre = 204
 
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(boneOreId,"Bone Ore",["diamond_ore",0],7,1,0)
-Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
+//Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
 Block.defineBlock(rainbowOre,"Rainbow Ore",["emerald_ore",0],7,1,0)
 Block.defineBlock(gunPowderOre,"Gunpowder Ore",["coal_ore",0],7,1,0)
 Block.setColor(boneOreId,[0xFFFFFF])
-Block.setColor(enderOreId,[0x006666])
+//Block.setColor(enderOreId,[0x006666])
 Block.setColor(rainbowOre,[0x800000])
 Block.setColor(gunPowderOre,[0x505050])
 
@@ -25,11 +25,11 @@ function destroyBlock(x,y,z){
 		setTile(x,y,z,0)
 		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,352,2)
 	}
-	if(blockId == enderOreId){
-		preventDefault()
-		setTile(x,y,z,0)
-		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,368,1)
-	}
+//	if(blockId == enderOreId){
+//		preventDefault()
+//		setTile(x,y,z,0)
+//		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,368,1)
+//	}
 	if(blockId == rainbowOre){
 		preventDefault()
 		setTile(x,y,z,0)
@@ -79,17 +79,17 @@ function modTick(){
 
 function generateOres(){
 	for(i = 0;i < 128; i++){
-		oreNumber = Math.floor((Math.random() * 4) + 1)
+		oreNumber = Math.floor((Math.random() * 3) + 1)
 		if(oreNumber == 1){
 			ore = boneOreId
 		}
+		//if(oreNumber == 2){
+		//	ore = enderOreId
+		//}
 		if(oreNumber == 2){
-			ore = enderOreId
-		}
-		if(oreNumber == 3){
 			ore = rainbowOre
 		}
-		if(oreNumber == 4){
+		if(oreNumber == 3){
 			ore = gunPowderOre
 		}
 		oreX = chunkX*16 + Math.floor((Math.random() * 16) + 1)
@@ -123,7 +123,7 @@ function cluster1(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		//clientMessage("Generated ore at "+x+","+y+ ","+z)
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -140,7 +140,7 @@ function cluster2(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		//clientMessage("Generated ore at "+x+","+y+ ","+z)
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -157,7 +157,7 @@ function cluster3(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		//clientMessage("Generated ore at "+x+","+y+ ","+z)
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -174,7 +174,7 @@ function cluster4(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		//clientMessage("Generated ore at "+x+","+y+ ","+z)
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
