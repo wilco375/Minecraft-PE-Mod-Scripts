@@ -6,7 +6,7 @@ var boneOreId = 201
 //var enderOreId = 202
 var rainbowOre = 203
 var gunPowderOre = 204
-var oldPx, worldGenerated
+var oldPx, worldGenerated, starterTick
 
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],7,1,0)
@@ -46,6 +46,8 @@ function destroyBlock(x,y,z){
 }
 
 function modTick(){
+	if(starterTick == null) starterTick = 0
+	if(starterTick < 200) starterTick++
 	Px = Player.getX()
 	Pz = Player.getZ()
 	chunkX = 0
@@ -73,7 +75,7 @@ function modTick(){
 		Pz = Pz + 16
 		chunkZ--
 	}
-	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated == 1){
+	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated == 1 && starterTick > 199){
 		setTile(chunkX*16,1,chunkZ*16,oreGenCheckerId)
 		generateOres()
 	}
