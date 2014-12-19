@@ -12,10 +12,10 @@ Block.defineBlock(boneOreId,"Bone Ore",["diamond_ore",0],7,1,0)
 Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
 Block.defineBlock(rainbowOre,"Rainbow Ore",["emerald_ore",0],7,1,0)
 Block.defineBlock(gunPowderOre,"Gunpowder Ore",["coal_ore",0],7,1,0)
-Block.setColor(boneOreId,,[0xFFFFFF])
-Block.setColor(enderOreId,,[0x003333])
-Block.setColor(rainbowOre,,[0x800000])
-Block.setColor(gunPowderOre,,[0x101010])
+Block.setColor(boneOreId,[0xFFFFFF])
+Block.setColor(enderOreId,[0x003333])
+Block.setColor(rainbowOre,[0x800000])
+Block.setColor(gunPowderOre,[0x101010])
 
 
 function destroyBlock(x,y,z){
