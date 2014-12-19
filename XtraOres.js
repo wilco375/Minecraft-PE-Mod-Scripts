@@ -6,7 +6,7 @@ var boneOreId = 201
 //var enderOreId = 202
 var rainbowOre = 203
 var gunPowderOre = 204
-var oldPx, worldGenerated, starterTick, generateStage
+var oldPx, worldGenerated, starterTick
 
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],7,1,0)
@@ -78,62 +78,11 @@ function modTick(){
 	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated == 1 && starterTick > 199){
 		setTile(chunkX*16,1,chunkZ*16,oreGenCheckerId)
 		generateOres()
-		generateStage = 1
-		chunkX1 = chunkX
-		chunkZ1 = chunkZ
-	}
-	else if(generateStage = 1){
-		generateOres()
-		generateStage = 2
-		chunkX2 = chunkX1
-		chunkZ2 = chunkX1
-	}
-	else if(generateStage = 2){
-		generateOres()
-		generateStage = 3
-		chunkX3 = chunkX2
-		chunkZ3 = chunkX2
-	}
-	else if(generateStage = 3){
-		generateOres()
-		generateStage = 4
-		chunkX4 = chunkX3
-		chunkZ4 = chunkX3
-	}
-	else if(generateStage = 4){
-		generateOres()
-		generateStage = 5
-		chunkX5 = chunkX4
-		chunkZ5 = chunkX4
-	}
-	else if(generateStage = 5){
-		generateOres()
-		generateStage = 0
 	}
 	oldPx = getPlayerX()
 }
 
 function generateOres(){
-	if(generateStage == 1){
-		chunkX = chunkX1
-		chunkZ = chunkZ1
-	}
-	if(generateStage == 2){
-		chunkX = chunkX2
-		chunkZ = chunkZ2
-	}
-		if(generateStage == 3){
-		chunkX = chunkX3
-		chunkZ = chunkZ3
-	}
-		if(generateStage == 4){
-		chunkX = chunkX4
-		chunkZ = chunkZ4
-	}
-		if(generateStage == 5){
-		chunkX = chunkX5
-		chunkZ = chunkZ5
-	}
 	for(i = 0;i < 96; i++){
 		oreNumber = Math.floor((Math.random() * 3) + 1)
 		if(oreNumber == 1){
@@ -234,3 +183,4 @@ function cluster4(x,y,z,ore){
 		success = 0
 	}
 }
+
