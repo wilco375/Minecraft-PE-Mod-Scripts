@@ -1,11 +1,11 @@
 //XtraOres Mod
 //By wilco375
 
-var oreGenCheckerId = 175
-var boneOreId = 176
-var enderOreId = 177
-var rainbowOre = 178
-var gunPowderOre = 179
+var oreGenCheckerId = 200
+var boneOreId = 201
+var enderOreId = 202
+var rainbowOre = 203
+var gunPowderOre = 204
 
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(boneOreId,"Bone Ore",["diamond_ore",0],7,1,0)
@@ -13,9 +13,9 @@ Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
 Block.defineBlock(rainbowOre,"Rainbow Ore",["emerald_ore",0],7,1,0)
 Block.defineBlock(gunPowderOre,"Gunpowder Ore",["coal_ore",0],7,1,0)
 Block.setColor(boneOreId,[0xFFFFFF])
-Block.setColor(enderOreId,[0x003333])
+Block.setColor(enderOreId,[0x006666])
 Block.setColor(rainbowOre,[0x800000])
-Block.setColor(gunPowderOre,[0x101010])
+Block.setColor(gunPowderOre,[0x505050])
 
 
 function destroyBlock(x,y,z){
@@ -111,54 +111,70 @@ function generateOres(){
 	}
 }
 
-function cluster1(x,y,z){
+function cluster1(x,y,z,ore){
 	var X=[x+1,x+2,x+2,x+2,x+2,x+3,x+3]
 	var Y=[y+2,y+2,y+3,y+2,y+2,y+1,y+2]
 	var Z=[z+-3,z+-3,z+-3,z+-2,z+-1,z+-3,z+-3]
-	var I=[16,16,16,16,16,16,16]
-	var D=[0,0,0,0,0,0,0]
+	var success
 	for(n=0;n<125+1;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], I[n], D[n])
+			setTile(X[n], Y[n], Z[n], ore)
+			success = 1
 		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
 	}
 }
 
-function cluster2(x,y,z){
+function cluster2(x,y,z,ore){
 	var X=[x+1,x+1,x+2,x+2,x+2,x+3]
 	var Y=[y+1,y+2,y+2,y+3,y+2,y+2]
 	var Z=[z+-1,z+-1,z+-2,z+-2,z+-1,z+-2]
-	var I=[16,16,16,16,16,16]
-	var D=[1,1,0,0,0,0,0,0,1]
+	var success
 	for(n=0;n<100+1;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], I[n], D[n])
+			setTile(X[n], Y[n], Z[n], ore)
+			success = 1
 		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
 	}
 }
 
-function cluster3(x,y,z){
+function cluster3(x,y,z,ore){
 	var X=[x+1,x+1,x+1,x+2]
 	var Y=[y+1,y+2,y+1,y+1]
 	var Z=[z+-2,z+-2,z+-1,z+-2]
-	var I=[16,16,16,16]
-	var D=[0,0,0,0]
-	for(n=0;n<64+1;n++){
+	var success
+	for(n=0;n<100+1;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], I[n], D[n])
+			setTile(X[n], Y[n], Z[n], ore)
+			success = 1
 		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
 	}
 }
 
-function cluster4(x,y,z){
+function cluster4(x,y,z,ore){
 	var X=[x+1,x+1,x+1,x+2,x+2]
 	var Y=[y+1,y+2,y+1,y+2,y+3]
 	var Z=[z+-2,z+-2,z+-1,z+-2,z+-2]
-	var I=[16,16,16,16,16]
-	var D=[0,0,0,0,0]
-	for(n=0;n<80+1;n++){
+	var success
+	for(n=0;n<100+1;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], I[n], D[n])
+			setTile(X[n], Y[n], Z[n], ore)
+			success = 1
 		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
 	}
 }
