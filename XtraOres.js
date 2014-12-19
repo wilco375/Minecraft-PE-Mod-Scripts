@@ -77,7 +77,7 @@ function modTick(){
 		Pz = Pz + 16
 		chunkZ--
 	}
-	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated = 1){
+	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated == 1){
 		setTile(chunkX*16,1,chunkZ*16,oreGenCheckerId)
 		generateOres()
 	}
