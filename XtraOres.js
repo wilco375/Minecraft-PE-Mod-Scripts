@@ -13,12 +13,8 @@ Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],7,1,0)
 //Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
 Block.defineBlock(rainbowOre,"Rainbow Ore",["enchanting_table_bottom",0],7,1,0)
 Block.defineBlock(gunPowderOre,"Gunpowder Ore",["enchanting_table_top",0],7,1,0)
-Block.setColor(boneOreId,[0xFFFFFF])
-//Block.setColor(enderOreId,[0x006666])
-Block.setColor(rainbowOre,[0x800000])
-Block.setColor(gunPowderOre,[0x505050])
 
-ModPE.setTerrain("http://i.imgur.com/yuruYL1.png")
+//ModPE.setTerrain("http://i.imgur.com/yuruYL1.png")
 
 function destroyBlock(x,y,z){
 	blockId = getTile(x,y,z)
@@ -85,7 +81,7 @@ function modTick(){
 }
 
 function generateOres(){
-	for(i = 0;i < 128; i++){
+	for(i = 0;i < 96; i++){
 		oreNumber = Math.floor((Math.random() * 3) + 1)
 		if(oreNumber == 1){
 			ore = boneOreId
