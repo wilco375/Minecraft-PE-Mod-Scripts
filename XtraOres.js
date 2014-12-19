@@ -130,7 +130,7 @@ function cluster1(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -147,7 +147,7 @@ function cluster2(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -164,7 +164,7 @@ function cluster3(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -181,7 +181,7 @@ function cluster4(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
