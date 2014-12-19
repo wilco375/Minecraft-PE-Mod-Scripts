@@ -11,10 +11,10 @@ var gunPowderOre = 204
 var oldPx, worldGenerated, starterTick
 
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
-Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],7,1,0)
-//Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],7,1,0)
-Block.defineBlock(rainbowOre,"Rainbow Ore",["enchanting_table_bottom",0],7,1,0)
-Block.defineBlock(gunPowderOre,"Gunpowder Ore",["enchanting_table_top",0],7,1,0)
+Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],15,1,0)
+//Block.defineBlock(enderOreId,"Ender Ore",["lapis_ore",0],15,1,0)
+Block.defineBlock(rainbowOre,"Rainbow Ore",["enchanting_table_bottom",0],15,1,0)
+Block.defineBlock(gunPowderOre,"Gunpowder Ore",["enchanting_table_top",0],15,1,0)
 
 //ModPE.setTerrain("http://i.imgur.com/yuruYL1.png")
 
