@@ -97,7 +97,7 @@ function generateOres(){
 		oreZ = chunkZ*16 + Math.floor((Math.random() * 16) + 1)
 		cluster = Math.floor((Math.random() * 4) + 1)
 		if(cluster == 1){
-			cluster1(x,y,z,ore)
+			cluster1(oreX,oreY,oreZ,ore)
 		}
 		if(cluster == 2){
 			cluster2(oreX,oreY,oreZ,ore)
