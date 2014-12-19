@@ -43,6 +43,7 @@ function destroyBlock(x,y,z){
 	if(blockId == gunPowderOre){
 		preventDefault()
 		setTile(x,y,z,0)
+		if(Math.floor((Math.random() * 20) + 1 ==  15) Level.explode(x,y,z,6)
 		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,289,1)
 	}
 }
