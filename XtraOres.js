@@ -33,9 +33,9 @@ function destroyBlock(x,y,z){
 	if(blockId == rainbowOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		for(i = 0;i < 6;i++){
+		for(i = 0;i < 3;i++){
 			damage = Math.floor((Math.random() * 16) + 0)
-			if(damage = 4) damage = 5
+			if(damage == 4){ damage = 5}
 			Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,351,1,damage)
 		}
 	}
@@ -123,7 +123,7 @@ function cluster1(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -140,7 +140,7 @@ function cluster2(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -157,7 +157,7 @@ function cluster3(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -174,7 +174,7 @@ function cluster4(x,y,z,ore){
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
