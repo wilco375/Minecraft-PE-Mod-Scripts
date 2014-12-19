@@ -1,5 +1,7 @@
 //XtraOres Mod
 //By wilco375
+//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
+//Texturepack download: http://goo.gl/igBRQD
 
 var oreGenCheckerId = 200
 var boneOreId = 201
