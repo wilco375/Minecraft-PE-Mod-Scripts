@@ -22,14 +22,39 @@ function leaveGame(){
 }
 
 function startDestroyBlock(x,y,z){
- destroy(x,y,z)
+ c = Player.getCarriedItem()
+ blockId = getTile(x,y,z)
+	if(blockId == boneOreId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,352,2)
+	}
+//	if(blockId == enderOreId){
+//		preventDefault()
+//		setTile(x,y,z,0)
+//		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,368,1)
+//	}
+	if(blockId == rainbowOre){
+		preventDefault()
+		setTile(x,y,z,0)
+		for(i = 0;i < 3;i++){
+			damage = Math.floor((Math.random() * 16) + 0)
+			if(damage == 4){ damage = 5}
+			Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,351,1,damage)
+		}
+	}
+	if(blockId == gunPowderOre){
+		preventDefault()
+		setTile(x,y,z,0)
+		if(Math.floor((Math.random() * 20) + 1) ==  15) Level.explode(x,y,z,6)
+		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,289,1)
+	}
+ if(getTile(x,y,z) == oreGenCheckerId){
+  preventDefault()
+ }
 }
 
 function destroyBlock(x,y,z){
- destroy(x,y,z)
-}
-
-function destroy(x,y,z){
  c = Player.getCarriedItem()
  blockId = getTile(x,y,z)
 	if(blockId == boneOreId){
@@ -58,7 +83,7 @@ function destroy(x,y,z){
 		Level.dropItem(x+0.5,y+0.5,z+0.5,0.5,289,1)
 	}
 }
-
+ 
 function modTick(){
 	if(starterTick == null) starterTick = 0
 	if(starterTick < 200) starterTick++
