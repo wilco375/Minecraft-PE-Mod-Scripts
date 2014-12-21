@@ -16,10 +16,22 @@ Block.defineBlock(boneOreId,"Bone Ore",["enchanting_table_side",0],15,1,0)
 Block.defineBlock(rainbowOre,"Rainbow Ore",["enchanting_table_bottom",0],15,1,0)
 Block.defineBlock(gunPowderOre,"Gunpowder Ore",["enchanting_table_top",0],15,1,0)
 
-//ModPE.setTerrain("http://i.imgur.com/yuruYL1.png")
+function leaveGame(){
+ starterTick = 0
+ worldGenerated = 0
+}
+
+function startDestroyBlock(x,y,z){
+ destroy(x,y,z)
+}
 
 function destroyBlock(x,y,z){
-	blockId = getTile(x,y,z)
+ destroy(x,y,z)
+}
+
+function destroy(x,y,z){
+ c = Player.getCarriedItem()
+ blockId = getTile(x,y,z)
 	if(blockId == boneOreId){
 		preventDefault()
 		setTile(x,y,z,0)
@@ -85,7 +97,7 @@ function modTick(){
 }
 
 function generateOres(){
-	for(i = 0;i < 96; i++){
+	for(i = 0;i < 16; i++){
 		oreNumber = Math.floor((Math.random() * 3) + 1)
 		if(oreNumber == 1){
 			ore = boneOreId
@@ -185,4 +197,3 @@ function cluster4(x,y,z,ore){
 		success = 0
 	}
 }
-
