@@ -57,7 +57,7 @@ function modTick(){
 					}
 				}
 				else if(getTile(x,y,z-1) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x,y,z-1){
+					if(getTile(x,y,z-1) == 61){
 						fuelFurnace(x,y,z-1)
 					}
 				}
