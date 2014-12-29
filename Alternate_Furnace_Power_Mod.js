@@ -33,6 +33,8 @@ function modTick(){
 			sun = 1
 			Y = 1
 			while(Y<20){
+				y = parseInt(y)
+				Y = parseInt(Y)
 				clientMessage("Block above furnace ("+x+","+y+Y+","+z+") = "+getTile(x,y+Y,z))
 				if(getTile(x,y+Y,z) != 0 && getTile(x,y+Y,z) != 20){
 					sun = 0
