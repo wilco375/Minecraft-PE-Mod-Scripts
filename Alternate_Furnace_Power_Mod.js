@@ -59,7 +59,7 @@ function modTick(){
 
 function fuelFurnace(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
-	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 1{
+	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 1){
 		Level.setFurnaceSlot(x,y,z,1,280,0,1)
 	}
 }
