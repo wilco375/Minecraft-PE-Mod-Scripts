@@ -81,7 +81,7 @@ function showSolarPanelGUI(x,y,z){
 					onClick: function(){ 
 						try{
 							dialog.dismiss();
-							enableSolarPanel(x,y,z)
+							enableSolarPanel(x,y,z);
 						}
 						catch(e){
 							clientMessage("Error: "+e)
@@ -95,8 +95,13 @@ function showSolarPanelGUI(x,y,z){
 				var  SolarPanelOff = new android.widget.Button(ctx); 
 				SolarPanelOff.setOnClickListener(new android.view.View.OnClickListener(){
 					onClick: function(){ 
-						dialog.dismiss();
-						disableSolarPanel(x,y,z)
+						try{
+							dialog.dismiss();
+							disableSolarPanel(x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
 					}
 				})
 				SolarPanelOff.setText("Off")
