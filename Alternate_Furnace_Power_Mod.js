@@ -31,12 +31,10 @@ function modTick(){
 			y = SolarPanelY[i]
 			z = SolarPanelZ[i]
 			sun = 1
-			Y = 1
-			while(Y<20){
-				y = parseInt(y)
-				Y = parseInt(Y)
-				clientMessage("Block above furnace ("+x+","+y+Y+","+z+") = "+getTile(x,y+Y,z))
-				if(getTile(x,y+Y,z) != 0 && getTile(x,y+Y,z) != 20){
+			Y = y+1
+			while(Y<y+20){
+				clientMessage("Block above furnace ("+x+","+Y+","+z+") = "+getTile(x,Y,z))
+				if(getTile(x,Y,z) != 0 && getTile(x,Y,z) != 20){
 					sun = 0
 					clientMessage("sun = 0")
 				}
