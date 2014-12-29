@@ -14,7 +14,7 @@ var SolarPanelY = []
 var SolarPanelZ = []
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
-var sun
+var sun, furnaceFueled
 
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],61,1,0);
 
@@ -32,26 +32,33 @@ function modTick(){
 			z = SolarPanelZ[i]
 			sun = 1
 			for(Y = 1;Y < 20;Y++){
+				clientMessage("Block above furnace ("+x+","+y+","+z+") = "+getTile(x,y+Y,z))
 				if(getTile(x,y+Y,z) != 0 && getTile(x,y+Y,z) != 20){
 					sun = 0
+					clientMessage("sun = 0")
 				}
 			}
 			if(sun = 1){
 				if(getTile(x-1,y,z) == 61){
 					fuelFurnace(x-1,y,z)
+					furnaceFueled = 1
 				}
-				else if(getTile(x+1,y,z) == 61){
+				else if(getTile(x+1,y,z) == 61 && furnaceFueled != 1){
 					fuelFurnace(x+1,y,z)
+					furnaceFueled = 1
 				}
-				else if(getTile(x,y-1,z) == 61){
+				else if(getTile(x,y-1,z) == 61 && furnaceFueled != 1){
 					fuelFurnace(x,y-1,z)
+					furnaceFueled = 1
 				}
-				else if(getTile(x,y,z-1) == 61){
+				else if(getTile(x,y,z-1) == 61 && furnaceFueled != 1){
 					fuelFurnace(x,y,z-1)
+					furnaceFueled = 1
 				}
-				else if(getTile(x,y,z+1) == 61){
+				else if(getTile(x,y,z+1) == 61 && furnaceFueled != 1){
 					fuelFurnace(x,y,z+1)
 				}
+				furnaceFueled = 0
 			}
 		}	
 	}
