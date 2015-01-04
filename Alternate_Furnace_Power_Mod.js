@@ -1,6 +1,6 @@
 //Alternate Furnace Power Mod
 //By wilco 375
-//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
+//Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
 var SolarPanelId = 212
 var SolarPanelX = []
