@@ -2,13 +2,7 @@
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
 
-var UraniumId
-var ReactorId
 var SolarPanelId = 212
-var ReactorX = []
-var ReactorY = []
-var ReactorZ = []
-var ReactorFuel = []
 var SolarPanelX = []
 var SolarPanelY = []
 var SolarPanelZ = []
@@ -16,10 +10,21 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
 var sun
 
-Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],61,1,0);
+Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
+Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
+
+function startDestroyBlock(x,y,z){
+ if(getTile(x,y,z) == SolarPanelId){
+  preventDefault()
+  setTile(x,y,z,0)
+  Level.dropItem(x,y,z,0.5,SolarPanelId)
+ }
+}
 
 function useItem(x,y,z,itemId,blockId,side){
+ //clientMessage(x+","+y+","+z+","+getTile(x,y,z))
 	if(blockId == SolarPanelId){
+   preventDefault()
 		showSolarPanelGUI(x,y,z)
 	}
 }
@@ -33,38 +38,18 @@ function modTick(){
 			sun = 1
 			Y = y+1
 			while(Y<y+20){
-				clientMessage("Block above furnace ("+x+","+Y+","+z+") = "+getTile(x,Y,z))
-				if(getTile(x,Y,z) != 0 && getTile(x,Y,z) != 20){
+				//clientMessage("Block above furnace ("+x+","+Y+","+z+") = "+Level.getTile(x,Y,z))
+				if(getTile(x,Y,z) != 0 && Level.getTile(x,Y,z) != 20){
 					sun = 0
-					clientMessage("sun = 0")
+					//clientMessage("sun = 0")
 				}
 				Y++
 			}
-			if(sun = 1){
-				if(getTile(x-1,y,z) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x-1,y,z) == 61){
-						fuelFurnace(x-1,y,z)
-					}
-				}
-				else if(getTile(x+1,y,z) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x+1,y,z) == 61){
-						fuelFurnace(x+1,y,z)
-					}
-				}
-				else if(getTile(x,y-1,z) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x,y-1,z) == 61){
-						fuelFurnace(x,y-1,z)
-					}
-				}
-				else if(getTile(x,y,z-1) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x,y,z-1) == 61){
-						fuelFurnace(x,y,z-1)
-					}
-				}
-				else if(getTile(x,y,z+1) == 61 || getTile(x-1,y,z) == 62){
-					if(getTile(x,y,z+1) == 61){
-						fuelFurnace(x,y,z+1)
-					}
+    if(Level.getTime() > 12000) sun = 0
+    //clientMessage(sun)
+			if(sun ){
+				if(getTile(x,y-1,z) == 61){
+					fuelFurnace(x,y-1,z)
 				}
 			}
 		}	
@@ -73,8 +58,9 @@ function modTick(){
 
 function fuelFurnace(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
-	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 1){
-		Level.setFurnaceSlot(x,y,z,1,173,0,1)
+	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
+		Level.setFurnaceSlot(x,y,z,1,263,0,1)
+   //clientMessage(sun+","+"fueled")
 	}
 }
 
