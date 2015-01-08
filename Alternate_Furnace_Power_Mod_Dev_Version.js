@@ -163,7 +163,7 @@ function useItem(x,y,z,itemId,blockId,side){
 				}
 				Level.setChestSlot(x,1,z,0,uraniumId,1,0)
 			}
-			else{ clientMessage("This reactor already contains uranium")
+			else{ clientMessage("This reactor already contains uranium")}
 		}
 	}
 	// ^ //
