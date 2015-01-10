@@ -74,56 +74,56 @@ function modTick(){
 			zR = ReactorZ[j]
 			sun = 1
 			if(getTile(xR-1,yR,zR) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR-1,yR,zR)
 				}
 			}
 			if(getTile(xR+1,yR,zR) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR+1,yR,zR)
 				}
 			}
 			if(getTile(xR,yR-1,zR) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR,yR-1,zR)
 				}
 			}
 			if(getTile(xR,yR+1,zR) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR,yR+1,zR)
 				}
 			}
 			if(getTile(xR,yR,zR-1) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR,yR,zR-1)
 				}
 			}
 			if(getTile(xR,yR,zR+1) == 61){
-				if(Level.getSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 1){
+				if(Level.getChestSlotData(xR,1,zR,0) != 0){
+					if(Level.getChestSlotData(xR,1,zR,0) == 50){
 						Level.setChestSlot(xR,1,zR,0,0)
 					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)-1)}
+					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
 					fuelFurnace(xR,yR,zR+1)
 				}
 			}
@@ -213,7 +213,7 @@ function showReactorGUI(x,y,z){
 					//Debug Message
 					clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getChestSlotData(x,1,z,0)!=0){
-						dialog.setTitle("Fuel: "+Level.getChestSlotData(x,1,z,0)+"/50")
+						dialog.setTitle("Fuel: "+(50-Level.getChestSlotData(x,1,z,0))+"/50")
 						reactorHasFuel = 1
 					}
 				}
@@ -362,13 +362,28 @@ function startDestroyBlock(x,y,z){
 		setTile(x,y,z,0)
 		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
 	}
+	if(getTile(x,y,z) == reactorId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,reactorId)
+	}
 }
 
 function destroyBlock(x,y,z){
+	if(getTile(x,y,z) == SolarPanelId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,SolarPanelId)
+	}
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
 		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
+	}
+	if(getTile(x,y,z) == reactorId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,reactorId)
 	}
 }
 
