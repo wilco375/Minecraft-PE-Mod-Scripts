@@ -436,6 +436,42 @@ function cluster1(x,y,z){
 	var success = 0
 	for(n=0;n<7;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
+			Level.setTile(X[n], Y[n], Z[n], uraniumOre)
+			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
+	}
+}
+
+function cluster2(x,y,z){
+	var X=[x+1,x+1,x+2,x+2,x+2,x+3]
+	var Y=[y+1,y+2,y+2,y+3,y+2,y+2]
+	var Z=[z+-1,z+-1,z+-2,z+-2,z+-1,z+-2]
+	var success = 0
+	for(n=0;n<6;n++){
+		if(getTile(X[n],Y[n],Z[n]) == 1){
+			Level.setTile(X[n], Y[n], Z[n], uraniumOre)
+			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+		}
+	}
+	if(success == 1){
+		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		success = 0
+	}
+}
+
+function cluster3(x,y,z){
+	var X=[x+1,x+1,x+1,x+2]
+	var Y=[y+1,y+2,y+1,y+1]
+	var Z=[z+-2,z+-2,z+-1,z+-2]
+	var success = 0
+	for(n=0;n<4;n++){
+		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
 			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
@@ -447,50 +483,14 @@ function cluster1(x,y,z){
 	}
 }
 
-function cluster2(x,y,z,ore){
-	var X=[x+1,x+1,x+2,x+2,x+2,x+3]
-	var Y=[y+1,y+2,y+2,y+3,y+2,y+2]
-	var Z=[z+-1,z+-1,z+-2,z+-2,z+-1,z+-2]
-	var success = 0
-	for(n=0;n<6;n++){
-		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], ore)
-			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
-		}
-	}
-	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
-		success = 0
-	}
-}
-
-function cluster3(x,y,z,ore){
-	var X=[x+1,x+1,x+1,x+2]
-	var Y=[y+1,y+2,y+1,y+1]
-	var Z=[z+-2,z+-2,z+-1,z+-2]
-	var success = 0
-	for(n=0;n<4;n++){
-		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], ore)
-			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
-		}
-	}
-	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
-		success = 0
-	}
-}
-
-function cluster4(x,y,z,ore){
+function cluster4(x,y,z){
 	var X=[x+1,x+1,x+1,x+2,x+2]
 	var Y=[y+1,y+2,y+1,y+2,y+3]
 	var Z=[z+-2,z+-2,z+-1,z+-2,z+-2]
 	var success = 0
 	for(n=0;n<5;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
-			setTile(X[n], Y[n], Z[n], ore)
+			setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
 			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
