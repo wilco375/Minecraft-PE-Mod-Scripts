@@ -42,7 +42,7 @@ Item.setMaxDamage(uraniumId,50);
 /////////////////////////////////
 //Code that powers the furnaces V
 /////////////////////////////////
-function modTick(){
+function runEveryTick(){
 	if(SolarPanelX != []){
 		for(i = 0;i < SolarPanelX.length;i++){
 			x = SolarPanelX[i]
@@ -67,6 +67,7 @@ function modTick(){
 			}
 		}	
 	}
+	
 	if(ReactorX != []){
 		for(j = 0;j < ReactorX.length;j++){
 			xR = ReactorX[j]
@@ -207,11 +208,9 @@ function showReactorGUI(x,y,z){
 				var dialog = new android.app.Dialog(ctx); 
 				dialog.setContentView(scroll);
 				var reactorHasFuel = 0
-				//Debug Message
-				clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
+				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
 				if(getTile(x,1,z) == 54){
-					//Debug Message
-					clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
+					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getChestSlotData(x,1,z,0)!=0){
 						dialog.setTitle("Fuel: "+(50-Level.getChestSlotData(x,1,z,0))+"/50")
 						reactorHasFuel = 1
@@ -355,7 +354,7 @@ function startDestroyBlock(x,y,z){
 	if(getTile(x,y,z) == SolarPanelId){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,SolarPanelId)
+		Level.dropItem(x,y,z,0.5,SolarPanelId,1,0)
 	}
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
@@ -365,7 +364,7 @@ function startDestroyBlock(x,y,z){
 	if(getTile(x,y,z) == reactorId){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,reactorId)
+		Level.dropItem(x,y,z,0.5,reactorId,1,0)
 	}
 }
 
@@ -373,7 +372,7 @@ function destroyBlock(x,y,z){
 	if(getTile(x,y,z) == SolarPanelId){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,SolarPanelId)
+		Level.dropItem(x,y,z,0.5,SolarPanelId,1,0)
 	}
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
@@ -383,7 +382,7 @@ function destroyBlock(x,y,z){
 	if(getTile(x,y,z) == reactorId){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,reactorId)
+		Level.dropItem(x,y,z,0.5,reactorId,1,0)
 	}
 }
 
@@ -523,3 +522,6 @@ function cluster4(x,y,z){
 	}
 }
 
+function modTick(){
+	runEveryTick()
+}
