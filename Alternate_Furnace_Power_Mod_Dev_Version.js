@@ -206,7 +206,9 @@ function showReactorGUI(x,y,z){
 				scroll.addView(menu);
 				var dialog = new android.app.Dialog(ctx); 
 				dialog.setContentView(scroll);
-				var reactorHasFuel = 0 
+				var reactorHasFuel = 0
+				//Debug Message
+				clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
 				if(getTile(x,1,z) == 55){
 					//Debug Message
 					clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
