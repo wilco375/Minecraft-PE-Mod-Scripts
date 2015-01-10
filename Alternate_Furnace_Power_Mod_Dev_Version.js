@@ -34,7 +34,7 @@ Block.defineBlock(reactorId,"Reactor",["iron_block",0],15,1,0)
 Block.setColor(reactorId,[0x00FF00])
 Block.setColor(uraniumOre,[0x00FF00])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
-Item.addCraftRecipe(ReactorId,1,0,[256,1,0,42,1,0,256,2,0,351,1,10,256,2,0,42,1,0,256,1,0])
+Item.addCraftRecipe(reactorId,1,0,[256,1,0,42,1,0,256,2,0,351,1,10,256,2,0,42,1,0,256,1,0])
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
 ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
 Item.setMaxDamage(uraniumId,50);
