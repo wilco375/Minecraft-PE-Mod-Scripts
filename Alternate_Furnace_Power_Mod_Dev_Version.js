@@ -156,7 +156,7 @@ function useItem(x,y,z,itemId,blockId,side){
 	//Fuel Reactor V
 	////////////////
 	if(blockId == reactorId && itemId == uraniumId){
-		if(getTile(x,1,z) == 55){
+		if(getTile(x,1,z) == 54){
 			if(Level.getChestSlot(x,1,z,0)==0){
 				if(Player.getCarriedItemCount > 1){
 					Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
@@ -209,7 +209,7 @@ function showReactorGUI(x,y,z){
 				var reactorHasFuel = 0
 				//Debug Message
 				clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
-				if(getTile(x,1,z) == 55){
+				if(getTile(x,1,z) == 54){
 					//Debug Message
 					clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getChestSlotData(x,1,z,0)!=0){
