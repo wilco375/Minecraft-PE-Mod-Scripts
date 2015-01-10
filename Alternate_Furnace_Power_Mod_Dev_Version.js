@@ -76,7 +76,7 @@ function runEveryTick(){
 			sun = 1
 			uraniumData = Level.getChestSlotData(xR,1,zR,0)
 			newData = uraniumData+1
-			fueled = 0
+			furnaceFueled = 0
 			if(getTile(xR-1,yR,zR) == 61){
 				if(uraniumData != 0){
 					furnaceFueled = 1
