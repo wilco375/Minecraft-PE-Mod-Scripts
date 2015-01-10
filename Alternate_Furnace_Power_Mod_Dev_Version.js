@@ -246,7 +246,7 @@ function showReactorGUI(x,y,z){
 					}
 				})
 				ReactorOff.setText("Off")
-				SolarPaneReactorOfflOff.setTextSize(textsize)
+				ReactorOff.setTextSize(textsize)
 				menu.addView(ReactorOff); 
 			}
 			catch (e){
