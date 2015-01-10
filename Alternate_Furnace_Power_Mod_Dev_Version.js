@@ -208,6 +208,8 @@ function showReactorGUI(x,y,z){
 				dialog.setContentView(scroll);
 				var reactorHasFuel = 0 
 				if(getTile(x,1,z) == 55){
+					//Debug Message
+					clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getChestSlotData(x,1,z,0)!=0){
 						dialog.setTitle("Fuel: "+Level.getChestSlotData(x,1,z,0)+"/50")
 						reactorHasFuel = 1
@@ -356,7 +358,7 @@ function startDestroyBlock(x,y,z){
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,uraniumId)
+		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
 	}
 }
 
@@ -364,7 +366,7 @@ function destroyBlock(x,y,z){
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,uraniumId)
+		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
 	}
 }
 
