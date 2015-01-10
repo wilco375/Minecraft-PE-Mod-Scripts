@@ -74,58 +74,52 @@ function runEveryTick(){
 			yR = ReactorY[j]
 			zR = ReactorZ[j]
 			sun = 1
+			uraniumData = Level.getChestSlotData(xR,1,zR,0)
+			newData = uraniumData+1
+			fueled = 0
 			if(getTile(xR-1,yR,zR) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR-1,yR,zR)
 				}
 			}
 			if(getTile(xR+1,yR,zR) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR+1,yR,zR)
 				}
 			}
 			if(getTile(xR,yR-1,zR) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR,yR-1,zR)
 				}
 			}
 			if(getTile(xR,yR+1,zR) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR,yR+1,zR)
 				}
 			}
 			if(getTile(xR,yR,zR-1) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR-1)
 				}
 			}
 			if(getTile(xR,yR,zR+1) == 61){
-				if(Level.getChestSlotData(xR,1,zR,0) != 0){
-					if(Level.getChestSlotData(xR,1,zR,0) == 50){
-						Level.setChestSlot(xR,1,zR,0,0)
-					}
-					else{ Level.setChestSlot(xR,1,zR,0,uraniumId,1,Level.getChestSlotData(xR,1,zR,0)+1)}
+				if(uraniumData != 0){
+					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR+1)
+				}
+			}
+			if(furnaceFueled == 1){
+				if(newData == 50){
+					Level.setChestSlot(xR,1,zR,0,0)
+				}
+				else{ 
+					Level.setChestSlot(xR,1,zR,0,0)
+					Level.setChestSlot(xR,1,zR,0,uraniumId,1,newData)
 				}
 			}
 		}
