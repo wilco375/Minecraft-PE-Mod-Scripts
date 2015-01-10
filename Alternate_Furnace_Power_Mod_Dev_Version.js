@@ -1,4 +1,4 @@
-//Alternate Furnace Power Mod V1.2 Pre-Alpha
+//Alternate Furnace Power Mod
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
@@ -145,14 +145,14 @@ function useItem(x,y,z,itemId,blockId,side){
 		preventDefault()
 		showSolarPanelGUI(x,y,z)
 	}
-	if(blockId == ReactorId && itemId != uraniumId){
+	if(blockId == reactorId && itemId != uraniumId){
 		preventDefault()
 		showReactorGUI(x,y,z)
 	}
 	////////////////
 	//Fuel Reactor V
 	////////////////
-	if(blockId == ReactorId && itemId == uraniumId){
+	if(blockId == reactorId && itemId == uraniumId){
 		if(getTile(x,1,z) == 55){
 			if(Level.getChestSlot(x,1,z,0)==0){
 				if(Player.getCarriedItemCount > 1){
@@ -171,7 +171,7 @@ function useItem(x,y,z,itemId,blockId,side){
 	/////////////////////////////////
 	//Create chest for reactor fuel V
 	/////////////////////////////////
-	if(itemId == ReactorId){
+	if(itemId == reactorId){
 		xC = x
 		zC = z
 		if(side == 2) zC--
@@ -350,18 +350,18 @@ function startDestroyBlock(x,y,z){
 		setTile(x,y,z,0)
 		Level.dropItem(x,y,z,0.5,SolarPanelId)
 	}
-	if(getTile(x,y,z) == UraniumOre){
+	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,UraniumId)
+		Level.dropItem(x,y,z,0.5,uraniumId)
 	}
 }
 
 function destroyBlock(x,y,z){
-	if(getTile(x,y,z) == UraniumOre){
+	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,UraniumId)
+		Level.dropItem(x,y,z,0.5,uraniumId)
 	}
 }
 
