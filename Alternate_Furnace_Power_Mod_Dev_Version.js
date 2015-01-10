@@ -178,9 +178,9 @@ function useItem(x,y,z,itemId,blockId,side){
 		if(side == 3) zC++
 		if(side == 4) xC--
 		if(side == 5) xC++
+		setTile(xC,1,zC,55)
+		setTile(xC,2,zC,8)
 	}
-	setTile(xC,1,zC,55)
-	setTile(xC,2,zC,8)
 	/*
 	SIDES
 	0 - Bottom - (y - 1)
@@ -433,11 +433,12 @@ function cluster1(x,y,z){
 	var X=[x+1,x+2,x+2,x+2,x+2,x+3,x+3]
 	var Y=[y+2,y+2,y+3,y+2,y+2,y+1,y+2]
 	var Z=[z+-3,z+-3,z+-3,z+-2,z+-1,z+-3,z+-3]
-	var success
-	for(n=0;n<125+1;n++){
+	var success = 0
+	for(n=0;n<7;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
@@ -450,11 +451,12 @@ function cluster2(x,y,z,ore){
 	var X=[x+1,x+1,x+2,x+2,x+2,x+3]
 	var Y=[y+1,y+2,y+2,y+3,y+2,y+2]
 	var Z=[z+-1,z+-1,z+-2,z+-2,z+-1,z+-2]
-	var success
-	for(n=0;n<100+1;n++){
+	var success = 0
+	for(n=0;n<6;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], ore)
 			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
@@ -467,11 +469,12 @@ function cluster3(x,y,z,ore){
 	var X=[x+1,x+1,x+1,x+2]
 	var Y=[y+1,y+2,y+1,y+1]
 	var Z=[z+-2,z+-2,z+-1,z+-2]
-	var success
-	for(n=0;n<100+1;n++){
+	var success = 0
+	for(n=0;n<4;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], ore)
 			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
@@ -484,11 +487,12 @@ function cluster4(x,y,z,ore){
 	var X=[x+1,x+1,x+1,x+2,x+2]
 	var Y=[y+1,y+2,y+1,y+2,y+3]
 	var Z=[z+-2,z+-2,z+-1,z+-2,z+-2]
-	var success
-	for(n=0;n<100+1;n++){
+	var success = 0
+	for(n=0;n<5;n++){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], ore)
 			success = 1
+			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
