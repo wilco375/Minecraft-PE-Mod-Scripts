@@ -1,4 +1,4 @@
-//Alternate Furnace Power Mod
+//Alternate Furnace Power Mod V1.2 - Reactor and Uranium added
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
