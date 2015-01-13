@@ -20,6 +20,7 @@ var SolarPanelZ = []
 var ReactorX = []
 var ReactorY = []
 var ReactorZ = []
+
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
 var sun
@@ -37,7 +38,6 @@ Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0]
 Item.addCraftRecipe(reactorId,1,0,[256,1,0,42,1,0,256,2,0,351,1,10,256,2,0,42,1,0,256,1,0])
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
 ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
-Item.setMaxDamage(uraniumId,50);
 
 /////////////////////////////////
 //Code that powers the furnaces V
@@ -74,52 +74,52 @@ function runEveryTick(){
 			yR = ReactorY[j]
 			zR = ReactorZ[j]
 			sun = 1
-			uraniumData = Level.getChestSlotData(xR,1,zR,0)
-			newData = uraniumData+1
+			uraniumCount = Level.getChestSlotCount(xR,1,zR,0)
+			newCount = uraniumCount-1
 			furnaceFueled = 0
 			if(getTile(xR-1,yR,zR) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR-1,yR,zR)
 				}
 			}
 			if(getTile(xR+1,yR,zR) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR+1,yR,zR)
 				}
 			}
 			if(getTile(xR,yR-1,zR) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR,yR-1,zR)
 				}
 			}
 			if(getTile(xR,yR+1,zR) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR,yR+1,zR)
 				}
 			}
 			if(getTile(xR,yR,zR-1) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR-1)
 				}
 			}
 			if(getTile(xR,yR,zR+1) == 61){
-				if(uraniumData != 0){
+				if(uraniumCount != 0){
 					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR+1)
 				}
 			}
 			if(furnaceFueled == 1){
-				if(newData == 50){
+				if(newData == 0){
 					Level.setChestSlot(xR,1,zR,0,0)
 				}
 				else{ 
 					Level.setChestSlot(xR,1,zR,0,0)
-					Level.setChestSlot(xR,1,zR,0,uraniumId,1,newData)
+					Level.setChestSlot(xR,1,zR,0,uraniumId,1,newCount)
 				}
 			}
 		}
@@ -159,7 +159,7 @@ function useItem(x,y,z,itemId,blockId,side){
 				else{
 					Player.clearInventorySlot(Player.getSelectedSlotId())
 				}
-				Level.setChestSlot(x,1,z,0,uraniumId,1,0)
+				Level.setChestSlot(x,1,z,0,uraniumId,50,0)
 			}
 			else{ clientMessage("This reactor already contains uranium")}
 		}
@@ -205,8 +205,8 @@ function showReactorGUI(x,y,z){
 				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
 				if(getTile(x,1,z) == 54){
 					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
-					if(Level.getChestSlotData(x,1,z,0)!=0){
-						dialog.setTitle("Fuel: "+(50-Level.getChestSlotData(x,1,z,0))+"/50")
+					if(Level.getChestSlotCount(x,1,z,0)!=0){
+						dialog.setTitle("Fuel: "+(Level.getChestSlotCount(x,1,z,0))+"/50")
 						reactorHasFuel = 1
 					}
 				}
@@ -353,7 +353,7 @@ function startDestroyBlock(x,y,z){
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
+		Level.dropItem(x,y,z,0.5,uraniumId,1,0)
 	}
 	if(getTile(x,y,z) == reactorId){
 		preventDefault()
@@ -371,7 +371,7 @@ function destroyBlock(x,y,z){
 	if(getTile(x,y,z) == uraniumOre){
 		preventDefault()
 		setTile(x,y,z,0)
-		Level.dropItem(x,y,z,0.5,uraniumId,1,50)
+		Level.dropItem(x,y,z,0.5,uraniumId,1,0)
 	}
 	if(getTile(x,y,z) == reactorId){
 		preventDefault()
