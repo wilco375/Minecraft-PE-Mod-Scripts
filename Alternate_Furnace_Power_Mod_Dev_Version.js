@@ -158,10 +158,10 @@ function useItem(x,y,z,itemId,blockId,side){
 	if(blockId == reactorId && itemId == uraniumId){
 		if(Level.getData(x,1,z)==0){
 			if(Player.getCarriedItemCount() > 1){
-				//Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+				Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
 			}
 			else{
-				//Player.clearInventorySlot(Player.getSelectedSlotId())
+				Entity.setCarriedItem(getPlayerEnt(),0)
 			}
 			Level.setTile(x,1,z,fuelBlock,15)
 		}
