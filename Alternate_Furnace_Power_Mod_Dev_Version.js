@@ -82,37 +82,31 @@ function runEveryTick(){
 			furnaceFueled = 0
 			if(getTile(xR-1,yR,zR) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR-1,yR,zR)
 				}
 			}
 			if(getTile(xR+1,yR,zR) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR+1,yR,zR)
 				}
 			}
 			if(getTile(xR,yR-1,zR) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR,yR-1,zR)
 				}
 			}
 			if(getTile(xR,yR+1,zR) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR,yR+1,zR)
 				}
 			}
 			if(getTile(xR,yR,zR-1) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR-1)
 				}
 			}
 			if(getTile(xR,yR,zR+1) == 61){
 				if(uraniumCount != 0){
-					furnaceFueled = 1
 					fuelFurnace(xR,yR,zR+1)
 				}
 			}
@@ -132,6 +126,7 @@ function fuelFurnace(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
 	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
 		Level.setFurnaceSlot(x,y,z,1,173,0,1)
+		furnaceFueled = 1
 		//clientMessage(sun+","+"fueled")
 	}
 }
@@ -271,7 +266,6 @@ function enableReactor(x,y,z){
 function disableReactor(x,y,z){
 	for(i = 0;i < ReactorX.length;i++){
 		if(ReactorX[i] == x && ReactorY[i] == y && ReactorZ[i] == z){
-			Reactor.splice(i,1)
 			ReactorX.splice(i,1)
 			ReactorY.splice(i,1)
 			ReactorZ.splice(i,1)
