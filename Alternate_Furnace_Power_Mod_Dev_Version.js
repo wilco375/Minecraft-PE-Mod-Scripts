@@ -167,7 +167,7 @@ function useItem(x,y,z,itemId,blockId,side){
 			ReactorZ.push(z)
 			ReactorOn.push(0)
 			fuel.push(0)
-			fuelReactor(x,y,z,((ReactorX.length)-1))
+			fuelReactor(x,y,z,ReactorX.length-1)
 		}
 	}
 	// ^ //
@@ -175,7 +175,7 @@ function useItem(x,y,z,itemId,blockId,side){
 
 function fuelReactor(x,y,z,i){
 	if(fuel[i]==0){
-		if(Player.getCarriedItemCount > 1){
+		if(Player.getCarriedItemCount() > 1){
 			Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
 		}
 		else{
@@ -265,6 +265,7 @@ function enableReactor(x,y,z){
 		ReactorY.push(y)
 		ReactorZ.push(z)
 		ReactorOn.push(1)
+		fuel.push(0)
 	}
 }
 
