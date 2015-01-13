@@ -153,18 +153,16 @@ function useItem(x,y,z,itemId,blockId,side){
 	//Fuel Reactor V
 	////////////////
 	if(blockId == reactorId && itemId == uraniumId){
-		if(getTile(x,1,z) == fuelBlock){
-			if(Level.getData(x,1,z)==0){
-				if(Player.getCarriedItemCount > 1){
-					Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
-				}
-				else{
-					Player.clearInventorySlot(Player.getSelectedSlotId())
-				}
-				Level.setTile(x,1,z,fuelBlock,50)
+		if(Level.getData(x,1,z)==0){
+			if(Player.getCarriedItemCount() > 1){
+				//Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
 			}
-			else{ clientMessage("This reactor already contains uranium")}
+			else{
+				//Player.clearInventorySlot(Player.getSelectedSlotId())
+			}
+			Level.setTile(x,1,z,fuelBlock,50)
 		}
+		else{ clientMessage("This reactor already contains uranium")}
 	}
 	// ^ //
 	
@@ -208,7 +206,7 @@ function showReactorGUI(x,y,z){
 				if(getTile(x,1,z) == fuelBlock){
 					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getData(x,1,z)!=0){
-						dialog.setTitle("Fuel: "+Level.getData(x,1,z,0)+"/50")
+						dialog.setTitle("Fuel: "+Level.getData(x,1,z)+"/50")
 						reactorHasFuel = 1
 					}
 				}
