@@ -21,6 +21,7 @@ var ReactorX = []
 var ReactorY = []
 var ReactorZ = []
 var fuel = []
+var ReactorOn = []
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
@@ -71,55 +72,57 @@ function runEveryTick(){
 	
 	if(ReactorX != []){
 		for(j = 0;j < ReactorX.length;j++){
-			xR = ReactorX[j]
-			yR = ReactorY[j]
-			zR = ReactorZ[j]
-			sun = 1
-			uraniumCount = fuel[j]
-			newCount = uraniumCount-1
-			furnaceFueled = 0
-			if(getTile(xR-1,yR,zR) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR-1,yR,zR)
+			if(ReactorOn[j] == 1){
+				xR = ReactorX[j]
+				yR = ReactorY[j]
+				zR = ReactorZ[j]
+				sun = 1
+				uraniumCount = fuel[j]
+				newCount = uraniumCount-1
+				furnaceFueled = 0
+				if(getTile(xR-1,yR,zR) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR-1,yR,zR)
+					}
 				}
-			}
-			if(getTile(xR+1,yR,zR) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR+1,yR,zR)
+				if(getTile(xR+1,yR,zR) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR+1,yR,zR)
+					}
 				}
-			}
-			if(getTile(xR,yR-1,zR) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR,yR-1,zR)
+				if(getTile(xR,yR-1,zR) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR,yR-1,zR)
+					}
 				}
-			}
-			if(getTile(xR,yR+1,zR) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR,yR+1,zR)
+				if(getTile(xR,yR+1,zR) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR,yR+1,zR)
+					}
 				}
-			}
-			if(getTile(xR,yR,zR-1) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR,yR,zR-1)
+				if(getTile(xR,yR,zR-1) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR,yR,zR-1)
+					}
 				}
-			}
-			if(getTile(xR,yR,zR+1) == 61){
-				if(uraniumCount != 0){
-					furnaceFueled = 1
-					fuelFurnace(xR,yR,zR+1)
+				if(getTile(xR,yR,zR+1) == 61){
+					if(uraniumCount != 0){
+						furnaceFueled = 1
+						fuelFurnace(xR,yR,zR+1)
+					}
 				}
-			}
-			if(furnaceFueled == 1){
-				if(newCount == 0){
-					fuel[j] = 0
-				}
-				else{ 
-					fuel[j] = newCount
+				if(furnaceFueled == 1){
+					if(newCount == 0){
+						fuel[j] = 0
+					}
+					else{ 
+						fuel[j] = newCount
+					}
 				}
 			}
 		}
@@ -151,45 +154,36 @@ function useItem(x,y,z,itemId,blockId,side){
 	//Fuel Reactor V
 	////////////////
 	if(blockId == reactorId && itemId == uraniumId){
+		reactorDefined = 0
 		for(i = 0;i<fuel.length;i++){
 			if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-				if(fuel[i]==0){
-					if(Player.getCarriedItemCount > 1){
-						Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
-					}
-					else{
-						Player.clearInventorySlot(Player.getSelectedSlotId())
-					}
-					fuel[i] = 50
-				}
-				else{ clientMessage("This reactor already contains uranium")}
+				reactorDefined = 1
+				fuelReactor(x,y,z,i)
 			}
+		}
+		if(reactorDefined == 0){
+			ReactorX.push(x)
+			ReactorY.push(y)
+			ReactorZ.push(z)
+			ReactorOn.push(0)
+			fuel.push(0)
+			fuelReactor(x,y,z,((ReactorX.length)-1))
 		}
 	}
 	// ^ //
-	
-	/////////////////////////////////
-	//Create chest for reactor fuel V
-	/////////////////////////////////
-	if(itemId == reactorId){
-		xC = x
-		zC = z
-		if(side == 2) zC--
-		if(side == 3) zC++
-		if(side == 4) xC--
-		if(side == 5) xC++
-		setTile(xC,1,zC,54)
-		setTile(xC,2,zC,7)
+}
+
+function fuelReactor(x,y,z,i){
+	if(fuel[i]==0){
+		if(Player.getCarriedItemCount > 1){
+			Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+		}
+		else{
+			Player.clearInventorySlot(Player.getSelectedSlotId())
+		}
+		fuel[i] = 50
 	}
-	/*
-	SIDES
-	0 - Bottom - (y - 1)
-	1 - Top - (y + 1)
-	2 - Front - (z - 1)
-	3 - Back - (z + 1)
-	4 - Left - (x - 1)
-	5 - Right - (x + 1)
-	*/
+	else{ clientMessage("This reactor already contains uranium")}
 }
 
 //Reactor GUI
@@ -218,8 +212,8 @@ function showReactorGUI(x,y,z){
 					dialog.setTitle("Fuel: 0/0");
 				}
 				//Add buttons
-				var  ReactorOn = new android.widget.Button(ctx); 
-				ReactorOn.setOnClickListener(new android.view.View.OnClickListener(){
+				var  ReactorOnB = new android.widget.Button(ctx); 
+				ReactorOnB.setOnClickListener(new android.view.View.OnClickListener(){
 					onClick: function(){ 
 						try{
 							dialog.dismiss();
@@ -230,9 +224,9 @@ function showReactorGUI(x,y,z){
 						}
 					}
 				})
-				ReactorOn.setText("On")
-				ReactorOn.setTextSize(textsize)
-				menu.addView(ReactorOn); 
+				ReactorOnB.setText("On")
+				ReactorOnB.setTextSize(textsize)
+				menu.addView(ReactorOnB); 
 				
 				var  ReactorOff = new android.widget.Button(ctx); 
 				ReactorOff.setOnClickListener(new android.view.View.OnClickListener(){
@@ -259,18 +253,25 @@ function showReactorGUI(x,y,z){
 }
 
 function enableReactor(x,y,z){
-	ReactorX.push(x)
-	ReactorY.push(y)
-	ReactorZ.push(z)
+	reactorDefined = 0
+	for(i = 0;i<fuel.length;i++){
+		if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
+			ReactorOn[i] = 1
+			reactorDefined = 1
+		}
+	}
+	if(reactorDefined == 0){
+		ReactorX.push(x)
+		ReactorY.push(y)
+		ReactorZ.push(z)
+		ReactorOn.push(1)
+	}
 }
 
 function disableReactor(x,y,z){
 	for(i = 0;i < ReactorX.length;i++){
 		if(ReactorX[i] == x && ReactorY[i] == y && ReactorZ[i] == z){
-			Reactor.splice(i,1)
-			ReactorX.splice(i,1)
-			ReactorY.splice(i,1)
-			ReactorZ.splice(i,1)
+			ReactorOn[i] = 0
 		}
    }
 }
