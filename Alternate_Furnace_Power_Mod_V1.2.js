@@ -1,4 +1,4 @@
-//Alternate Furnace Power Mod V1.2 - Reactor and Uranium added
+//Alternate Furnace Power Mod V1.2.1 - Reactor and Uranium added
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
@@ -27,6 +27,7 @@ var textsize = 15
 var sun
 var oldPx, worldGenerated, starterTick
 
+
 ///////////////////////////
 //Creating Blocks & Items V
 ///////////////////////////
@@ -41,6 +42,16 @@ Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
 Block.defineBlock(reactorId,"Reactor",["iron_block",0],20,1,0)
 Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,uraniumId,1,0,265,2,0,42,1,0,265,1,0])
 ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
+
+/////////////////////
+//Check for updates V
+/////////////////////
+function newLevel(){
+ var out=new java.io.ByteArrayOutputStream();
+	var response=android.net.http.AndroidHttpClient.newInstance("Online()").execute(new org.apache.http.client.methods.HttpGet("https://raw.githubusercontent.com/wilco375/Minecraft-PE-Mod-Scripts/master/Alternate_Furnace_Power_Mod_V1.2.1_Update_Checker.txt")).getEntity().writeTo(out);
+	out.close();
+	clientMessage(String(out.toString()))
+}
 
 /////////////////////////////////
 //Code that powers the furnaces V
@@ -522,4 +533,5 @@ function modTick(){
 	runEveryTick()
 	oreGen()
 }
+
 
