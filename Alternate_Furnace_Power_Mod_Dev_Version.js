@@ -10,6 +10,7 @@ var reactorId = 213
 var oreGenCheckerId = 200
 var uraniumOre = 204
 var uraniumId = 510
+var fuelBlock = 201
 
 ///////////////////
 //Other variables V
@@ -20,8 +21,6 @@ var SolarPanelZ = []
 var ReactorX = []
 var ReactorY = []
 var ReactorZ = []
-var fuel = []
-var ReactorOn = []
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
@@ -34,6 +33,8 @@ var oldPx, worldGenerated, starterTick
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(uraniumOre,"Uranium Ore",["diamond_ore",0],15,1,0)
 Block.defineBlock(reactorId,"Reactor",["iron_block",0],15,1,0)
+Block.defineBlock(fuelBlock,"Fuel Block",["bedrock",0],1,1,0)
+Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00,0xD2691E,0xFF7F50,0x6495ED,0xFFF8DC,0xDC143C,0x00FFFF,0x00008B,0x008B8B,0xB8860B,0xA9A9A9,0x006400,0xBDB76B,0x8B008B,0x556B2F,0xFF8C00,0x9932CC,0x8B0000,0xE9967A,0x8FBC8F,0x483D8B,0x2F4F4F,0x00CED1,0x9400D3,0xFF1493,0x00BFFF,0x696969,0x1E90FF,0xB22222,0xFFFAF0,0x228B22,0xFF00FF,0xDCDCDC,0xF8F8FF,0xFFD700,0xDAA520])
 Block.setColor(reactorId,[0x00FF00])
 Block.setColor(uraniumOre,[0x00FF00])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
@@ -72,57 +73,55 @@ function runEveryTick(){
 	
 	if(ReactorX != []){
 		for(j = 0;j < ReactorX.length;j++){
-			if(ReactorOn[j] == 1){
-				xR = ReactorX[j]
-				yR = ReactorY[j]
-				zR = ReactorZ[j]
-				sun = 1
-				uraniumCount = fuel[j]
-				newCount = uraniumCount-1
-				furnaceFueled = 0
-				if(getTile(xR-1,yR,zR) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR-1,yR,zR)
-					}
+			xR = ReactorX[j]
+			yR = ReactorY[j]
+			zR = ReactorZ[j]
+			sun = 1
+			uraniumCount = Level.getData(xR,1,zR)
+			newCount = uraniumCount-1
+			furnaceFueled = 0
+			if(getTile(xR-1,yR,zR) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR-1,yR,zR)
 				}
-				if(getTile(xR+1,yR,zR) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR+1,yR,zR)
-					}
+			}
+			if(getTile(xR+1,yR,zR) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR+1,yR,zR)
 				}
-				if(getTile(xR,yR-1,zR) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR,yR-1,zR)
-					}
+			}
+			if(getTile(xR,yR-1,zR) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR,yR-1,zR)
 				}
-				if(getTile(xR,yR+1,zR) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR,yR+1,zR)
-					}
+			}
+			if(getTile(xR,yR+1,zR) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR,yR+1,zR)
 				}
-				if(getTile(xR,yR,zR-1) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR,yR,zR-1)
-					}
+			}
+			if(getTile(xR,yR,zR-1) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR,yR,zR-1)
 				}
-				if(getTile(xR,yR,zR+1) == 61){
-					if(uraniumCount != 0){
-						furnaceFueled = 1
-						fuelFurnace(xR,yR,zR+1)
-					}
+			}
+			if(getTile(xR,yR,zR+1) == 61){
+				if(uraniumCount != 0){
+					furnaceFueled = 1
+					fuelFurnace(xR,yR,zR+1)
 				}
-				if(furnaceFueled == 1){
-					if(newCount == 0){
-						fuel[j] = 0
-					}
-					else{ 
-						fuel[j] = newCount
-					}
+			}
+			if(furnaceFueled == 1){
+				if(newCount == 0){
+					Level.setTile(xR,1,zR,fuelBlock,0)
+				}
+				else{ 
+					Level.setTile(xR,1,zR,fuelBlock,newCount)
 				}
 			}
 		}
@@ -153,51 +152,44 @@ function useItem(x,y,z,itemId,blockId,side){
 	////////////////
 	//Fuel Reactor V
 	////////////////
-	try{
-		if(blockId == reactorId && itemId == uraniumId){
-			reactorDefined = 0
-			if(ReactorX != []){
-				for(i = 0;i<ReactorX.length;i++){
-					if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-						reactorDefined = 1
-						fuelReactor(x,y,z,i)
-					}
+	if(blockId == reactorId && itemId == uraniumId){
+		if(getTile(x,1,z) == fuelBlock){
+			if(Level.getData(x,1,z)==0){
+				if(Player.getCarriedItemCount > 1){
+					Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
 				}
-				if(reactorDefined == 0){
-					ReactorX.push(x)
-					ReactorY.push(y)
-					ReactorZ.push(z)
-					ReactorOn.push(0)
-					fuel.push(0)
-					fuel1 = ReactorX.length
-					fuel2 = parseInt(fuel1)-1
-					fuelReactor(x,y,z,fuel2)
+				else{
+					Player.clearInventorySlot(Player.getSelectedSlotId())
 				}
+				Level.setTile(x,1,z,fuelBlock,50)
 			}
+			else{ clientMessage("This reactor already contains uranium")}
 		}
-	}
-	catch(e){
-		clientMessage(e)
 	}
 	// ^ //
-}
-
-function fuelReactor(x,y,z,i){
-	try{
-		if(fuel[i]==0){
-			if(Player.getCarriedItemCount() > 1){
-				Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
-			}
-			else{
-				Player.clearInventorySlot(Player.getSelectedSlotId())
-			}
-			fuel[i] = 50
-		}
-		else{ clientMessage("This reactor already contains uranium")}
+	
+	/////////////////////////////////
+	//Create fuel block for reactor fuel V
+	/////////////////////////////////
+	if(itemId == reactorId){
+		xC = x
+		zC = z
+		if(side == 2) zC--
+		if(side == 3) zC++
+		if(side == 4) xC--
+		if(side == 5) xC++
+		setTile(xC,1,zC,fuelBlock,0)
+		setTile(xC,2,zC,7)
 	}
-	catch(e){
-		clientMessage(e)
-	}
+	/*
+	SIDES
+	0 - Bottom - (y - 1)
+	1 - Top - (y + 1)
+	2 - Front - (z - 1)
+	3 - Back - (z + 1)
+	4 - Left - (x - 1)
+	5 - Right - (x + 1)
+	*/
 }
 
 //Reactor GUI
@@ -213,21 +205,19 @@ function showReactorGUI(x,y,z){
 				dialog.setContentView(scroll);
 				var reactorHasFuel = 0
 				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
-				//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
-				for(i = 0;i<fuel.length;i++){
-					if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-						if(fuel[i]!=0){
-							dialog.setTitle("Fuel: "+fuel+"/50")
-							reactorHasFuel = 1
-						}
+				if(getTile(x,1,z) == fuelBlock){
+					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
+					if(Level.getData(x,1,z)!=0){
+						dialog.setTitle("Fuel: "+Level.getData(x,1,z,0)+"/50")
+						reactorHasFuel = 1
 					}
 				}
 				if(reactorHasFuel != 1){
 					dialog.setTitle("Fuel: 0/0");
 				}
 				//Add buttons
-				var  ReactorOnB = new android.widget.Button(ctx); 
-				ReactorOnB.setOnClickListener(new android.view.View.OnClickListener(){
+				var  ReactorOn = new android.widget.Button(ctx); 
+				ReactorOn.setOnClickListener(new android.view.View.OnClickListener(){
 					onClick: function(){ 
 						try{
 							dialog.dismiss();
@@ -238,9 +228,9 @@ function showReactorGUI(x,y,z){
 						}
 					}
 				})
-				ReactorOnB.setText("On")
-				ReactorOnB.setTextSize(textsize)
-				menu.addView(ReactorOnB); 
+				ReactorOn.setText("On")
+				ReactorOn.setTextSize(textsize)
+				menu.addView(ReactorOn); 
 				
 				var  ReactorOff = new android.widget.Button(ctx); 
 				ReactorOff.setOnClickListener(new android.view.View.OnClickListener(){
@@ -267,26 +257,18 @@ function showReactorGUI(x,y,z){
 }
 
 function enableReactor(x,y,z){
-	reactorDefined = 0
-	for(i = 0;i<fuel.length;i++){
-		if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-			ReactorOn[i] = 1
-			reactorDefined = 1
-		}
-	}
-	if(reactorDefined == 0){
-		ReactorX.push(x)
-		ReactorY.push(y)
-		ReactorZ.push(z)
-		ReactorOn.push(1)
-		fuel.push(0)
-	}
+	ReactorX.push(x)
+	ReactorY.push(y)
+	ReactorZ.push(z)
 }
 
 function disableReactor(x,y,z){
 	for(i = 0;i < ReactorX.length;i++){
 		if(ReactorX[i] == x && ReactorY[i] == y && ReactorZ[i] == z){
-			ReactorOn[i] = 0
+			Reactor.splice(i,1)
+			ReactorX.splice(i,1)
+			ReactorY.splice(i,1)
+			ReactorZ.splice(i,1)
 		}
    }
 }
@@ -539,3 +521,4 @@ function cluster4(x,y,z){
 function modTick(){
 	runEveryTick()
 }
+
