@@ -34,7 +34,7 @@ Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(uraniumOre,"Uranium Ore",["diamond_ore",0],15,1,0)
 Block.defineBlock(reactorId,"Reactor",["iron_block",0],15,1,0)
 Block.defineBlock(fuelBlock,"Fuel Block",["bedrock",0],1,1,0)
-Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00,0xD2691E,0xFF7F50,0x6495ED,0xFFF8DC,0xDC143C,0x00FFFF,0x00008B,0x008B8B,0xB8860B,0xA9A9A9,0x006400,0xBDB76B,0x8B008B,0x556B2F,0xFF8C00,0x9932CC,0x8B0000,0xE9967A,0x8FBC8F,0x483D8B,0x2F4F4F,0x00CED1,0x9400D3,0xFF1493,0x00BFFF,0x696969,0x1E90FF,0xB22222,0xFFFAF0,0x228B22,0xFF00FF,0xDCDCDC,0xF8F8FF,0xFFD700,0xDAA520])
+Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00])
 Block.setColor(reactorId,[0x00FF00])
 Block.setColor(uraniumOre,[0x00FF00])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
@@ -65,7 +65,7 @@ function runEveryTick(){
     //clientMessage(sun)
 			if(sun ){
 				if(getTile(x,y-1,z) == 61){
-					fuelFurnace(x,y-1,z)
+					fuelFurnace2(x,y-1,z)
 				}
 			}
 		}	
@@ -131,6 +131,14 @@ function runEveryTick(){
 function fuelFurnace(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
 	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
+		Level.setFurnaceSlot(x,y,z,1,173,0,1)
+		//clientMessage(sun+","+"fueled")
+	}
+}
+
+function fuelFurnace2(x,y,z){
+	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
+	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
 		Level.setFurnaceSlot(x,y,z,1,263,0,1)
 		//clientMessage(sun+","+"fueled")
 	}
@@ -160,7 +168,7 @@ function useItem(x,y,z,itemId,blockId,side){
 			else{
 				//Player.clearInventorySlot(Player.getSelectedSlotId())
 			}
-			Level.setTile(x,1,z,fuelBlock,50)
+			Level.setTile(x,1,z,fuelBlock,15)
 		}
 		else{ clientMessage("This reactor already contains uranium")}
 	}
@@ -206,7 +214,7 @@ function showReactorGUI(x,y,z){
 				if(getTile(x,1,z) == fuelBlock){
 					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
 					if(Level.getData(x,1,z)!=0){
-						dialog.setTitle("Fuel: "+Level.getData(x,1,z)+"/50")
+						dialog.setTitle("Fuel: "+Level.getData(x,1,z)+"/15")
 						reactorHasFuel = 1
 					}
 				}
