@@ -32,14 +32,14 @@ var oldPx, worldGenerated, starterTick
 ///////////////////////////
 Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
 Block.defineBlock(uraniumOre,"Uranium Ore",["diamond_ore",0],15,1,0)
-Block.defineBlock(reactorId,"Reactor",["iron_block",0],15,1,0)
 Block.defineBlock(fuelBlock,"Fuel Block",["bedrock",0],1,1,0)
 Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00])
 Block.setColor(reactorId,[0x00FF00])
 Block.setColor(uraniumOre,[0x00FF00])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
-Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,351,1,10,265,2,0,42,1,0,265,1,0])
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
+Block.defineBlock(reactorId,"Reactor",["iron_block",0],20,1,0)
+Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,351,1,10,265,2,0,42,1,0,265,1,0])
 ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
 
 /////////////////////////////////
