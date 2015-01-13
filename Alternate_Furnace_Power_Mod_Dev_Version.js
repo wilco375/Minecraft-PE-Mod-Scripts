@@ -38,7 +38,7 @@ Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,
 Block.setColor(reactorId,[0x00FF00])
 Block.setColor(uraniumOre,[0x00FF00])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
-Item.addCraftRecipe(reactorId,1,0,[256,1,0,42,1,0,256,2,0,351,1,10,256,2,0,42,1,0,256,1,0])
+Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,351,1,10,265,2,0,42,1,0,265,1,0])
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
 ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
 
@@ -455,11 +455,11 @@ function cluster1(x,y,z){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			Level.setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+			//clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -473,11 +473,11 @@ function cluster2(x,y,z){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			Level.setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+			//clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -491,11 +491,11 @@ function cluster3(x,y,z){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+			//clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
@@ -509,11 +509,11 @@ function cluster4(x,y,z){
 		if(getTile(X[n],Y[n],Z[n]) == 1){
 			setTile(X[n], Y[n], Z[n], uraniumOre)
 			success = 1
-			clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
+			//clientMessage("Set "+X[n]+","+Y[n]+","+Z[n]+" to uraniumOre")
 		}
 	}
 	if(success == 1){
-		clientMessage("Generated ore at "+x+","+y+ ","+z)
+		//clientMessage("Generated ore at "+x+","+y+ ","+z)
 		success = 0
 	}
 }
