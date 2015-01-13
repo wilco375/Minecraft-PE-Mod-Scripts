@@ -153,41 +153,51 @@ function useItem(x,y,z,itemId,blockId,side){
 	////////////////
 	//Fuel Reactor V
 	////////////////
-	if(blockId == reactorId && itemId == uraniumId){
-		reactorDefined = 0
-		if(ReactorX != []){
-			for(i = 0;i<ReactorX.length;i++){
-				if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-					reactorDefined = 1
-					fuelReactor(x,y,z,i)
+	try{
+		if(blockId == reactorId && itemId == uraniumId){
+			reactorDefined = 0
+			if(ReactorX != []){
+				for(i = 0;i<ReactorX.length;i++){
+					if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
+						reactorDefined = 1
+						fuelReactor(x,y,z,i)
+					}
+				}
+				if(reactorDefined == 0){
+					ReactorX.push(x)
+					ReactorY.push(y)
+					ReactorZ.push(z)
+					ReactorOn.push(0)
+					fuel.push(0)
+					fuel1 = ReactorX.length
+					fuel2 = parseInt(fuel1)-1
+					fuelReactor(x,y,z,fuel2)
 				}
 			}
-			if(reactorDefined == 0){
-				ReactorX.push(x)
-				ReactorY.push(y)
-				ReactorZ.push(z)
-				ReactorOn.push(0)
-				fuel.push(0)
-				fuel1 = ReactorX.length
-				fuel2 = parseInt(fuel1)-1
-				fuelReactor(x,y,z,fuel2)
-			}
 		}
+	}
+	catch(e){
+		clientMessage(e)
 	}
 	// ^ //
 }
 
 function fuelReactor(x,y,z,i){
-	if(fuel[i]==0){
-		if(Player.getCarriedItemCount() > 1){
-			Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+	try{
+		if(fuel[i]==0){
+			if(Player.getCarriedItemCount() > 1){
+				Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+			}
+			else{
+				Player.clearInventorySlot(Player.getSelectedSlotId())
+			}
+			fuel[i] = 50
 		}
-		else{
-			Player.clearInventorySlot(Player.getSelectedSlotId())
-		}
-		fuel[i] = 50
+		else{ clientMessage("This reactor already contains uranium")}
 	}
-	else{ clientMessage("This reactor already contains uranium")}
+	catch(e){
+		clientMessage(e)
+	}
 }
 
 //Reactor GUI
