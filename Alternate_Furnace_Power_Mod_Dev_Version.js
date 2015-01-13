@@ -20,6 +20,7 @@ var SolarPanelZ = []
 var ReactorX = []
 var ReactorY = []
 var ReactorZ = []
+var fuel = []
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
@@ -74,7 +75,7 @@ function runEveryTick(){
 			yR = ReactorY[j]
 			zR = ReactorZ[j]
 			sun = 1
-			uraniumCount = Level.getChestSlotCount(xR,1,zR,0)
+			uraniumCount = fuel[j]
 			newCount = uraniumCount-1
 			furnaceFueled = 0
 			if(getTile(xR-1,yR,zR) == 61){
@@ -114,12 +115,11 @@ function runEveryTick(){
 				}
 			}
 			if(furnaceFueled == 1){
-				if(newData == 0){
-					Level.setChestSlot(xR,1,zR,0,0)
+				if(newCount == 0){
+					fuel[j] = 0
 				}
 				else{ 
-					Level.setChestSlot(xR,1,zR,0,0)
-					Level.setChestSlot(xR,1,zR,0,uraniumId,1,newCount)
+					fuel[j] = newCount
 				}
 			}
 		}
@@ -151,17 +151,19 @@ function useItem(x,y,z,itemId,blockId,side){
 	//Fuel Reactor V
 	////////////////
 	if(blockId == reactorId && itemId == uraniumId){
-		if(getTile(x,1,z) == 54){
-			if(Level.getChestSlot(x,1,z,0)==0){
-				if(Player.getCarriedItemCount > 1){
-					Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+		for(i = 0;i<fuel.length;i++){
+			if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
+				if(fuel[i]==0){
+					if(Player.getCarriedItemCount > 1){
+						Entity.setCarriedItem(getPlayerEnt(),uraniumId,Player.getCarriedItemCount()-1,0)
+					}
+					else{
+						Player.clearInventorySlot(Player.getSelectedSlotId())
+					}
+					fuel[i] = 50
 				}
-				else{
-					Player.clearInventorySlot(Player.getSelectedSlotId())
-				}
-				Level.setChestSlot(x,1,z,0,uraniumId,50,0)
+				else{ clientMessage("This reactor already contains uranium")}
 			}
-			else{ clientMessage("This reactor already contains uranium")}
 		}
 	}
 	// ^ //
@@ -203,11 +205,13 @@ function showReactorGUI(x,y,z){
 				dialog.setContentView(scroll);
 				var reactorHasFuel = 0
 				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
-				if(getTile(x,1,z) == 54){
-					//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
-					if(Level.getChestSlotCount(x,1,z,0)!=0){
-						dialog.setTitle("Fuel: "+(Level.getChestSlotCount(x,1,z,0))+"/50")
-						reactorHasFuel = 1
+				//clientMessage("Chest recognised, data of 1st slot is: "+Level.getChestSlotData(x,1,z,0)+" , id = "+Level.getChestSlot(x,1,z,0))
+				for(i = 0;i<fuel.length;i++){
+					if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
+						if(fuel[i]!=0){
+							dialog.setTitle("Fuel: "+fuel+"/50")
+							reactorHasFuel = 1
+						}
 					}
 				}
 				if(reactorHasFuel != 1){
