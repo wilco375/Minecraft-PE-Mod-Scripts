@@ -155,19 +155,23 @@ function useItem(x,y,z,itemId,blockId,side){
 	////////////////
 	if(blockId == reactorId && itemId == uraniumId){
 		reactorDefined = 0
-		for(i = 0;i<fuel.length;i++){
-			if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
-				reactorDefined = 1
-				fuelReactor(x,y,z,i)
+		if(ReactorX != []){
+			for(i = 0;i<ReactorX.length;i++){
+				if(x == ReactorX[i] && y == ReactorY[i] && z == ReactorZ[i]){
+					reactorDefined = 1
+					fuelReactor(x,y,z,i)
+				}
 			}
-		}
-		if(reactorDefined == 0){
-			ReactorX.push(x)
-			ReactorY.push(y)
-			ReactorZ.push(z)
-			ReactorOn.push(0)
-			fuel.push(0)
-			fuelReactor(x,y,z,ReactorX.length-1)
+			if(reactorDefined == 0){
+				ReactorX.push(x)
+				ReactorY.push(y)
+				ReactorZ.push(z)
+				ReactorOn.push(0)
+				fuel.push(0)
+				fuel1 = ReactorX.length
+				fuel2 = parseInt(fuel1)-1
+				fuelReactor(x,y,z,fuel2)
+			}
 		}
 	}
 	// ^ //
