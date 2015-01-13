@@ -390,7 +390,7 @@ function leaveGame(){
  worldGenerated = 0
 }
  
-function modTick(){
+function oreGen(){
 	if(starterTick == null) starterTick = 0
 	if(starterTick < 200) starterTick++
 	Px = Player.getX()
@@ -520,5 +520,6 @@ function cluster4(x,y,z){
 
 function modTick(){
 	runEveryTick()
+	oreGen()
 }
 
