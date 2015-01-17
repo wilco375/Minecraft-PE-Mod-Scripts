@@ -33,6 +33,7 @@ var BioMassGenZ = []
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
 
+var counter
 var sun
 var oldPx, worldGenerated, starterTick
 
@@ -68,6 +69,9 @@ function newLevel(){
 //Code that powers the furnaces V
 /////////////////////////////////
 function runEveryTick(){
+	if(counter == null) counter = 0
+	if(counter < 5) counter++
+	else if(counter == 5) counter = 0
 	//Solar Panel
 	if(SolarPanelX != []){
 		for(i = 0;i < SolarPanelX.length;i++){
@@ -144,31 +148,33 @@ function runEveryTick(){
 		}
 	}
 	//Ender Reactor
+	if(counter == 5){
 		if(EnderGenX != []){
-		for(k = 0;k < EnderGenX.length;k++){
-			xE = EnderGenX[k]
-			yE = EnderGenY[k]
-			zE = EnderGenZ[k]
-			enderCount = Level.getData(xE,1,zE)
-			newEnderCount = enderCount-1
-			furnaceFueled = 0
-			for(x = xE-3,x<=xE+3,x++){
-				for(y = yE-3,y<=yE+3,y++){
-					for(z = zE-3,z<=zE+3,z++){
-						if(getTile(x,y,z) == 61){
-							if(enderCount != 0){
-								fuelFurnaceEnder(x,y,z)
+			for(k = 0;k < EnderGenX.length;k++){
+				xE = EnderGenX[k]
+				yE = EnderGenY[k]
+				zE = EnderGenZ[k]
+				enderCount = Level.getData(xE,1,zE)
+				newEnderCount = enderCount-1
+				furnaceFueled = 0
+				for(x = xE-3;x<=xE+3;x++){
+					for(y = yE-3;y<=yE+3;y++){
+						for(z = zE-3;z<=zE+3;z++){
+							if(getTile(x,y,z) == 61){
+								if(enderCount != 0){
+									fuelFurnaceEnder(x,y,z)
+								}
 							}
 						}
 					}
 				}
-			}
-			if(furnaceFueled == 1){
-				if(newEnderCount == 0){
-					Level.setTile(xE,1,zE,fuelBlock,0)
-				}
-				else{ 
-					Level.setTile(xE,1,zE,fuelBlock,newEnderCount)
+				if(furnaceFueled == 1){
+					if(newEnderCount == 0){
+						Level.setTile(xE,1,zE,fuelBlock,0)
+					}
+					else{ 
+						Level.setTile(xE,1,zE,fuelBlock,newEnderCount)
+					}
 				}
 			}
 		}
@@ -559,13 +565,13 @@ function destroyBlock(x,y,z){
 	}
 }
 
-//////////////////////////////////
-//Make Ender Men drop Ender Pearls
-//////////////////////////////////
-function deathHook(murderer,victim({
+////////////////////////////////////
+//Make Ender Men drop Ender Pearls V
+////////////////////////////////////
+function deathHook(murderer,victim){
 	if(murderer == getPlayerEnt() && Entity.getEntityTypeId(victim) == 38){
-		if(Math.floor(Math.random()) == 1){
-			Level.dropItem(x,y,z,0.5,368,1,0)
+		if(Math.round(Math.random()) == 1){
+			Level.dropItem(Entity.getX(victim),Entity.getY(victim),Entity.getZ(victim),0.5,368,1,0)
 		}
 	}
 }
@@ -710,3 +716,6 @@ function modTick(){
 	runEveryTick()
 	oreGen()
 }
+
+
+
