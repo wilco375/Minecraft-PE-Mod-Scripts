@@ -46,7 +46,7 @@ Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,uraniumId,1,0,265,2,0,
 Block.defineBlock(enderGenId,"Ender Generator",["iron_block",0],20,1,0)
 Item.addCraftRecipe(enderGenId,1,0,[265,1,0,42,1,0,265,2,0,368,1,0,265,2,0,42,1,0,265,1,0])
 Block.setColor(enderGenId,[0x008866])
-Block.defineBlock(bioMassGenId,"Biomass Generator",[["grass",2],["leaves",4],["grass",2],["leaves",4],["grass",2],["leaves",4]],20,1,0)
+Block.defineBlock(bioMassGenId,"Biomass Generator",[["grass",2],["leaves",4],["leaves",2],["leaves",4],["grass",2],["grass",4]],20,1,0)
 Item.addCraftRecipe(bioMassGenId,1,0,[18,4,0,6,1,0,18,4,0])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
