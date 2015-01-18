@@ -190,7 +190,7 @@ function runEveryTick(){
 			zM = BioMassGenZ[l]
 			sun = 1
 			bioMassCount = Level.getData(xM,1,zM)
-			newBioMassCount = uraniumCount-1
+			newBioMassCount = bioMassCount-1
 			furnaceFueled = 0
 			if(getTile(xM-1,yM,zM) == 61){
 				if(bioMassCount != 0){
