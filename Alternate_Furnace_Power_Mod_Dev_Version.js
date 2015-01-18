@@ -189,7 +189,7 @@ function runEveryTick(){
 			yM = BioMassGenY[l]
 			zM = BioMassGenZ[l]
 			sun = 1
-			bioMassCount = Level.getData(xR,1,zR)
+			bioMassCount = Level.getData(xM,1,zM)
 			newBioMassCount = uraniumCount-1
 			furnaceFueled = 0
 			if(getTile(xM-1,yM,zM) == 61){
@@ -214,10 +214,10 @@ function runEveryTick(){
 			}
 			if(furnaceFueled == 1){
 				if(newBioMassCount == 0){
-					Level.setTile(xE,1,zE,fuelBlock,0)
+					Level.setTile(xM,1,zM,fuelBlock,0)
 				}
 				else{ 
-					Level.setTile(xE,1,zE,fuelBlock,newBioMassCount)
+					Level.setTile(xM,1,zM,fuelBlock,newBioMassCount)
 				}
 			}			
 		}
