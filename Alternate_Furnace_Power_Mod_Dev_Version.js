@@ -1,4 +1,4 @@
-//Alternate Furnace Power Mod V1.5 - Ender Generator Added
+//Alternate Furnace Power Mod V2.0 - Ender Generator and Biomass Generator Added
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
@@ -63,7 +63,7 @@ Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,
 /////////////////////
 function newLevel(){
  var out=new java.io.ByteArrayOutputStream();
-	var response=android.net.http.AndroidHttpClient.newInstance("Online()").execute(new org.apache.http.client.methods.HttpGet("https://raw.githubusercontent.com/wilco375/Minecraft-PE-Mod-Scripts/master/Alternate_Furnace_Power_Mod_V1.2.1_Update_Checker.txt")).getEntity().writeTo(out);
+	var response=android.net.http.AndroidHttpClient.newInstance("Online()").execute(new org.apache.http.client.methods.HttpGet("https://raw.githubusercontent.com/wilco375/Minecraft-PE-Mod-Scripts/master/Alternate_Furnace_Power_Mod_V2.0_Update_Checker.txt")).getEntity().writeTo(out);
 	out.close();
 	clientMessage(String(out.toString()))
 }
@@ -857,6 +857,3 @@ function modTick(){
 	runEveryTick()
 	oreGen()
 }
-
-
-
