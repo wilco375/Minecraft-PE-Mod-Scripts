@@ -91,9 +91,9 @@ function runEveryTick(){
 				}
 				Y++
 			}
-    if(Level.getTime() > 12000) sun = 0
-    //clientMessage(sun)
-			if(sun ){
+    			if(Level.getTime() > 12000) sun = 0
+			 //clientMessage(sun)
+			if(sun == 1){
 				if(getTile(x,y-1,z) == 61){
 					fuelFurnace2(x,y-1,z)
 				}
