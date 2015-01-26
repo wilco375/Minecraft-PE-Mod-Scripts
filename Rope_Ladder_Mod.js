@@ -2,11 +2,12 @@
 //By wilco375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: 
 
-ropeLadderId = 510
-ropeLadderCheckerId = 511
+ropeLadderId = 254
+ropeLadderCheckerId = 255
 
 Block.defineBlock(ropeLadderId, "Rope Ladder",["ladder",0],20,1,1)
 Block.defineBlock(ropeLadderCheckerId, "Rope Ladder Checker",["bedrock",0],20,1,0)
+Item.addCraftRecipe(ropeLadderId,1,0,[65,1,0,287,1,0,65,2,0,287,1,0,65,2,0,287,1,0,65,1,0])
 
 function useItem(x,y,z,itemId,blockId,side){
 	if(itemId == ropeLadderId && side != 0 && side != 1){
@@ -27,6 +28,7 @@ function useItem(x,y,z,itemId,blockId,side){
 			setTile(x,Y,z,65,side)
 			Y--
 		}
+		setTile(x,y,z,65,side)
 		setTile(x,1,z,ropeLadderCheckerId)
 		setTile(x,2,z,7)
 	}
@@ -40,7 +42,7 @@ function destroyBlock(x,y,z){
 			Level.dropItem(x,y,z,ropeLadderId)
 			Y--
 		}
-		Y = y
+		Y = y+1
 		while(getTile(x,Y,z) == 65){
 			setTile(x,Y,z,0)
 			Level.dropItem(x,y,z,ropeLadderId)
