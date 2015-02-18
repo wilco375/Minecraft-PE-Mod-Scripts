@@ -1,1 +1,1 @@
-[ISM] Update to V0.6 now! 20 new structures! Get it at the minecraftforums or download it directly from http://adf.ly/115fFO (Github) or http://adf.ly/115fcK (Dropbox)
+[ISM] V0.6.5 is now available! Get it at the minecraftforums or download it directly from http://adf.ly/136GBb (Github) or http://adf.ly/136GVW (Dropbox) - Added 27 new structures, structures now sorted into categories, bug fixes, fixed some Block Launcher crashes
