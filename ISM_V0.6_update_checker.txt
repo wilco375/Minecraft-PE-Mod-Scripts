@@ -1,1 +1,1 @@
-[ISM] V0.6.5 is now available! Get it at the minecraftforums or download it directly from http://adf.ly/136GBb (Github) or http://adf.ly/136GVW (Dropbox) - Added 7 new structures, structures now sorted into categories, bug fixes, fix some Block Launcher crashes
+[ISM] V0.6.5 is now available! Get it at the minecraftforums or download it directly from http://adf.ly/136GBb (Github) or http://adf.ly/136GVW (Dropbox) - Added 7 new structures, structures now sorted into categories, bug fixes, fixed some Block Launcher crashes
