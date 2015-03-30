@@ -457,18 +457,24 @@ function changeFocusGUI(){
 	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
         try{
 			dialog = new android.app.Dialog(activity);
+			dialog.setTitle("Pick a focus");
 			linearLayout = new android.widget.LinearLayout(activity);
-			linearLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
-			button = new android.widget.Button(activity);
-			button.setText("Focus 1");
-			button2 = new android.widget.Button(activity);
-			button.setText("Focus 2");
-			linearLayout.addView(button);
-			linearLayout.addView(button2);
+			linearLayout.setOrientation(android.widget.LinearLayout.HORIZONTAL);
+			
+			android.graphics.Bitmap imageBitmap = android.graphics.BitmapFactory.decodeFile(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/image.png");
+			android.widget.ImageView imageView1 = new android.widget.ImageView(activity);
+			imageView1.setImageBitmap(imageBitmap);
+			linearLayout.addView(imageView1);
+			
+			android.graphics.Bitmap imageBitmap = android.graphics.BitmapFactory.decodeFile(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/image.png");
+			android.widget.ImageView imageView2 = new android.widget.ImageView(activity);
+			imageView2.setImageBitmap(imageBitmap);
+			linearLayout.addView(imageView2);
+			
 			dialog.setContentView(linearLayout);
 			dialog.show();
         }catch(problem){
-          print("Dialog could not be displayed: " + problem);
+			print("Dialog could not be displayed: " + problem);
         }
   }}));
 }
