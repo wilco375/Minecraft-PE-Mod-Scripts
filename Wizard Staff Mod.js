@@ -1086,7 +1086,7 @@ function downloadFile(filename,url){
 			inputStream = urlConnection.getInputStream();
 			bufferedInputStream = new java.io.BufferedInputStream(inputStream);
 			byteArrayBuffer = new org.apache.http.util.ByteArrayBuffer(50);
-			int current = 0;
+			current = 0;
 			while ((current = bufferedInputStream.read()) != -1)
 			{
 				byteArrayBuffer.append((byte) current);
