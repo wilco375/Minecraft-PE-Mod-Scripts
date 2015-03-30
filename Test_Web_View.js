@@ -1,6 +1,4 @@
 function newLevel(){
-if(enabled != 1){
-enabled = 1
 	ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 	ctx.runOnUiThread(new java.lang.Runnable({ run: function() {
 		try{
@@ -17,5 +15,4 @@ enabled = 1
 			print("Error: "+err);
 		}
 	} }));
-}
 }
