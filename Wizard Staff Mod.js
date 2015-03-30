@@ -35,7 +35,7 @@ var shieldPrevHealth
 ModPE.setItem(staffId,"stick",0,"Wizard Staff");
 
 function modTick(){
-	if(Player.getCurrentItem == staffId){
+	if(Player.getCarriedItem() == staffId){
 		activeFocus = selectedFocus
 		if(!staffButton){
 			showButton()
@@ -407,6 +407,9 @@ function leaveGame(){
 		shieldActive = false
 		Player.setHealth(shieldPrevHealth)
 	}
+	if(staffButton){
+		hideButton()
+	}
 }
 
 function showButton(){
@@ -453,32 +456,19 @@ function changeFocusGUI(){
 	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
 	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
         try{
-			buttonWindow = new android.widget.PopupWindow();
-			var layout = new android.widget.LinearLayout(activity);
-			var button = new android.widget.Button(activity);
+			dialog = new android.app.Dialog(activity);
+			linearLayout = new android.widget.LinearLayout(activity);
+			linearLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
+			button = new android.widget.Button(activity);
 			button.setText("Focus 1");
-			button.setOnClickListener(new android.view.View.OnClickListener({
-				onClick: function(viewarg) {
-					changeFocusGUI()
-				}
-			}));
-			layout.addView(button);
-			
-			button2.setText("Focus 2");
-			button2.setOnClickListener(new android.view.View.OnClickListener({
-				onClick: function(viewarg) {
-					changeFocusGUI()
-				}
-			}));
-			layout.addView(button2)
-			
-			buttonWindow.setContentView(layout);
-			buttonWindow.setWidth(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
-			buttonWindow.setHeight(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
-			buttonWindow.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-			buttonWindow.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.CENTER_HORIZONTAL | android.view.Gravity.CENTER_VERTICAL, 0, 0);
+			button2 = new android.widget.Button(activity);
+			button.setText("Focus 2");
+			linearLayout.addView(button);
+			linearLayout.addView(button2);
+			dialog.setContentView(linearLayout);
+			dialog.show();
         }catch(problem){
-          print("Button could not be displayed: " + problem);
+          print("Dialog could not be displayed: " + problem);
         }
   }}));
 }
