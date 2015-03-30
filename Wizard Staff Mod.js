@@ -14,6 +14,7 @@ var y;
 var prevY;
 var staffId = 510;
 var staffButton = false;
+var resourcesDownloaded = false;
 
 //Floating Variables
 var tickcount = 0
@@ -33,10 +34,6 @@ var shieldActive
 var shieldPrevHealth
 
 ModPE.setItem(staffId,"stick",0,"Wizard Staff");
-
-function newLevel(){
-	downloadResources()
-}
 
 function modTick(){
 	if(Player.getCarriedItem() == staffId){
@@ -167,6 +164,9 @@ function modTick(){
 }
 
 function useItem(x,y,z,itemId,blockId,side){
+	if(!resourcesDownloaded){
+		downloadResources()
+	}
 	//More Shielding Code
 	if(activeFocus == "shielding"){
 		if(shieldCoolDown > 0 && shieldCoolDown < 600){
@@ -506,38 +506,31 @@ function changeFocusGUI(){
 function downloadResources(){
 	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
 	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
-		shieldingFile = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/wandfoci/shielding.png");
-		if(!shieldingFile.exists()){
-			downloadFile(portableHole,"http://i.imgur.com/yDBOL4s.png")
-			downloadFile(harmingI,"http://i.imgur.com/Oh3Xku8.png")
-			downloadFile(harmingII,"http://i.imgur.com/J8jsMuH.png")
-			downloadFile(healing,"http://i.imgur.com/MbM6m5j.png")
-			downloadFile(floating,"http://i.imgur.com/y7vPPaa.png")
-			downloadFile(shielding,"http://i.imgur.com/T4NbQJz.png")
-		}
-	}}));
-}
-
-function downloadFile(filename,url){
-	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
-	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
 		try {
-			url = new java.net.URL(url);
-			file = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/wandfoci/"+filename+".png");
-			urlConnection = url.openConnection();
-			inputStream = urlConnection.getInputStream();
-			bufferedInputStream = new java.io.BufferedInputStream(inputStream);
-			byteArrayBuffer = new org.apache.http.util.ByteArrayBuffer(50);
-			current = 0;
-			while ((current = bufferedInputStream.read()) != -1)
-			{
-				byteArrayBuffer.append((byte) current);
+			shieldingFile = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/wandfoci/shielding.png");
+			if(!shieldingFile.exists()){
+				filenames = ["portableHole","harmingI","harmingII","healing","floating","shielding"]
+				urls = ["http://i.imgur.com/yDBOL4s.png","http://i.imgur.com/Oh3Xku8.png","http://i.imgur.com/J8jsMuH.png","http://i.imgur.com/MbM6m5j.png","http://i.imgur.com/y7vPPaa.png","http://i.imgur.com/T4NbQJz.png"]
+				for(x = 0,x<6,x++){
+					url = new java.net.URL(urls[x]);
+					file = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/wandfoci/"+filenames[x]+".png");
+					urlConnection = url.openConnection();
+					inputStream = urlConnection.getInputStream();
+					bufferedInputStream = new java.io.BufferedInputStream(inputStream);
+					byteArrayBuffer = new org.apache.http.util.ByteArrayBuffer(50);
+					current = 0;
+					while ((current = bufferedInputStream.read()) != -1)
+					{
+						byteArrayBuffer.append( current);
+					}
+				
+					fileOutputStream = new java.io.FileOutputStream(file);
+					fileOutputStream.write(byteArrayBuffer.toByteArray());
+					fileOutputStream.close();
+				}
 			}
-		
-			fileOutputStream = new java.io.FileOutputStream(file);
-			fileOutputStream.write(byteArrayBuffer.toByteArray());
-			fileOutputStream.close();
-		}catch(IOException e){
+		}
+		}catch(e){
 			print(e);
 		}
 	}}));
