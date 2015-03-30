@@ -35,7 +35,7 @@ var shieldPrevHealth
 ModPE.setItem(staffId,"stick",0,"Wizard Staff");
 
 function modTick(){
-	if(Player.getCurrentItem == staffIf){
+	if(Player.getCurrentItem == staffId){
 		activeFocus = selectedFocus
 		if(!staffButton){
 			showButton()
