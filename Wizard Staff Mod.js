@@ -5,16 +5,15 @@ Focus of:
 - Harming II (10 DMG)
 - Healing
 - Floating
-- Teleportation
-- Mining
+- Shielding
 */
 
 var selectedFocus
-var activeFocus = "harmingII";
+var activeFocus = "shielding";
 var y;
 var prevY;
 
-//Floating Focus Variables
+//Floating Variables
 var tickcount = 0
 var watertickcount = 0
 
@@ -22,6 +21,12 @@ var watertickcount = 0
 var pHoleId = 450
 var pHoleActive
 var PortalOpenedTimeInTicks = 60
+
+//Shield Variables
+var shieldCountDown
+var shieldCoolDown 
+var shieldActive
+var shieldPrevHealth
 
 ModPE.setItem(510,"stick",0,"Wizard Staff");
 
@@ -59,6 +64,23 @@ function modTick(){
 		}
 	}
 	prevY = getPlayerY();
+	
+	//Shielding Code
+	if(shieldActive && shieldCountDown != 0){
+		shieldCountDown--
+	}
+	else if(shieldCountDown == 0){
+		shieldCoolDown = 600
+		shieldCountDown = null
+		shieldActive = false
+		Player.setHealth(shieldPrevHealth)
+	}
+	if(shieldCoolDown != null && shieldCoolDown != 0){
+		shieldCoolDown--
+	}
+	else if(shieldCoolDown == 0){
+		shieldCoolDown = null
+	}
 	
 	//Portable Hole Code
 	if((pHoleActive == 1)){
@@ -136,6 +158,23 @@ function modTick(){
 }
 
 function useItem(x,y,z,itemId,blockId,side){
+	//More Shielding Code
+	if(activeFocus == "shielding"){
+		if(shieldCoolDown > 0 && shieldCoolDown < 600){
+			clientMessage("Shield is on cooldown, please wait "+(shieldCoolDown/20)+" more seconds")
+		}
+		else if(shieldCountDown > 0 && shieldCoolDown < 200){
+			clientMessage("Shield is already active. It will last "+(shieldCountDown/20)+ " more seconds")
+		}
+		else{
+			shieldActive = true
+			clientMessage("Shield will now be active for 10 seconds")
+			shieldCountDown = 200
+			shieldPrevHealth = Entity.getHealth(getPlayerEnt())
+			Player.setHealth(10000)
+		}
+	}
+	
 	//More Portable Hole Code
 	if(activeFocus == "portableHole" && blockId != 7){
 		if(pHoleActive == 1) clientMessage("Portable Hole is already active!")
@@ -322,10 +361,21 @@ function useItem(x,y,z,itemId,blockId,side){
 			}
 		}
 	}
+	
+	//Healing Code
+	if(activeFocus == "healing"){
+		var newPlayerHealth = Entity.getHealth(getPlayerEnt())+1
+		if(newPlayerHealth > 20){
+			Player.setHealth(20)
+		}
+		else{
+			Player.setHealth(newPlayerHealth)
+		}
+	}
 }
 
 function attackHook(attacker,victim){
-	//Harming Foci Code
+	//Harming Code
 	if(attacker == getPlayerEnt()){
 		if(activeFocus == "harmingI"){
 			//if(Entity.getHealth(victim)-5 <= 0){
@@ -343,6 +393,14 @@ function attackHook(attacker,victim){
 				Entity.setHealth(victim,Entity.getHealth(victim)-9)
 			//}
 		}
+	}
+}
+
+//More Shielding Code
+function leaveGame(){
+	if(shieldActive){
+		shieldActive = false
+		Player.setHealth(shieldPrevHealth)
 	}
 }
 
