@@ -6,8 +6,10 @@ Focus of:
 - Healing
 - Floating
 - Teleportation
+- Mining
 */
 
+var selectedFocus
 var activeFocus = "portableHole";
 var y;
 var prevY;
@@ -318,6 +320,28 @@ function useItem(x,y,z,itemId,blockId,side){
 				setTile(pHoleX+1,pHoleY,pHoleZ)
 				setTile(pHoleX-1,pHoleY,pHoleZ)	
 			}
+		}
+	}
+}
+
+function attackHook(attacker,victim){
+	//Harming Foci Code
+	if(attacker == getPlayerEnt()){
+		if(activeFocus == "harmingI"){
+			//if(Entity.getHealth(victim)-5 <= 0){
+				
+			//}
+			//else{
+				Entity.setHealth(victim,Entity.getHealth(victim)-5)
+			//}
+		}
+		else if(activeFocus == "harmingII"){
+			//if(Entity.getHealth(victim)-9 <= 0){
+				
+			//}
+			//else{
+				Entity.setHealth(victim,Entity.getHealth(victim)-9)
+			//}
 		}
 	}
 }
