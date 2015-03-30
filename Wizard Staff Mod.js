@@ -57,14 +57,86 @@ function modTick(){
 		}
 	}
 	prevY = getPlayerY();
+	
+	//Portable Hole Code
+	if((pHoleActive == 1)){
+		if(countdown != 0) countdown--;
+		if(countdown == 0) {
+			pHoleActive = 0;
+			if(BlockSide == 2){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block2, blockdata2)
+				setTile(pHoleX+1,pHoleY+1,pHoleZ,block3, blockdata3)
+				setTile(pHoleX+1,pHoleY-1,pHoleZ,block4, blockdata4)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block5, blockdata5)
+				setTile(pHoleX-1,pHoleY+1,pHoleZ,block6, blockdata6)
+				setTile(pHoleX-1,pHoleY-1,pHoleZ,block7, blockdata7)
+				setTile(pHoleX,pHoleY+1,pHoleZ,block8, blockdata8)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9), blockdata9
+			}
+			else if(BlockSide == 3){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block2, blockdata2)
+				setTile(pHoleX+1,pHoleY+1,pHoleZ,block3, blockdata3)
+				setTile(pHoleX+1,pHoleY-1,pHoleZ,block4, blockdata4)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block5, blockdata5)
+				setTile(pHoleX-1,pHoleY+1,pHoleZ,block6, blockdata6)
+				setTile(pHoleX-1,pHoleY-1,pHoleZ,block7, blockdata7)
+				setTile(pHoleX,pHoleY+1,pHoleZ,block8, blockdata8)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9, blockdata9)
+			}
+			else if(BlockSide == 4){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2, blockdata2)
+				setTile(pHoleX,pHoleY+1,pHoleZ+1,block3, blockdata3)
+				setTile(pHoleX,pHoleY-1,pHoleZ+1,block4, blockdata4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5, blockdata5)
+				setTile(pHoleX,pHoleY+1,pHoleZ-1,block6, blockdata6)
+				setTile(pHoleX,pHoleY-1,pHoleZ-1,block7, blockdata7)
+				setTile(pHoleX,pHoleY+1,pHoleZ,block8, blockdata8)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9, blockdata9)
+			}
+			else if(BlockSide == 5){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2, blockdata2)
+				setTile(pHoleX,pHoleY+1,pHoleZ+1,block3, blockdata3)
+				setTile(pHoleX,pHoleY-1,pHoleZ+1,block4, blockdata4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5, blockdata5)
+				setTile(pHoleX,pHoleY+1,pHoleZ-1,block6, blockdata6)
+				setTile(pHoleX,pHoleY-1,pHoleZ-1,block7, blockdata7)
+				setTile(pHoleX,pHoleY+1,pHoleZ,block8, blockdata8)
+				setTile(pHoleX,pHoleY-1,pHoleZ,block9, blockdata9)
+			}
+			else if(BlockSide == 1){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2, blockdata2)
+				setTile(pHoleX+1,pHoleY,pHoleZ+1,block3, blockdata3)
+				setTile(pHoleX-1,pHoleY,pHoleZ+1,block4, blockdata4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5, blockdata5)
+				setTile(pHoleX+1,pHoleY,pHoleZ-1,block6, blockdata6)
+				setTile(pHoleX-1,pHoleY,pHoleZ-1,block7, blockdata7)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block8, blockdata8)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block9, blockdata9)
+			}
+			else if(BlockSide == 0){
+				setTile(pHoleX,pHoleY, pHoleZ,block1, blockdata1)
+				setTile(pHoleX,pHoleY,pHoleZ+1,block2, blockdata2)
+				setTile(pHoleX+1,pHoleY,pHoleZ+1,block3, blockdata3)
+				setTile(pHoleX-1,pHoleY,pHoleZ+1,block4, blockdata4)
+				setTile(pHoleX,pHoleY,pHoleZ-1,block5, blockdata5)
+				setTile(pHoleX+1,pHoleY,pHoleZ-1,block6, blockdata6)
+				setTile(pHoleX-1,pHoleY,pHoleZ-1,block7, blockdata7)
+				setTile(pHoleX+1,pHoleY,pHoleZ,block8, blockdata8)
+				setTile(pHoleX-1,pHoleY,pHoleZ,block9, blockdata9)
+			}
+		}
+	}
 }
 
 function useItem(x,y,z,itemId,blockId,side){
-	//Portable Hole Code
+	//More Portable Hole Code
 	if(activeFocus == "portableHole" && blockId != 7){
-		if(pHoleActive == 1) {
-			clientMessage("Portable Hole is already active!")
-		}
+		if(pHoleActive == 1) clientMessage("Portable Hole is already active!")
 		else{
 			pHoleX = x
 			pHoleY = y
@@ -249,3 +321,11 @@ function useItem(x,y,z,itemId,blockId,side){
 		}
 	}
 }
+
+
+
+
+
+
+
+
