@@ -6,7 +6,7 @@ function newLevel(){
 			var layout = new android.widget.RelativeLayout(ctx);
 			
 			size = new android.graphics.Point();
-			getWindowManager().getDefaultDisplay().getSize(size);
+			((android.view.WindowManager)ctx.getSystemService(android.content.Context.WINDOW_SERVICE)).getWindowManager().getDefaultDisplay().getSize(size);
 			width = size.x;
 			height = size.y;
 		
