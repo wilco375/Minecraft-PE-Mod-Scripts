@@ -12,6 +12,8 @@ var selectedFocus
 var activeFocus = "floating";
 var y;
 var prevY;
+var staffId = 510;
+var staffButton = false;
 
 //Floating Variables
 var tickcount = 0
@@ -30,9 +32,22 @@ var shieldCoolDown
 var shieldActive
 var shieldPrevHealth
 
-ModPE.setItem(510,"stick",0,"Wizard Staff");
+ModPE.setItem(staffId,"stick",0,"Wizard Staff");
 
 function modTick(){
+	if(Player.getCurrentItem == staffIf){
+		activeFocus = selectedFocus
+		if(!staffButton){
+			showButton()
+		}
+	}
+	else{
+		if(staffButton){
+			hideButton()
+		}
+		activeFocus = null
+	}
+	
 	//Floating Focus Code
 	if(activeFocus == "floating"){
 		y = getPlayerY();
@@ -153,13 +168,13 @@ function useItem(x,y,z,itemId,blockId,side){
 		if(shieldCoolDown > 0 && shieldCoolDown < 600){
 			clientMessage("Shield is on cooldown, please wait "+Math.round(shieldCoolDown/20)+" more seconds")
 		}
-		else if(shieldCountDown > 0 && shieldCoolDown < 200){
+		else if(shieldCountDown > 0 && shieldCoolDown < 300){
 			clientMessage("Shield is already active. It will last "+Math.round(shieldCountDown/20)+ " more seconds")
 		}
 		else{
 			shieldActive = true
-			clientMessage("Shield will now be active for 10 seconds")
-			shieldCountDown = 200
+			clientMessage("Shield will now be active for 15 seconds")
+			shieldCountDown = 300
 			shieldPrevHealth = Entity.getHealth(getPlayerEnt())
 			Player.setHealth(10000)
 		}
@@ -394,7 +409,79 @@ function leaveGame(){
 	}
 }
 
+function showButton(){
+	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
+	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+        try{
+			buttonWindow = new android.widget.PopupWindow();
+			var layout = new android.widget.RelativeLayout(activity);
+			var button = new android.widget.Button(activity);
+			button.setText("Change Focus");
+			button.setOnClickListener(new android.view.View.OnClickListener({
+				onClick: function(viewarg) {
+					changeFocusGUI()
+				}
+			}));
+			layout.addView(button);
+			buttonWindow.setContentView(layout);
+			buttonWindow.setWidth(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+			buttonWindow.setHeight(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+			buttonWindow.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+			buttonWindow.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.BOTTOM, 0, 0);
+        }catch(problem){
+          print("Button could not be displayed: " + problem);
+        }
+  }}));
+  staffButton = true
+}
 
+
+function hideButton(){
+	if(staffButton){
+		var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+		activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+			if(buttonWindow != null) {
+			buttonWindow.dismiss();
+			buttonwindow = null;
+			}
+		}}));
+		staffButton = false
+	}
+}
+
+function changeFocusGUI(){
+	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
+	activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+        try{
+			buttonWindow = new android.widget.PopupWindow();
+			var layout = new android.widget.LinearLayout(activity);
+			var button = new android.widget.Button(activity);
+			button.setText("Focus 1");
+			button.setOnClickListener(new android.view.View.OnClickListener({
+				onClick: function(viewarg) {
+					changeFocusGUI()
+				}
+			}));
+			layout.addView(button);
+			
+			button2.setText("Focus 2");
+			button2.setOnClickListener(new android.view.View.OnClickListener({
+				onClick: function(viewarg) {
+					changeFocusGUI()
+				}
+			}));
+			layout.addView(button2)
+			
+			buttonWindow.setContentView(layout);
+			buttonWindow.setWidth(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+			buttonWindow.setHeight(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+			buttonWindow.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+			buttonWindow.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.CENTER_HORIZONTAL | android.view.Gravity.CENTER_VERTICAL, 0, 0);
+        }catch(problem){
+          print("Button could not be displayed: " + problem);
+        }
+  }}));
+}
 
 
 
