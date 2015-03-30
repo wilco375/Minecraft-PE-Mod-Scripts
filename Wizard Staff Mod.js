@@ -10,7 +10,7 @@ Focus of:
 */
 
 var selectedFocus
-var activeFocus = "portableHole";
+var activeFocus = "harmingII";
 var y;
 var prevY;
 
