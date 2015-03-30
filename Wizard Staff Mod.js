@@ -511,7 +511,7 @@ function downloadResources(){
 			if(!shieldingFile.exists()){
 				filenames = ["portableHole","harmingI","harmingII","healing","floating","shielding"]
 				urls = ["http://i.imgur.com/yDBOL4s.png","http://i.imgur.com/Oh3Xku8.png","http://i.imgur.com/J8jsMuH.png","http://i.imgur.com/MbM6m5j.png","http://i.imgur.com/y7vPPaa.png","http://i.imgur.com/T4NbQJz.png"]
-				for(x = 0,x<6,x++){
+				for(x = 0;x<6;x++){
 					url = new java.net.URL(urls[x]);
 					file = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/wandfoci/"+filenames[x]+".png");
 					urlConnection = url.openConnection();
