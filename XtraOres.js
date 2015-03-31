@@ -116,7 +116,14 @@ function modTick(){
 	}
 	if(getTile(chunkX*16,1,chunkZ*16) != oreGenCheckerId && worldGenerated == 1 && starterTick > 199){
 		setTile(chunkX*16,1,chunkZ*16,oreGenCheckerId)
-		generateOres()
+		var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();    
+		activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+			try{
+				generateOres()
+			}catch(e){
+				print(e)
+			}
+		}}));
 	}
 	oldPx = getPlayerX()
 }
