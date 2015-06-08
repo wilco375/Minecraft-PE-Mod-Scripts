@@ -8,7 +8,7 @@ var moveBlock
 var moveBlockId
 var moveBlockData
 
-Block.defineBlock(blockMover,"Block Crate",["piston_top_normal",1],20,false,0);
+Block.defineBlock(blockMover,"Block Crate",["piston_top_normal",0],20,false,0);
 Item.addCraftRecipe(blockMover,1,0,[5,4,0,265,4,0,331,1,0])
 Item.setCategory(blockMover,2,0);
 
