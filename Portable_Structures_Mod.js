@@ -228,7 +228,8 @@ function modTick(){
 }
 
 function saveToDocInWorld(filename,string){
-	if(string.charAt(0)=="|") string.replace("|","");
+	//if(string.charAt(0)=="|") 
+		string.replace("|","");
 	clientMessage("Saving "+ string);
 	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
