@@ -129,7 +129,9 @@ function newLevel(){
 
 function placeStructure(id,x,y,z){
 	clientMessage("Placing structure...");
+	clientMessage("structureNames = "+structureNames);
 	nameOfStructureToPlace = structureNames[id+1];
+	clientMessage("nameOfStructureToPlace = "+nameOfStructureToPlace);
 	structureNames[id+1]="";
 	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split("|");
 	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split("|");
