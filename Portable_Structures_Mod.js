@@ -255,7 +255,7 @@ function saveToDocInWorld(filename,string){
 }
 
 function readFromDocInWorld(filename){
-	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename;
+	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
 	var file = new java.io.File(filePath);
 	clientMessage("File exists? "+file.exists());
 	clientMessage("File path = "+filePath);
