@@ -237,7 +237,7 @@ function modTick(){
 	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
 		if(carriedItemId == pStructureId){
 			if(structureNames[carriedItemData-1] != null && structureNames[carriedItemData-1] != "")
-				ModPE.showTipMessage(structureNames[carriedItemData+1]);
+				ModPE.showTipMessage(structureNames[carriedItemData-1]);
 		}
 	}
 	prevCarriedItemId = Player.getCarriedItem();
@@ -246,7 +246,7 @@ function modTick(){
 
 function saveToDocInWorld(filename,string){
 	//if(string.charAt(0)=="|") 
-		string.replace("|"," ");
+		string = string.replace("|","");
 	clientMessage("Saving "+ string);
 	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
