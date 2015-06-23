@@ -269,12 +269,3 @@ function readFromDocInWorld(filename){
 		return null;
 	}
 }
-
-
-
-
-
-
-
-
-
