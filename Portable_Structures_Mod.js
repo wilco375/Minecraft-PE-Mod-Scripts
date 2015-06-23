@@ -89,7 +89,7 @@ function showNameGUI(){
 				okButton.setOnClickListener(new android.view.View.OnClickListener(){
 					onClick: function(){ 
 						try{
-							structureName = editText.getText.toString();
+							structureName = editText.getText().toString();
 							if(structureName != null && structureName != ""){
 								clientMessage("Saving structure...")
 								step = 0;
