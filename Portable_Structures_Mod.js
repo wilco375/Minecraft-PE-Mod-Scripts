@@ -125,9 +125,9 @@ function showNameGUI(){
 function newLevel(){
 	var text = readFromDocInWorld("structureNames.txt");
 	clientMessage("Text in structureNames.txt = "+text)
-	if(readFromDocInWorld("structureNames.txt") != null && readFromDocInWorld("structureNames.txt") != ""){
+	if(text != null && text != ""){
 		if(text.indexOf("|") > -1)
-			structureNames = readFromDocInWorld("structureNames.txt").split("|");
+			structureNames = text.split("|");
 		else{
 			structureNames[0] = text;
 		}
