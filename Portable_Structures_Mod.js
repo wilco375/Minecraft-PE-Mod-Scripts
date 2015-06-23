@@ -257,9 +257,12 @@ function saveToDocInWorld(filename,string){
 function readFromDocInWorld(filename){
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename;
 	var file = new java.io.File(filePath);
+	clientMessage("File exists? "+file.exists());
 	if(file.exists()){
 		var inputStream = new java.io.BufferedReader(new java.io.FileReader(filePath));
-		return inputStream.readLine().toString();
+		var returnText = inputStream.readLine();
+		clientMessage("returnText = "+returnText)
+		return returnText;
 	}
 	else{
 		return null;
