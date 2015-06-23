@@ -132,7 +132,11 @@ function newLevel(){
 			structureNames[0] = text;
 		}
 	}
-	clientMessage("structureNames is now "+ structureNames);
+	structureNamesString = "";
+	for(i = 0;i<structureNames.length;i++){
+		structureNamesString = structureNamesString+","+structureNames[i];
+	}
+	clientMessage("structureNames is now "+ structureNamesString);
 }
 
 function placeStructure(id,x,y,z){
@@ -242,7 +246,7 @@ function modTick(){
 
 function saveToDocInWorld(filename,string){
 	//if(string.charAt(0)=="|") 
-		string.replace("|","");
+		string.replace("|"," ");
 	clientMessage("Saving "+ string);
 	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
