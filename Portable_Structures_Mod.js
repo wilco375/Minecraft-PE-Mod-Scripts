@@ -258,6 +258,7 @@ function readFromDocInWorld(filename){
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/"+filename;
 	var file = new java.io.File(filePath);
 	clientMessage("File exists? "+file.exists());
+	clientMessage("File path = "+filePath);
 	if(file.exists()){
 		var inputStream = new java.io.BufferedReader(new java.io.FileReader(filePath));
 		var returnText = inputStream.readLine();
