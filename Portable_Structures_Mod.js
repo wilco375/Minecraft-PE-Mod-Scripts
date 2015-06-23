@@ -175,7 +175,7 @@ function saveStructure(id,x,y,z){
 	saveStructureToFile();
 	clientMessage("structureNames.length = "+ structureNames.length);
 	clientMessage("Setting carried item to "+pStructureId+":"+structureNames.length);
-	Entity.setCarriedItem(getPlayerEnt,pStructureId,1,structureNames.length);
+	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,structureNames.length);
 	clientMessage("Save complete!")
 }
 
@@ -210,7 +210,7 @@ function modTick(){
 	carriedItemData = Player.getCarriedItemData();
 	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
 		if(carriedItemId == pStructureId){
-			if(structureNames[carriedItemData] != null && structureNames[carriedItemData] != "")
+			if(structureNames[carriedItemData+1] != null && structureNames[carriedItemData+1] != "")
 				ModPE.showTipMessage(structureNames[carriedItemData+1]);
 		}
 	}
