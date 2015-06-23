@@ -132,7 +132,7 @@ function placeStructure(id,x,y,z){
 	for(i = 0; i< structureX.length; i++){
 		setTile(structureX[i]+x,structureY[i]+y,structureZ[i]+z,structureId[i],structureData[i]);
 	}
-	Entity.setCarriedItem(getPlayerEnt,pStructureId,1,0);
+	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,0);
 	clientMessage("Structure placed!");
 }
 
