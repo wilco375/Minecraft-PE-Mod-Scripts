@@ -160,14 +160,14 @@ function saveStructure(id,x,y,z){
 	for(x = 0; x<= structureX2-structureX1; x++){
 		for(y = 0; y<= structureY2-structureY1; y++){
 			for(z = 0; z<= structureZ2-structureY1; z++){
-				tile = getTile(x,y,z);
+				tile = getTile(x+structureX1,y+structureY1,z+structureZ1);
 				if(tile != 54 && tile != 61 && tile != 62){
 					structureX.push(x);
 					structureY.push(y);
 					structureZ.push(z);
 					structureId.push(tile);
 					structureData.push(Level.getData(x,y,z));
-					setTile(x,y,z,0);
+					setTile(x+structureX1,y+structureY1,z+structureZ1,0);
 				}
 			}
 		}
@@ -215,6 +215,7 @@ function modTick(){
 }
 
 function saveToDocInWorld(filename,string){
+	if(string.split("|")[0]=="|") string.replace("|","");
 	clientMessage("Saving "+ string);
 	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
