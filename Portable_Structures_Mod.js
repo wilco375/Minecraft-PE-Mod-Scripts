@@ -28,7 +28,7 @@ for(i = 0;i<= 2048;i++){
 	colors.push(0xffffff);
 }
 Block.defineBlock(pStructureId,"Portable Structure Block",["piston_top_normal",0],20,0,0);
-Item.addCraftRecipe(pStructureId],1,0,[265,1,0,42,1,0,265,1,0,42,1,0,264,1,0,42,1,0,265,1,0,42,1,0,265,1,0]);
+Item.addCraftRecipe(pStructureId,1,0,[265,1,0,42,1,0,265,1,0,42,1,0,264,1,0,42,1,0,265,1,0,42,1,0,265,1,0]);
 Block.setColor(pStructureId,colors);
 
 function useItem(x,y,z,itemId,blockId,side){
