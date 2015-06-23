@@ -138,9 +138,9 @@ function newLevel(){
 function placeStructure(id,x,y,z){
 	clientMessage("Placing structure...");
 	clientMessage("structureNames = "+structureNames);
-	nameOfStructureToPlace = structureNames[id+1];
+	nameOfStructureToPlace = structureNames[id-1];
 	clientMessage("nameOfStructureToPlace = "+nameOfStructureToPlace);
-	structureNames[id+1]="";
+	structureNames[id-1]="";
 	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split("|");
 	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split("|");
 	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split("|");
@@ -227,7 +227,7 @@ function modTick(){
 	carriedItemData = Player.getCarriedItemData();
 	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
 		if(carriedItemId == pStructureId){
-			if(structureNames[carriedItemData+1] != null && structureNames[carriedItemData+1] != "")
+			if(structureNames[carriedItemData-1] != null && structureNames[carriedItemData-1] != "")
 				ModPE.showTipMessage(structureNames[carriedItemData+1]);
 		}
 	}
@@ -269,3 +269,12 @@ function readFromDocInWorld(filename){
 		return null;
 	}
 }
+
+
+
+
+
+
+
+
+
