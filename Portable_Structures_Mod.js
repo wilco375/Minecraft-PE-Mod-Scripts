@@ -215,6 +215,8 @@ function modTick(){
 }
 
 function saveToDocInWorld(filename,string){
+	clientMessage("Saving "+ string);
+	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
 	var file = new java.io.File(filePath);
 	file.mkdirs();
