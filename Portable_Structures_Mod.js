@@ -49,7 +49,6 @@ function useItem(x,y,z,itemId,blockId,side){
 			structureZ2 = z;
 			printToast("Second block selected. Please give the structure a name");
 			showNameGUI();
-			step = 0;
 		}
 	}
 	else if(itemId == pStructureId && data > 0){
@@ -93,6 +92,7 @@ function showNameGUI(){
 							structureName = editText.getText.toString();
 							if(structureName != null && structureName != ""){
 								clientMessage("Saving structure...")
+								step = 0;
 								dialog.dismiss();
 								saveStructure();
 							}
@@ -105,6 +105,7 @@ function showNameGUI(){
 						}
 					}
 				})
+				okButton.setText("Ok")
 				menu.addView(okButton); 
 			}
 			catch (e){
