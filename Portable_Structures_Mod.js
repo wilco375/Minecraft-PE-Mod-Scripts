@@ -39,7 +39,7 @@ function useItem(x,y,z,itemId,blockId,side){
 			structureX1 = x;
 			structureY1 = y;
 			structureZ1 = z;
-			android.widget.Toast.makeText(context,"First block selected",android.widget.Toast.LENGTH_LONG).show();
+			printToast("First block selected");
 			step = 1;
 			
 		}
@@ -47,7 +47,7 @@ function useItem(x,y,z,itemId,blockId,side){
 			structureX2 = x;
 			structureY2 = y;
 			structureZ2 = z;
-			android.widget.Toast.makeText(context,"Second block selected. Please give the structure a name",android.widget.Toast.LENGTH_LONG).show();
+			printToast("Second block selected. Please give the structure a name");
 			showNameGUI();
 			step = 0;
 		}
@@ -56,6 +56,19 @@ function useItem(x,y,z,itemId,blockId,side){
 		preventDefault();
 		placeStructure(data,x,y,z);
 	}
+}
+
+function printToast(string){
+	ctx.runOnUiThread(new java.lang.Runnable(){
+		run: function(){
+			try{
+				android.widget.Toast.makeText(context,string,android.widget.Toast.LENGTH_LONG).show();
+			}
+			catch (e){
+				print ("Error: "+e)
+			}
+		}
+	});
 }
 
 function showNameGUI(){
@@ -103,7 +116,8 @@ function showNameGUI(){
 }
 
 function newLevel(){
-	structureNames = readFromDocInWorld("structureNames.txt").split("|");
+	if(readFromDocInWorld("structureNames.txt") != null)
+		structureNames = readFromDocInWorld("structureNames.txt").split("|");
 }
 
 function placeStructure(id,x,y,z){
@@ -225,3 +239,12 @@ function readFromDocInWorld(filename){
 		return null;
 	}
 }
+
+
+
+
+
+
+
+
+
