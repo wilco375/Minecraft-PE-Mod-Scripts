@@ -24,7 +24,7 @@ var context = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var pStructureId = 178;
 var colors = [];
 
-for(i = 0;i<= 2048){
+for(i = 0;i<= 2048;i++){
 	colors.push(0xffffff);
 }
 Block.defineBlock(pStructureId,"Portable Structure Block",["piston_top_normal",0],20,0,0);
