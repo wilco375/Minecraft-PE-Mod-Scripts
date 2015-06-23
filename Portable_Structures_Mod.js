@@ -123,8 +123,16 @@ function showNameGUI(){
 }
 
 function newLevel(){
-	if(readFromDocInWorld("structureNames.txt") != null)
-		structureNames = readFromDocInWorld("structureNames.txt").split("|");
+	var text = readFromDocInWorld("structureNames.txt");
+	clientMessage("Text in structureNames.txt = "+text)
+	if(readFromDocInWorld("structureNames.txt") != null && readFromDocInWorld("structureNames.txt") != ""){
+		if(text.indexOf("|") > -1)
+			structureNames = readFromDocInWorld("structureNames.txt").split("|");
+		else{
+			structureNames[0] = text;
+		}
+	}
+	clientMessage("structureNames is now "+ structureNames);
 }
 
 function placeStructure(id,x,y,z){
