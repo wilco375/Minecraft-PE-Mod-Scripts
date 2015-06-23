@@ -173,6 +173,8 @@ function saveStructure(id,x,y,z){
 		}
 	}
 	saveStructureToFile();
+	clientMessage("structureNames.length = "+ structureNames.length);
+	clientMessage("Setting carried item to "+pStructureId+":"+structureNames.length);
 	Entity.setCarriedItem(getPlayerEnt,pStructureId,1,structureNames.length);
 	clientMessage("Save complete!")
 }
@@ -207,8 +209,10 @@ function modTick(){
 	carriedItemId = Player.getCarriedItem();
 	carriedItemData = Player.getCarriedItemData();
 	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
-		if(structureNames[carriedItemData] != null && structureNames[carriedItemData] != "")
-			ModPE.showTipMessage(structureNames[carriedItemData]);
+		if(carriedItemId == pStructureId){
+			if(structureNames[carriedItemData] != null && structureNames[carriedItemData] != "")
+				ModPE.showTipMessage(structureNames[carriedItemData+1]);
+		}
 	}
 	prevCarriedItemId = Player.getCarriedItem();
 	prevCarriedItemData = Player.getCarriedItemData();
