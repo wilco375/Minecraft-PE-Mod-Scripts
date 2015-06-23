@@ -141,6 +141,11 @@ function placeStructure(id,x,y,z){
 	nameOfStructureToPlace = structureNames[id-1];
 	clientMessage("nameOfStructureToPlace = "+nameOfStructureToPlace);
 	structureNames[id-1]="";
+	var structureNamesString = "";
+	for(i = 0;i<structureNames.length;i++){
+		structureNamesString = structureNamesString+"|"+structureNames[i];
+	}
+	saveToDocInWorld("structureNames.txt",structureNamesString);
 	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split("|");
 	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split("|");
 	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split("|");
