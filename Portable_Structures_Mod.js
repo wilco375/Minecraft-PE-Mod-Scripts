@@ -59,7 +59,7 @@ function useItem(x,y,z,itemId,blockId,side){
 }
 
 function printToast(string){
-	ctx.runOnUiThread(new java.lang.Runnable(){
+	context.runOnUiThread(new java.lang.Runnable(){
 		run: function(){
 			try{
 				android.widget.Toast.makeText(context,string,android.widget.Toast.LENGTH_LONG).show();
@@ -72,21 +72,21 @@ function printToast(string){
 }
 
 function showNameGUI(){
-	ctx.runOnUiThread(new java.lang.Runnable(){
+	context.runOnUiThread(new java.lang.Runnable(){
 		run: function(){
 			try{
-				var menu = new android.widget.LinearLayout(ctx);
-				var scroll = new android.widget.ScrollView(ctx);
+				var menu = new android.widget.LinearLayout(context);
+				var scroll = new android.widget.ScrollView(context);
 				menu.setOrientation(android.widget.LinearLayout.VERTICAL);
 				scroll.addView(menu);
-				var dialog = new android.app.Dialog(ctx); 
+				var dialog = new android.app.Dialog(context); 
 				dialog.setContentView(scroll);
 				dialog.setTitle("Enter a name");
 				
-				var editText = new android.widget.EditText(ctx);
+				var editText = new android.widget.EditText(context);
 				menu.addView(editText);
 				
-				var okButton = new android.widget.Button(ctx); 
+				var okButton = new android.widget.Button(context); 
 				okButton.setOnClickListener(new android.view.View.OnClickListener(){
 					onClick: function(){ 
 						try{
