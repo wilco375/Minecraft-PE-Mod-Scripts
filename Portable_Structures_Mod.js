@@ -188,14 +188,14 @@ function saveStructureToFile(){
 		structureXstring = structureXstring+"|"+structureX[i];
 		structureYstring = structureYstring+"|"+structureY[i];
 		structureZstring = structureZstring+"|"+structureZ[i];
-		structureIdString = structureIdstring+"|"+structureId[i];
-		structureDataString = structureDatastring+"|"+structureData[i];
+		structureIdString = structureIdString+"|"+structureId[i];
+		structureDataString = structureDataString+"|"+structureData[i];
 	}
 	saveToDocInWorld(structureName+".x",structureXstring);
 	saveToDocInWorld(structureName+".y",structureYstring);
 	saveToDocInWorld(structureName+".z",structureZstring);
-	saveToDocInWorld(structureName+".id",structureIdstring);
-	saveToDocInWorld(structureName+".data",structureDatastring);
+	saveToDocInWorld(structureName+".id",structureIdString);
+	saveToDocInWorld(structureName+".data",structureDataString);
 	structureNames.push(structureName);
 	for(i = 0;i<structureNames.length;i++){
 		structureNamesString = structureNamesString+"|"+structureNames[i];
