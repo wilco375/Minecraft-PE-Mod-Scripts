@@ -90,11 +90,17 @@ function showNameGUI(){
 					onClick: function(){ 
 						try{
 							structureName = editText.getText().toString();
-							if(structureName != null && structureName != ""){
+							for(i=0;i<structureNames.length;i++){
+								if(structureNames[i] == structureName) var exists = true;
+							}
+							if(structureName != null && structureName != "" && !exists){
 								clientMessage("Saving structure...")
 								step = 0;
 								dialog.dismiss();
 								saveStructure();
+							}
+							else if(exists){
+								android.widget.Toast.makeText(context,"This structure already exists. Please enter a different name",android.widget.Toast.LENGTH_LONG).show();
 							}
 							else{
 								android.widget.Toast.makeText(context,"Please enter a name",android.widget.Toast.LENGTH_LONG).show();
@@ -124,6 +130,7 @@ function newLevel(){
 function placeStructure(id,x,y,z){
 	clientMessage("Placing structure...");
 	nameOfStructureToPlace = structureNames[id+1];
+	structureNames[id+1]="";
 	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split("|");
 	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split("|");
 	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split("|");
