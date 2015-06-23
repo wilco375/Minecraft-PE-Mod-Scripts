@@ -176,7 +176,7 @@ function saveStructure(id,x,y,z){
 	}
 	for(x = 0; x<= structureX2-structureX1; x++){
 		for(y = 0; y<= structureY2-structureY1; y++){
-			for(z = 0; z<= structureZ2-structureY1; z++){
+			for(z = 0; z<= structureZ2-structureZ1; z++){
 				tile = getTile(x+structureX1,y+structureY1,z+structureZ1);
 				if(tile != 54 && tile != 61 && tile != 62){
 					structureX.push(x);
