@@ -21,19 +21,22 @@ var prevCarriedItemData;
 
 var context = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
+var pStructureIdEmpty = 177;
 var pStructureId = 178;
 var colors = [];
 
 for(i = 0;i<= 2048;i++){
 	colors.push(0xffffff);
 }
+
+Block.defineBlock(pStructureIdEmpty,"Portable Structure Block",["piston_top_normal",0],20,0,0);
+Item.addCraftRecipe(pStructureIdEmpty,1,0,[265,1,0,42,1,0,265,1,0,42,1,0,264,1,0,42,1,0,265,1,0,42,1,0,265,1,0]);
 Block.defineBlock(pStructureId,"Portable Structure Block",["piston_top_normal",0],20,0,0);
-Item.addCraftRecipe(pStructureId,1,0,[265,1,0,42,1,0,265,1,0,42,1,0,264,1,0,42,1,0,265,1,0,42,1,0,265,1,0]);
 Block.setColor(pStructureId,colors);
 
 function useItem(x,y,z,itemId,blockId,side){
 	data = Player.getCarriedItemData();
-	if(itemId == pStructureId && data == 0){
+	if(itemId == pStructureIdEmpty){
 		preventDefault();
 		if(step == 0){
 			structureX1 = x;
@@ -192,7 +195,7 @@ function placeStructure(id,x,y,z){
 		setTile(parseInt(structureX[i])+x,parseInt(structureY[i])+y,parseInt(structureZ[i])+z,parseInt(structureId[i]),parseInt(structureData[i]));
 		//clientMessage("Tile at "+parseInt(structureX[i])+x+","+parseInt(structureY[i])+y+","+parseInt(structureZ[i])+z+" set to "+parseInt(structureId[i])+":"+parseInt(structureData[i]));
 	}
-	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,0);
+	Entity.setCarriedItem(getPlayerEnt(),pStructureIdEmpty,1,0);
 	clientMessage("Structure placed!");
 }
 
