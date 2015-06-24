@@ -228,7 +228,9 @@ function saveStructureToFile(){
 	saveToDocInWorld(structureName+".id",structureIdString);
 	saveToDocInWorld(structureName+".data",structureDataString);
 	structureNames.push(structureName);
+	clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
+		clientMessage("i = "+i);
 		structureNamesString = structureNamesString+"|"+structureNames[i];
 	}
 	saveToDocInWorld("structureNames.txt",structureNamesString);
