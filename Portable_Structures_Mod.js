@@ -233,7 +233,7 @@ function saveStructureToFile(){
 	saveToDocInWorld(structureName+".id",structureIdString);
 	saveToDocInWorld(structureName+".data",structureDataString);
 	clientMessage("Pushing structureName");
-	structureNames.push(structureName);
+	structureNames[structureNames.length]=structureName;
 	clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
 		clientMessage("i = "+i);
