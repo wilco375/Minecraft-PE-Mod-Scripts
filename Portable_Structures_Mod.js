@@ -244,7 +244,7 @@ function saveStructureToFile(){
 function modTick(){
 	carriedItemId = Player.getCarriedItem();
 	carriedItemData = Player.getCarriedItemData();
-	if(carriedItemId != prevCarriedItemId ,, carriedItemData != prevCarriedItemData){
+	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
 		if(carriedItemId == pStructureId){
 			if(structureNames[carriedItemData-1] != null && structureNames[carriedItemData-1] != "")
 				ModPE.showTipMessage(structureNames[carriedItemData-1]);
