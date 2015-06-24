@@ -93,11 +93,14 @@ function showNameGUI(){
 							for(i=0;i<structureNames.length;i++){
 								if(structureNames[i] == structureName) var exists = true;
 							}
-							if(structureName != null && structureName != "" && !exists){
+							if(structureName != null && structureName != "" && !exists && structureName.indexOf(",") <= -1){
 								clientMessage("Saving structure...")
 								step = 0;
 								dialog.dismiss();
 								saveStructure();
+							}
+							else if(structureName.indexOf(",") > -1){
+								android.widget.Toast.makeText(context,"Please enter a name without a comma (,)",android.widget.Toast.LENGTH_LONG).show();
 							}
 							else if(exists){
 								android.widget.Toast.makeText(context,"This structure already exists. Please enter a different name",android.widget.Toast.LENGTH_LONG).show();
@@ -126,9 +129,9 @@ function newLevel(){
 	var text = readFromDocInWorld("structureNames.txt");
 	clientMessage("Text in structureNames.txt = "+text)
 	if(text != null && text != ""){
-		if(text.indexOf("|") > -1){
-			structureNames = text.split("|");
-			clientMessage("Splitted at |");
+		if(text.indexOf(",") > -1){
+			structureNames = text.split(",");
+			clientMessage("Splitted at ,");
 		}
 		else{
 			structureNames[0] = text;
@@ -150,14 +153,14 @@ function placeStructure(id,x,y,z){
 	structureNames[id-1]="";
 	var structureNamesString = "";
 	for(i = 0;i<structureNames.length;i++){
-		structureNamesString = structureNamesString+"|"+structureNames[i];
+		structureNamesString = structureNamesString+","+structureNames[i];
 	}
 	saveToDocInWorld("structureNames.txt",structureNamesString);
-	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split("|");
-	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split("|");
-	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split("|");
-	structureId = readFromDocInWorld(nameOfStructureToPlace+".id").split("|");
-	structureData = readFromDocInWorld(nameOfStructureToPlace+".data").split("|");
+	structureX = readFromDocInWorld(nameOfStructureToPlace+".x").split(",");
+	structureY = readFromDocInWorld(nameOfStructureToPlace+".y").split(",");
+	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split(",");
+	structureId = readFromDocInWorld(nameOfStructureToPlace+".id").split(",");
+	structureData = readFromDocInWorld(nameOfStructureToPlace+".data").split(",");
 	clientMessage("structureX.length = "+structureX.length);
 	for(i = 0; i< structureX.length; i++){
 		setTile(structureX[i]+x,structureY[i]+y,structureZ[i]+z,structureId[i],structureData[i]);
@@ -218,11 +221,11 @@ function saveStructureToFile(){
 	var structureDataString = "";
 	var structureNamesString = "";
 	for(i = 0;i<structureX.length;i++){
-		structureXstring = structureXstring+"|"+structureX[i];
-		structureYstring = structureYstring+"|"+structureY[i];
-		structureZstring = structureZstring+"|"+structureZ[i];
-		structureIdString = structureIdString+"|"+structureId[i];
-		structureDataString = structureDataString+"|"+structureData[i];
+		structureXstring = structureXstring+","+structureX[i];
+		structureYstring = structureYstring+","+structureY[i];
+		structureZstring = structureZstring+","+structureZ[i];
+		structureIdString = structureIdString+","+structureId[i];
+		structureDataString = structureDataString+","+structureData[i];
 	}
 	saveToDocInWorld(structureName+".x",structureXstring);
 	saveToDocInWorld(structureName+".y",structureYstring);
@@ -233,7 +236,7 @@ function saveStructureToFile(){
 	clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
 		clientMessage("i = "+i);
-		structureNamesString = structureNamesString+"|"+structureNames[i];
+		structureNamesString = structureNamesString+","+structureNames[i];
 	}
 	saveToDocInWorld("structureNames.txt",structureNamesString);
 }
@@ -241,7 +244,7 @@ function saveStructureToFile(){
 function modTick(){
 	carriedItemId = Player.getCarriedItem();
 	carriedItemData = Player.getCarriedItemData();
-	if(carriedItemId != prevCarriedItemId || carriedItemData != prevCarriedItemData){
+	if(carriedItemId != prevCarriedItemId ,, carriedItemData != prevCarriedItemData){
 		if(carriedItemId == pStructureId){
 			if(structureNames[carriedItemData-1] != null && structureNames[carriedItemData-1] != "")
 				ModPE.showTipMessage(structureNames[carriedItemData-1]);
@@ -252,8 +255,8 @@ function modTick(){
 }
 
 function saveToDocInWorld(filename,string){
-	//if(string.charAt(0)=="|") 
-		string = string.replace("|","");
+	//if(string.charAt(0)==",") 
+		string = string.replace(",","");
 	clientMessage("Saving "+ string);
 	clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
