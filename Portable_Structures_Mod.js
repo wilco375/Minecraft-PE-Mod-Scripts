@@ -233,7 +233,12 @@ function saveStructureToFile(){
 	saveToDocInWorld(structureName+".id",structureIdString);
 	saveToDocInWorld(structureName+".data",structureDataString);
 	clientMessage("Pushing structureName");
-	structureNames[structureNames.length]=structureName;
+	var temp = [];
+	for(i = 0;i<structureNames.length;i++){
+		temp.push(structureNames[i]);
+	}
+	temp.push(structureName);
+	structureNames = temp;
 	clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
 		clientMessage("i = "+i);
