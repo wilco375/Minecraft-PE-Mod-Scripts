@@ -158,8 +158,10 @@ function placeStructure(id,x,y,z){
 	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split("|");
 	structureId = readFromDocInWorld(nameOfStructureToPlace+".id").split("|");
 	structureData = readFromDocInWorld(nameOfStructureToPlace+".data").split("|");
+	clientMessage("structureX.length = "+structureX.length);
 	for(i = 0; i< structureX.length; i++){
 		setTile(structureX[i]+x,structureY[i]+y,structureZ[i]+z,structureId[i],structureData[i]);
+		clientMessage("Tile at "+structureX[i]+x+","+structureY[i]+y+","+structureZ[i]+z+" set to "+structureId[i]+":"+structureData[i]);
 	}
 	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,0);
 	clientMessage("Structure placed!");
