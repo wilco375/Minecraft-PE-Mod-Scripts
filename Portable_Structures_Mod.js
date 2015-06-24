@@ -52,8 +52,34 @@ function useItem(x,y,z,itemId,blockId,side){
 		}
 	}
 	else if(itemId == pStructureId && data > 0){
+		clientMessage("Data = "+data);
 		preventDefault();
-		placeStructure(data,x,y,z);
+		ctx.runOnUiThread(new java.lang.Runnable(){
+		run: function(){
+			try{
+				var popup = new android.app.AlertDialog.Builder(ctx); 
+				popup.setTitle("Are you sure?")
+				popup.setMessage("Are you sure you want to place the structure here?")
+				popup.setPositiveButton("Yes", new android.content.DialogInterface.OnClickListener(){
+					onClick: function(viewarg){
+						try{
+							placeStructure(data,x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
+				}});
+				popup.setNegativeButton("No", new android.content.DialogInterface.OnClickListener(){
+					onClick: function(viewarg){
+						//do nothing
+				}});
+			}
+			catch(e){
+				print ("Error: "+e)
+			}	
+			popup.show()
+		}
+		});
 	}
 }
 
