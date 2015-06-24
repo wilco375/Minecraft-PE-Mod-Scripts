@@ -127,29 +127,29 @@ function showNameGUI(){
 
 function newLevel(){
 	var text = readFromDocInWorld("structureNames.txt");
-	clientMessage("Text in structureNames.txt = "+text)
+	//clientMessage("Text in structureNames.txt = "+text)
 	if(text != null && text != ""){
 		if(text.indexOf(",") > -1){
 			structureNames = text.split(",");
-			clientMessage("Splitted at ,");
+			//clientMessage("Splitted at ,");
 		}
 		else{
 			structureNames[0] = text;
-			clientMessage("[0] = text");
+			//clientMessage("[0] = text");
 		}
 	}
 	structureNamesString = "";
 	for(i = 0;i<structureNames.length;i++){
 		structureNamesString = structureNamesString+","+structureNames[i];
 	}
-	clientMessage("structureNames is now "+ structureNamesString+" and has a length of "+structureNames.length);
+	//clientMessage("structureNames is now "+ structureNamesString+" and has a length of "+structureNames.length);
 }
 
 function placeStructure(id,x,y,z){
 	clientMessage("Placing structure...");
-	clientMessage("structureNames = "+structureNames);
+	//clientMessage("structureNames = "+structureNames);
 	nameOfStructureToPlace = structureNames[id-1];
-	clientMessage("nameOfStructureToPlace = "+nameOfStructureToPlace);
+	//clientMessage("nameOfStructureToPlace = "+nameOfStructureToPlace);
 	structureNames[id-1]="";
 	var structureNamesString = "";
 	for(i = 0;i<structureNames.length;i++){
@@ -161,10 +161,10 @@ function placeStructure(id,x,y,z){
 	structureZ = readFromDocInWorld(nameOfStructureToPlace+".z").split(",");
 	structureId = readFromDocInWorld(nameOfStructureToPlace+".id").split(",");
 	structureData = readFromDocInWorld(nameOfStructureToPlace+".data").split(",");
-	clientMessage("structureX.length = "+structureX.length);
+	//clientMessage("structureX.length = "+structureX.length);
 	for(i = 0; i< structureX.length; i++){
 		setTile(parseInt(structureX[i])+x,parseInt(structureY[i])+y,parseInt(structureZ[i])+z,parseInt(structureId[i]),parseInt(structureData[i]));
-		clientMessage("Tile at "+parseInt(structureX[i])+x+","+parseInt(structureY[i])+y+","+parseInt(structureZ[i])+z+" set to "+parseInt(structureId[i])+":"+parseInt(structureData[i]));
+		//clientMessage("Tile at "+parseInt(structureX[i])+x+","+parseInt(structureY[i])+y+","+parseInt(structureZ[i])+z+" set to "+parseInt(structureId[i])+":"+parseInt(structureData[i]));
 	}
 	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,0);
 	clientMessage("Structure placed!");
@@ -207,8 +207,8 @@ function saveStructure(id,x,y,z){
 		}
 	}
 	saveStructureToFile();
-	clientMessage("structureNames.length = "+ structureNames.length);
-	clientMessage("Setting carried item to "+pStructureId+":"+structureNames.length);
+	//clientMessage("structureNames.length = "+ structureNames.length);
+	//clientMessage("Setting carried item to "+pStructureId+":"+structureNames.length);
 	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,structureNames.length);
 	clientMessage("Save complete!")
 }
@@ -232,16 +232,16 @@ function saveStructureToFile(){
 	saveToDocInWorld(structureName+".z",structureZstring);
 	saveToDocInWorld(structureName+".id",structureIdString);
 	saveToDocInWorld(structureName+".data",structureDataString);
-	clientMessage("Pushing structureName");
+	//clientMessage("Pushing structureName");
 	var temp = [];
 	for(i = 0;i<structureNames.length;i++){
 		temp.push(structureNames[i]);
 	}
 	temp.push(structureName);
 	structureNames = temp;
-	clientMessage("structureNames.length = "+structureNames.length);
+	//clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
-		clientMessage("i = "+i);
+		//clientMessage("i = "+i);
 		structureNamesString = structureNamesString+","+structureNames[i];
 	}
 	saveToDocInWorld("structureNames.txt",structureNamesString);
@@ -265,8 +265,8 @@ function modTick(){
 function saveToDocInWorld(filename,string){
 	//if(string.charAt(0)==",") 
 		string = string.replace(",","");
-	clientMessage("Saving "+ string);
-	clientMessage("To "+filename);
+	//clientMessage("Saving "+ string);
+	//clientMessage("To "+filename);
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
 	var file = new java.io.File(filePath);
 	file.mkdirs();
@@ -284,12 +284,12 @@ function saveToDocInWorld(filename,string){
 function readFromDocInWorld(filename){
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
 	var file = new java.io.File(filePath);
-	clientMessage("File exists? "+file.exists());
-	clientMessage("File path = "+filePath);
+	//clientMessage("File exists? "+file.exists());
+	//clientMessage("File path = "+filePath);
 	if(file.exists()){
 		var inputStream = new java.io.BufferedReader(new java.io.FileReader(filePath));
 		var returnText = inputStream.readLine();
-		clientMessage("returnText = "+returnText)
+		//clientMessage("returnText = "+returnText)
 		return returnText;
 	}
 	else{
