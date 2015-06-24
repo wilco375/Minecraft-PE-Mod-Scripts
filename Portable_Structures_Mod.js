@@ -128,15 +128,17 @@ function newLevel(){
 	if(text != null && text != ""){
 		if(text.indexOf("|") > -1)
 			structureNames = text.split("|");
+			clientMessage("Splitted at |");
 		else{
 			structureNames[0] = text;
+			clientMessage("[0] = text");
 		}
 	}
 	structureNamesString = "";
 	for(i = 0;i<structureNames.length;i++){
 		structureNamesString = structureNamesString+","+structureNames[i];
 	}
-	clientMessage("structureNames is now "+ structureNamesString);
+	clientMessage("structureNames is now "+ structureNamesString+" and has a length of "+structureNames.length);
 }
 
 function placeStructure(id,x,y,z){
