@@ -163,8 +163,8 @@ function placeStructure(id,x,y,z){
 	structureData = readFromDocInWorld(nameOfStructureToPlace+".data").split(",");
 	clientMessage("structureX.length = "+structureX.length);
 	for(i = 0; i< structureX.length; i++){
-		setTile(structureX[i]+x,structureY[i]+y,structureZ[i]+z,structureId[i],structureData[i]);
-		clientMessage("Tile at "+structureX[i]+x+","+structureY[i]+y+","+structureZ[i]+z+" set to "+structureId[i]+":"+structureData[i]);
+		setTile(parseInt(structureX[i])+x,parseInt(structureY[i])+y,parseInt(structureZ[i])+z,parseInt(structureId[i]),parseInt(structureData[i]));
+		clientMessage("Tile at "+parseInt(structureX[i])+x+","+parseInt(structureY[i])+y+","+parseInt(structureZ[i])+z+" set to "+parseInt(structureId[i])+":"+parseInt(structureData[i]));
 	}
 	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,0);
 	clientMessage("Structure placed!");
@@ -253,6 +253,8 @@ function modTick(){
 	prevCarriedItemId = Player.getCarriedItem();
 	prevCarriedItemData = Player.getCarriedItemData();
 }
+
+//Set stack size to 1!!!
 
 function saveToDocInWorld(filename,string){
 	//if(string.charAt(0)==",") 
