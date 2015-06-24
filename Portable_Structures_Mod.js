@@ -55,7 +55,7 @@ function useItem(x,y,z,itemId,blockId,side){
 		}
 	}
 	else if(itemId == pStructureId && data > 0){
-		clientMessage("Data = "+data);
+		//clientMessage("Data = "+data);
 		preventDefault();
 		context.runOnUiThread(new java.lang.Runnable(){
 		run: function(){
@@ -238,7 +238,10 @@ function saveStructure(id,x,y,z){
 	saveStructureToFile();
 	//clientMessage("structureNames.length = "+ structureNames.length);
 	//clientMessage("Setting carried item to "+pStructureId+":"+structureNames.length);
+	var count = Player.getCarriedItemCount();
 	Entity.setCarriedItem(getPlayerEnt(),pStructureId,1,structureNames.length);
+	if(count > 1)
+		Player.addItemInventory(pStructureIdEmpty,count-1,0);
 	clientMessage("Save complete!")
 }
 
