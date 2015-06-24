@@ -126,9 +126,10 @@ function newLevel(){
 	var text = readFromDocInWorld("structureNames.txt");
 	clientMessage("Text in structureNames.txt = "+text)
 	if(text != null && text != ""){
-		if(text.indexOf("|") > -1)
+		if(text.indexOf("|") > -1){
 			structureNames = text.split("|");
 			clientMessage("Splitted at |");
+		}
 		else{
 			structureNames[0] = text;
 			clientMessage("[0] = text");
