@@ -232,6 +232,7 @@ function saveStructureToFile(){
 	saveToDocInWorld(structureName+".z",structureZstring);
 	saveToDocInWorld(structureName+".id",structureIdString);
 	saveToDocInWorld(structureName+".data",structureDataString);
+	clientMessage("Pushing structureName");
 	structureNames.push(structureName);
 	clientMessage("structureNames.length = "+structureNames.length);
 	for(i = 0;i<structureNames.length;i++){
@@ -264,7 +265,7 @@ function saveToDocInWorld(filename,string){
 	var filePath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftWorlds/"+Level.getWorldDir()+"/PortableStructures/"+filename;
 	var file = new java.io.File(filePath);
 	file.mkdirs();
-	if(string != null && string != []){
+	if(string != null){
 		if(file.exists()){
 			file.delete();
 		}
