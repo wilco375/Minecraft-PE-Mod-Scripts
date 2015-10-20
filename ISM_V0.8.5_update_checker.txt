@@ -1,1 +1,1 @@
-[ISM] No update available
+[ISM] Update to V0.8.6 available. Added commands and crafting recipes, fixed forklift, 0.12 support
