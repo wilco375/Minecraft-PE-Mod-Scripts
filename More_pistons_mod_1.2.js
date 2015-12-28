@@ -1,1 +1,1 @@
-[More Piston Mod] No updates available.
+[More Piston Mod] No update available
