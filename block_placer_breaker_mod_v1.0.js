@@ -1,1 +1,1 @@
-[Block Placer and Breaker Mod] No udpate available
+[Block Placer and Breaker Mod] No update available
