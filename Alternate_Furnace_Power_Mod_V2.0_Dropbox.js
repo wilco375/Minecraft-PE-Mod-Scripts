@@ -1,4 +1,4 @@
-//Alternate Furnace Power Mod V1.2.1 - Reactor and Uranium added
+//Alternate Furnace Power Mod V2.0 - Ender Generator and Biomass Generator Added
 //By wilco 375
 //Don't re-upload this code, nor share or redistribute this mod using the Github link without permission. Instead, use this link: http://adf.ly/vrAPR
 
@@ -11,6 +11,8 @@ var oreGenCheckerId = 200
 var uraniumOre = 204
 var uraniumId = 510
 var fuelBlock = 201
+var enderGenId = 209
+var bioMassGenId = 208
 
 ///////////////////
 //Other variables V
@@ -21,34 +23,47 @@ var SolarPanelZ = []
 var ReactorX = []
 var ReactorY = []
 var ReactorZ = []
+var EnderGenX = []
+var EnderGenY = []
+var EnderGenZ = []
+var BioMassGenX = []
+var BioMassGenY = []
+var BioMassGenZ = []
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var textsize = 15
+
+var counter
 var sun
 var oldPx, worldGenerated, starterTick
-
 
 ///////////////////////////
 //Creating Blocks & Items V
 ///////////////////////////
-Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
-Block.defineBlock(uraniumOre,"Uranium Ore",["diamond_ore",0],15,1,0)
-Block.defineBlock(fuelBlock,"Fuel Block",["bedrock",0],1,1,0)
-Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00])
+ModPE.setItem(uraniumId,"dye_powder",10,"Uranium")
+ModPE.setItem(368,"ender_pearl",0,"Ender Pearl",16)
+Block.defineBlock(reactorId,"Reactor",["iron_block",0],20,1,0)
 Block.setColor(reactorId,[0x00FF00])
-Block.setColor(uraniumOre,[0x00FF00])
+Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,uraniumId,1,0,265,2,0,42,1,0,265,1,0])
+Block.defineBlock(enderGenId,"Ender Generator",["iron_block",0],20,1,0)
+Item.addCraftRecipe(enderGenId,1,0,[265,1,0,42,1,0,265,2,0,368,1,0,265,2,0,42,1,0,265,1,0])
+Block.setColor(enderGenId,[0x008866])
+Block.defineBlock(bioMassGenId,"Biomass Generator",[["grass",2],["leaves",4],["leaves",4],["leaves",4],["grass",2],["grass",2]],20,1,0)
+Item.addCraftRecipe(bioMassGenId,1,0,[18,4,0,6,1,0,18,4,0])
 Block.defineBlock(SolarPanelId,"Solar Panel",[["iron_block",0],["lapis_block",0],["iron_block",0],["iron_block",0],["iron_block",0],["iron_block",0]],20,1,0)
 Item.addCraftRecipe(SolarPanelId,1,0,[22,3,0,265,6,0])
-Block.defineBlock(reactorId,"Reactor",["iron_block",0],20,1,0)
-Item.addCraftRecipe(reactorId,1,0,[265,1,0,42,1,0,265,2,0,uraniumId,1,0,265,2,0,42,1,0,265,1,0])
-ModPE.setItem(uraniumId,"dye_powder",10,"Uranium");
+Block.defineBlock(oreGenCheckerId,"OreGenCheckerBlock",["bedrock",0],7,1,0)
+Block.defineBlock(uraniumOre,"Uranium Ore",["diamond_ore",0],15,1,0)
+Block.setColor(uraniumOre,[0x00FF00])
+Block.defineBlock(fuelBlock,"Fuel Block",["bedrock",0],1,1,0)
+Block.setColor(fuelBlock,[0xF0F8FF,0xFAEBD7,0x00FFFF,0x7FFFD4,0xF0FFFF,0xF5F5DC,0x000000,0xFFE4C4,0xFFEBCD,0x0000FF,0x8A2BE2,0xA52A2A,0xDEB887,0x5F9EA0,0x7FFF00])
 
 /////////////////////
 //Check for updates V
 /////////////////////
 function newLevel(){
  var out=new java.io.ByteArrayOutputStream();
-	var response=android.net.http.AndroidHttpClient.newInstance("Online()").execute(new org.apache.http.client.methods.HttpGet("https://raw.githubusercontent.com/wilco375/Minecraft-PE-Mod-Scripts/master/Alternate_Furnace_Power_Mod_V1.2.1_Update_Checker.txt")).getEntity().writeTo(out);
+	var response=android.net.http.AndroidHttpClient.newInstance("Online()").execute(new org.apache.http.client.methods.HttpGet("https://raw.githubusercontent.com/wilco375/Minecraft-PE-Mod-Scripts/master/Alternate_Furnace_Power_Mod_V2.0_Update_Checker_Dropbox.txt")).getEntity().writeTo(out);
 	out.close();
 	clientMessage(String(out.toString()))
 }
@@ -57,6 +72,10 @@ function newLevel(){
 //Code that powers the furnaces V
 /////////////////////////////////
 function runEveryTick(){
+	if(counter == null) counter = 0
+	if(counter < 5) counter++
+	else if(counter == 5) counter = 0
+	//Solar Panel
 	if(SolarPanelX != []){
 		for(i = 0;i < SolarPanelX.length;i++){
 			x = SolarPanelX[i]
@@ -72,16 +91,16 @@ function runEveryTick(){
 				}
 				Y++
 			}
-    if(Level.getTime() > 12000) sun = 0
-    //clientMessage(sun)
-			if(sun ){
+    			if(Level.getTime() > 12000) sun = 0
+			 //clientMessage(sun)
+			if(sun == 1){
 				if(getTile(x,y-1,z) == 61){
 					fuelFurnace2(x,y-1,z)
 				}
 			}
 		}	
 	}
-	
+	//Reactor
 	if(ReactorX != []){
 		for(j = 0;j < ReactorX.length;j++){
 			xR = ReactorX[j]
@@ -131,22 +150,103 @@ function runEveryTick(){
 			}
 		}
 	}
+	//Ender Reactor
+	if(counter == 5){
+		if(EnderGenX != []){
+			for(k = 0;k < EnderGenX.length;k++){
+				xE = EnderGenX[k]
+				yE = EnderGenY[k]
+				zE = EnderGenZ[k]
+				enderCount = Level.getData(xE,1,zE)
+				newEnderCount = enderCount-1
+				furnaceFueled = 0
+				for(x = xE-3;x<=xE+3;x++){
+					for(y = yE-3;y<=yE+3;y++){
+						for(z = zE-3;z<=zE+3;z++){
+							if(getTile(x,y,z) == 61){
+								if(enderCount != 0){
+									fuelFurnaceEnder(x,y,z)
+								}
+							}
+						}
+					}
+				}
+				if(furnaceFueled == 1){
+					if(newEnderCount == 0){
+						Level.setTile(xE,1,zE,fuelBlock,0)
+					}
+					else{ 
+						Level.setTile(xE,1,zE,fuelBlock,newEnderCount)
+					}
+				}
+			}
+		}
+	}
+	//Biomass Generator
+	if(BioMassGenX != []){
+		for(l = 0;l < BioMassGenX.length;l++){
+			xM = BioMassGenX[l]
+			yM = BioMassGenY[l]
+			zM = BioMassGenZ[l]
+			sun = 1
+			bioMassCount = Level.getData(xM,1,zM)
+			newBioMassCount = uraniumCount-1
+			furnaceFueled = 0
+			if(getTile(xM-1,yM,zM) == 61){
+				if(bioMassCount != 0){
+					fuelFurnaceEnder(xM-1,yM,zM)
+				}
+			}
+			if(getTile(xM+1,yM,zM) == 61){
+				if(bioMassCount != 0){
+					fuelFurnaceEnder(xM+1,yM,zM)
+				}
+			}
+			if(getTile(xM,yM,zM-1) == 61){
+				if(bioMassCount != 0){
+					fuelFurnaceEnder(xM,yM,zM-1)
+				}
+			}
+			if(getTile(xM,yM,zM+1) == 61){
+				if(bioMassCount != 0){
+					fuelFurnaceEnder(xM,yM,zM+1)
+				}
+			}
+			if(furnaceFueled == 1){
+				if(newBioMassCount == 0){
+					Level.setTile(xM,1,zM,fuelBlock,0)
+				}
+				else{ 
+					Level.setTile(xM,1,zM,fuelBlock,newBioMassCount)
+				}
+			}			
+		}
+	}
 }
 
+//Fuel furnace for Solar Panel
+function fuelFurnace2(x,y,z){
+	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
+	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
+		Level.setFurnaceSlot(x,y,z,1,263,0,1)
+	}
+}
+
+//Fuel furnace for Reactor
 function fuelFurnace(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
 	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
 		Level.setFurnaceSlot(x,y,z,1,173,0,1)
 		furnaceFueled = 1
-		//clientMessage(sun+","+"fueled")
 	}
 }
 
-function fuelFurnace2(x,y,z){
+//Fuel furnace for Ender Generator
+function fuelFurnaceEnder(x,y,z){
 	//Slot 0: Input; Slot 1: Fuel; Slot 2: Output
-	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0 && sun != 0){
+	if(Level.getFurnaceSlot(x,y,z,1) == 0 && Level.getFurnaceSlot(x,y,z,0) != 0){
 		Level.setFurnaceSlot(x,y,z,1,263,0,1)
-		//clientMessage(sun+","+"fueled")
+		furnaceFueled = 1
 	}
 }
 
@@ -163,9 +263,17 @@ function useItem(x,y,z,itemId,blockId,side){
 		preventDefault()
 		showReactorGUI(x,y,z)
 	}
-	////////////////
-	//Fuel Reactor V
-	////////////////
+	if(blockId == enderGenId && itemId != 368){
+		preventDefault()
+		showEnderGUI(x,y,z)
+	}
+	if(blockId == bioMassGenId && itemId != 6 && itemId != 18 && itemId != 31 && itemId != 37 && itemId != 38 && itemId != 39 && itemId != 40 && itemId != 81 && itemId != 83 && itemId != 86 && itemId != 103 && itemId != 106 && itemId != 111 && itemId != 161 && itemId != 175 && itemId != 295 && itemId != 296 && itemId != 338 && itemId != 360 && itemId != 361 && itemId != 362 && itemId != 391 && itemId != 392 && itemId != 457 && itemId != 458){
+		preventDefault()
+		showBioMassGUI(x,y,z)
+	}
+	/////////////////////////////////////////////////////
+	//Fuel Reactor, Biomass Generator & Ender Generator V
+	/////////////////////////////////////////////////////
 	if(blockId == reactorId && itemId == uraniumId){
 		if(Level.getData(x,1,z)==0){
 			if(Player.getCarriedItemCount() > 1){
@@ -178,12 +286,39 @@ function useItem(x,y,z,itemId,blockId,side){
 		}
 		else{ clientMessage("This reactor already contains uranium")}
 	}
+	if(blockId == enderGenId && itemId == 368){
+		if(Level.getData(x,1,z)==0){
+			if(Player.getCarriedItemCount() > 1){
+				Entity.setCarriedItem(getPlayerEnt(),368,Player.getCarriedItemCount()-1,0)
+			}
+			else{
+				Entity.setCarriedItem(getPlayerEnt(),0)
+			}
+			Level.setTile(x,1,z,fuelBlock,15)
+		}
+		else{ clientMessage("This ender generator already contains an ender pearl")}
+	}
+	if(blockId == bioMassGenId){
+		if(itemId == 6 || itemId == 18 || itemId == 31 || itemId == 37 || itemId == 38 || itemId == 39 || itemId == 40 || itemId == 81 || itemId == 83 || itemId == 86 || itemId == 103 || itemId == 106 || itemId == 111 || itemId == 161 || itemId == 175 || itemId == 295 || itemId == 296 || itemId == 338 || itemId == 360 || itemId == 361 || itemId == 362 || itemId == 391 || itemId == 392 || itemId == 457 || itemId == 458){
+			if(Level.getData(x,1,z)!=15){
+				if(Player.getCarriedItemCount() > 1){
+					Entity.setCarriedItem(getPlayerEnt(),Player.getCarriedItem(),Player.getCarriedItemCount()-1,0)
+				}
+				else{
+					Entity.setCarriedItem(getPlayerEnt(),0)
+				}
+				Level.setTile(x,1,z,fuelBlock,Level.getData(x,1,z)+1)
+			}
+			else{ clientMessage("This biomass generator is already filled up")}
+		}
+	}	
+	
 	// ^ //
 	
-	/////////////////////////////////
-	//Create fuel block for reactor fuel V
-	/////////////////////////////////
-	if(itemId == reactorId){
+	////////////////////////////////////////////////////////
+	//Create fuel block for Reactor & Ender Generator fuel V
+	////////////////////////////////////////////////////////
+	if(itemId == reactorId || itemId == enderGenId || itemId == bioMassGenId){
 		xC = x
 		zC = z
 		if(side == 2) zC--
@@ -284,6 +419,164 @@ function disableReactor(x,y,z){
    }
 }
 
+//Ender GUI
+function showEnderGUI(x,y,z){
+	ctx.runOnUiThread(new java.lang.Runnable(){
+		run: function(){
+			try{
+				var menu = new android.widget.LinearLayout(ctx);
+				var scroll = new android.widget.ScrollView(ctx);
+				menu.setOrientation(android.widget.LinearLayout.VERTICAL);
+				scroll.addView(menu);
+				var dialog = new android.app.Dialog(ctx); 
+				dialog.setContentView(scroll);
+				var enderGenHasFuel = 0
+				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
+				if(getTile(x,1,z) == fuelBlock){
+					if(Level.getData(x,1,z)!=0){
+						dialog.setTitle("Fuel: "+Level.getData(x,1,z)+"/15")
+						enderGenHasFuel = 1
+					}
+				}
+				if(enderGenHasFuel != 1){
+					dialog.setTitle("Fuel: 0/0");
+				}
+				//Add buttons
+				var  enderGenOn = new android.widget.Button(ctx); 
+				enderGenOn.setOnClickListener(new android.view.View.OnClickListener(){
+					onClick: function(){ 
+						try{
+							dialog.dismiss();
+							enableEnderGen(x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
+					}
+				})
+				enderGenOn.setText("On")
+				enderGenOn.setTextSize(textsize)
+				menu.addView(enderGenOn); 
+				
+				var  enderGenOff = new android.widget.Button(ctx); 
+				enderGenOff.setOnClickListener(new android.view.View.OnClickListener(){
+					onClick: function(){ 
+						try{
+							dialog.dismiss();
+							disableEnderGen(x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
+					}
+				})
+				enderGenOff.setText("Off")
+				enderGenOff.setTextSize(textsize)
+				menu.addView(enderGenOff); 
+			}
+			catch (e){
+				print ("Error: "+e)
+			}	
+			dialog.show()
+		}
+	});
+}
+
+function enableEnderGen(x,y,z){
+	EnderGenX.push(x)
+	EnderGenY.push(y)
+	EnderGenZ.push(z)
+}
+
+function disableEnderGen(x,y,z){
+	for(i = 0;i < EnderGenX.length;i++){
+		if(EnderGenX[i] == x && EnderGenY[i] == y && EnderGenZ[i] == z){
+			EnderGenX.splice(i,1)
+			EnderGenY.splice(i,1)
+			EnderGenZ.splice(i,1)
+		}
+   }
+}
+
+//Biomass GUI
+function showBioMassGUI(x,y,z){
+	ctx.runOnUiThread(new java.lang.Runnable(){
+		run: function(){
+			try{
+				var menu = new android.widget.LinearLayout(ctx);
+				var scroll = new android.widget.ScrollView(ctx);
+				menu.setOrientation(android.widget.LinearLayout.VERTICAL);
+				scroll.addView(menu);
+				var dialog = new android.app.Dialog(ctx); 
+				dialog.setContentView(scroll);
+				var bioMassHasFuel = 0
+				//clientMessage("Block at "+ x+",1,"+z+" = "+getTile(x,1,z))
+				if(getTile(x,1,z) == fuelBlock){
+					if(Level.getData(x,1,z)!=0){
+						dialog.setTitle("Fuel: "+Level.getData(x,1,z)+"/15")
+						bioMassHasFuel = 1
+					}
+				}
+				if(bioMassHasFuel != 1){
+					dialog.setTitle("Fuel: 0/0");
+				}
+				//Add buttons
+				var  bioMassOn = new android.widget.Button(ctx); 
+				bioMassOn.setOnClickListener(new android.view.View.OnClickListener(){
+					onClick: function(){ 
+						try{
+							dialog.dismiss();
+							enableBioMass(x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
+					}
+				})
+				bioMassOn.setText("On")
+				bioMassOn.setTextSize(textsize)
+				menu.addView(bioMassOn); 
+				
+				var  bioMassOff = new android.widget.Button(ctx); 
+				bioMassOff.setOnClickListener(new android.view.View.OnClickListener(){
+					onClick: function(){ 
+						try{
+							dialog.dismiss();
+							disableBioMass(x,y,z);
+						}
+						catch(e){
+							clientMessage("Error: "+e)
+						}
+					}
+				})
+				bioMassOff.setText("Off")
+				bioMassOff.setTextSize(textsize)
+				menu.addView(bioMassOff); 
+			}
+			catch (e){
+				print ("Error: "+e)
+			}	
+			dialog.show()
+		}
+	});
+}
+
+function enableBioMass(x,y,z){
+	BioMassGenX.push(x)
+	BioMassGenY.push(y)
+	BioMassGenZ.push(z)
+}
+
+function disableBioMass(x,y,z){
+	for(i = 0;i < BioMassGenX.length;i++){
+		if(BioMassGenX[i] == x && BioMassGenY[i] == y && BioMassGenZ[i] == z){
+			BioMassGenX.splice(i,1)
+			BioMassGenY.splice(i,1)
+			BioMassGenZ.splice(i,1)
+		}
+   }
+}
+
 //Solar Panel GUI
 function showSolarPanelGUI(x,y,z){
 	ctx.runOnUiThread(new java.lang.Runnable(){
@@ -373,6 +666,16 @@ function startDestroyBlock(x,y,z){
 		setTile(x,y,z,0)
 		Level.dropItem(x,y,z,0.5,reactorId,1,0)
 	}
+	if(getTile(x,y,z) == enderGenId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,enderGenId,1,0)
+	}
+	if(getTile(x,y,z) == bioMassGenId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,bioMassGenId,1,0)
+	}
 }
 
 function destroyBlock(x,y,z){
@@ -390,6 +693,27 @@ function destroyBlock(x,y,z){
 		preventDefault()
 		setTile(x,y,z,0)
 		Level.dropItem(x,y,z,0.5,reactorId,1,0)
+	}
+	if(getTile(x,y,z) == enderGenId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,enderGenId,1,0)
+	}
+	if(getTile(x,y,z) == bioMassGenId){
+		preventDefault()
+		setTile(x,y,z,0)
+		Level.dropItem(x,y,z,0.5,bioMassGenId,1,0)
+	}
+}
+
+////////////////////////////////////
+//Make Ender Men drop Ender Pearls V
+////////////////////////////////////
+function deathHook(murderer,victim){
+	if(murderer == getPlayerEnt() && Entity.getEntityTypeId(victim) == 38){
+		if(Math.round(Math.random()) == 1){
+			Level.dropItem(Entity.getX(victim),Entity.getY(victim),Entity.getZ(victim),0.5,368,1,0)
+		}
 	}
 }
 
@@ -533,5 +857,3 @@ function modTick(){
 	runEveryTick()
 	oreGen()
 }
-
-
